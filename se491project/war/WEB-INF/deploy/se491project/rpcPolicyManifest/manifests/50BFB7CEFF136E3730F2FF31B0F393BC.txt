@@ -1,0 +1,2 @@
+serviceClass: com.vc.client.GreetingService
+path: D986C87247B45947637F4F481424166F.gwt.rpc
