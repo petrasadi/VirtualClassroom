@@ -1,27 +1,40 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<!-- The HTML 4.01 Transitional DOCTYPE declaration-->
-<!-- above set at the top of the file will set     -->
-<!-- the browser's rendering engine into           -->
-<!-- "Quirks Mode". Replacing this declaration     -->
-<!-- with a "Standards Mode" doctype is supported, -->
-<!-- but may lead to some differences in layout.   -->
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <title>Hello App Engine</title>
-  </head>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Virtual Classroom</title>
+<link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
+</head>
+<body>
 
-  <body>
-    <h1>Hello App Engine!</h1>
+<div class="container_9">
+
+<!-- This should go into the header file once we flesh out the more sophisticated UI-->
+	<ul class=menu>
+		<li><a href="/ClassCreate.html">Create Class</a></li>
+		<li><a href="/ClassSearch.html">Class Search</a></li>
+
+	</ul>
+
+	<h1>Welcome to Virtual Classroom</h1>
+	<p>
+	Introduction/welcome statement that still needs to be written.
+	</p>
 	
-    <table>
-      <tr>
-        <td colspan="2" style="font-weight:bold;">Available Servlets:</td>        
-      </tr>
-      <tr>
-        <td><a href="se491_vcproj">Se491_vcProj</a></td>
-      </tr>
-    </table>
-  </body>
+	<ul>
+		<li>
+			<div class="grid_4"><a href="/UserReg.html">Create Account</a></div>
+			<div class="grid_4"><a href="#Login">Login</a></div>
+		</li>
+		
+		<li>
+			<div class="grid_4"><a href="/ClassSearch.html">Class Search</a></div>
+			<div class="grid_4"><a href="/ClassCreate.html">Create Class</a></div>
+		</li>
+	</ul>
+
+</div>
+
+</body>
 </html>
