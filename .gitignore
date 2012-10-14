@@ -1,2 +1,9 @@
 # Ignore class files
 *.class
+
+# IDEA
+.idea
+*.iml
+
+#TEST
+se491project/test-output/
