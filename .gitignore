@@ -5,5 +5,10 @@
 .idea
 *.iml
 
+# SETTINGS
+.settings
+.project
+.classpath
+
 #TEST
 se491project/test-output/
