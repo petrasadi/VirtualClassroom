@@ -1,7 +1,6 @@
 package com.google.api.se491proj.josql;
 
 import com.google.api.se491proj.model.Person;
-import com.google.appengine.api.datastore.Key;
 
 import java.util.List;
 

@@ -1,6 +1,11 @@
 package com.google.api.se491proj.model;
 
 import javax.persistence.Basic;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -13,10 +18,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
-import com.google.appengine.api.datastore.Key;
-
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * {@literal}
@@ -107,15 +111,18 @@ public class Person {
     @Pattern(regexp ="[0-9]+", message = "{Person.zip.Pattern}")
 	private String zip;
 
-/*	//bi-directional one-to-one association to Admin
+	//bi-directional one-to-one association to Admin
+	@Basic(optional = true)
 	@OneToOne(mappedBy="person")
 	private Admin admin;
 
 	//bi-directional many-to-one association to Class
+	@Basic(optional = true)
 	@OneToMany(mappedBy="person")
 	private List<Class> clazzs1;
 
 	//bi-directional many-to-one association to ClassHistory
+	@Basic(optional = true)
 	@OneToMany(mappedBy="person")
 	private List<ClassHistory> classHistories;
 
@@ -124,6 +131,7 @@ public class Person {
 	private List<ClassRating> classRatings;
 
 	//bi-directional many-to-many association to Class
+	@Basic(optional = true)
 	@ManyToMany
 	@JoinTable(
 		name="roster"
@@ -137,12 +145,14 @@ public class Person {
 	private List<Class> clazzs2;
 
 	//bi-directional one-to-one association to Student
+	@Basic(optional = true)
 	@OneToOne(mappedBy="person")
 	private Student student;
 
 	//bi-directional one-to-one association to Teacher
+	@Basic(optional = true)
 	@OneToOne(mappedBy="person")
-	private Teacher teacher;*/
+	private Teacher teacher;
 
 	public Person() {
 	}
@@ -199,6 +209,8 @@ public class Person {
 		return this.email;
 	}
 	
+	@Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([a-z0-9-]+(\\.[a-z0-9-]+)*?\\.[a-z]{2,6}|(\\d{1,3}\\.){3}\\d{1,3})(:\\d{4})?$", 
+			message = "{Person.email.Pattern}")
 	public void setEmail(String email) {
 		this.email = email;
 	}
@@ -230,7 +242,9 @@ public class Person {
 	public String getPhone() {
 		return this.phone;
 	}
-	@Pattern(regexp="\\(\\d{3}\\)\\d{3}-\\d{4}",message="{invalid.phonenumber}")
+	
+	@Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$|^(\\d{3})[\\.](\\d{3})[\\.](\\d{4})$",
+			message = "{Person.phone.Pattern}")
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
@@ -239,6 +253,8 @@ public class Person {
 		return this.phone2;
 	}
 
+	@Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$|^(\\d{3})[\\.](\\d{3})[\\.](\\d{4})$",
+			message = "{Person.phone.Pattern}")
 	public void setPhone2(String phone2) {
 		this.phone2 = phone2;
 	}
@@ -267,7 +283,7 @@ public class Person {
 		this.zip = zip;
 	}
 
-	/*public Admin getAdmin() {
+	public Admin getAdmin() {
 		return this.admin;
 	}
 
@@ -321,5 +337,5 @@ public class Person {
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
-	}*/
+	}
 }

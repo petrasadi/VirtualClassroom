@@ -4,13 +4,10 @@ import java.util.List;
 
 import javax.jdo.PersistenceManager;
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import com.google.api.se491proj.model.Person;
-import com.google.appengine.api.datastore.DatastoreService;
-import com.google.appengine.api.datastore.DatastoreServiceFactory;
-import com.google.appengine.api.datastore.Entity;
+
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
@@ -130,11 +127,6 @@ public class PersonDAO implements IPersonDAO {
 	*
 	******************************************************************************/	
     public Long savePerson(Person person) throws PersonException {
-        EntityManager em = EntityManagerService.get().createEntityManager();
-        String queryStr = "select from " + Person.class.getName() + 
-                " u where u.id = :id";
-        Query personIdQuery = em.createQuery(queryStr);
-        personIdQuery.setParameter("id", person.getId());
         PersistenceManager pm = PersistenceManagerService.get().getPersistenceManager();
     	if (person.getId() != null) {
     		Key keyId = KeyFactory.createKey(Person.class.getSimpleName(), person.getId());

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?><web-app xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.5" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 	<servlet>
-		<servlet-name>Se491_vcProj</servlet-name>
+		<servlet-name>se491_vcproj</servlet-name>
 		<servlet-class>com.google.api.se491proj.Se491_vcProjServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Se491_vcProj</servlet-name>
+		<servlet-name>se491_vcproj</servlet-name>
 		<url-pattern>/se491_vcproj</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>

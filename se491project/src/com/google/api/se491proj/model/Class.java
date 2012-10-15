@@ -2,6 +2,8 @@ package com.google.api.se491proj.model;
 
 import javax.persistence.*;
 
+import com.google.appengine.api.datastore.Key;
+
 import java.util.Date;
 import java.util.List;
 
@@ -27,7 +29,7 @@ public class Class {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Key id;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date classEndTime;
@@ -78,11 +80,11 @@ public class Class {
 	public Class() {
 	}
 
-	public Long getId() {
+	public Key getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Key id) {
 		this.id = id;
 	}
 

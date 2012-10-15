@@ -6,6 +6,14 @@
 
     <persistence-unit name="transactions-optional">
         <provider>org.datanucleus.api.jpa.PersistenceProviderImpl</provider>
+                <class>com.google.api.se491proj.model.Person</class>
+                <class>com.google.api.se491proj.model.Admin</class>
+                <class>com.google.api.se491proj.model.Student</class>
+                <class>com.google.api.se491proj.model.Teacher</class>
+                <class>com.google.api.se491proj.model.ClassRating</class>
+                <class>com.google.api.se491proj.model.ClassHistory</class>
+                <class>com.google.api.se491proj.model.Class</class>
+                <class>com.google.api.se491proj.model.Category</class>
         <properties>
             <property name="datanucleus.NontransactionalRead" value="true"/>
             <property name="datanucleus.NontransactionalWrite" value="true"/>
