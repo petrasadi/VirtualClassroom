@@ -41,12 +41,7 @@
 		<%
 			} else {
 		%>
-		<ul class=menu>
-			<li><a href="/ClassCreate.html">Create Class</a></li>
-			<li><a href="/ClassSearch.html">Class Search</a></li>
-		</ul>
-
-
+	
 		<ul>
 			<li>
 				<div class="grid_4">
