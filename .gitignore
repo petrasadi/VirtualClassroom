@@ -9,6 +9,10 @@
 .settings
 .project
 .classpath
+.metadata
 
 #TEST
 se491project/test-output/
+
+#SERVERS
+Servers

@@ -34,6 +34,16 @@
 		<servlet-name>login_redirect</servlet-name>
 		<url-pattern>/_ah/login_redirect</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>OpenTok</servlet-name>
+		<servlet-class>edu.depaul.se491.servlets.opentok.OpenTokServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OpenTok</servlet-name>
+		<url-pattern>/opentok</url-pattern>
+	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>SystemServiceServlet</servlet-name>
 		<servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
