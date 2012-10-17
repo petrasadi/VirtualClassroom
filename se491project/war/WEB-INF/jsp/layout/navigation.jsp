@@ -9,16 +9,16 @@
 	UserService userService = UserServiceFactory.getUserService();
 	if (!userService.isUserLoggedIn()) {
 %>
-<a href="\displayAboutPage.do">About</a> <br />
-<a href="\displayLoginPage.do">Login</a> <br />
+<a href="/displayAboutPage.do">About</a> <br />
+<a href="/displayLoginPage.do">Login</a> <br />
 <%
 	} else{
 %>
 
-<a href="\displayCreateClassPage.do">Creat Class</a> <br />
-<a href="\displayListClassesPage.do">List Classes</a> <br />
-<a href="\displaySearchClassPage.do">Class Search</a> <br />
-<a href="\displayRegisterClassPage.do">Class Register</a> <br />
+<a href="/displayCreateClassPage.do">Creat Class</a> <br />
+<a href="/displayListClassesPage.do">List Classes</a> <br />
+<a href="/displaySearchClassPage.do">Class Search</a> <br />
+<a href="/displayRegisterClassPage.do">Class Register</a> <br />
 <%
 	}
 %>

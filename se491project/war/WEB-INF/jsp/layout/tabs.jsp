@@ -10,10 +10,10 @@
 
 
 <div class="grid_4">
-<a href="\displayAboutPage.do">About</a>  | 
+<a href="/displayAboutPage.do">About</a>  | 
 Teacher  |
 Student  |
-<a href="\displayUserInformationPage.do">User Information</a>
+<a href="/displayUserInformationPage.do">User Information</a>
 <a href="<%=userService.createLogoutURL("/")%>">log out</a>
 </div>
 
@@ -22,8 +22,8 @@ Student  |
 %>
 
 <div class="grid_4">
-<a href="\displayAboutPage.do">About</a>  | 
-<a href="\displayLoginPage.do">Login</a> <br>
+<a href="/displayAboutPage.do">About</a>  | 
+<a href="/displayLoginPage.do">Login</a> <br>
 </div>
 
 
