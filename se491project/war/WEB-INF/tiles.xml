@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <definition name="base.definition"
+        template="/WEB-INF/jsp/layout/layout.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
+         <put-attribute name="tabs" value="/WEB-INF/jsp/layout/tabs.jsp" />
+        <put-attribute name="navigation" value="/WEB-INF/jsp/layout/navigation.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
+    </definition>
+ 
+    <definition name="displayAboutPage" extends="base.definition">
+        <put-attribute name="title" value="About" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tabs/about.jsp" />
+    </definition>
+    
+     <definition name="displayLoginPage" extends="base.definition">
+        <put-attribute name="title" value="Login" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tabs/openidlogin.jsp" />
+    </definition>
+    
+    <definition name="displayUserInformationPage" extends="base.definition">
+        <put-attribute name="title" value="Login" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tabs/userInformation.jsp" />
+    </definition>
+    
+    <definition name="displayCreateClassPage" extends="base.definition">
+        <put-attribute name="title" value="Create Class" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassCreate.html" />
+    </definition>
+    
+    <definition name="displayListClassesPage" extends="base.definition">
+        <put-attribute name="title" value="List Classes" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassList.html" />
+    </definition>
+    
+    <definition name="displaySearchClassPage" extends="base.definition">
+        <put-attribute name="title" value="Search Class" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassSearch.html" />
+    </definition>
+    
+    <definition name="displayRegisterClassPage" extends="base.definition">
+        <put-attribute name="title" value="Register Class" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg.html" />
+    </definition>
+ 
+</tiles-definitions>
