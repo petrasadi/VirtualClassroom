@@ -15,7 +15,7 @@ public class ShowLoginPage extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/webpages/login/openidlogin.jsp");
+		RequestDispatcher view = request.getRequestDispatcher("WEB-INF/jsp/tabs/openidlogin.jsp");
 		request.setAttribute("continue", "");
 		view.forward(request, response);
 	}

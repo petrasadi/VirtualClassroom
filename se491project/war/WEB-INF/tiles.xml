@@ -20,7 +20,7 @@
     
      <definition name="displayLoginPage" extends="base.definition">
         <put-attribute name="title" value="Login" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tabs/openidlogin.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/tabs/openidlogin.jsp?continue=/checkRegistration.do" />
     </definition>
     
     <definition name="displayUserInformationPage" extends="base.definition">
@@ -30,7 +30,7 @@
     
     <definition name="displayCreateClassPage" extends="base.definition">
         <put-attribute name="title" value="Create Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassCreate.html" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassCreate.jsp" />
     </definition>
     
     <definition name="displayListClassesPage" extends="base.definition">
@@ -46,6 +46,26 @@
     <definition name="displayRegisterClassPage" extends="base.definition">
         <put-attribute name="title" value="Register Class" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg.html" />
+    </definition>
+    
+     <definition name="displayUserRegistrationPage" extends="base.definition">
+        <put-attribute name="title" value="Search Class" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/userregistration.jsp" />
+    </definition>
+    
+    <definition name="displayUserLoggedInPage" extends="base.definition">
+        <put-attribute name="title" value="Register Class" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/userwelcome.jsp" />
+    </definition>
+    
+    <definition name="displayClassCreatedPage" extends="base.definition">
+        <put-attribute name="title" value="Class Created" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/classcreated.jsp" />
+    </definition>
+    
+      <definition name="displayListClassesPage" extends="base.definition">
+        <put-attribute name="title" value="Class Created" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/classlist.jsp" />
     </definition>
  
 </tiles-definitions>

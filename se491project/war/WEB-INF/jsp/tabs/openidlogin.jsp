@@ -41,9 +41,11 @@
   <input type="submit" value="Login" /></div>
   </fieldset>
   <fieldset>
+  <div>
   <label for="openid_identifier">Enter your <a class="openid_logo" href="http://openid.net">OpenID</a></label>
-  <div><input type="text" name="openid_identifier" />
-  <input type="submit" value="Login" /></div>
+  <input type="text" name="openid_identifier" />
+  <input type="submit" value="Login" />
+  </div>
   </fieldset>
 </form>
 <br />
