@@ -32,7 +32,10 @@ function handleOpenTok(data){
 	var publisher;
 	
 	function sessionConnectedHandler(event) {
-		publisher = TB.initPublisher(apiKey, 'myPublisherDiv');
+		var div = document.createElement('div');
+		div.setAttribute('id', 'publisher');
+		$('#myPublisherDiv').append(div);
+		publisher = TB.initPublisher(apiKey, div);
 		session.publish(publisher);
 		 
 		// Subscribe to streams that were in the session when we connected
@@ -54,10 +57,10 @@ function handleOpenTok(data){
 			// Create the div to put the subscriber element in to
 			var div = document.createElement('div');
 			div.setAttribute('id', 'stream' + streams[i].streamId);
-			document.body.appendChild(div);
+			$('#subscribers').append(div);
 			                   
 			// Subscribe to the stream
-			var subscribeProps = {height:240, width:320};
+			var subscribeProps = {height:120, width:160};
 			session.subscribe(streams[i], div.id);
 		}
 	}
