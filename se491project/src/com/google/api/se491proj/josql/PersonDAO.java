@@ -1,15 +1,20 @@
 package com.google.api.se491proj.josql;
 
-import java.util.List;
-
 import javax.jdo.PersistenceManager;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
+import com.google.appengine.api.datastore.Transaction;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
+import static com.google.appengine.api.datastore.FetchOptions.Builder.withLimit;
 import com.google.api.se491proj.model.Person;
-
 import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
 
 /**
  * {@literal}
@@ -35,11 +40,12 @@ public class PersonDAO implements IPersonDAO {
 	*   {@return} List<Person> - the retreived list
 	*
 	******************************************************************************/
-	@SuppressWarnings("unchecked")
-	public List<Person> getAllPerson() throws PersonException {
-        EntityManager em = EntityManagerService.get().createEntityManager();
-        Query person_tableQuery = em.createQuery("SELECT u FROM Person u");
-        return person_tableQuery.getResultList();
+	public Iterable<Entity> getAllPerson() throws PersonException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query person_tableQuery = new Query("Person");
+		
+		PreparedQuery pq = datastore.prepare(person_tableQuery);
+        return pq.asIterable();
 	}
 	
 	/*******************************************************************************
@@ -52,12 +58,14 @@ public class PersonDAO implements IPersonDAO {
 	*   {@return} List<Person> - the retreived list
 	*
 	******************************************************************************/
-	@SuppressWarnings("unchecked")
-	public List<Person> getPersonByLastName(String lastName) throws PersonException {
-        EntityManager em = EntityManagerService.get().createEntityManager();
-        Query person_tableQuery = em.createNamedQuery("Person.findByLastName", Person.class);
-        person_tableQuery.setParameter("lastname", lastName);
-        return person_tableQuery.getResultList();
+	public Iterable<Entity> getPersonByLastName(String lastName) throws PersonException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter firstNameFilter = new FilterPredicate("lastname", FilterOperator.EQUAL, lastName);
+		Query person_tableQuery = new Query("Person").setFilter(firstNameFilter)
+				.addSort("lastname", Query.SortDirection.DESCENDING);
+		
+		PreparedQuery pq = datastore.prepare(person_tableQuery);
+        return pq.asIterable();
 	}
 	
 	/*******************************************************************************
@@ -70,12 +78,14 @@ public class PersonDAO implements IPersonDAO {
 	*   {@return} List<Person> - the retreived list
 	*
 	******************************************************************************/
-	@SuppressWarnings("unchecked")
-	public List<Person> getPersonByFirstName(String firstName) throws PersonException {
-        EntityManager em = EntityManagerService.get().createEntityManager();
-        Query person_tableQuery = em.createNamedQuery("Person.findByFirstName", Person.class);
-        person_tableQuery.setParameter("firstname", firstName);
-        return person_tableQuery.getResultList();
+	public Iterable<Entity> getPersonByFirstName(String firstName) throws PersonException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter firstNameFilter = new FilterPredicate("firstname", FilterOperator.EQUAL, firstName);
+		Query person_tableQuery = new Query("Person").setFilter(firstNameFilter)
+				.addSort("firstname", Query.SortDirection.DESCENDING);
+		
+		PreparedQuery pq = datastore.prepare(person_tableQuery);
+        return pq.asIterable();
 	}
 	
 	/*******************************************************************************
@@ -89,13 +99,16 @@ public class PersonDAO implements IPersonDAO {
 	*   {@return} List<Person> - the retreived list
 	*
 	******************************************************************************/
-	@SuppressWarnings("unchecked")
-	public List<Person> getPersonByFirstNameAndLastName(String firstName, String lastName) throws PersonException {
-        EntityManager em = EntityManagerService.get().createEntityManager();
-        Query person_tableQuery = em.createNamedQuery("Person.findByFirstNameAndLastName", Person.class);
-        person_tableQuery.setParameter("firstname", firstName);
-        person_tableQuery.setParameter("lastname", lastName);
-        return person_tableQuery.getResultList();
+	public Iterable<Entity> getPersonByFirstNameAndLastName(String firstName, String lastName) throws PersonException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter firstNameFilter = new FilterPredicate("firstname", FilterOperator.EQUAL, firstName);
+		Filter lastNameFilter = new FilterPredicate("lastname", FilterOperator.EQUAL, lastName);
+		Filter firstAndLastNameComposite = CompositeFilterOperator.and(firstNameFilter, lastNameFilter);
+		Query person_tableQuery = new Query("Person").setFilter(firstAndLastNameComposite)
+				.addSort("lastname", Query.SortDirection.DESCENDING);
+		
+		PreparedQuery pq = datastore.prepare(person_tableQuery);
+        return pq.asIterable();
 	}
 	
 	/*******************************************************************************
@@ -108,12 +121,14 @@ public class PersonDAO implements IPersonDAO {
 	*   {@return} List<Person> - the retreived list
 	*
 	******************************************************************************/
-	@SuppressWarnings("unchecked")
-	public List<Person> getPersonByEmail(String email) throws PersonException {
-        EntityManager em = EntityManagerService.get().createEntityManager();
-        Query person_tableQuery = em.createNamedQuery("Person.findByEmail", Person.class);
-        person_tableQuery.setParameter("email", email);
-        return person_tableQuery.getResultList();
+	public Iterable<Entity> getPersonByEmail(String email) throws PersonException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter emailFilter = new FilterPredicate("email", FilterOperator.EQUAL, email);
+		Query person_tableQuery = new Query("Person").setFilter(emailFilter)
+				.addSort("email", Query.SortDirection.DESCENDING);
+       
+		PreparedQuery pq = datastore.prepare(person_tableQuery);
+        return pq.asIterable();
 	}
 	
 	/*******************************************************************************
@@ -126,11 +141,17 @@ public class PersonDAO implements IPersonDAO {
 	*   {@return} Long - the person id
 	*
 	******************************************************************************/	
-    public Long savePerson(Person person) throws PersonException {
+    public Key savePerson(Person person) throws PersonException {
+    	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter idFilter = new FilterPredicate("id", FilterOperator.EQUAL, person.getId());
+		Query person_tableQuery = new Query("Person").setFilter(idFilter);
+		PreparedQuery pq = datastore.prepare(person_tableQuery);		
+		Entity pEntity = pq.asSingleEntity();
+		
         PersistenceManager pm = PersistenceManagerService.get().getPersistenceManager();
-    	if (person.getId() != null) {
-    		Key keyId = KeyFactory.createKey(Person.class.getSimpleName(), person.getId());
-    		Person personFound = pm.getObjectById(Person.class, keyId);
+    	if ((person.getId() != null) && (pEntity.getKey() != null)){
+    		Key keyId = person.getId();
+    		Person personFound = pm.getObjectById(Person.class, keyId);										
     		if (personFound != null) {
     			updatePerson(personFound);
     		}
@@ -151,29 +172,179 @@ public class PersonDAO implements IPersonDAO {
 	*
 	******************************************************************************/
     public void updatePerson(Person person) {
-    	EntityManager em = EntityManagerService.get().createEntityManager();
-    	String queryStr = "select from " + Person.class.getName() + 
-                " u where u.id = :id";
-        Query personIdQuery = em.createQuery(queryStr);
-        personIdQuery.setParameter("id", person.getId());
-        Person updatedPerson = (Person) personIdQuery.getSingleResult();
-        
-        updatedPerson.setFirstName(person.getFirstName());
-        updatedPerson.setMiddleName(person.getMiddleName());
-        updatedPerson.setLastName("changed");
-        updatedPerson.setEmail(person.getEmail());
-        updatedPerson.setAddress(person.getAddress());
-        updatedPerson.setAddress2(person.getAddress2());
-        updatedPerson.setCity(person.getCity());
-        updatedPerson.setState(person.getState());
-        updatedPerson.setZip(person.getZip());
-        updatedPerson.setCountry(person.getCountry());
-        updatedPerson.setPhone(person.getPhone());
-        updatedPerson.setPhone2(person.getPhone2());
-        
-        em.getTransaction().begin();
-        em.persist(updatedPerson);
-        em.getTransaction().commit();
+    	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter idFilter = new FilterPredicate("id", FilterOperator.EQUAL, person.getId());
+		Query person_tableQuery = new Query("Person").setFilter(idFilter);
+		PreparedQuery pq = datastore.prepare(person_tableQuery);
+		
+		Entity pEntity = pq.asSingleEntity();
+		Transaction tx = datastore.beginTransaction();
+		pEntity.setProperty("firstname", person.getFirstName());
+		pEntity.setProperty("middlename", person.getMiddleName());
+		pEntity.setProperty("lastname", person.getLastName());
+		pEntity.setProperty("email", person.getEmail());
+		pEntity.setProperty("address", person.getAddress());
+		pEntity.setProperty("address2", person.getAddress2());
+		pEntity.setProperty("city", person.getCity());
+		pEntity.setProperty("state", person.getState());
+        pEntity.setProperty("zip", person.getZip());
+        pEntity.setProperty("country", person.getCountry());
+        pEntity.setProperty("phone", person.getPhone());
+        pEntity.setProperty("phone2", person.getPhone2());
+        pEntity.setProperty("openid", person.getOpenId());
+                
+        try {
+        	datastore.put(pEntity);
+        	tx.commit();
+        } finally {
+        	if(tx.isActive()) {
+        		tx.rollback();
+        	}
+        }
+    }
+    
+    /*******************************************************************************
+   	*
+   	*   {@literal}
+   	*    setPersonAsAdmin - sets Admin status for the person
+   	*
+   	*   {@param} Key person
+   	*
+   	******************************************************************************/	  
+    public void setPersonAsAdmin(Key person) {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter keyFilter = new FilterPredicate("person", FilterOperator.EQUAL, person);
+		Query role_tableQuery = new Query("Role").setFilter(keyFilter);
+		PreparedQuery pq = datastore.prepare(role_tableQuery);
+		
+		if(pq.countEntities(withLimit(1)) == 0) {
+			Entity adminRole = new Entity("Role");
+			
+			Transaction tx = datastore.beginTransaction();
+			adminRole.setProperty("admin", true);
+			adminRole.setProperty("student", false);
+			adminRole.setProperty("teacher", false);
+			adminRole.setProperty("person", person);
+			
+			try {
+				datastore.put(adminRole);
+				tx.commit();
+			} finally {
+				if(tx.isActive()) {
+					tx.rollback();
+				}
+			}
+		} else {
+			Entity adminRole = pq.asSingleEntity();
+			Boolean isAdmin = (Boolean) adminRole.getProperty("admin");
+			adminRole.setProperty("admin", !(isAdmin.booleanValue()));
+			
+			Transaction tx = datastore.beginTransaction();
+			try {
+				datastore.put(adminRole);
+				tx.commit();
+			} finally {
+				if(tx.isActive()) {
+					tx.rollback();
+				}
+			}
+		}
+    }
+    
+    /*******************************************************************************
+   	*
+   	*   {@literal}
+   	*    setPersonAsStudent - sets Student status for the person
+   	*
+   	*   {@param} Key person
+   	*
+   	******************************************************************************/	  
+    public void setPersonAsStudent(Key person) {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter keyFilter = new FilterPredicate("person", FilterOperator.EQUAL, person);
+		Query role_tableQuery = new Query("Role").setFilter(keyFilter);
+		PreparedQuery pq = datastore.prepare(role_tableQuery);
+		
+		if(pq.countEntities(withLimit(1)) == 0) {
+			Entity studentRole = new Entity("Role");
+			
+			Transaction tx = datastore.beginTransaction();
+			studentRole.setProperty("admin", false);
+			studentRole.setProperty("student", true);
+			studentRole.setProperty("teacher", false);
+			studentRole.setProperty("person", person);
+			
+			try {
+				datastore.put(studentRole);
+				tx.commit();
+			} finally {
+				if(tx.isActive()) {
+					tx.rollback();
+				}
+			}
+		} else {
+			Entity studentRole = pq.asSingleEntity();
+			Boolean isStudent = (Boolean) studentRole.getProperty("student");
+			studentRole.setProperty("student", !(isStudent.booleanValue()));
+			
+			Transaction tx = datastore.beginTransaction();
+			try {
+				datastore.put(studentRole);
+				tx.commit();
+			} finally {
+				if(tx.isActive()) {
+					tx.rollback();
+				}
+			}
+		}
+    }
+    
+    /*******************************************************************************
+   	*
+   	*   {@literal}
+   	*    setPersonAsStudent - sets Student status for the person
+   	*
+   	*   {@param} Key person
+   	*
+   	******************************************************************************/	  
+    public void setPersonAsTeacher(Key person) {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter keyFilter = new FilterPredicate("person", FilterOperator.EQUAL, person);
+		Query role_tableQuery = new Query("Role").setFilter(keyFilter);
+		PreparedQuery pq = datastore.prepare(role_tableQuery);
+		
+		if(pq.countEntities(withLimit(1)) == 0) {
+			Entity teacherRole = new Entity("Role");
+			
+			Transaction tx = datastore.beginTransaction();
+			teacherRole.setProperty("admin", false);
+			teacherRole.setProperty("student", false);
+			teacherRole.setProperty("teacher", true);
+			teacherRole.setProperty("person", person);
+			
+			try {
+				datastore.put(teacherRole);
+				tx.commit();
+			} finally {
+				if(tx.isActive()) {
+					tx.rollback();
+				}
+			}
+		} else {
+			Entity teacherRole = pq.asSingleEntity();
+			Boolean isTeacher = (Boolean) teacherRole.getProperty("teacher");
+			teacherRole.setProperty("teacher", !(isTeacher.booleanValue()));
+			
+			Transaction tx = datastore.beginTransaction();
+			try {
+				datastore.put(teacherRole);
+				tx.commit();
+			} finally {
+				if(tx.isActive()) {
+					tx.rollback();
+				}
+			}
+		}
     }
     
     /*******************************************************************************
@@ -186,28 +357,35 @@ public class PersonDAO implements IPersonDAO {
 	*   {@return} int - the person id
 	*
 	******************************************************************************/	  
-    private Long createPerson(Person person) {
-        EntityManager em = EntityManagerService.get().createEntityManager();
-        Person createPerson = new Person();
-       
-        createPerson.setFirstName(person.getFirstName());
-        createPerson.setMiddleName(person.getMiddleName());
-        createPerson.setLastName(person.getLastName());
-        createPerson.setEmail(person.getEmail());
-        createPerson.setAddress(person.getAddress());
-        createPerson.setAddress2(person.getAddress2());
-        createPerson.setCity(person.getCity());
-        createPerson.setState(person.getState());
-        createPerson.setZip(person.getZip());
-        createPerson.setCountry(person.getCountry());
-        createPerson.setPhone(person.getPhone());
-        createPerson.setPhone2(person.getPhone2());
-        createPerson.setCreated(person.getCreated());
+    private Key createPerson(Person person) {
+    	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    	Entity createPerson = new Entity("Person");
+
+		Transaction tx = datastore.beginTransaction();
+		createPerson.setProperty("firstname", person.getFirstName());
+		createPerson.setProperty("middlename", person.getMiddleName());
+		createPerson.setProperty("lastname", person.getLastName());
+		createPerson.setProperty("email", person.getEmail());
+		createPerson.setProperty("address", person.getAddress());
+		createPerson.setProperty("address2", person.getAddress2());
+		createPerson.setProperty("city", person.getCity());
+		createPerson.setProperty("state", person.getState());
+		createPerson.setProperty("zip", person.getZip());
+		createPerson.setProperty("country", person.getCountry());
+		createPerson.setProperty("phone", person.getPhone());
+		createPerson.setProperty("phone2", person.getPhone2());
+		createPerson.setProperty("openid", person.getOpenId());
+
+        try {
+        	datastore.put(createPerson);
+        	tx.commit();
+        } finally {
+        	if(tx.isActive()) {
+        		tx.rollback();
+        	}
+        }
         
-        em.getTransaction().begin();
-        em.persist(createPerson);
-        em.getTransaction().commit();
-        return createPerson.getId();
+        return createPerson.getKey();
     }
     
     /*******************************************************************************
@@ -222,15 +400,19 @@ public class PersonDAO implements IPersonDAO {
 	******************************************************************************/	
         
     public void deletePerson(Person person) throws PersonException {
-        EntityManager em = EntityManagerService.get().createEntityManager();
-        String queryStr = "select from " + Person.class.getName() + 
-                " u where u.id = :id";
-        Query personIdQuery = em.createQuery(queryStr);
-        personIdQuery.setParameter("id", person.getId());
-        Person deletePerson = (Person) personIdQuery.getSingleResult();
-
-        em.getTransaction().begin();
-        em.remove(deletePerson);
-        em.getTransaction().commit();
+    	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter idFilter = new FilterPredicate("id", FilterOperator.EQUAL, person.getId());
+		Query person_tableQuery = new Query("Person").setFilter(idFilter);
+		PreparedQuery pq = datastore.prepare(person_tableQuery);
+    	
+		Transaction tx = datastore.beginTransaction();
+		Entity pEntity = pq.asSingleEntity();
+		try {
+			datastore.delete(pEntity.getKey());
+		} finally {
+			if(tx.isActive()) {
+        		tx.rollback();
+        	}
+		}
     }
 }

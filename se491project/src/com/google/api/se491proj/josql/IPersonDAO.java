@@ -1,8 +1,8 @@
 package com.google.api.se491proj.josql;
 
 import com.google.api.se491proj.model.Person;
-
-import java.util.List;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
 
 /**
  * {@literal}
@@ -18,29 +18,44 @@ import java.util.List;
  */
 public interface IPersonDAO {
 	/**
-	 * @return List<Person> get all Persons
+	 * @return Iterable<Entity> get all Persons
 	 */
-	public List<Person> getAllPerson() throws PersonException;
+	public Iterable<Entity> getAllPerson() throws PersonException;
 	
 	/**
-	 * @return List<Person> get all person by LastName
+	 * @return Iterable<Entity> get all person by LastName
 	 */
-	public List<Person> getPersonByLastName(String lastName) throws PersonException;
+	public Iterable<Entity> getPersonByLastName(String lastName) throws PersonException;
 	
 	/**
-	 * @return List<Person> get all person by firstName
+	 * @return Iterable<Entity> get all person by firstName
 	 */
-	public List<Person> getPersonByFirstName(String firstName) throws PersonException;
+	public Iterable<Entity> getPersonByFirstName(String firstName) throws PersonException;
 	
 	/**
-	 * @return List<Person> get all person by firstName and lastName
+	 * @return Iterable<Entity> get all person by firstName and lastName
 	 */
-	public List<Person> getPersonByFirstNameAndLastName(String firstName, String lastName) throws PersonException;
+	public Iterable<Entity> getPersonByFirstNameAndLastName(String firstName, String lastName) throws PersonException;
 	
 	/**
 	 * @return List<Person> get all person by email
 	 */
-	public List<Person> getPersonByEmail(String email) throws PersonException;
+	public Iterable<Entity> getPersonByEmail(String email) throws PersonException;
+	
+	/**
+	 * @param Key set person as admin
+	 */
+	public void setPersonAsAdmin(Key person);
+	
+	/**
+	 * @param Key set person as student
+	 */
+	public void setPersonAsStudent(Key person);
+	
+	/**
+	 * @param Key set person as teacher
+	 */
+	public void setPersonAsTeacher(Key person);
 	
 	/**
      * Save person data.  If person exists then will update.  If person is blank then it
@@ -49,7 +64,7 @@ public interface IPersonDAO {
      * @param person - person information to save
      * @return person id
      */
-    public Long savePerson(Person person) throws PersonException;
+    public Key savePerson(Person person) throws PersonException;
     
     /**
      * Delete person data.  If person exists then will delete.  If person is blank then it
