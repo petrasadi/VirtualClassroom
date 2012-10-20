@@ -23,7 +23,7 @@ public class ClassHistory {
 	//bi-directional many-to-one association to Class
 	@ManyToOne
 	@JoinColumn(name="class_id")
-	private Class clazz;
+	private Classes clazz;
 
 	public ClassHistory() {
 	}
@@ -52,11 +52,11 @@ public class ClassHistory {
 		this.person = person;
 	}
 
-	public Class getClazz() {
+	public Classes getClazz() {
 		return this.clazz;
 	}
 
-	public void setClazz(Class clazz) {
+	public void setClazz(Classes clazz) {
 		this.clazz = clazz;
 	}
 

@@ -1,11 +1,8 @@
 package com.google.api.se491proj.model;
 
 import javax.persistence.Basic;
-import javax.persistence.OneToMany;
+import javax.persistence.CascadeType;
 import javax.persistence.OneToOne;
-import javax.persistence.JoinTable;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -18,9 +15,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
+import com.google.appengine.api.datastore.Key;
+
 import java.sql.Timestamp;
 import java.util.Date;
-import java.util.List;
 
 /**
  * {@literal}
@@ -49,7 +47,11 @@ public class Person {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Long id;
+	private Key id;
+	
+	@Basic(optional = false)
+	@Column(name = "open_id")
+	private String openid;
 
 	@Basic(optional = false)
 	@Column(name = "address")
@@ -108,20 +110,20 @@ public class Person {
 	
 	@Basic(optional = false)
 	@Column(name = "zip")
-    @Pattern(regexp ="[0-9]+", message = "{Person.zip.Pattern}")
+ 	@Pattern(regexp ="[0-9]+", message = "{Person.zip.Pattern}")
 	private String zip;
 
 	//bi-directional one-to-one association to Admin
 	@Basic(optional = true)
-	@OneToOne(mappedBy="person")
-	private Admin admin;
-
+	@OneToOne(mappedBy="person", cascade = CascadeType.REMOVE)
+	private Role role;
+	
 	//bi-directional many-to-one association to Class
-	@Basic(optional = true)
+	/*@Basic(optional = true)
 	@OneToMany(mappedBy="person")
-	private List<Class> clazzs1;
+	private List<Class> classes;
 
-	//bi-directional many-to-one association to ClassHistory
+/*	//bi-directional many-to-one association to ClassHistory
 	@Basic(optional = true)
 	@OneToMany(mappedBy="person")
 	private List<ClassHistory> classHistories;
@@ -132,7 +134,7 @@ public class Person {
 
 	//bi-directional many-to-many association to Class
 	@Basic(optional = true)
-	@ManyToMany
+	@OneToMany
 	@JoinTable(
 		name="roster"
 		, joinColumns={
@@ -142,27 +144,35 @@ public class Person {
 			@JoinColumn(name="class_id")
 			}
 		)
-	private List<Class> clazzs2;
+	private List<Class> clazzs2;*/
 
 	//bi-directional one-to-one association to Student
-	@Basic(optional = true)
-	@OneToOne(mappedBy="person")
+	/*@Basic(optional = true)
+	@OneToOne(mappedBy="person", cascade = CascadeType.REMOVE)
 	private Student student;
 
 	//bi-directional one-to-one association to Teacher
 	@Basic(optional = true)
-	@OneToOne(mappedBy="person")
-	private Teacher teacher;
+	@OneToOne(mappedBy="person", cascade = CascadeType.REMOVE)
+	private Teacher teacher;*/
 
 	public Person() {
 	}
 
-	public Long getId() {
+	public Key getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Key id) {
 		this.id = id;
+	}
+	
+	public void setOpenId(String OpenId) {
+		this.openid = OpenId;
+	}
+	
+	public String getOpenId() {
+		return this.openid;
 	}
 
 	public String getAddress() {
@@ -283,15 +293,15 @@ public class Person {
 		this.zip = zip;
 	}
 
-	public Admin getAdmin() {
-		return this.admin;
+	public Role getRole() {
+		return this.role;
 	}
 
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
-	public List<Class> getClazzs1() {
+	/*public List<Class> getClazzs1() {
 		return this.clazzs1;
 	}
 
@@ -321,9 +331,9 @@ public class Person {
 
 	public void setClazzs2(List<Class> clazzs2) {
 		this.clazzs2 = clazzs2;
-	}
+	}*/
 
-	public Student getStudent() {
+	/*public Student getStudent() {
 		return this.student;
 	}
 
@@ -337,5 +347,5 @@ public class Person {
 
 	public void setTeacher(Teacher teacher) {
 		this.teacher = teacher;
-	}
+	}*/
 }

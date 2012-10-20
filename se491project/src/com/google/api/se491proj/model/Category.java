@@ -2,8 +2,7 @@ package com.google.api.se491proj.model;
 
 import javax.persistence.*;
 
-import java.util.List;
-
+import com.google.appengine.api.datastore.Key;
 
 /**
  * {@literal}
@@ -19,14 +18,11 @@ import java.util.List;
  */
 @Entity
 @Table(name = "Category")
-@NamedQueries({
-	@NamedQuery(name = "Category.findById", query = "SELECT u FROM Category u WHERE u.id = :id"),
-	@NamedQuery(name = "Category.findByName", query = "SELECT u FROM Category u WHERE u.name = :name")})
 public class Category {
 	@Id
 	@Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Key id;
 
 	@Basic(optional = true)
 	@Column(name = "description")
@@ -36,18 +32,14 @@ public class Category {
 	@Column(name = "name")
 	private String name;
 
-	//bi-directional many-to-one association to Class
-	@OneToMany(mappedBy="category")
-	private List<Class> clazzs;
-
 	public Category() {
 	}
 
-	public Long getId() {
+	public Key getId() {
 		return this.id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Key id) {
 		this.id = id;
 	}
 
@@ -66,13 +58,4 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-
-	public List<Class> getClazzs() {
-		return this.clazzs;
-	}
-
-	public void setClazzs(List<Class> clazzs) {
-		this.clazzs = clazzs;
-	}
-
 }

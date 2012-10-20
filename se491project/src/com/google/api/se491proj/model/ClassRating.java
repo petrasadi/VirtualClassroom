@@ -21,7 +21,7 @@ public class ClassRating {
 	//bi-directional many-to-one association to Class
 	@ManyToOne
 	@JoinColumn(name="class_id")
-	private Class clazz;
+	private Classes clazz;
 
 	//bi-directional many-to-one association to Person
 	@ManyToOne
@@ -54,11 +54,11 @@ public class ClassRating {
 		this.review = review;
 	}
 
-	public Class getClazz() {
+	public Classes getClazz() {
 		return this.clazz;
 	}
 
-	public void setClazz(Class clazz) {
+	public void setClazz(Classes clazz) {
 		this.clazz = clazz;
 	}
 
