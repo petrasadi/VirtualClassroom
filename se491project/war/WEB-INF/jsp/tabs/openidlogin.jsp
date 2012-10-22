@@ -1,10 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Virtual Classroom OpenID Login</title>
-    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/openid.css" />   
-</head>
-<body>
+
+<link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/openid.css" />   
+
 <form class="openid" method="get" action="/_ah/login_redirect">
   <div><ul class="providers">
   <li class="openid" title="OpenID"><img src="images/openID/openidW.png" alt="icon" />
@@ -52,6 +48,4 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="javascript/jquery.openid.js"></script>
 <script type="text/javascript">  $(function() { $("form.openid:eq(0)").openid(); });</script>
-</body>
 
-</html>

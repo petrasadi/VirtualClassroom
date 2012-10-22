@@ -15,10 +15,11 @@
 	} else{
 %>
 
-<a href="/displayCreateClassPage.do">Creat Class</a> <br />
+<a href="/displayCreateClassPage.do">Create Class</a> <br />
 <a href="/displayListClassesPage.do">List Classes</a> <br />
 <a href="/displaySearchClassPage.do">Class Search</a> <br />
 <a href="/displayRegisterClassPage.do">Class Register</a> <br />
+<a href="/displayViewClassPage.do">View Class</a> <br />
 <%
 	}
 %>

@@ -1,3 +1,5 @@
+/*****************
+
 package edu.depaul.se491.engine.test;
 
 
@@ -36,3 +38,5 @@ public class VirtualClassTest {
 	}
 
 }
+
+*****/
