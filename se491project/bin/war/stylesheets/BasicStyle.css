@@ -1,0 +1,35 @@
+@CHARSET "ISO-8859-1";
+
+ul
+{
+    list-style-type: none;
+}
+
+li
+{
+	min-height: 1.5em;
+}
+
+ul.table li
+{
+	clear: both;
+	display: block;
+}
+
+ul.table
+{
+	margin: 0;
+	padding: 0px;
+}
+
+ul.menu
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+ul.menu li
+{
+	display:inline;
+}

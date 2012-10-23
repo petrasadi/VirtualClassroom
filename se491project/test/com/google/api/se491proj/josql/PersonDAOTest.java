@@ -19,13 +19,13 @@ public class PersonDAOTest {
 		IPersonDAO personDAO = new PersonDAO();
 		
 		List<Person> personTableList = null;
-		try {
-			personTableList = personDAO.getAllPerson();
+	/*	try {
+		//	personTableList = personDAO.getAllPerson();
 		} catch (PersonException e) {
 			e.printStackTrace();
 			fail("GetCustomer exception");
 		}
-		assert(personTableList != null);
+		assert(personTableList != null);*/
 		
 		Iterator<Person> iPerson = personTableList.iterator();
 		while (iPerson.hasNext())
