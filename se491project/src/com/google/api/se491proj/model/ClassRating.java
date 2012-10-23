@@ -2,6 +2,8 @@ package com.google.api.se491proj.model;
 
 import javax.persistence.*;
 
+import com.google.appengine.api.datastore.Key;
+
 
 /**
  * The persistent class for the class_rating database table.
@@ -21,11 +23,11 @@ public class ClassRating {
 	//bi-directional many-to-one association to Class
 	@ManyToOne
 	@JoinColumn(name="class_id")
-	private Classes clazz;
+	private Key classes;
 
 	//bi-directional many-to-one association to Person
 	@ManyToOne
-	private Person person;
+	private Key person;
 
 	public ClassRating() {
 	}
@@ -54,19 +56,19 @@ public class ClassRating {
 		this.review = review;
 	}
 
-	public Classes getClazz() {
-		return this.clazz;
+	public Key getClasses() {
+		return this.classes;
 	}
 
-	public void setClazz(Classes clazz) {
-		this.clazz = clazz;
+	public void setClasses(Key classes) {
+		this.classes = classes;
 	}
 
-	public Person getPerson() {
+	public Key getPerson() {
 		return this.person;
 	}
 
-	public void setPerson(Person person) {
+	public void setPerson(Key person) {
 		this.person = person;
 	}
 

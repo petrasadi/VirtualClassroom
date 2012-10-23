@@ -10,7 +10,11 @@ import com.google.api.se491proj.josql.EntityManagerService;
 import com.google.api.se491proj.josql.IPersonDAO;
 import com.google.api.se491proj.josql.PersonDAO;
 import com.google.api.se491proj.josql.PersonException;
+import com.google.api.se491proj.model.Category;
+import com.google.api.se491proj.model.Classes;
 import com.google.api.se491proj.model.Person;
+import com.google.api.se491proj.model.Role;
+import com.google.appengine.api.datastore.Key;
 
 @SuppressWarnings("serial")
 public class Se491_vcProjServlet extends HttpServlet {
@@ -32,19 +36,35 @@ public class Se491_vcProjServlet extends HttpServlet {
 		person.setPhone(req.getParameter("phone"));
 		person.setPhone2(req.getParameter("phone2"));
 		person.setCreated(new Date());
+		person.setOpenId("bljbaljdljlfjslajf");
+		
+		Role role = new Role();
+		role.setAdminActive(true);
+		role.setStudentActive(false);
+		role.setTeacherActive(true);
+		
+		person.setRole(role);
+		
+		Category category = new Category();
+		category.setName("Computer Information Systems");
+		category.setDescription("Python programming");
+		
+		Classes classes = new Classes();
 				
 		IPersonDAO personDAO = new PersonDAO();
 		try {
-			//em.persist(person);
-			personDAO.savePerson(person);
+			Key p = personDAO.savePerson(person);
+			personDAO.setPersonAsAdmin(p);
+			//personDAO.setPersonAsStudent(p);
+			resp.setContentType("text/plain");
+			resp.getWriter().println("Hello, world");
 			
 		}  catch (PersonException e) {
 			e.printStackTrace();
 		} finally {
 			em.close();
 		}
-		resp.setContentType("text/plain");
-		resp.getWriter().println("Hello, world");
+		
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		this.doGet(req, resp);

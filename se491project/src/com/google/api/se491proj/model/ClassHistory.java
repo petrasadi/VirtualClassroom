@@ -2,28 +2,34 @@ package com.google.api.se491proj.model;
 
 import javax.persistence.*;
 
+import com.google.api.se491proj.josql.ClassHistoryEnum;
+import com.google.appengine.api.datastore.Key;
+
 
 /**
  * The persistent class for the class_history database table.
  * 
  */
 @Entity
+@Table(name = "ClassHistory")
 public class ClassHistory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String event;
+	@Column(name = "eventtype")
+	private ClassHistoryEnum eventType;
 
 	//bi-directional many-to-one association to Person
 	@ManyToOne
-	private Person person;
+	@Column(name = "person")
+	private Key person;
 
 	//bi-directional many-to-one association to Class
 	@ManyToOne
-	@JoinColumn(name="class_id")
-	private Classes clazz;
+	@Column(name="class_id")
+	private Key classes;
 
 	public ClassHistory() {
 	}
@@ -37,27 +43,30 @@ public class ClassHistory {
 	}
 
 	public String getEvent() {
-		return this.event;
+		return this.eventType.toString();
 	}
 
-	public void setEvent(String event) {
-		this.event = event;
+	public void setClassHistoryEnum(ClassHistoryEnum eventType) {
+		this.eventType = eventType;
+	}
+	
+	public ClassHistoryEnum getClassHistoryEnum() {
+		return this.eventType;
 	}
 
-	public Person getPerson() {
+	public Key getPerson() {
 		return this.person;
 	}
 
-	public void setPerson(Person person) {
+	public void setPerson(Key person) {
 		this.person = person;
 	}
 
-	public Classes getClazz() {
-		return this.clazz;
+	public Key getClasses() {
+		return this.classes;
 	}
 
-	public void setClazz(Classes clazz) {
-		this.clazz = clazz;
+	public void setClasses(Key classes) {
+		this.classes = classes;
 	}
-
 }

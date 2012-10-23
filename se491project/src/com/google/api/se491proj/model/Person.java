@@ -2,6 +2,7 @@ package com.google.api.se491proj.model;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Entity;
 import javax.persistence.Column;
@@ -19,6 +20,7 @@ import com.google.appengine.api.datastore.Key;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * {@literal}
@@ -119,42 +121,9 @@ public class Person {
 	private Role role;
 	
 	//bi-directional many-to-one association to Class
-	/*@Basic(optional = true)
-	@OneToMany(mappedBy="person")
-	private List<Class> classes;
-
-/*	//bi-directional many-to-one association to ClassHistory
 	@Basic(optional = true)
 	@OneToMany(mappedBy="person")
-	private List<ClassHistory> classHistories;
-
-	//bi-directional many-to-one association to ClassRating
-	@OneToMany(mappedBy="person")
-	private List<ClassRating> classRatings;
-
-	//bi-directional many-to-many association to Class
-	@Basic(optional = true)
-	@OneToMany
-	@JoinTable(
-		name="roster"
-		, joinColumns={
-			@JoinColumn(name="person_id")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="class_id")
-			}
-		)
-	private List<Class> clazzs2;*/
-
-	//bi-directional one-to-one association to Student
-	/*@Basic(optional = true)
-	@OneToOne(mappedBy="person", cascade = CascadeType.REMOVE)
-	private Student student;
-
-	//bi-directional one-to-one association to Teacher
-	@Basic(optional = true)
-	@OneToOne(mappedBy="person", cascade = CascadeType.REMOVE)
-	private Teacher teacher;*/
+	private List<Key> classes;
 
 	public Person() {
 	}
@@ -301,51 +270,15 @@ public class Person {
 		this.role = role;
 	}
 
-	/*public List<Class> getClazzs1() {
-		return this.clazzs1;
+	public List<Key> getClasses() {
+		return this.classes;
 	}
 
-	public void setClazzs1(List<Class> clazzs1) {
-		this.clazzs1 = clazzs1;
+	public void setClasses(List<Key> classes) {
+		this.classes = classes;
 	}
-
-	public List<ClassHistory> getClassHistories() {
-		return this.classHistories;
+	
+	public void addClass(Key classes) {
+		this.classes.add(classes);
 	}
-
-	public void setClassHistories(List<ClassHistory> classHistories) {
-		this.classHistories = classHistories;
-	}
-
-	public List<ClassRating> getClassRatings() {
-		return this.classRatings;
-	}
-
-	public void setClassRatings(List<ClassRating> classRatings) {
-		this.classRatings = classRatings;
-	}
-
-	public List<Class> getClazzs2() {
-		return this.clazzs2;
-	}
-
-	public void setClazzs2(List<Class> clazzs2) {
-		this.clazzs2 = clazzs2;
-	}*/
-
-	/*public Student getStudent() {
-		return this.student;
-	}
-
-	public void setStudent(Student student) {
-		this.student = student;
-	}
-
-	public Teacher getTeacher() {
-		return this.teacher;
-	}
-
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
-	}*/
 }

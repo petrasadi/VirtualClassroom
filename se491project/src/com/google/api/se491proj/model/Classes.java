@@ -59,6 +59,9 @@ public class Classes {
 	
 	@Column(name = "opentokid")
 	private String opentokid;
+	
+	@Column(name = "opentoktoken")
+	private String opentoktoken;
 
 	//bi-directional many-to-one association to Category
 	@ManyToOne
@@ -146,6 +149,14 @@ public class Classes {
 	
 	public String getOpenTokId() {
 		return this.opentokid;
+	}
+	
+	public void setOpenTokToken(String opentoktoken) {
+		this.opentoktoken = opentoktoken;
+	}
+	
+	public String getOpenTokToken() {
+		return this.opentoktoken;
 	}
 
 	public Key getCategory() {

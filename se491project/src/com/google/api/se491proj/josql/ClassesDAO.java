@@ -50,6 +50,48 @@ public class ClassesDAO implements IClassesDAO {
 	/*******************************************************************************
 	*
 	*   {@literal}
+	*    getOpenTokId - gets open tok id
+	*
+	*   {@param} Key classes
+	*
+	*   {@return} String opentokid
+	*
+	******************************************************************************/
+	public String getOpenTokId(Key classes) throws ClassesException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter classesFilter = new FilterPredicate("id", FilterOperator.EQUAL, classes);
+		Query classesByIdQuery = new Query("Classes").setFilter(classesFilter);
+		
+		PreparedQuery pq = datastore.prepare(classesByIdQuery);
+		Entity classesEntity = pq.asSingleEntity();
+		
+		return (String) classesEntity.getProperty("opentokid");
+	}
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
+	*    getOpenTokToken - gets open tok token
+	*
+	*   {@param} Key classes
+	*
+	*   {@return} String opentoktoken
+	*
+	******************************************************************************/
+	public String getOpenTokToken(Key classes) throws ClassesException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter classesFilter = new FilterPredicate("id", FilterOperator.EQUAL, classes);
+		Query classesByIdQuery = new Query("Classes").setFilter(classesFilter);
+		
+		PreparedQuery pq = datastore.prepare(classesByIdQuery);
+		Entity classesEntity = pq.asSingleEntity();
+		
+		return (String) classesEntity.getProperty("opentoktoken");
+	}
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
 	*    getAllClassesByCategory - gets all classes with category
 	*
 	*   {@param} Key category
@@ -66,6 +108,16 @@ public class ClassesDAO implements IClassesDAO {
         return pq.asIterable();
 	}
 	
+	/*******************************************************************************
+	*
+	*   {@literal}
+	*    addStudent - add student
+	*
+	*   {@param} Key person, Key classes
+	*
+	*   {@return} boolean
+	*
+	******************************************************************************/
 	@SuppressWarnings("unchecked")
 	public boolean addStudent(Key person, Key classes) throws ClassesException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
@@ -76,24 +128,33 @@ public class ClassesDAO implements IClassesDAO {
 		Entity classEntity = pq.asSingleEntity();
 		
 		List<Key> students = (List<Key>) classEntity.getProperty("students");
+		Key teacher = (Key) classEntity.getProperty("teacher");
 		int maxStudents = ((Integer) classEntity.getProperty("maxstudents")).intValue();
-		if(maxStudents > students.size()) {
-			if(!students.contains(person)) {
+			if((!students.contains(person)) && (maxStudents > students.size()) && (person != teacher)) {
 				students.add(person);
+				Filter personFilter = new FilterPredicate("id", FilterOperator.EQUAL, person);
+				Query personQuery = new Query("Person").setFilter(personFilter);
+				PreparedQuery personq = datastore.prepare(personQuery);
+				Entity personEntity = personq.asSingleEntity();
+				
 				Transaction tx = datastore.beginTransaction();
 				classEntity.setProperty("students", students);
+				List<Key> classList = (List<Key>) personEntity.getProperty("classes");
+				classList.add(classes);
+				personEntity.setProperty("classes", classList);
 				
 				try {
+					datastore.put(personEntity);
 		        	datastore.put(classEntity);
 		        	tx.commit();
 		        } finally {
 		        	if(tx.isActive()) {
 		        		tx.rollback();
+		        		return false;
 		        	}
 		        }
 				return true;
 			}
-		}
 		return false;
 	}
 	

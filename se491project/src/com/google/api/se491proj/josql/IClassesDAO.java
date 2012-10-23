@@ -28,6 +28,26 @@ public interface IClassesDAO {
 	public Iterable<Entity> getAllClassesByCategory(Key Category) throws ClassesException;
 	
 	/**
+	 * @return String opentokid
+	 * @throws ClassesException
+	 */
+	public String getOpenTokId(Key classes) throws ClassesException;
+	
+	/**
+	 * @return String opentoktoken
+	 * @throws ClassesException
+	 */
+	public String getOpenTokToken(Key classes) throws ClassesException;
+	
+	/**
+	 * @param person
+	 * @param classes
+	 * @return boolean
+	 * @throws ClassesException
+	 */
+	public boolean addStudent(Key person, Key classes) throws ClassesException;
+	
+	/**
      * Save Class data.  If Class exists then will update.  If Class is blank then it
      * will create a new class
      *
