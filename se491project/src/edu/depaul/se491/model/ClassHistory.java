@@ -1,4 +1,4 @@
-package edu.depaul.se491.api.se491proj.model;
+package edu.depaul.se491.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 import com.google.appengine.api.datastore.Key;
 
-import edu.depaul.se491.api.se491proj.josql.ClassHistoryEnum;
+import edu.depaul.se491.josql.ClassHistoryEnum;
 
 
 /**

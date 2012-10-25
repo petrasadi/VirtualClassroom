@@ -1,4 +1,4 @@
-package edu.depaul.se491.api.se491proj.josql;
+package edu.depaul.se491.josql;
 
 import javax.jdo.PersistenceManager;
 
@@ -13,7 +13,7 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 
-import edu.depaul.se491.api.se491proj.model.Category;
+import edu.depaul.se491.model.Category;
 
 public class CategoryDAO {
 	public Iterable<Entity> getAllCategory() throws CategoryException {

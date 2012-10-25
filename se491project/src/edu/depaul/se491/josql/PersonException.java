@@ -1,8 +1,8 @@
-package edu.depaul.se491.api.se491proj.josql;
+package edu.depaul.se491.josql;
 
 /**
  * {@literal}
- * class CategoryException
+ * class PersonException
  * 
  * @author
  * Adrian Petras <petrasadi@gmail.com>
@@ -13,12 +13,12 @@ package edu.depaul.se491.api.se491proj.josql;
  *
  */
 @SuppressWarnings("serial")
-public class CategoryException extends Exception {
-	public CategoryException(String errorMessage) {
+public class PersonException extends Exception {
+	public PersonException(String errorMessage) {
 		super(errorMessage);
 	}
 
-	public CategoryException(Throwable throwable) {
+	public PersonException(Throwable throwable) {
 	    super(throwable);
 	}
 }

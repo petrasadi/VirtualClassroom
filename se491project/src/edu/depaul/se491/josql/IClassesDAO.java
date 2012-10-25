@@ -1,9 +1,9 @@
-package edu.depaul.se491.api.se491proj.josql;
+package edu.depaul.se491.josql;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
-import edu.depaul.se491.api.se491proj.model.Classes;
+import edu.depaul.se491.model.Classes;
 
 /**
  * {@literal}

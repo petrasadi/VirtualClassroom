@@ -4,7 +4,7 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>se491_vcproj</servlet-name>
-		<servlet-class>edu.depaul.se491.api.se491proj.Se491_vcProjServlet</servlet-class>
+		<servlet-class>edu.depaul.se491.servlets.Se491_vcProjServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>se491_vcproj</servlet-name>

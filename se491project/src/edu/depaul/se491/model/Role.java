@@ -1,4 +1,4 @@
-package edu.depaul.se491.api.se491proj.model;
+package edu.depaul.se491.model;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
