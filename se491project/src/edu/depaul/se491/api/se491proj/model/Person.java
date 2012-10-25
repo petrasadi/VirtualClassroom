@@ -1,26 +1,27 @@
-package src.edu.depaul.se491.api.se491proj.model;
+package edu.depaul.se491.api.se491proj.model;
+
+import java.sql.Timestamp;
+import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Entity;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
 
-import com.google.appengine.api.datastore.Key;
 
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
+import com.google.appengine.api.datastore.Key;
 
 /**
  * {@literal}

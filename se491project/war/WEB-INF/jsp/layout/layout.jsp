@@ -20,7 +20,7 @@ html, body, .fullheight {
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
 <body>
-<table class="fullheight" border="1" cellpadding="2" cellspacing="2" align="center">
+<table class="fullheight" border="0" cellpadding="2" cellspacing="2" align="center">
     <tr>
         <td height="8%" colspan="2"><tiles:insertAttribute name="header" />
         </td>

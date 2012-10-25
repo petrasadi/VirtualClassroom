@@ -1,4 +1,4 @@
-package src.edu.depaul.se491.api.se491proj.model;
+package edu.depaul.se491.api.se491proj.model;
 
 import javax.persistence.*;
 

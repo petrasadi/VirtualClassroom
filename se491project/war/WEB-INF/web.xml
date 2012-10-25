@@ -4,7 +4,7 @@
 	</welcome-file-list>
 	<servlet>
 		<servlet-name>se491_vcproj</servlet-name>
-		<servlet-class>com.google.api.se491proj.Se491_vcProjServlet</servlet-class>
+		<servlet-class>edu.depaul.se491.api.se491proj.Se491_vcProjServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>se491_vcproj</servlet-name>
@@ -28,7 +28,7 @@
 	</servlet-mapping>
 	<servlet>
 		<servlet-name>login_redirect</servlet-name>
-		<servlet-class>edu.depaul.se491.servlets.login.LoginRedirectServlet</servlet-class>
+		<servlet-class> edu.depaul.se491.servlets.login.LoginRedirectServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>login_redirect</servlet-name>

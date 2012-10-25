@@ -1,6 +1,6 @@
-/****
 
-package edu.depaul.se491.engine.test;
+
+package test.edu.depaul.se491.engine.test;
 
 import edu.depaul.se491.engine.ClassOrganizer;
 import edu.depaul.se491.engine.VirtualClass;
@@ -52,9 +52,6 @@ public class MatcherTest {
 		class2.addToWorkload();
 		assertThat(organizer.getClassesForInstructor(i1).size(), is (2));		
 	}
-
-	
-
 }
 
-***/
+

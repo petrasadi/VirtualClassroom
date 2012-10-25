@@ -8,10 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import edu.depaul.se491.dao.VCUserDAO;
-import edu.depaul.se491.entities.VCUser;
 import edu.depaul.se491.formBeans.CreateClassFormBean;
-import edu.depaul.se491.formBeans.UserRegistrationFormBean;
 
 @Controller
 @SessionAttributes
@@ -37,17 +34,10 @@ public class NavigationViewController {
 			return new ModelAndView("displayLoginPage", "command", new Object());
 		}
 
-		VCUserDAO vcuserDAO = new VCUserDAO();
-		VCUser vcUser = vcuserDAO.getVCUser(userService.getCurrentUser().getUserId());
-
-		if (vcUser == null) {
-			return new ModelAndView("displayUserRegistrationPage", "command", new UserRegistrationFormBean());
-		}
+		
    
-		ModelAndView mav = new ModelAndView("displayListClassesPage", "command", vcUser);
-		mav.addObject("vcUser",vcUser);
-		mav.addObject("vcClasses",vcUser.getClassesTeaching());
-		mav.addObject("numberofclasses",vcUser.getClassesTeaching().size());
+		ModelAndView mav = new ModelAndView("displayListClassesPage", "command", new Object());
+
 		
 		return mav;
 	}

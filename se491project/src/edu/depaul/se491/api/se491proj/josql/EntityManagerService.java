@@ -1,4 +1,4 @@
-package src.edu.depaul.se491.api.se491proj.josql;
+package edu.depaul.se491.api.se491proj.josql;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

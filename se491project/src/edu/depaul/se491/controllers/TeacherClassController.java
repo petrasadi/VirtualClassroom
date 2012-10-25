@@ -11,11 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import edu.depaul.se491.dao.VCUserDAO;
-import edu.depaul.se491.entities.VCClass;
-import edu.depaul.se491.entities.VCUser;
 import edu.depaul.se491.formBeans.CreateClassFormBean;
-import edu.depaul.se491.formBeans.UserRegistrationFormBean;
 
 @Controller
 @SessionAttributes
@@ -30,15 +26,7 @@ public class TeacherClassController {
 			  return new ModelAndView("displayLoginPage", "command", new Object());
 		  }
 		  
-		 VCUserDAO vcuserDAO = new VCUserDAO();
-         VCUser vcUser = vcuserDAO.getVCUser(userService.getCurrentUser().getUserId());
-	  
-         if(vcUser == null){
-       	  return new ModelAndView("displayUserRegistrationPage", "command", new UserRegistrationFormBean());
-         }
-         
-         vcUser.addClassesTeaching(new VCClass(createClassFormBean.getClassTitle(), createClassFormBean.getMaxStudents(), createClassFormBean.getMinStudents(), null));
-        
+		
                 
 		 return new ModelAndView("displayClassCreatedPage", "command", new CreateClassFormBean());
 	}

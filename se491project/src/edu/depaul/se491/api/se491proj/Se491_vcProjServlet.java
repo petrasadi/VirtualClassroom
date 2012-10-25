@@ -1,20 +1,23 @@
-package src.edu.depaul.se491.api.se491proj;
+package edu.depaul.se491.api.se491proj;
 
 import java.io.IOException;
 import java.util.Date;
 
 import javax.persistence.EntityManager;
-import javax.servlet.http.*;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import com.google.api.se491proj.josql.EntityManagerService;
-import com.google.api.se491proj.josql.IPersonDAO;
-import com.google.api.se491proj.josql.PersonDAO;
-import com.google.api.se491proj.josql.PersonException;
-import com.google.api.se491proj.model.Category;
-import com.google.api.se491proj.model.Classes;
-import com.google.api.se491proj.model.Person;
-import com.google.api.se491proj.model.Role;
 import com.google.appengine.api.datastore.Key;
+
+import edu.depaul.se491.api.se491proj.josql.EntityManagerService;
+import edu.depaul.se491.api.se491proj.josql.IPersonDAO;
+import edu.depaul.se491.api.se491proj.josql.PersonDAO;
+import edu.depaul.se491.api.se491proj.josql.PersonException;
+import edu.depaul.se491.api.se491proj.model.Category;
+import edu.depaul.se491.api.se491proj.model.Classes;
+import edu.depaul.se491.api.se491proj.model.Person;
+import edu.depaul.se491.api.se491proj.model.Role;
 
 @SuppressWarnings("serial")
 public class Se491_vcProjServlet extends HttpServlet {

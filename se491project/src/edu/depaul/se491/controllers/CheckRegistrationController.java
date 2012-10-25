@@ -11,8 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import edu.depaul.se491.dao.VCUserDAO;
-import edu.depaul.se491.entities.VCUser;
 import edu.depaul.se491.formBeans.UserRegistrationFormBean;
 
 
@@ -29,6 +27,8 @@ public class CheckRegistrationController {
 			  return new ModelAndView("displayLoginPage", "command", new Object());
 		  }
 		  
+		  // todo  register a user with andy entity and dao classes
+		  /****
 		  VCUserDAO vcuserDAO = new VCUserDAO();
           VCUser vcUser = vcuserDAO.getVCUser(userService.getCurrentUser().getUserId());
 		  
@@ -36,15 +36,16 @@ public class CheckRegistrationController {
         	  return new ModelAndView("displayUserRegistrationPage", "command", new UserRegistrationFormBean());
           }
 		 
+		 ****/
 	      return new ModelAndView("displayUserLoggedInPage", "command", new Object());
+	            
 	  }
 	 
 	 
 	 @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
 	 public ModelAndView registerUser( @ModelAttribute("userRegistrationFormBean") UserRegistrationFormBean userRegistrationFormBean, BindingResult result) {
 	
-		 VCUserDAO vcuserDAO = new VCUserDAO();
-		 vcuserDAO.addUser(userRegistrationFormBean.getFname(), userRegistrationFormBean.getLname(), userRegistrationFormBean.getEmail(), userRegistrationFormBean.getOpenID(), userRegistrationFormBean.isStudent(), userRegistrationFormBean.isTeacher(), false);
+		 // todo  register a user with andy entity and dao classes
 		 
 		 return new ModelAndView("displayUserLoggedInPage", "command", new UserRegistrationFormBean());
 	 }

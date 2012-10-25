@@ -5,6 +5,7 @@ import com.opentok.api.OpenTokSDK;
 import com.opentok.api.constants.RoleConstants;
 import com.opentok.exception.OpenTokException;
 
+
 public class OpenTokUtil {
 	public String getSessionInfo(){
 		OpenTokSessionInfo sessionInfo = generateOpenTokSessionInfo();

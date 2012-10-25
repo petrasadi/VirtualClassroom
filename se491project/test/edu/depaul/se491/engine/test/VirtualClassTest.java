@@ -1,6 +1,5 @@
-/*****************
 
-package edu.depaul.se491.engine.test;
+package test.edu.depaul.se491.engine.test;
 
 
 import org.testng.annotations.Test;
@@ -39,4 +38,4 @@ public class VirtualClassTest {
 
 }
 
-*****/
+

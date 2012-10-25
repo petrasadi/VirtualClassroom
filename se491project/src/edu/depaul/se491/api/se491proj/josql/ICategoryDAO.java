@@ -1,6 +1,6 @@
-package src.edu.depaul.se491.api.se491proj.josql;
+package edu.depaul.se491.api.se491proj.josql;
 
-import com.google.api.se491proj.model.Category;
+import com.google.appengine.api.datastore.Category;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
