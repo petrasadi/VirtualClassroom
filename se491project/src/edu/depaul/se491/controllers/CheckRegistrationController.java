@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
@@ -52,15 +53,16 @@ public class CheckRegistrationController {
 					  //return new ModelAndView("displayUserRegistrationPage", "command", new UserRegistrationFormBean()).addObject("userRegistrationFormBean", new UserRegistrationFormBean());
 				}			
 			} catch (PersonException e) {
+
 				 ModelAndView view = new ModelAndView();
 				 view.setViewName("displayUserRegistrationPage");
 				 view.addObject("stateList",  createStateMap());
-				  view.addObject("countryList",  createCountryMap());
+				 view.addObject("countryList",  createCountryMap());
 				 view.addObject("userRegistrationFormBean", new UserRegistrationFormBean());
 				 return view;
 				 //return new ModelAndView("displayUserRegistrationPage", "command", new UserRegistrationFormBean()).addObject("userRegistrationFormBean", new UserRegistrationFormBean());
 			}
-				
+		
 		  return new ModelAndView("displayUserLoggedInPage", "command", new UserRegistrationFormBean());
 	
 	}
@@ -80,16 +82,15 @@ public class CheckRegistrationController {
 	   
 	    Person person = new Person(userRegistrationFormBean.getFirstName(), userRegistrationFormBean.getLastName(), userRegistrationFormBean.getMiddleName(), userRegistrationFormBean.getAddress(), userRegistrationFormBean.getAddress2(), userRegistrationFormBean.getCity(), userRegistrationFormBean.getZip(), userRegistrationFormBean.getCountry(), userRegistrationFormBean.getEmail(), userRegistrationFormBean.getPhone(), userRegistrationFormBean.getPhone2(), userRegistrationFormBean.getState());
 	    person.setOpenid(userRegistrationFormBean.getOpenid());
-	    Role role = new Role();
-	   
-	   	role.setStudentActive(userRegistrationFormBean.isStudent());
-	   	role.setTeacherActive(userRegistrationFormBean.isTeacher());
-	   	role.setPerson(person.getId());
-	   	person.setRole(role);
 	   
 	    try {
-	    	personDAO.savePerson(person);
-	    	
+	    	 Key personKey = personDAO.savePerson(person);
+	    	 if(userRegistrationFormBean.isTeacher()){
+	    		 personDAO.setPersonAsTeacher(personKey);
+	    	 }
+	    	 if(userRegistrationFormBean.isStudent()){
+	    		 personDAO.setPersonAsStudent(personKey);
+	    	 }	    	 
 		} catch (PersonException e) {
 			// need to figure out what to do with error.
 		}
