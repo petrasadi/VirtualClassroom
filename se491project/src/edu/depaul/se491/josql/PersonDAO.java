@@ -155,7 +155,7 @@ public class PersonDAO implements IPersonDAO {
             Query role_tableQuery = new Query("Role").setFilter(idFilter);
     		pq = datastore.prepare(role_tableQuery);		
     		Entity pEntity2 = pq.asSingleEntity();
-    		System.out.println("******--->  testing role");
+    
     		if (pEntity2 != null && pEntity.getKey() != null){
     			Role role = new Role();
     			if((Boolean)pEntity2.getProperty("teacher") != null){
@@ -173,7 +173,7 @@ public class PersonDAO implements IPersonDAO {
     			}else{
     				role.setAdminActive(false);
     			}
-    			
+    			personFound.setRole(role);
     		}else{
     			Role role = new Role();
     			role.setAdminActive(false);
