@@ -85,11 +85,13 @@ public class CheckRegistrationController {
 	   
 	    try {
 	    	 Key personKey = personDAO.savePerson(person);
+	    	 person.setId(personKey);
+	    	    	
 	    	 if(userRegistrationFormBean.isTeacher()){
-	    		 personDAO.setPersonAsTeacher(personKey);
+	    		personDAO.setPersonAsTeacher(personKey);
 	    	 }
 	    	 if(userRegistrationFormBean.isStudent()){
-	    		 personDAO.setPersonAsStudent(personKey);
+	    		personDAO.setPersonAsStudent(personKey);
 	    	 }	    	 
 		} catch (PersonException e) {
 			// need to figure out what to do with error.
