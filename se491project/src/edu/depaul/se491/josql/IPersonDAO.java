@@ -74,5 +74,8 @@ public interface IPersonDAO {
      * @param person - person information to delete
      */
     public void deletePerson(Person person) throws PersonException;
+    
+    
+    public Person getPersonByOpenId(String openId) throws PersonException;
 
 }

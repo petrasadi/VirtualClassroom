@@ -39,7 +39,7 @@ public class Se491_vcProjServlet extends HttpServlet {
 		person.setPhone(req.getParameter("phone"));
 		person.setPhone2(req.getParameter("phone2"));
 		person.setCreated(new Date());
-		person.setOpenId("bljbaljdljlfjslajf");
+		person.setOpenid("bljbaljdljlfjslajf");
 		
 		Role role = new Role();
 		role.setAdminActive(true);

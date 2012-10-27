@@ -1,4 +1,4 @@
-package edu.depaul.se491.model;
+ package edu.depaul.se491.model;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -116,6 +116,25 @@ public class Person {
  	@Pattern(regexp ="[0-9]+", message = "{Person.zip.Pattern}")
 	private String zip;
 
+	public Person(String firstName, String lastName,
+			String middleName, String address, String address2, String city, String zip, String country,
+			String email,  String phone, String phone2, String state) {
+			
+		super();
+		this.address = address;
+		this.address2 = address2;
+		this.city = city;
+		this.country = country;
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.middleName = middleName;
+		this.phone = phone;
+		this.phone2 = phone2;
+		this.state = state;
+		this.zip = zip;
+	}
+
 	//bi-directional one-to-one association to Admin
 	@Basic(optional = true)
 	@OneToOne(mappedBy="person", cascade = CascadeType.REMOVE)
@@ -137,11 +156,11 @@ public class Person {
 		this.id = id;
 	}
 	
-	public void setOpenId(String OpenId) {
-		this.openid = OpenId;
+	public void setOpenid(String Openid) {
+		this.openid = Openid;
 	}
 	
-	public String getOpenId() {
+	public String getOpenid() {
 		return this.openid;
 	}
 

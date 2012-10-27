@@ -123,6 +123,37 @@ public class PersonDAO implements IPersonDAO {
 	*   {@return} List<Person> - the retreived list
 	*
 	******************************************************************************/
+	public Person getPersonByOpenId(String openid) throws PersonException {
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter idFilter = new FilterPredicate("openid", FilterOperator.EQUAL, openid);
+		Query person_tableQuery = new Query("Person").setFilter(idFilter);
+		PreparedQuery pq = datastore.prepare(person_tableQuery);		
+		Entity pEntity = pq.asSingleEntity();
+		
+        PersistenceManager pm = PersistenceManagerService.get().getPersistenceManager();
+        Person personFound = null;
+    	if (pEntity != null && pEntity.getKey() != null){
+    		Key keyId = pEntity.getKey();
+    		personFound = pm.getObjectById(Person.class, keyId);										
+    	} 
+
+		return personFound;      
+	}	
+	
+	
+	
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
+	*    getPersonByEmail - gets all persons with given email
+	*
+	*   {@param} String email
+	*
+	*   {@return} List<Person> - the retreived list
+	*
+	******************************************************************************/
 	public Iterable<Entity> getPersonByEmail(String email) throws PersonException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Filter emailFilter = new FilterPredicate("email", FilterOperator.EQUAL, email);
@@ -193,7 +224,7 @@ public class PersonDAO implements IPersonDAO {
         pEntity.setProperty("country", person.getCountry());
         pEntity.setProperty("phone", person.getPhone());
         pEntity.setProperty("phone2", person.getPhone2());
-        pEntity.setProperty("openid", person.getOpenId());
+        pEntity.setProperty("openid", person.getOpenid());
                 
         try {
         	datastore.put(pEntity);
@@ -376,7 +407,7 @@ public class PersonDAO implements IPersonDAO {
 		createPerson.setProperty("country", person.getCountry());
 		createPerson.setProperty("phone", person.getPhone());
 		createPerson.setProperty("phone2", person.getPhone2());
-		createPerson.setProperty("openid", person.getOpenId());
+		createPerson.setProperty("openid", person.getOpenid());
 
         try {
         	datastore.put(createPerson);
