@@ -21,7 +21,7 @@ import edu.depaul.se491.formBeans.UserRegistrationFormBean;
 @SessionAttributes
 public class TeacherClassController {
 
-	@RequestMapping(value = "/classCreate", method = RequestMethod.POST)
+	@RequestMapping(value = "/classCreates", method = RequestMethod.POST)
 	public ModelAndView createClass(@ModelAttribute("createClassFormBean") CreateClassFormBean createClassFormBean, BindingResult result) {
 		
 		 UserService userService = UserServiceFactory.getUserService();
