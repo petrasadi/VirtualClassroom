@@ -8,9 +8,8 @@ function endOpenTokSession() {
 }
 
 function getSessionInfo() {
-	$.post('opentok', {param: 'info'} ,
+	$.post('opentok', {classId: '123'} ,
 		function (data) {
-			//alert(data.apiKey);
 			handleOpenTok(data);
 		},
 		'json'
