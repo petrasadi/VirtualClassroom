@@ -14,32 +14,66 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
 </head>
 <body>
-	<div><h1>Create a Class</h1></div><br /><br />
+	<div class="container_9">
+	<div class="grid_3 prefix_3"><h1>Create a Class</h1></div>
 	<form:form action="/classCreate.do" method="post">
-       
-   		<table>
-   			<tr>
-   				<td><form:label path="classTitle">Class Title</form:label></td>
-   				<td><form:input path="classTitle" /></td>
-   			</tr>  
-   			<tr>
-   				<td><form:label path="minStudents">Minimum Number Of Students</form:label></td>
-   				<td><form:input path="minStudents" /></td>
-   			</tr>
-   			<tr>
-   				<td><form:label path="maxStudents">Maximum Number Of Students</form:label></td>
-   				<td><form:input path="maxStudents" /></td>
-   			</tr>
-   			<tr>
-   				<td><form:label path="classDate">Class Date</form:label></td>
-   				<td><form:input path="classDate" /></td>
-   			</tr>
-   			<tr>
-				<td colspan="2"><input type="submit" value="Create Class" /></td>			
-			</tr>
+      <ul class=table> 
+   		
+   			<li>
+   				<div class="grid_3">
+   					<form:label path="classTitle">Class Title</form:label>
+   					<form:input path="classTitle" />
+   				</div>
+   				
+   				<div class="grid_3">
+   					<form:label path="classDescription">Class Description</form:label>
+   					<form:input path="classDescription" />
+   				</div>
+   				
+   			</li>  
    			
-   		</table> 		
+   			<li>
+   				<div class="grid_3">
+   					<form:label path="classCategory">Class Category</form:label>
+   					<form:input path="classCategory" />
+   				</div>
+   				<div class="grid_3">
+   					<form:label path="classLevel">Class Level</form:label>
+   					<form:input path="classLevel" />
+   				</div>
+   			</li>
+   			
+   			<li>
+   				<div class="grid_3">
+   					<form:label path="minStudents">Minimum Class Size:</form:label>
+   					<form:input path="minStudents" />
+   				</div>
+   				<div class="grid_3">
+   					<form:label path="maxStudents">Maximum Class Size:</form:label>
+   					<form:input path="maxStudents" />
+   				</div>
+   			</li>
+   			<li>
+   				<div class="grid_3">
+   					<form:label path="classDate">Class Date</form:label>
+   					<form:input path="classDate" />
+   				</div>
+   				<div class="grid_3">
+   					<form:label path="classStartTime">Class Start Time</form:label>
+   					<form:input path="classStartTime" />
+   				</div>
+   				<div class="grid_3">
+   					<form:label path="classEndTime">Class End Time</form:label>
+   					<form:input path="classEndTime" />
+   				</div>
+   			</li>
+   			<li>
+				<div class="grid_3 prefix_3"><input type="submit" value="Create Class" /></div>			
+			</li>
+   			
+   		 
+   		</ul>		
 	</form:form>
-
+	</div>
 </body>
 </html>
