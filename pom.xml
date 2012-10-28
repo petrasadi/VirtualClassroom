@@ -40,6 +40,10 @@
 	<artifactId>junit</artifactId>
 	<version>4.8.2</version>
 </dependency>
-            
+<dependency>
+	<groupId>xdoclet</groupId>
+	<artifactId>xdoclet</artifactId>
+	<version>1.2</version>
+</dependency>            
  </dependencies>
 </project>
