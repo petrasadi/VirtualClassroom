@@ -1,6 +1,8 @@
 package edu.depaul.se491.engine.test;
 
 import org.testng.annotations.Test;
+import static org.hamcrest.Matchers.*;
+
 import edu.depaul.se491.engine.ClassOrganizer;
 import edu.depaul.se491.engine.VirtualClass;
 import edu.depaul.se491.participants.Instructor;

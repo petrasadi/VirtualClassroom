@@ -1,5 +1,5 @@
 
-package test.edu.depaul.se491.engine.test;
+package edu.depaul.se491.engine.test;
 
 
 import org.testng.annotations.Test;

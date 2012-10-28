@@ -1,4 +1,4 @@
-package test.edu.depaul.se491.api.se491proj.josql;
+package edu.depaul.se491.api.se491proj.josql;
 
 import static org.junit.Assert.fail;
 
