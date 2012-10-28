@@ -38,8 +38,21 @@
    					<form:input path="classCategory" />
    				</div>
    				<div class="grid_3">
-   					<form:label path="classLevel">Class Level</form:label>
-   					<form:input path="classLevel" />
+   						<form:label path="classLevel">Class Level</form:label>
+   					<ul>
+   						<li>
+   							<form:label path="classLevel">Beginner</form:label>
+   							<form:radiobutton path="classLevel" value="beginner"/>
+   						</li>
+   						<li>
+   							<form:label path="classLevel">Intermediate</form:label>
+   							<form:radiobutton path="classLevel" value="intermediate"/>
+   						</li>
+   						<li>
+   							<form:label path="classLevel">Advanced</form:label>
+   							<form:radiobutton path="classLevel" value="advanced"/>
+   						</li>
+   					</ul>
    				</div>
    			</li>
    			

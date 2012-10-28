@@ -3,9 +3,8 @@ package edu.depaul.se491.controllers;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -15,8 +14,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.users.UserService;
+import com.google.appengine.api.users.UserServiceFactory;
+
 import edu.depaul.se491.formBeans.CreateClassFormBean;
+import edu.depaul.se491.josql.CategoryDAO;
+import edu.depaul.se491.josql.ClassesDAO;
+import edu.depaul.se491.josql.ClassesException;
+import edu.depaul.se491.josql.IClassesDAO;
+import edu.depaul.se491.josql.IPersonDAO;
+import edu.depaul.se491.josql.PersonDAO;
+import edu.depaul.se491.josql.PersonException;
 import edu.depaul.se491.model.Classes;
+import edu.depaul.se491.model.Person;
 
 @Controller
 @SessionAttributes
@@ -27,15 +38,34 @@ public class CreateClassFormController {
     		CreateClassFormBean formBean, BindingResult result) 
 	{
          
+		DateFormat dateFmt;
+		String classStartStr, classEndStr;
+		Date classStartDate = null; 
+		Date classEndDate = null;
+		
+		Classes clazz = new Classes();
+		IClassesDAO clazzDAO = new ClassesDAO();
+		Key clazzKey;
+		UserService userService = UserServiceFactory.getUserService();
+		IPersonDAO personDAO = new PersonDAO();
+		Person vcUser = null;
+		
 		System.out.println("Class Name:" + formBean.getClassTitle());
 		System.out.println("Class Date:" + formBean.getClassDate());
 		System.out.println("Min Students:" + formBean.getMinStudents());
 		System.out.println("Max Students:" + formBean.getMaxStudents());
 		
-		DateFormat dateFmt;
-		String classStartStr, classEndStr;
-		Date classStartDate, classEndDate;
-		Classes clazz = new Classes();
+		try {
+			vcUser = personDAO.getPersonByOpenId(userService.getCurrentUser().getUserId());
+		} catch (PersonException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		//ICategoryDAO classCat = new CategoryDAO();
+		
+		
+		clazz.setTeacher(vcUser.getId());
 		clazz.setClassName(formBean.getClassTitle());
 		clazz.setDescription(formBean.getClassDescription());
 		//clazz.setCategory(formBean.getClassCategory());
@@ -55,6 +85,17 @@ public class CreateClassFormController {
 			e.printStackTrace();
 		}
         
+		clazz.setClassStartTime(classStartDate);
+		clazz.setClassEndTime(classEndDate);
+		try 
+		{
+			clazzKey = clazzDAO.saveClasses(clazz);
+		} catch (ClassesException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("displayClassCreatedPage");
 		    return view;
