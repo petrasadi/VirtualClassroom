@@ -25,7 +25,7 @@ public class TabViewController {
 	
 	@RequestMapping("/displayAboutPage")
 	public ModelAndView displayAboutPage(HttpServletRequest request) {
-		request.getSession().setAttribute("tab", "about");
+		request.getSession().setAttribute("tab", "home");
 	    return new ModelAndView("displayAboutPage", "command", new Object()).addObject("tab", "about");
 	}
 	
@@ -43,7 +43,7 @@ public class TabViewController {
 	  
 	@RequestMapping("/displayLoginPage")
 	public ModelAndView displayLoginPage(HttpServletRequest request) {
-		request.getSession().setAttribute("tab", "about");
+		request.getSession().setAttribute("tab", "login");
 		return new ModelAndView("displayLoginPage", "command", new Object());
 	}
 

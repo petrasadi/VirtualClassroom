@@ -39,7 +39,7 @@
 			<a href="/displayViewClassPage.do">View Class</a> <br />
 <%
 	  	}
-	  	if(tab.equals("about")){		  
+	  	if(tab.equals("home")){		  
 %>
 
 
