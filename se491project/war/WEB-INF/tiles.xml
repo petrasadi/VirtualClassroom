@@ -68,9 +68,19 @@
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/classlist.jsp" />
     </definition>
     
-      <definition name="displayViewClassPage" extends="base.definition">
+    <definition name="displayViewClassPage" extends="base.definition">
         <put-attribute name="title" value="View Class" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.html" />
+    </definition>
+    
+     <definition name="displayTeacherMainPage" extends="base.definition">
+        <put-attribute name="title" value="Teacher Main Page" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teachermainpage.html" />
+    </definition>
+    
+     <definition name="displayStudentMainPage" extends="base.definition">
+        <put-attribute name="title" value="Student Main Page" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentmainpage.html" />
     </definition>
  
 </tiles-definitions>

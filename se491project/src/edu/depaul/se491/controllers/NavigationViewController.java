@@ -14,10 +14,7 @@ import edu.depaul.se491.formBeans.CreateClassFormBean;
 @SessionAttributes
 public class NavigationViewController extends AbstractController{
 
-	@RequestMapping("/displayLoginPage")
-	public ModelAndView displayLoginPage() {
-		return new ModelAndView("displayLoginPage", "command", new Object());
-	}
+
 
 	@RequestMapping("/displayCreateClassPage")
 	public ModelAndView displayCreateClassPage() {

@@ -17,18 +17,18 @@
 <%
 		if (roles.getTeacherActive()) {
 %> 
-Teacher  |
+<a href="/displayTeacherMainPage.do">Teacher</a> |
 <%
 		}
 		if (roles.getStudentActive()) {
 %> 
-Student  |
+<a href="/displayStudentMainPage.do.do">Student</a>   |
 <%
 
 		}
 		if (roles.getAdminActive()) {
 %> 
-Admin  |
+<a href="/displayAboutPage.do">Admin</a>    |
 <%
 		}
 %>
