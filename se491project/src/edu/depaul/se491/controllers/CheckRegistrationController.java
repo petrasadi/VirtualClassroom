@@ -20,11 +20,10 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import edu.depaul.se491.formBeans.UserRegistrationFormBean;
 import edu.depaul.se491.josql.IPersonDAO;
-import edu.depaul.se491.josql.IRoleDAO;
 import edu.depaul.se491.josql.PersonDAO;
 import edu.depaul.se491.josql.PersonException;
-import edu.depaul.se491.josql.RoleDAO;
 import edu.depaul.se491.model.Person;
+import edu.depaul.se491.model.Role;
 
 @Controller
 @SessionAttributes
@@ -74,8 +73,7 @@ public class CheckRegistrationController {
 		  
 		ModelAndView view = new ModelAndView();
 		IPersonDAO personDAO = new PersonDAO();
-		IRoleDAO roleDAO = new RoleDAO();
-
+	
 	    if (result.hasErrors()) {
 	    	  view.setViewName("displayUserRegistrationPage");
 	          view.addObject("userRegistrationFormBean", userRegistrationFormBean);
@@ -84,6 +82,7 @@ public class CheckRegistrationController {
 	   
 	    Person person = new Person(userRegistrationFormBean.getFirstName(), userRegistrationFormBean.getLastName(), userRegistrationFormBean.getMiddleName(), userRegistrationFormBean.getAddress(), userRegistrationFormBean.getAddress2(), userRegistrationFormBean.getCity(), userRegistrationFormBean.getZip(), userRegistrationFormBean.getCountry(), userRegistrationFormBean.getEmail(), userRegistrationFormBean.getPhone(), userRegistrationFormBean.getPhone2(), userRegistrationFormBean.getState());
 	    person.setOpenid(userRegistrationFormBean.getOpenid());
+	    Role roles = new Role();
 	   
 	    try {
 	    	 Key personKey = personDAO.savePerson(person);
@@ -91,13 +90,16 @@ public class CheckRegistrationController {
 	    	    	
 	    	 if(userRegistrationFormBean.isTeacher()){
 	    		personDAO.setPersonAsTeacher(personKey);
+	    		roles.setTeacherActive(true);
 	    	 }
 	    	 if(userRegistrationFormBean.isStudent()){
 	    		personDAO.setPersonAsStudent(personKey);
+	    		roles.setStudentActive(true);
 	    	 }	    	 
 		} catch (PersonException e) {
 			// need to figure out what to do with error.
 		}
+	    person.setRole(roles);
 	    request.getSession().setAttribute("vcUser", person);
         view.setViewName("displayUserLoggedInPage");
 	    return view;
