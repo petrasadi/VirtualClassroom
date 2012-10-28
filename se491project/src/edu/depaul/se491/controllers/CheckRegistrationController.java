@@ -75,6 +75,8 @@ public class CheckRegistrationController {
 		IPersonDAO personDAO = new PersonDAO();
 	
 	    if (result.hasErrors()) {
+	    	  view.addObject("stateList",  createStateMap());
+			  view.addObject("countryList",  createCountryMap());
 	    	  view.setViewName("displayUserRegistrationPage");
 	          view.addObject("userRegistrationFormBean", userRegistrationFormBean);
 	          return view;
