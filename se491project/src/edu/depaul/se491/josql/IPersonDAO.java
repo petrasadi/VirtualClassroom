@@ -75,7 +75,16 @@ public interface IPersonDAO {
      */
     public void deletePerson(Person person) throws PersonException;
     
-    
+	/*******************************************************************************
+	*
+	*   {@literal}
+	*    getPersonByOpenId - gets the persons with given openid
+	*
+	*   {@param} String openid
+	*
+	*   {@return} Person - the person with the openid account.
+	*
+	******************************************************************************/
     public Person getPersonByOpenId(String openId) throws PersonException;
 
 }

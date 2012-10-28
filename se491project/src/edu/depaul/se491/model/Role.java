@@ -1,5 +1,7 @@
 package edu.depaul.se491.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +14,10 @@ import com.google.appengine.api.datastore.Key;
 
 @Entity
 @Table(name = "Role")
-public class Role {
+public class Role implements Serializable{
+	
+	private static final long serialVersionUID = 4320339019506831177L;
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Key id;

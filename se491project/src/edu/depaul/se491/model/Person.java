@@ -1,5 +1,6 @@
  package edu.depaul.se491.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -19,7 +20,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Pattern;
-
 
 import com.google.appengine.api.datastore.Key;
 
@@ -45,8 +45,11 @@ import com.google.appengine.api.datastore.Key;
     @NamedQuery(name = "Person.findByFirstNameAndLastName", 
 	query = "SELECT u FROM Person u WHERE u.firstname = :firstname AND u.lastname = :lastname"),
 	@NamedQuery(name = "Person.findByEmail", query = "SELECT u FROM Person u WHERE u.email = :email")})
-public class Person {
+public class Person implements Serializable{
 	
+	private static final long serialVersionUID = 5922454234631103677L;
+
+		
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
@@ -116,6 +119,24 @@ public class Person {
  	@Pattern(regexp ="[0-9]+", message = "{Person.zip.Pattern}")
 	private String zip;
 
+
+
+	//bi-directional one-to-one association to Admin
+	@Basic(optional = true)
+	@OneToOne(mappedBy="person", cascade = CascadeType.REMOVE)
+	private Role role;
+	
+	//bi-directional many-to-one association to Class
+	@Basic(optional = true)
+	@OneToMany(mappedBy="person")
+	private List<Key> classes;
+	
+	
+
+	public Person() {
+	}
+	
+	
 	public Person(String firstName, String lastName,
 			String middleName, String address, String address2, String city, String zip, String country,
 			String email,  String phone, String phone2, String state) {
@@ -133,19 +154,6 @@ public class Person {
 		this.phone2 = phone2;
 		this.state = state;
 		this.zip = zip;
-	}
-
-	//bi-directional one-to-one association to Admin
-	@Basic(optional = true)
-	@OneToOne(mappedBy="person", cascade = CascadeType.REMOVE)
-	private Role role;
-	
-	//bi-directional many-to-one association to Class
-	@Basic(optional = true)
-	@OneToMany(mappedBy="person")
-	private List<Key> classes;
-
-	public Person() {
 	}
 
 	public Key getId() {

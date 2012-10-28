@@ -12,12 +12,9 @@ import edu.depaul.se491.formBeans.CreateClassFormBean;
 
 @Controller
 @SessionAttributes
-public class NavigationViewController {
+public class NavigationViewController extends AbstractController{
 
-	@RequestMapping("/displayLoginPage")
-	public ModelAndView displayLoginPage() {
-		return new ModelAndView("displayLoginPage", "command", new Object());
-	}
+
 
 	@RequestMapping("/displayCreateClassPage")
 	public ModelAndView displayCreateClassPage() {
@@ -32,12 +29,9 @@ public class NavigationViewController {
 
 		if (!userService.isUserLoggedIn()) {
 			return new ModelAndView("displayLoginPage", "command", new Object());
-		}
-
-		
+		}		
    
 		ModelAndView mav = new ModelAndView("displayListClassesPage", "command", new Object());
-
 		
 		return mav;
 	}
@@ -53,7 +47,6 @@ public class NavigationViewController {
 		return new ModelAndView("displayRegisterClassPage", "command",
 				new Object());
 	}
-
 }
 
 

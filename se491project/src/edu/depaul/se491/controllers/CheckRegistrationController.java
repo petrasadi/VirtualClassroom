@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -19,10 +20,8 @@ import com.google.appengine.api.users.UserServiceFactory;
 
 import edu.depaul.se491.formBeans.UserRegistrationFormBean;
 import edu.depaul.se491.josql.IPersonDAO;
-import edu.depaul.se491.josql.IRoleDAO;
 import edu.depaul.se491.josql.PersonDAO;
 import edu.depaul.se491.josql.PersonException;
-import edu.depaul.se491.josql.RoleDAO;
 import edu.depaul.se491.model.Person;
 import edu.depaul.se491.model.Role;
 
@@ -31,50 +30,53 @@ import edu.depaul.se491.model.Role;
 public class CheckRegistrationController {
 
 	@RequestMapping("/checkRegistration")
-	public  ModelAndView checkRegistration() {
+	public  ModelAndView checkRegistration(HttpServletRequest request) {
 		
 		 UserService userService = UserServiceFactory.getUserService();
 		 IPersonDAO personDAO = new PersonDAO();
+		 ModelAndView view = new ModelAndView();
 		  
 		  if(!userService.isUserLoggedIn()){
 			  return new ModelAndView("displayLoginPage", "command", new Object());
 		  }
 		  
 		  try {
-			  createCountryMap();
+			    createCountryMap();
 				Person vcUser = personDAO.getPersonByOpenId(userService.getCurrentUser().getUserId());
 				if(vcUser == null){
-					  ModelAndView view = new ModelAndView();
 					  view.setViewName("displayUserRegistrationPage");
 					  view.addObject("stateList",  createStateMap());
 					  view.addObject("countryList",  createCountryMap());
 					  view.addObject("userRegistrationFormBean", new UserRegistrationFormBean());
 					  return view;
-					  //return new ModelAndView("displayUserRegistrationPage", "command", new UserRegistrationFormBean()).addObject("userRegistrationFormBean", new UserRegistrationFormBean());
-				}			
+				}else{
+					
+					request.getSession().setAttribute("vcUser", vcUser);
+				}
 			} catch (PersonException e) {
-
-				 ModelAndView view = new ModelAndView();
 				 view.setViewName("displayUserRegistrationPage");
 				 view.addObject("stateList",  createStateMap());
 				 view.addObject("countryList",  createCountryMap());
 				 view.addObject("userRegistrationFormBean", new UserRegistrationFormBean());
 				 return view;
-				 //return new ModelAndView("displayUserRegistrationPage", "command", new UserRegistrationFormBean()).addObject("userRegistrationFormBean", new UserRegistrationFormBean());
 			}
-		
-		  return new ModelAndView("displayUserLoggedInPage", "command", new UserRegistrationFormBean());
-	
+		  	  	
+		    return new ModelAndView("displayUserLoggedInPage", "command", new UserRegistrationFormBean());
 	}
+	
+	
+	
+	
 
 	@RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-	public ModelAndView  registerUser(@Valid UserRegistrationFormBean userRegistrationFormBean, BindingResult result) {
+	public ModelAndView  registerUser(@Valid UserRegistrationFormBean userRegistrationFormBean, BindingResult result, HttpServletRequest request) {
 		  
 		ModelAndView view = new ModelAndView();
 		IPersonDAO personDAO = new PersonDAO();
-		IRoleDAO roleDAO = new RoleDAO();
-
+	
 	    if (result.hasErrors()) {
+	    	  view.addObject("stateList",  createStateMap());
+			  view.addObject("countryList",  createCountryMap());
 	    	  view.setViewName("displayUserRegistrationPage");
 	          view.addObject("userRegistrationFormBean", userRegistrationFormBean);
 	          return view;
@@ -82,25 +84,33 @@ public class CheckRegistrationController {
 	   
 	    Person person = new Person(userRegistrationFormBean.getFirstName(), userRegistrationFormBean.getLastName(), userRegistrationFormBean.getMiddleName(), userRegistrationFormBean.getAddress(), userRegistrationFormBean.getAddress2(), userRegistrationFormBean.getCity(), userRegistrationFormBean.getZip(), userRegistrationFormBean.getCountry(), userRegistrationFormBean.getEmail(), userRegistrationFormBean.getPhone(), userRegistrationFormBean.getPhone2(), userRegistrationFormBean.getState());
 	    person.setOpenid(userRegistrationFormBean.getOpenid());
+	    Role roles = new Role();
 	   
 	    try {
 	    	 Key personKey = personDAO.savePerson(person);
+	    	 person.setId(personKey);
+	    	    	
 	    	 if(userRegistrationFormBean.isTeacher()){
-	    		 personDAO.setPersonAsTeacher(personKey);
+	    		personDAO.setPersonAsTeacher(personKey);
+	    		roles.setTeacherActive(true);
 	    	 }
 	    	 if(userRegistrationFormBean.isStudent()){
-	    		 personDAO.setPersonAsStudent(personKey);
+	    		personDAO.setPersonAsStudent(personKey);
+	    		roles.setStudentActive(true);
 	    	 }	    	 
 		} catch (PersonException e) {
 			// need to figure out what to do with error.
 		}
-	      
+	    person.setRole(roles);
+	    request.getSession().setAttribute("vcUser", person);
         view.setViewName("displayUserLoggedInPage");
 	    return view;
 	}
 	
-	private Map  <String, String> createStateMap(){
-		
+	
+	
+	
+	private Map  <String, String> createStateMap(){		
 		
 		Map<String,String> state = new LinkedHashMap<String,String>();
 		
@@ -158,6 +168,9 @@ public class CheckRegistrationController {
 		
 		return state;
 	}
+	
+	
+	
 	
 	private Map  <String, String> createCountryMap(){
 		
