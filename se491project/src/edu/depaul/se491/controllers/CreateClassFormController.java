@@ -50,11 +50,6 @@ public class CreateClassFormController {
 		IPersonDAO personDAO = new PersonDAO();
 		Person vcUser = null;
 		
-		System.out.println("Class Name:" + formBean.getClassTitle());
-		System.out.println("Class Date:" + formBean.getClassDate());
-		System.out.println("Min Students:" + formBean.getMinStudents());
-		System.out.println("Max Students:" + formBean.getMaxStudents());
-		
 		try {
 			vcUser = personDAO.getPersonByOpenId(userService.getCurrentUser().getUserId());
 		} catch (PersonException e1) {
@@ -62,13 +57,10 @@ public class CreateClassFormController {
 			e1.printStackTrace();
 		}
 		
-		//ICategoryDAO classCat = new CategoryDAO();
-		
 		
 		clazz.setTeacher(vcUser.getId());
 		clazz.setClassName(formBean.getClassTitle());
 		clazz.setDescription(formBean.getClassDescription());
-		//clazz.setCategory(formBean.getClassCategory());
 		clazz.setMinStudents(Integer.parseInt(formBean.getMinStudents()));
 		clazz.setMaxStudents(Integer.parseInt(formBean.getMaxStudents()));
 		

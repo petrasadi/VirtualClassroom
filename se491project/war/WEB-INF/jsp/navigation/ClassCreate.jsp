@@ -12,10 +12,11 @@
 <title>Create Class</title>
 <link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/zurbFoundationCustom.css" />
 </head>
 <body>
 	<div class="container_9">
-	<div class="grid_3 prefix_3"><h1>Create a Class</h1></div>
+	<div class="grid_9"><h1>Create a Class</h1></div>
 	<form:form action="/classCreate.do" method="post">
       <ul class=table> 
    		

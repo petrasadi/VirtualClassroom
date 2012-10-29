@@ -14,6 +14,9 @@
     String tab = (String)session.getAttribute("tab");
   	if (userService.isUserLoggedIn() && roles != null && tab != null) {
 %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/zurbFoundationCustom.css" />
 
 <div class=menu>
 <br />
@@ -23,20 +26,32 @@
 <br />
 <% 
 		if(tab.equals("teacher")){		  
-%>
-			<a href="/displayCreateClassPage.do">Create a Class</a> <br />
-			<a href="/displayListClassesPage.do">List Classes In Progress</a> <br />
-			List Finished Classes <br />
-			<a href="/displayViewClassPage.do">View Class</a> <br />
+%>			
+			<ul class="tabs-content">
+			<li id="vertTabsExTab" class="active" style="display: block;">
+				<dl class="vertical tabs">
+					<dd><a href="/displayCreateClassPage.do">Create a Class</a></dd>
+					<dd><a href="/displayListClassesPage.do">List Classes In Progress</a></dd>
+					<dd>List Finished Classes</dd>
+					<dd><a href="/displayViewClassPage.do">View Class</a></dd>
+				</dl>
+			</li>
+			</ul>
 <%
 	  	}
 	  	if(tab.equals("student")){		  
 %>
-			<a href="/displaySearchClassPage.do">Class Search</a> <br />
-			<a href="/displayRegisterClassPage.do">Class Register</a> <br />
-			Class Schedule <br />
-			Class History <br />
-			<a href="/displayViewClassPage.do">View Class</a> <br />
+			<ul class="tabs-content">
+			<li id="vertTabsExTab" class="active" style="display: block;">
+				<dl class="vertical tabs">
+					<dd><a href="/displaySearchClassPage.do">Class Search</a></dd> 
+					<dd><a href="/displayRegisterClassPage.do">Class Register</a></dd> 
+					<dd>Class Schedule</dd> 
+					<dd>Class History </dd>
+					<dd><a href="/displayViewClassPage.do">View Class</a></dd>
+			</dl>
+			</li>
+			</ul>
 <%
 	  	}
 	  	if(tab.equals("home")){		  
@@ -48,7 +63,13 @@
 	  	}
 	 	if(tab.equals("userinformation")){		  
 %>
-		Edit Information
+		<ul class="tabs-content">
+			<li id="vertTabsExTab" class="active" style="display: block;">
+				<dl class="vertical tabs">
+				<dd>Edit Information</dd>
+				</dl>
+			</li>
+		</ul>
 
 <%
 	  }

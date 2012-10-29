@@ -1,5 +1,6 @@
-
 <link rel="stylesheet" type="text/css" href="/stylesheets/tabs.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/zurbFoundationCustom.css" />
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="edu.depaul.se491.model.Person"%>
