@@ -2,27 +2,27 @@
 <testng-results skipped="0" failed="0" total="3" passed="3">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="49" started-at="2012-10-29T14:25:49Z" finished-at="2012-10-29T14:25:49Z">
+  <suite name="Command line suite" duration-ms="42" started-at="2012-10-29T22:58:22Z" finished-at="2012-10-29T22:58:22Z">
     <groups>
       <group name="basic">
-        <method signature="MatcherTest.testAddingNewClass()[pri:0, instance:edu.depaul.se491.engine.test.MatcherTest@2f833eca]" name="testAddingNewClass" class="edu.depaul.se491.engine.test.MatcherTest"/>
-        <method signature="MatcherTest.testAddingNewClassWithNull()[pri:0, instance:edu.depaul.se491.engine.test.MatcherTest@2f833eca]" name="testAddingNewClassWithNull" class="edu.depaul.se491.engine.test.MatcherTest"/>
-        <method signature="VirtualClassTest.testVirtualClass()[pri:0, instance:edu.depaul.se491.engine.test.VirtualClassTest@bd86fd3]" name="testVirtualClass" class="edu.depaul.se491.engine.test.VirtualClassTest"/>
+        <method signature="MatcherTest.testAddingNewClass()[pri:0, instance:edu.depaul.se491.engine.test.MatcherTest@ed42d08]" name="testAddingNewClass" class="edu.depaul.se491.engine.test.MatcherTest"/>
+        <method signature="MatcherTest.testAddingNewClassWithNull()[pri:0, instance:edu.depaul.se491.engine.test.MatcherTest@ed42d08]" name="testAddingNewClassWithNull" class="edu.depaul.se491.engine.test.MatcherTest"/>
+        <method signature="VirtualClassTest.testVirtualClass()[pri:0, instance:edu.depaul.se491.engine.test.VirtualClassTest@144aa0ce]" name="testVirtualClass" class="edu.depaul.se491.engine.test.VirtualClassTest"/>
       </group> <!-- basic -->
     </groups>
-    <test name="Command line test" duration-ms="49" started-at="2012-10-29T14:25:49Z" finished-at="2012-10-29T14:25:49Z">
+    <test name="Command line test" duration-ms="42" started-at="2012-10-29T22:58:22Z" finished-at="2012-10-29T22:58:22Z">
       <class name="edu.depaul.se491.engine.test.VirtualClassTest">
-        <test-method status="PASS" signature="testVirtualClass()[pri:0, instance:edu.depaul.se491.engine.test.VirtualClassTest@bd86fd3]" name="testVirtualClass" duration-ms="1" started-at="2012-10-29T09:25:49Z" finished-at="2012-10-29T09:25:49Z">
+        <test-method status="PASS" signature="testVirtualClass()[pri:0, instance:edu.depaul.se491.engine.test.VirtualClassTest@144aa0ce]" name="testVirtualClass" duration-ms="0" started-at="2012-10-29T17:58:22Z" finished-at="2012-10-29T17:58:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testVirtualClass -->
       </class> <!-- edu.depaul.se491.engine.test.VirtualClassTest -->
       <class name="edu.depaul.se491.engine.test.MatcherTest">
-        <test-method status="PASS" signature="testAddingNewClass()[pri:0, instance:edu.depaul.se491.engine.test.MatcherTest@2f833eca]" name="testAddingNewClass" duration-ms="23" started-at="2012-10-29T09:25:49Z" finished-at="2012-10-29T09:25:49Z">
+        <test-method status="PASS" signature="testAddingNewClass()[pri:0, instance:edu.depaul.se491.engine.test.MatcherTest@ed42d08]" name="testAddingNewClass" duration-ms="19" started-at="2012-10-29T17:58:22Z" finished-at="2012-10-29T17:58:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- testAddingNewClass -->
-        <test-method status="PASS" signature="testAddingNewClassWithNull()[pri:0, instance:edu.depaul.se491.engine.test.MatcherTest@2f833eca]" name="testAddingNewClassWithNull" duration-ms="0" started-at="2012-10-29T09:25:49Z" finished-at="2012-10-29T09:25:49Z">
+        <test-method status="PASS" signature="testAddingNewClassWithNull()[pri:0, instance:edu.depaul.se491.engine.test.MatcherTest@ed42d08]" name="testAddingNewClassWithNull" duration-ms="1" started-at="2012-10-29T17:58:22Z" finished-at="2012-10-29T17:58:22Z">
           <exception class="java.lang.RuntimeException">
             <message>
               <![CDATA[Class name or Instructor name is null. This is not cool]]>
