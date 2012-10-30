@@ -1,6 +1,8 @@
-<link rel="stylesheet" type="text/css" href="/stylesheets/tabs.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/zurbFoundationCustom.css" />
+
+<link rel="stylesheet" type="text/css" href="/stylesheets/2leveltab.css" />
+<script type="text/javascript" src="/javascript/2leveltab.js">
+</script>
+	
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="edu.depaul.se491.model.Person"%>
@@ -20,54 +22,104 @@
     	roles = vcUser.getRole();
     }
 %>
-<div id="navcontainer">
-		<ul id="navlist">
-		<li><a <% if(tab.equals("home")) { %> id="current" <%}%> href="/displayAboutPage.do">Home</a></li>
+<ul id="maintab" class="basictab">
+    <li  class="selected" rel="home"><a href="#">Home</a></li>
+	
 <%
 	if (userService.isUserLoggedIn() && roles != null) {
 %>
 
 
-
-
 <%
 		if (roles.getTeacherActive()) {
 %> 
-<li><a <% if(tab.equals("teacher")) { %> id="current" <%}%>href="/displayTeacherMainPage.do">Teacher</a></li>
+<li  class="notselected" rel="teacher"><a href="#">Teacher</a></li>
 <% 
 		}
 		if (roles.getStudentActive()) {
 %> 
-<li><a <% if(tab.equals("student")) { %> id="current" <%}%> href="/displayStudentMainPage.do">Student</a></li>
+<li  class="notselected"  rel="student"><a href="#">Student</a></li>
 <%
 
 		}
 		if (roles.getAdminActive()) {
 %> 
-<li><a <% if(tab.equals("admin")) { %> id="current" <%}%> href="/displayAboutPage.do">Admin</a></li>
+<li  class="notselected" rel="account"><a href="#">Admin</a></li>
 <%
 		}
 %>
 
-<li><a <% if(tab.equals("userinformation")) { %> id="current" <%}%> href="/displayUserInformationPage.do">Account Information</a></li>
-<li><a  href="<%=userService.createLogoutURL("/")%>">Logout</a></li>
+<li  class="notselected" rel="account"><a href="#">Account Information</a></li>
+<li  class="notselected" ><a href="<%=userService.createLogoutURL("/")%>">Log Out</a></li>
+
 <%
 	} else{
 %>
-<li><a <% if(tab.equals("login")) { %> id="current" <%}%> href="/displayLoginPage.do">Login</a></li>
+<li  class="notselected" ><a href="/displayLoginPage.do">Log In</a></li>
 <%
 	} 
 %>
+</ul>
+
+<div id="home" class="submenustyle">
+<a href="#">About</a>
+</div>
+
+<%
+	if (userService.isUserLoggedIn() && roles != null) {
+%>
 
 
+<%
+		if (roles.getTeacherActive()) {
+%> 
 
-	
-		
-			
-	
-		
-			
-			
+<div id="teacher" class="submenustyle">
+<a href="#">Create Class</a>
+<a href="#">Scheduled Classes</a>
+<a href="#">Completed Classes</a>
+<a href="#">View Class</a>
+</div>
 
-		</ul>
-	</div>
+<% 
+		}
+		if (roles.getStudentActive()) {
+%>
+<div id="student" class="submenustyle">
+<a href="#">Search Classes</a>
+<a href="#">Register For Class</a>
+<a href="#">Scheduled Classes</a>
+<a href="#">Completed Classes</a>
+<a href="#">View Class</a>
+</div>
+
+<%
+
+		}
+		if (roles.getAdminActive()) {
+%> 
+
+<div id="admin" class="submenustyle">
+<a href="#">Create Category</a>
+<a href="#">List Users</a>
+<a href="#">List Classes</a>
+</div>
+
+<%
+	} 
+}		
+%>
+
+
+<div id="account" class="submenustyle">
+<a href="#">User Account</a>
+<a href="#">Edit</a>
+</div>
+
+
+<script type="text/javascript">
+//initialize tab menu, by passing in ID of UL
+initalizetab("maintab")
+</script>
+
+

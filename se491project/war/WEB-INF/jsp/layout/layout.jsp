@@ -22,18 +22,16 @@ html, body, .fullheight {
 <body>
 <table class="fullheight" border="0" cellpadding="2" cellspacing="2" align="left">
     <tr>
-        <td height="8%" colspan="2"><tiles:insertAttribute name="header" /></td>
+        <td height="8%"><tiles:insertAttribute name="header" /></td>
     </tr>
     <tr>
-    	 <td  rowspan="2" class="navigation"><tiles:insertAttribute name="navigation" /></td>
-    	 <td height="10px"><tiles:insertAttribute name="tabs" /></td>
-    
+    	 <td height="10px"><tiles:insertAttribute name="tabs" /></td>    
     </tr>
     <tr>
-         <td align="center" ><tiles:insertAttribute name="body" /></td>
+         <td align="center"><tiles:insertAttribute name="body" /></td>
     </tr>
     <tr>
-        <td height="10px" colspan="2"><tiles:insertAttribute name="footer" /></td>
+        <td height="10px"><tiles:insertAttribute name="footer" /></td>
     </tr>
 </table>
 </body>
