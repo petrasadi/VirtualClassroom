@@ -48,6 +48,7 @@ public class CheckRegistrationController {
 					  view.addObject("stateList",  createStateMap());
 					  view.addObject("countryList",  createCountryMap());
 					  view.addObject("userRegistrationFormBean", new UserRegistrationFormBean());
+					  view.addObject("tab", "login");
 					  return view;
 				}else{
 					
@@ -58,10 +59,11 @@ public class CheckRegistrationController {
 				 view.addObject("stateList",  createStateMap());
 				 view.addObject("countryList",  createCountryMap());
 				 view.addObject("userRegistrationFormBean", new UserRegistrationFormBean());
+				 view.addObject("tab", "login");
 				 return view;
 			}
 		  	  	
-		    return new ModelAndView("displayUserLoggedInPage", "command", new UserRegistrationFormBean());
+		    return new ModelAndView("displayUserLoggedInPage", "command", new UserRegistrationFormBean()).addObject("tab", "login");
 	}
 	
 	

@@ -13,38 +13,32 @@ public class TabViewController {
 
 	@RequestMapping("/logout")
 	public ModelAndView displayLogoutPage(HttpServletRequest request) {
-		request.getSession().setAttribute("tab", "about");
-		return new ModelAndView("displayAboutPage", "command", new Object());
+		return new ModelAndView("displayAboutPage", "command", new Object()).addObject("tab", "home");
 	}
 	
 	@RequestMapping("/displayUserInformationPage")
 	public ModelAndView displayUserInformationPage(HttpServletRequest request) {
-		request.getSession().setAttribute("tab", "userinformation");
-		return new ModelAndView("displayUserInformationPage", "command", new Object());
+		return new ModelAndView("displayUserInformationPage", "command", new Object()).addObject("tab", "userinformation");
 	}
 	
 	@RequestMapping("/displayAboutPage")
 	public ModelAndView displayAboutPage(HttpServletRequest request) {
-		request.getSession().setAttribute("tab", "home");
-	    return new ModelAndView("displayAboutPage", "command", new Object()).addObject("tab", "about");
+	    return new ModelAndView("displayAboutPage", "command", new Object()).addObject("tab", "home");
 	}
 	
 	@RequestMapping("/displayTeacherMainPage")
 	public ModelAndView displayTeacherMainPage(HttpServletRequest request) {
-		request.getSession().setAttribute("tab", "teacher");
 	    return new ModelAndView("displayTeacherMainPage", "command", new Object()).addObject("tab", "teacher");
 	}
 	
 	@RequestMapping("/displayStudentMainPage")
 	public ModelAndView displayStudentMainPage(HttpServletRequest request) {
-		request.getSession().setAttribute("tab", "student");
-	    return new ModelAndView("displayStudentMainPage", "command", new Object());
+	    return new ModelAndView("displayStudentMainPage", "command", new Object()).addObject("tab", "student");
 	}
 	  
 	@RequestMapping("/displayLoginPage")
 	public ModelAndView displayLoginPage(HttpServletRequest request) {
-		request.getSession().setAttribute("tab", "login");
-		return new ModelAndView("displayLoginPage", "command", new Object());
+		return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
 	}
 
 

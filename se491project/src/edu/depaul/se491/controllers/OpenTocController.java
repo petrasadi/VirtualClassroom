@@ -23,7 +23,7 @@ public class OpenTocController {
 		  }
 		  
 		 		 
-	      return new ModelAndView("displayViewClassPage", "command", new Object());
+	      return new ModelAndView("displayViewClassPage", "command", new Object()).addObject("tab", "teacher");
 	  }
 	
 

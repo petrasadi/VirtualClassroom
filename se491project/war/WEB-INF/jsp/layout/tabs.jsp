@@ -18,7 +18,7 @@
  String accountSelect = "notselected";
  String loginSelect = "notselected";
 
- String tab = (String)session.getAttribute("tab");
+ String tab = (String)request.getAttribute("tab");
  if(tab == null){
    	tab = "home";
  }else if(tab.equals("home")){
@@ -29,7 +29,7 @@
  	studentSelect = "selected";
  }else if(tab.equals("admin")){
  	adminSelect = "selected";
- }else if(tab.equals("acount")){
+ }else if(tab.equals("userinformation")){
  	accountSelect = "selected";
  }else if(tab.equals("login")){
  	loginSelect = "selected";
@@ -99,10 +99,10 @@
 %> 
 
 <div id="teacher" class="submenustyle">
-<a href="href="/displayCreateClassPage.do"">Create Class</a>
+<a href="/displayCreateClassPage.do">Create Class</a>
 <a href="/displayListClassesPage.do">Scheduled Classes</a>
 <a href="#">Completed Classes</a>
-<a href="href="/displayViewClassPage.do"">View Class</a>
+<a href="/displayViewClassPage.do">View Class</a>
 </div>
 
 <% 

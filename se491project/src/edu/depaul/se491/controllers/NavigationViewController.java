@@ -19,7 +19,7 @@ public class NavigationViewController extends AbstractController{
 	@RequestMapping("/displayCreateClassPage")
 	public ModelAndView displayCreateClassPage() {
 		return new ModelAndView("displayCreateClassPage", "command",
-				new CreateClassFormBean());
+				new CreateClassFormBean()).addObject("tab", "teacher");
 	}
 
 	@RequestMapping("/displayListClassesPage")
@@ -28,10 +28,10 @@ public class NavigationViewController extends AbstractController{
 		UserService userService = UserServiceFactory.getUserService();
 
 		if (!userService.isUserLoggedIn()) {
-			return new ModelAndView("displayLoginPage", "command", new Object());
+			return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
 		}		
    
-		ModelAndView mav = new ModelAndView("displayListClassesPage", "command", new Object());
+		ModelAndView mav = new ModelAndView("displayListClassesPage", "command", new Object()).addObject("tab", "teacher");;
 		
 		return mav;
 	}
@@ -39,13 +39,13 @@ public class NavigationViewController extends AbstractController{
 	@RequestMapping("/displaySearchClassPage")
 	public ModelAndView displaySearchClassPage() {
 		return new ModelAndView("displaySearchClassPage", "command",
-				new Object());
+				new Object()).addObject("tab", "student");
 	}
 
 	@RequestMapping("/displayRegisterClassPage")
 	public ModelAndView displayRegisterClassPage() {
 		return new ModelAndView("displayRegisterClassPage", "command",
-				new Object());
+				new Object()).addObject("tab", "student");
 	}
 }
 

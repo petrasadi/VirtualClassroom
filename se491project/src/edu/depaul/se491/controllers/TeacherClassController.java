@@ -28,7 +28,7 @@ public class TeacherClassController {
 		  
 		
                 
-		 return new ModelAndView("displayClassCreatedPage", "command", new CreateClassFormBean());
+		 return new ModelAndView("displayClassCreatedPage", "command", new CreateClassFormBean()).addObject("tab", "teacher");
 	}
 	
 }

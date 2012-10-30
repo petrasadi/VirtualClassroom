@@ -90,7 +90,8 @@ public class CreateClassFormController {
 		
 		ModelAndView view = new ModelAndView();
 		view.setViewName("displayClassCreatedPage");
-		    return view;
+		view.addObject("tab", "teacher");
+	    return view;
     }
 
 }
