@@ -9,21 +9,45 @@
 <%@ page import="edu.depaul.se491.model.Role"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
-
 <%
-    String tab = (String)session.getAttribute("tab");
-    if(tab == null){
-    	tab = "home";
-    }
-	UserService userService = UserServiceFactory.getUserService();
-    Person vcUser = (Person)session.getAttribute("vcUser");
-    Role roles = null;
-    if(vcUser!= null){
-    	roles = vcUser.getRole();
-    }
+// Determin what tab is the selected tab first set all tabs to not selected.
+ String teacherSelect = "notselected";
+ String studentSelect = "notselected";
+ String homeSelect = "notselected";
+ String adminSelect = "notselected";
+ String accountSelect = "notselected";
+ String loginSelect = "notselected";
+
+ String tab = (String)session.getAttribute("tab");
+ if(tab == null){
+   	tab = "home";
+ }else if(tab.equals("home")){
+ 	homeSelect = "selected";
+ }else if(tab.equals("teacher")){
+ 	teacherSelect = "selected";
+ }else if(tab.equals("student")){
+ 	studentSelect = "selected";
+ }else if(tab.equals("admin")){
+ 	adminSelect = "selected";
+ }else if(tab.equals("acount")){
+ 	accountSelect = "selected";
+ }else if(tab.equals("login")){
+ 	loginSelect = "selected";
+ }else{
+ 	homeSelect = "selected";
+ }
+ 
+
+
+ UserService userService = UserServiceFactory.getUserService();
+ Person vcUser = (Person)session.getAttribute("vcUser");
+ Role roles = null;
+ if(vcUser!= null){
+   	roles = vcUser.getRole();
+ }
 %>
 <ul id="maintab" class="basictab">
-    <li  class="selected" rel="home"><a href="#">Home</a></li>
+    <li  class="<%= homeSelect %>" rel="home"><a href="#">Home</a></li>
 	
 <%
 	if (userService.isUserLoggedIn() && roles != null) {
@@ -33,29 +57,29 @@
 <%
 		if (roles.getTeacherActive()) {
 %> 
-<li  class="notselected" rel="teacher"><a href="#">Teacher</a></li>
+<li  class="<%= teacherSelect %>" rel="teacher"><a href="#">Teacher</a></li>
 <% 
 		}
 		if (roles.getStudentActive()) {
 %> 
-<li  class="notselected"  rel="student"><a href="#">Student</a></li>
+<li  class="<%=studentSelect %>"  rel="student"><a href="#">Student</a></li>
 <%
 
 		}
 		if (roles.getAdminActive()) {
 %> 
-<li  class="notselected" rel="account"><a href="#">Admin</a></li>
+<li  class="<%=adminSelect %>" rel="admin"><a href="#">Admin</a></li>
 <%
 		}
 %>
 
-<li  class="notselected" rel="account"><a href="#">Account Information</a></li>
+<li  class="<%=accountSelect %>" rel="account"><a href="#">Account Information</a></li>
 <li  class="notselected" ><a href="<%=userService.createLogoutURL("/")%>">Log Out</a></li>
 
 <%
 	} else{
 %>
-<li  class="notselected" ><a href="/displayLoginPage.do">Log In</a></li>
+<li  class="<%=loginSelect %>" ><a href="/displayLoginPage.do">Log In</a></li>
 <%
 	} 
 %>
@@ -75,10 +99,10 @@
 %> 
 
 <div id="teacher" class="submenustyle">
-<a href="#">Create Class</a>
-<a href="#">Scheduled Classes</a>
+<a href="href="/displayCreateClassPage.do"">Create Class</a>
+<a href="/displayListClassesPage.do">Scheduled Classes</a>
 <a href="#">Completed Classes</a>
-<a href="#">View Class</a>
+<a href="href="/displayViewClassPage.do"">View Class</a>
 </div>
 
 <% 
@@ -86,11 +110,11 @@
 		if (roles.getStudentActive()) {
 %>
 <div id="student" class="submenustyle">
-<a href="#">Search Classes</a>
-<a href="#">Register For Class</a>
+<a href="/displaySearchClassPage.do">Search Classes</a>
+<a href="/displayRegisterClassPage.do">Register For Class</a>
 <a href="#">Scheduled Classes</a>
 <a href="#">Completed Classes</a>
-<a href="#">View Class</a>
+<a href="/displayViewClassPage.do">View Class</a>
 </div>
 
 <%
@@ -112,7 +136,7 @@
 
 
 <div id="account" class="submenustyle">
-<a href="#">User Account</a>
+<a href="/displayUserInformationPage.do">User Account</a>
 <a href="#">Edit</a>
 </div>
 
