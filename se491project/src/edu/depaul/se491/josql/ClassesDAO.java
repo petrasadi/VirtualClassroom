@@ -72,6 +72,25 @@ public class ClassesDAO implements IClassesDAO {
 	/*******************************************************************************
 	*
 	*   {@literal}
+	*    getClassByOpenId - gets enity by opentokid
+	*
+	*   {@param} String openTokId
+	*
+	*   {@return} Iterable<Entity>
+	*
+	******************************************************************************/
+	public Entity getClassByOpenId(String OpenTokId) throws ClassesException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter classesFilter = new FilterPredicate("opentokid", FilterOperator.EQUAL, OpenTokId);
+		Query classesByOpenTokIdQuery = new Query("Classes").setFilter(classesFilter);
+		
+		PreparedQuery pq = datastore.prepare(classesByOpenTokIdQuery);
+		return pq.asSingleEntity();
+	}
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
 	*    getOpenTokToken - gets open tok token
 	*
 	*   {@param} Key classes

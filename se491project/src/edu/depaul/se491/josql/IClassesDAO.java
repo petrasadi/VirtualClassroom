@@ -35,6 +35,12 @@ public interface IClassesDAO {
 	public String getOpenTokId(Key classes) throws ClassesException;
 	
 	/**
+	 * @return String opentokid
+	 * @throws ClassesException
+	 */
+	public Entity getClassByOpenId(String OpenTokId) throws ClassesException;
+	
+	/**
 	 * @return String opentoktoken
 	 * @throws ClassesException
 	 */
