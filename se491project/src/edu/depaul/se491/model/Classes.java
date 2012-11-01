@@ -57,8 +57,9 @@ public class Classes {
 	@Column(name = "students")
 	private List<Key> students;
 	
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "opentokid")
-	private String opentokid;
+	private long opentokid;
 	
 	@Column(name = "opentoktoken")
 	private String opentoktoken;
@@ -139,15 +140,18 @@ public class Classes {
 		return this.students;
 	}
 	
+	public void setStudents(List<Key> students) {
+		this.students = students;
+	}
 	public void addStudent(Key student) {
 		this.students.add(student);
 	}
 	
-	public void setOpenTokId(String opentokid) {
+	public void setOpenTokId(long opentokid) {
 		this.opentokid = opentokid;
 	}
 	
-	public String getOpenTokId() {
+	public long getOpenTokId() {
 		return this.opentokid;
 	}
 	
