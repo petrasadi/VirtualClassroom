@@ -137,9 +137,9 @@ public class PersonDAO implements IPersonDAO {
             personFound = new Person();
             personFound.setId(pEntity.getKey());
             personFound.setOpenid((String)pEntity.getProperty("openid"));
-            personFound.setFirstName((String)pEntity.getProperty("firstName"));
-            personFound.setLastName((String)pEntity.getProperty("lastName"));
-            personFound.setMiddleName((String)pEntity.getProperty("middleName"));
+            personFound.setFirstName((String)pEntity.getProperty("firstname"));
+            personFound.setLastName((String)pEntity.getProperty("lastname"));
+            personFound.setMiddleName((String)pEntity.getProperty("middlename"));
             personFound.setAddress((String)pEntity.getProperty("address"));
             personFound.setAddress2((String)pEntity.getProperty("address2"));
             personFound.setCity((String)pEntity.getProperty("city"));
@@ -150,6 +150,9 @@ public class PersonDAO implements IPersonDAO {
             personFound.setPhone2((String)pEntity.getProperty("phone2"));
             personFound.setEmail((String)pEntity.getProperty("email"));
             personFound.setOpenid((String)pEntity.getProperty("openid"));
+            
+            System.out.println("**** in dao --->" +personFound.getFirstName());
+            System.out.println("**** in dao --->" +personFound.getEmail());
             
             idFilter = new FilterPredicate("person", FilterOperator.EQUAL,pEntity.getKey());
             Query role_tableQuery = new Query("Role").setFilter(idFilter);
@@ -254,8 +257,7 @@ public class PersonDAO implements IPersonDAO {
 	*
 	******************************************************************************/
     public void updatePerson(Person person) {
-    	System.out.println("******* updating person ******");
-    	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+      	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Filter idFilter = new FilterPredicate("id", FilterOperator.EQUAL, person.getId());
 		Query person_tableQuery = new Query("Person").setFilter(idFilter);
 		PreparedQuery pq = datastore.prepare(person_tableQuery);
