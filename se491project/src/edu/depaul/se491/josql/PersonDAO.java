@@ -149,9 +149,22 @@ public class PersonDAO implements IPersonDAO {
             personFound.setPhone2((String)pEntity.getProperty("phone2"));
             personFound.setEmail((String)pEntity.getProperty("email"));
             personFound.setOpenid((String)pEntity.getProperty("openid"));
-            personFound.setTeacher((Boolean) pEntity.getProperty("teacher"));
-            personFound.setStudent((Boolean) pEntity.getProperty("student"));
-            personFound.setAdmin((Boolean) pEntity.getProperty("admin"));
+            if(pEntity.getProperty("teacher") != null){
+            	 personFound.setTeacher((Boolean) pEntity.getProperty("teacher"));
+            }else{
+            	personFound.setTeacher(false);
+            }
+            if(pEntity.getProperty("student") != null){
+            	personFound.setStudent((Boolean) pEntity.getProperty("student"));
+           }else{
+           	personFound.setTeacher(false);
+           }
+            if(pEntity.getProperty("admin") != null){
+            	personFound.setAdmin((Boolean) pEntity.getProperty("admin"));
+           }else{
+        	   personFound.setAdmin(false);
+           }
+           personFound.setAdmin((Boolean) pEntity.getProperty("admin"));
      	} 
 
 		return personFound;      
@@ -430,6 +443,9 @@ public class PersonDAO implements IPersonDAO {
 		createPerson.setProperty("phone", person.getPhone());
 		createPerson.setProperty("phone2", person.getPhone2());
 		createPerson.setProperty("openid", person.getOpenid());
+		createPerson.setProperty("teacher", person.isTeacher());
+		createPerson.setProperty("student", person.isStudent());
+		createPerson.setProperty("admin", person.isAdmin());
 
         try {
         	datastore.put(createPerson);

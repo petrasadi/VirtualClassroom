@@ -9,7 +9,6 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -19,7 +18,6 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import edu.depaul.se491.formBeans.CreateClassFormBean;
 import edu.depaul.se491.formBeans.UserRegistrationFormBean;
 import edu.depaul.se491.josql.IPersonDAO;
 import edu.depaul.se491.josql.PersonDAO;
@@ -69,13 +67,13 @@ public class UserController {
 	public ModelAndView  editUser(@Valid UserRegistrationFormBean userRegistrationFormBean, BindingResult result, HttpServletRequest request) {
 	
 		ModelAndView view = new ModelAndView();
-		IPersonDAO personDAO = new PersonDAO();
 	
 	    if (result.hasErrors()) {
 	    	  view.addObject("stateList",  createStateMap());
 			  view.addObject("countryList",  createCountryMap());
-	    	  view.setViewName("displayUserRegistrationPage");
-	          view.addObject("editUserInformationPage", userRegistrationFormBean);
+	    	  view.setViewName("editUserInformationPage");
+	          view.addObject("userRegistrationFormBean", userRegistrationFormBean);
+	          view.addObject("tab", "userinformation");
 	          return view;
 	    }
 		
@@ -95,10 +93,11 @@ public class UserController {
 	  vcUser.setPhone(userRegistrationFormBean.getPhone());
 	  vcUser.setPhone2(userRegistrationFormBean.getPhone2());
 	  vcUser.setTeacher(userRegistrationFormBean.isTeacher());
-	  vcUser.setTeacher(userRegistrationFormBean.isStudent());
+	  vcUser.setStudent(userRegistrationFormBean.isStudent());
 
 	  request.getSession().setAttribute("vcUser", vcUser);
 	  view.setViewName("displayUserInformationPage");
+	  view.addObject("tab", "userinformation");
 	    
 	  return view;
 	}
@@ -113,7 +112,7 @@ public class UserController {
 		 ModelAndView view = new ModelAndView();
 		  
 		  if(!userService.isUserLoggedIn()){
-			  return new ModelAndView("displayLoginPage", "command", new Object());
+			  return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
 		  }
 		  
 		  try {
@@ -140,7 +139,7 @@ public class UserController {
 				 return view;
 			}
 		  	  	
-		    return new ModelAndView("displayUserLoggedInPage", "command", new UserRegistrationFormBean()).addObject("tab", "login");
+		    return new ModelAndView("displayUserLoggedInPage", "command", new UserRegistrationFormBean()).addObject("tab", "about");
 	}
 	
 	
@@ -158,6 +157,7 @@ public class UserController {
 			  view.addObject("countryList",  createCountryMap());
 	    	  view.setViewName("displayUserRegistrationPage");
 	          view.addObject("userRegistrationFormBean", userRegistrationFormBean);
+	          view.addObject("tab", "login");
 	          return view;
 	    }
 	   
@@ -174,6 +174,7 @@ public class UserController {
 		}
 	    request.getSession().setAttribute("vcUser", person);
         view.setViewName("displayUserLoggedInPage");
+        view.addObject("tab", "login");
 	    return view;
 	}
 	
@@ -210,7 +211,7 @@ public class UserController {
 		state.put("MS", "Mississippi");
 		state.put("MO", "Missouri");
 		state.put("MT", "Montana");
-		state.put("ME", "Nebraska");
+		state.put("NE", "Nebraska");
 		state.put("NV", "Nevada");
 		state.put("MH", "New Hampshire");
 		state.put("NJ", "New Jersey");
@@ -226,8 +227,7 @@ public class UserController {
 		state.put("SC", "South Carolina");
 		state.put("SD", "South Dakota");
 		state.put("TN", "Tennessee");
-		state.put("MY", "Texas");
-		state.put("TX", "Arkansas");
+		state.put("TX", "Texas");
 		state.put("UT", "Utah");
 		state.put("VT", "Vermont");
 		state.put("VA", "Virginia");
