@@ -15,7 +15,7 @@ import com.google.appengine.api.datastore.Transaction;
 
 import edu.depaul.se491.model.Category;
 
-public class CategoryDAO {
+public class CategoryDAO implements ICategoryDAO {
 	public Iterable<Entity> getAllCategory() throws CategoryException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query categoryQuery = new Query("Category");

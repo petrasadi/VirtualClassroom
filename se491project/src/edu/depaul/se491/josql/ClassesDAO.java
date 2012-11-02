@@ -58,7 +58,7 @@ public class ClassesDAO implements IClassesDAO {
 	*   {@return} String opentokid
 	*
 	******************************************************************************/
-	public String getOpenTokId(Key classes) throws ClassesException {
+	public long getOpenTokId(Key classes) throws ClassesException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Filter classesFilter = new FilterPredicate("id", FilterOperator.EQUAL, classes);
 		Query classesByIdQuery = new Query("Classes").setFilter(classesFilter);
@@ -66,7 +66,26 @@ public class ClassesDAO implements IClassesDAO {
 		PreparedQuery pq = datastore.prepare(classesByIdQuery);
 		Entity classesEntity = pq.asSingleEntity();
 		
-		return (String) classesEntity.getProperty("opentokid");
+		return ((Long) classesEntity.getProperty("opentokid")).longValue();
+	}
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
+	*    getClassByOpenId - gets enity by opentokid
+	*
+	*   {@param} String openTokId
+	*
+	*   {@return} Entity
+	*
+	******************************************************************************/
+	public Entity getClassByOpenId(long OpenTokId) throws ClassesException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter classesFilter = new FilterPredicate("opentokid", FilterOperator.EQUAL, OpenTokId);
+		Query classesByOpenTokIdQuery = new Query("Classes").setFilter(classesFilter);
+		
+		PreparedQuery pq = datastore.prepare(classesByOpenTokIdQuery);
+		return pq.asSingleEntity();
 	}
 	
 	/*******************************************************************************
@@ -79,7 +98,7 @@ public class ClassesDAO implements IClassesDAO {
 	*   {@return} String opentoktoken
 	*
 	******************************************************************************/
-	public String getOpenTokToken(Key classes) throws ClassesException {
+	public long getOpenTokToken(Key classes) throws ClassesException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Filter classesFilter = new FilterPredicate("id", FilterOperator.EQUAL, classes);
 		Query classesByIdQuery = new Query("Classes").setFilter(classesFilter);
@@ -87,7 +106,7 @@ public class ClassesDAO implements IClassesDAO {
 		PreparedQuery pq = datastore.prepare(classesByIdQuery);
 		Entity classesEntity = pq.asSingleEntity();
 		
-		return (String) classesEntity.getProperty("opentoktoken");
+		return ((Long) classesEntity.getProperty("opentoktoken")).longValue();
 	}
 	
 	/*******************************************************************************

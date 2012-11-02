@@ -43,6 +43,7 @@ public class CheckRegistrationController {
 		  try {
 			    createCountryMap();
 				Person vcUser = personDAO.getPersonByOpenId(userService.getCurrentUser().getUserId());
+				
 				if(vcUser == null){
 					  view.setViewName("displayUserRegistrationPage");
 					  view.addObject("stateList",  createStateMap());
@@ -51,8 +52,8 @@ public class CheckRegistrationController {
 					  view.addObject("tab", "login");
 					  return view;
 				}else{
-					
 					request.getSession().setAttribute("vcUser", vcUser);
+				
 				}
 			} catch (PersonException e) {
 				 view.setViewName("displayUserRegistrationPage");

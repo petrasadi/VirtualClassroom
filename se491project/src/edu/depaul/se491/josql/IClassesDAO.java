@@ -32,13 +32,19 @@ public interface IClassesDAO {
 	 * @return String opentokid
 	 * @throws ClassesException
 	 */
-	public String getOpenTokId(Key classes) throws ClassesException;
+	public long getOpenTokId(Key classes) throws ClassesException;
 	
 	/**
-	 * @return String opentoktoken
+	 * @return String opentokid
 	 * @throws ClassesException
 	 */
-	public String getOpenTokToken(Key classes) throws ClassesException;
+	public Entity getClassByOpenId(long OpenTokId) throws ClassesException;
+	
+	/**
+	 * @return long opentoktoken
+	 * @throws ClassesException
+	 */
+	public long getOpenTokToken(Key classes) throws ClassesException;
 	
 	/**
 	 * @param person
