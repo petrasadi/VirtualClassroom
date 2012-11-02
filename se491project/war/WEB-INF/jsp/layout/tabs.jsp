@@ -6,7 +6,6 @@
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="edu.depaul.se491.model.Person"%>
-<%@ page import="edu.depaul.se491.model.Role"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%
@@ -41,32 +40,29 @@
 
  UserService userService = UserServiceFactory.getUserService();
  Person vcUser = (Person)session.getAttribute("vcUser");
- Role roles = null;
- if(vcUser!= null){
-   	roles = vcUser.getRole();
- }
+
 %>
 <ul id="maintab" class="basictab">
     <li  class="<%= homeSelect %>" rel="home"><a href="#">Home</a></li>
 	
 <%
-	if (userService.isUserLoggedIn() && roles != null) {
+	if (userService.isUserLoggedIn() && vcUser != null) {
 %>
 
 
 <%
-		if (roles.getTeacherActive()) {
+		if (vcUser.isTeacher()) {
 %> 
 <li  class="<%= teacherSelect %>" rel="teacher"><a href="#">Teacher</a></li>
 <% 
 		}
-		if (roles.getStudentActive()) {
+		if (vcUser.isStudent()) {
 %> 
 <li  class="<%=studentSelect %>"  rel="student"><a href="#">Student</a></li>
 <%
 
 		}
-		if (roles.getAdminActive()) {
+		if (vcUser.isAdmin()) {
 %> 
 <li  class="<%=adminSelect %>" rel="admin"><a href="#">Admin</a></li>
 <%
@@ -90,12 +86,12 @@
 </div>
 
 <%
-	if (userService.isUserLoggedIn() && roles != null) {
+	if (userService.isUserLoggedIn() && vcUser != null) {
 %>
 
 
 <%
-		if (roles.getTeacherActive()) {
+		if (vcUser.isTeacher()) {
 %> 
 
 <div id="teacher" class="submenustyle">
@@ -107,7 +103,7 @@
 
 <% 
 		}
-		if (roles.getStudentActive()) {
+		if (vcUser.isStudent()) {
 %>
 <div id="student" class="submenustyle">
 <a href="/displaySearchClassPage.do">Search Classes</a>
@@ -120,7 +116,7 @@
 <%
 
 		}
-		if (roles.getAdminActive()) {
+		if (vcUser.isAdmin()) {
 %> 
 
 <div id="admin" class="submenustyle">

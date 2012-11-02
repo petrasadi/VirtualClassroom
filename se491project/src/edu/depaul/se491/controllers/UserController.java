@@ -25,7 +25,6 @@ import edu.depaul.se491.josql.IPersonDAO;
 import edu.depaul.se491.josql.PersonDAO;
 import edu.depaul.se491.josql.PersonException;
 import edu.depaul.se491.model.Person;
-import edu.depaul.se491.model.Role;
 
 @Controller
 @SessionAttributes
@@ -40,30 +39,28 @@ public class UserController {
 	public ModelAndView editUserInformationPage(HttpServletRequest request) {
 		 UserRegistrationFormBean uf = new UserRegistrationFormBean();
 		 ModelAndView view = new ModelAndView();
-		 Person vcPerson = (Person) request.getSession().getAttribute("vcUser");
-		 Role role = vcPerson.getRole();
-		 if(role == null){
-			 role = new Role();
-		 }
-		 uf.setFirstName(vcPerson.getFirstName());
-		 uf.setMiddleName(vcPerson.getMiddleName());
-		 uf.setLastName(vcPerson.getLastName());
-		 uf.setAddress(vcPerson.getAddress());
-		 uf.setAddress2(vcPerson.getAddress2());
-		 uf.setCity(vcPerson.getCity());
-		 uf.setState(vcPerson.getState());
-		 uf.setZip(vcPerson.getZip());
-		 uf.setCountry(vcPerson.getCountry());
-		 uf.setEmail(vcPerson.getEmail());
-		 uf.setPhone(vcPerson.getPhone());
-		 uf.setPhone2(vcPerson.getPhone2());
-		 uf.setStudent(role.getStudentActive());
-		 uf.setTeacher(role.getTeacherActive());
+		 Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+
+		 uf.setFirstName(vcUser.getFirstName());
+		 uf.setMiddleName(vcUser.getMiddleName());
+		 uf.setLastName(vcUser.getLastName());
+		 uf.setAddress(vcUser.getAddress());
+		 uf.setAddress2(vcUser.getAddress2());
+		 uf.setCity(vcUser.getCity());
+		 uf.setState(vcUser.getState());
+		 uf.setZip(vcUser.getZip());
+		 uf.setCountry(vcUser.getCountry());
+		 uf.setEmail(vcUser.getEmail());
+		 uf.setPhone(vcUser.getPhone());
+		 uf.setPhone2(vcUser.getPhone2());
+		 uf.setStudent(vcUser.isStudent());
+		 uf.setTeacher(vcUser.isTeacher());
 		 view.setViewName("editUserInformationPage");
 		 view.addObject("stateList",  createStateMap());
 		 view.addObject("countryList",  createCountryMap());
 		 view.addObject("userRegistrationFormBean", uf);
 		 view.addObject("tab", "userinformation");
+		 
 		 return view;	
 	}
 	
@@ -84,6 +81,7 @@ public class UserController {
 		
 		
 	  Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+
 	  vcUser.setFirstName(userRegistrationFormBean.getFirstName());
 	  vcUser.setMiddleName(userRegistrationFormBean.getMiddleName());
 	  vcUser.setLastName(userRegistrationFormBean.getLastName());
@@ -96,28 +94,13 @@ public class UserController {
 	  vcUser.setEmail(userRegistrationFormBean.getEmail());
 	  vcUser.setPhone(userRegistrationFormBean.getPhone());
 	  vcUser.setPhone2(userRegistrationFormBean.getPhone2());
-	  vcUser.setRole(null);
-	  Role roles = new Role();
-	  try {
-	    	 Key personKey = personDAO.savePerson(vcUser);
-	    	 System.out.println("************* "+ personKey );
-	    	 System.out.println("************* "+ vcUser.getId() );
-	    	 if(userRegistrationFormBean.isTeacher()){
-	    		personDAO.setPersonAsTeacher(personKey);
-	    		roles.setTeacherActive(true);
-	    	 }
-	    	 if(userRegistrationFormBean.isStudent()){
-	    		personDAO.setPersonAsStudent(personKey);
-	    		roles.setStudentActive(true);
-	    	 }	    	 
-		} catch (PersonException e) {
-			// need to figure out what to do with error.
-		}
-	    vcUser.setRole(roles);
-	    request.getSession().setAttribute("vcUser", vcUser);
-	    view.setViewName("displayUserInformationPage");
+	  vcUser.setTeacher(userRegistrationFormBean.isTeacher());
+	  vcUser.setTeacher(userRegistrationFormBean.isStudent());
+
+	  request.getSession().setAttribute("vcUser", vcUser);
+	  view.setViewName("displayUserInformationPage");
 	    
-	    return view;
+	  return view;
 	}
 	
 
@@ -180,24 +163,15 @@ public class UserController {
 	   
 	    Person person = new Person(userRegistrationFormBean.getFirstName(), userRegistrationFormBean.getLastName(), userRegistrationFormBean.getMiddleName(), userRegistrationFormBean.getAddress(), userRegistrationFormBean.getAddress2(), userRegistrationFormBean.getCity(), userRegistrationFormBean.getZip(), userRegistrationFormBean.getCountry(), userRegistrationFormBean.getEmail(), userRegistrationFormBean.getPhone(), userRegistrationFormBean.getPhone2(), userRegistrationFormBean.getState());
 	    person.setOpenid(userRegistrationFormBean.getOpenid());
-	    Role roles = new Role();
-	   
+	    person.setTeacher(userRegistrationFormBean.isTeacher());
+	    person.setStudent(userRegistrationFormBean.isStudent());
+	    	   
 	    try {
 	    	 Key personKey = personDAO.savePerson(person);
-	    	 person.setId(personKey);
-	    	    	
-	    	 if(userRegistrationFormBean.isTeacher()){
-	    		personDAO.setPersonAsTeacher(personKey);
-	    		roles.setTeacherActive(true);
-	    	 }
-	    	 if(userRegistrationFormBean.isStudent()){
-	    		personDAO.setPersonAsStudent(personKey);
-	    		roles.setStudentActive(true);
-	    	 }	    	 
+	    	
 		} catch (PersonException e) {
 			// need to figure out what to do with error.
 		}
-	    person.setRole(roles);
 	    request.getSession().setAttribute("vcUser", person);
         view.setViewName("displayUserLoggedInPage");
 	    return view;

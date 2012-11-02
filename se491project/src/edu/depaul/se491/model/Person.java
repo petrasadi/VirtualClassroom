@@ -121,10 +121,19 @@ public class Person implements Serializable{
 
 
 
-	//bi-directional one-to-one association to Admin
-	@Basic(optional = true)
-	@OneToOne(mappedBy="person", cascade = CascadeType.REMOVE)
-	private Role role;
+	
+	@Basic
+	@Column(name = "teacher")
+    private boolean isTeacher = false;
+	
+	@Basic
+	@Column(name = "student")
+    private boolean isStudent = false;
+	
+	@Basic
+	@Column(name = "admin")
+    private boolean isAdmin = false;
+	
 	
 	//bi-directional many-to-one association to Class
 	@Basic(optional = true)
@@ -175,6 +184,37 @@ public class Person implements Serializable{
 	public String getAddress() {
 		return this.address;
 	}
+	
+	
+	public boolean isTeacher() {
+		return isTeacher;
+	}
+
+
+	public void setTeacher(boolean isTeacher) {
+		this.isTeacher = isTeacher;
+	}
+
+
+	public boolean isStudent() {
+		return isStudent;
+	}
+
+
+	public void setStudent(boolean isStudent) {
+		this.isStudent = isStudent;
+	}
+
+
+	public boolean isAdmin() {
+		return isAdmin;
+	}
+
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
 
 	public void setAddress(String address) {
 		this.address = address;
@@ -290,13 +330,6 @@ public class Person implements Serializable{
 		this.zip = zip;
 	}
 
-	public Role getRole() {
-		return this.role;
-	}
-
-	public void setRole(Role role) {
-		this.role = role;
-	}
 
 	public List<Key> getClasses() {
 		return this.classes;

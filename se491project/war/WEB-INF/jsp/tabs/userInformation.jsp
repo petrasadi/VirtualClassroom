@@ -1,5 +1,4 @@
 <%@ page import="edu.depaul.se491.model.Person"%>
-<%@ page import="edu.depaul.se491.model.Role"%>
 
 
 
@@ -60,9 +59,8 @@
 		<td>
 		     <% 
 		     Person vcUser = (Person)session.getAttribute("vcUser");
-		     Role role = (Role)vcUser.getRole();
-		     
-		     if(role.getStudentActive()){  %>
+		   		     
+		     if(vcUser.isStudent()){  %>
 				Yes
 			 <% }else{  %>			
 				No
@@ -72,7 +70,7 @@
 	<tr>
 		<td>Signed up as a Teacher</td>
 		<td> <% 		 	     
-		     if(role.getTeacherActive()){  %>
+		     if(vcUser.isTeacher()){  %>
 				Yes
 			 <% }else{  %>			
 				No
