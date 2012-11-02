@@ -9,6 +9,7 @@ import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -18,6 +19,7 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
+import edu.depaul.se491.formBeans.CreateClassFormBean;
 import edu.depaul.se491.formBeans.UserRegistrationFormBean;
 import edu.depaul.se491.josql.IPersonDAO;
 import edu.depaul.se491.josql.PersonDAO;
@@ -27,8 +29,99 @@ import edu.depaul.se491.model.Role;
 
 @Controller
 @SessionAttributes
-public class CheckRegistrationController {
+public class UserController {
 
+	@RequestMapping("/displayUserInformationPage")
+	public ModelAndView displayUserInformationPage(HttpServletRequest request) {
+		return new ModelAndView("displayUserInformationPage", "command", new Object()).addObject("tab", "userinformation");
+	}
+	
+	@RequestMapping("/editUserInformationPage")
+	public ModelAndView editUserInformationPage(HttpServletRequest request) {
+		 UserRegistrationFormBean uf = new UserRegistrationFormBean();
+		 ModelAndView view = new ModelAndView();
+		 Person vcPerson = (Person) request.getSession().getAttribute("vcUser");
+		 Role role = vcPerson.getRole();
+		 if(role == null){
+			 role = new Role();
+		 }
+		 uf.setFirstName(vcPerson.getFirstName());
+		 uf.setMiddleName(vcPerson.getMiddleName());
+		 uf.setLastName(vcPerson.getLastName());
+		 uf.setAddress(vcPerson.getAddress());
+		 uf.setAddress2(vcPerson.getAddress2());
+		 uf.setCity(vcPerson.getCity());
+		 uf.setState(vcPerson.getState());
+		 uf.setZip(vcPerson.getZip());
+		 uf.setCountry(vcPerson.getCountry());
+		 uf.setEmail(vcPerson.getEmail());
+		 uf.setPhone(vcPerson.getPhone());
+		 uf.setPhone2(vcPerson.getPhone2());
+		 uf.setStudent(role.getStudentActive());
+		 uf.setTeacher(role.getTeacherActive());
+		 view.setViewName("editUserInformationPage");
+		 view.addObject("stateList",  createStateMap());
+		 view.addObject("countryList",  createCountryMap());
+		 view.addObject("userRegistrationFormBean", uf);
+		 view.addObject("tab", "userinformation");
+		 return view;	
+	}
+	
+	
+	@RequestMapping(value = "/editUser", method = RequestMethod.POST)
+	public ModelAndView  editUser(@Valid UserRegistrationFormBean userRegistrationFormBean, BindingResult result, HttpServletRequest request) {
+	
+		ModelAndView view = new ModelAndView();
+		IPersonDAO personDAO = new PersonDAO();
+	
+	    if (result.hasErrors()) {
+	    	  view.addObject("stateList",  createStateMap());
+			  view.addObject("countryList",  createCountryMap());
+	    	  view.setViewName("displayUserRegistrationPage");
+	          view.addObject("editUserInformationPage", userRegistrationFormBean);
+	          return view;
+	    }
+		
+		
+	  Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+	  vcUser.setFirstName(userRegistrationFormBean.getFirstName());
+	  vcUser.setMiddleName(userRegistrationFormBean.getMiddleName());
+	  vcUser.setLastName(userRegistrationFormBean.getLastName());
+	  vcUser.setAddress(userRegistrationFormBean.getAddress());
+	  vcUser.setAddress2(userRegistrationFormBean.getAddress2());
+	  vcUser.setCity(userRegistrationFormBean.getCity());
+	  vcUser.setState(userRegistrationFormBean.getState());
+	  vcUser.setZip(userRegistrationFormBean.getZip());
+	  vcUser.setCountry(userRegistrationFormBean.getCountry());
+	  vcUser.setEmail(userRegistrationFormBean.getEmail());
+	  vcUser.setPhone(userRegistrationFormBean.getPhone());
+	  vcUser.setPhone2(userRegistrationFormBean.getPhone2());
+	  vcUser.setRole(null);
+	  Role roles = new Role();
+	  try {
+	    	 Key personKey = personDAO.savePerson(vcUser);
+	    	 System.out.println("************* "+ personKey );
+	    	 System.out.println("************* "+ vcUser.getId() );
+	    	 if(userRegistrationFormBean.isTeacher()){
+	    		personDAO.setPersonAsTeacher(personKey);
+	    		roles.setTeacherActive(true);
+	    	 }
+	    	 if(userRegistrationFormBean.isStudent()){
+	    		personDAO.setPersonAsStudent(personKey);
+	    		roles.setStudentActive(true);
+	    	 }	    	 
+		} catch (PersonException e) {
+			// need to figure out what to do with error.
+		}
+	    vcUser.setRole(roles);
+	    request.getSession().setAttribute("vcUser", vcUser);
+	    view.setViewName("displayUserInformationPage");
+	    
+	    return view;
+	}
+	
+
+	
 	@RequestMapping("/checkRegistration")
 	public  ModelAndView checkRegistration(HttpServletRequest request) {
 		
@@ -195,4 +288,5 @@ public class CheckRegistrationController {
 	        
 		return countries;		
 	}
+	
 }

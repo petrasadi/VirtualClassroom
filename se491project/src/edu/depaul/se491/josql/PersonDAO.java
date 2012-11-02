@@ -151,9 +151,7 @@ public class PersonDAO implements IPersonDAO {
             personFound.setEmail((String)pEntity.getProperty("email"));
             personFound.setOpenid((String)pEntity.getProperty("openid"));
             
-            System.out.println("**** in dao --->" +personFound.getFirstName());
-            System.out.println("**** in dao --->" +personFound.getEmail());
-            
+          
             idFilter = new FilterPredicate("person", FilterOperator.EQUAL,pEntity.getKey());
             Query role_tableQuery = new Query("Role").setFilter(idFilter);
     		pq = datastore.prepare(role_tableQuery);		
@@ -445,7 +443,6 @@ public class PersonDAO implements IPersonDAO {
 	*
 	******************************************************************************/	  
     private Key createPerson(Person person) {
-    	System.out.println("******* creating person ******");
     	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     	Entity createPerson = new Entity("Person");
 

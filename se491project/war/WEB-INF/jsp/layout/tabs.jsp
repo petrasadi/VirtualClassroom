@@ -137,7 +137,7 @@
 
 <div id="account" class="submenustyle">
 <a href="/displayUserInformationPage.do">User Account</a>
-<a href="#">Edit</a>
+<a href="/editUserInformationPage.do"">Edit</a>
 </div>
 
 
