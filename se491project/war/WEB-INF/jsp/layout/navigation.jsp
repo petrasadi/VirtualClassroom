@@ -2,17 +2,13 @@
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ page import="edu.depaul.se491.model.Person"%>
-<%@ page import="edu.depaul.se491.model.Role"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%
 	UserService userService = UserServiceFactory.getUserService();
     Person vcUser = (Person)session.getAttribute("vcUser");
-    Role roles = null;
-    if(vcUser!= null){
-    	roles = vcUser.getRole();
-    }
+
     String tab = (String)session.getAttribute("tab");
-  	if (userService.isUserLoggedIn() && roles != null && tab != null) {
+  	if (userService.isUserLoggedIn() && vcUser != null && tab != null) {
 %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
