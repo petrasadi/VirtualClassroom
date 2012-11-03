@@ -82,7 +82,7 @@
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentmainpage.html" />
     </definition>
     
-      <definition name="displayErrorJavaExceptionPage" extends="base.definition">
+<!--       <definition name="displayErrorJavaExceptionPage" extends="base.definition">
         <put-attribute name="title" value="Error Page" />
         <put-attribute name="body" value="/WEB-INF/jsp/errors/errorjavaexception.html" />
     </definition> 
@@ -90,7 +90,7 @@
     <definition name="displayError404Page" extends="base.definition">
         <put-attribute name="title" value="Error 404 Page" />
         <put-attribute name="body" value="/WEB-INF/jsp/errors/error404.html" />
-    </definition>
+    </definition> -->
     
     <definition name="editUserInformationPage" extends="base.definition">
         <put-attribute name="title" value="Edit User Information" />

@@ -22,10 +22,12 @@ import edu.depaul.se491.formBeans.CreateClassFormBean;
 import edu.depaul.se491.josql.CategoryDAO;
 import edu.depaul.se491.josql.ClassesDAO;
 import edu.depaul.se491.josql.ClassesException;
+import edu.depaul.se491.josql.ICategoryDAO;
 import edu.depaul.se491.josql.IClassesDAO;
 import edu.depaul.se491.josql.IPersonDAO;
 import edu.depaul.se491.josql.PersonDAO;
 import edu.depaul.se491.josql.PersonException;
+import edu.depaul.se491.model.Category;
 import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
 
@@ -46,6 +48,10 @@ public class CreateClassFormController {
 		Classes clazz = new Classes();
 		IClassesDAO clazzDAO = new ClassesDAO();
 		Key clazzKey;
+		ICategoryDAO catDAO = new CategoryDAO();
+		Category category = new Category();
+		Key catKey;
+		
 		UserService userService = UserServiceFactory.getUserService();
 		IPersonDAO personDAO = new PersonDAO();
 		Person vcUser = null;
@@ -56,11 +62,13 @@ public class CreateClassFormController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
+		category.setName(formBean.getClassCategory());
+		catKey = catDAO.saveCategory(category);
 		
 		clazz.setTeacher(vcUser.getId());
 		clazz.setClassName(formBean.getClassTitle());
 		clazz.setDescription(formBean.getClassDescription());
+		clazz.setCategory(catKey);
 		clazz.setMinStudents(Integer.parseInt(formBean.getMinStudents()));
 		clazz.setMaxStudents(Integer.parseInt(formBean.getMaxStudents()));
 		
