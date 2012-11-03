@@ -18,10 +18,7 @@ public class TabViewController {
 		return new ModelAndView("displayAboutPage", "command", new Object()).addObject("tab", "home");
 	}
 	
-	@RequestMapping("/displayUserInformationPage")
-	public ModelAndView displayUserInformationPage(HttpServletRequest request) {
-		return new ModelAndView("displayUserInformationPage", "command", new Object()).addObject("tab", "userinformation");
-	}
+	
 	
 	@RequestMapping("/displayAboutPage")
 	public ModelAndView displayAboutPage(HttpServletRequest request) {

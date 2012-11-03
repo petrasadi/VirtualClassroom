@@ -1,9 +1,9 @@
 package edu.depaul.se491.formBeans;
 
 import javax.validation.constraints.Pattern;
-
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
+import com.google.appengine.api.datastore.Key;
 
 public class UserRegistrationFormBean {
 
@@ -38,6 +38,15 @@ public class UserRegistrationFormBean {
 	
 	private boolean teacher;
 	private boolean student;
+	private Key id;
+
+	public Key getId() {
+		return id;
+	}
+
+	public void setId(Key id) {
+		this.id = id;
+	}
 
 	public boolean isTeacher() {
 		return teacher;
@@ -158,5 +167,5 @@ public class UserRegistrationFormBean {
 	public void setPhone2(String phone2) {
 		this.phone2 = phone2;
 	}
-
+	
 }

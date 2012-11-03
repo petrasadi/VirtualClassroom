@@ -17,7 +17,6 @@ import edu.depaul.se491.josql.PersonException;
 import edu.depaul.se491.model.Category;
 import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
-import edu.depaul.se491.model.Role;
 
 @SuppressWarnings("serial")
 public class Se491_vcProjServlet extends HttpServlet {
@@ -40,13 +39,9 @@ public class Se491_vcProjServlet extends HttpServlet {
 		person.setPhone2(req.getParameter("phone2"));
 		person.setCreated(new Date());
 		person.setOpenid("bljbaljdljlfjslajf");
-		
-		Role role = new Role();
-		role.setAdminActive(true);
-		role.setStudentActive(false);
-		role.setTeacherActive(true);
-		
-		person.setRole(role);
+		person.setStudent(true);
+		person.setTeacher(true);
+	
 		
 		Category category = new Category();
 		category.setName("Computer Information Systems");

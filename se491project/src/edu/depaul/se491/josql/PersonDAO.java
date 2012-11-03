@@ -17,7 +17,6 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 
 import edu.depaul.se491.model.Person;
-import edu.depaul.se491.model.Role;
 
 /**
  * {@literal}
@@ -150,41 +149,23 @@ public class PersonDAO implements IPersonDAO {
             personFound.setPhone2((String)pEntity.getProperty("phone2"));
             personFound.setEmail((String)pEntity.getProperty("email"));
             personFound.setOpenid((String)pEntity.getProperty("openid"));
-            
-            System.out.println("**** in dao --->" +personFound.getFirstName());
-            System.out.println("**** in dao --->" +personFound.getEmail());
-            
-            idFilter = new FilterPredicate("person", FilterOperator.EQUAL,pEntity.getKey());
-            Query role_tableQuery = new Query("Role").setFilter(idFilter);
-    		pq = datastore.prepare(role_tableQuery);		
-    		Entity pEntity2 = pq.asSingleEntity();
-    
-    		if (pEntity2 != null && pEntity.getKey() != null){
-    			Role role = new Role();
-    			if((Boolean)pEntity2.getProperty("teacher") != null){
-    				role.setTeacherActive((Boolean)pEntity2.getProperty("teacher"));
-    			}else{
-    				role.setTeacherActive(false);
-    			}
-    			if((Boolean)pEntity2.getProperty("student") != null){
-    				role.setStudentActive((Boolean)pEntity2.getProperty("student"));
-    			}else{
-    				role.setStudentActive(false);
-    			}
-    			if((Boolean)pEntity2.getProperty("admin") != null){
-    				role.setAdminActive((Boolean)pEntity2.getProperty("admin"));
-    			}else{
-    				role.setAdminActive(false);
-    			}
-    			personFound.setRole(role);
-    		}else{
-    			Role role = new Role();
-    			role.setAdminActive(false);
-    			role.setStudentActive(false);
-    			role.setTeacherActive(false);
-    			personFound.setRole(new Role());
-    		}    		
-    	} 
+            if(pEntity.getProperty("teacher") != null){
+            	 personFound.setTeacher((Boolean) pEntity.getProperty("teacher"));
+            }else{
+            	personFound.setTeacher(false);
+            }
+            if(pEntity.getProperty("student") != null){
+            	personFound.setStudent((Boolean) pEntity.getProperty("student"));
+           }else{
+           	personFound.setTeacher(false);
+           }
+            if(pEntity.getProperty("admin") != null){
+            	personFound.setAdmin((Boolean) pEntity.getProperty("admin"));
+           }else{
+        	   personFound.setAdmin(false);
+           }
+           personFound.setAdmin((Boolean) pEntity.getProperty("admin"));
+     	} 
 
 		return personFound;      
 	}	
@@ -223,6 +204,8 @@ public class PersonDAO implements IPersonDAO {
 	*
 	******************************************************************************/	
     public Key savePerson(Person person) throws PersonException {
+    	Key keyId = person.getId();
+   	
     	if(person.getId() == null){
     		return createPerson(person);
     	}
@@ -232,14 +215,12 @@ public class PersonDAO implements IPersonDAO {
 		PreparedQuery pq = datastore.prepare(person_tableQuery);		
 		Entity pEntity = pq.asSingleEntity();
         PersistenceManager pm = PersistenceManagerService.get().getPersistenceManager();
-
     	if ((person.getId() != null) && (pEntity != null && pEntity.getKey() != null)){
-    		Key keyId = person.getId();
-    		Person personFound = pm.getObjectById(Person.class, keyId);										
+    		keyId = person.getId();
+    		Person personFound = pm.getObjectById(Person.class, keyId);
     		if (personFound != null) {
     			updatePerson(personFound);
     		}
-    		
     		return personFound.getId();
     	} else {
        		return createPerson(person);
@@ -445,7 +426,6 @@ public class PersonDAO implements IPersonDAO {
 	*
 	******************************************************************************/	  
     private Key createPerson(Person person) {
-    	System.out.println("******* creating person ******");
     	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     	Entity createPerson = new Entity("Person");
 
@@ -463,6 +443,9 @@ public class PersonDAO implements IPersonDAO {
 		createPerson.setProperty("phone", person.getPhone());
 		createPerson.setProperty("phone2", person.getPhone2());
 		createPerson.setProperty("openid", person.getOpenid());
+		createPerson.setProperty("teacher", person.isTeacher());
+		createPerson.setProperty("student", person.isStudent());
+		createPerson.setProperty("admin", person.isAdmin());
 
         try {
         	datastore.put(createPerson);
@@ -503,4 +486,10 @@ public class PersonDAO implements IPersonDAO {
         	}
 		}
     }
+    
+    
+    
 }
+
+
+

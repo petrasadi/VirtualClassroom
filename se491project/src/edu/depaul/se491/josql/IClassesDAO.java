@@ -24,6 +24,20 @@ public interface IClassesDAO {
 	public Iterable<Entity> getAllClasses() throws ClassesException;
 	
 	/**
+	 * @param teacher
+	 * @return Iterable<Entity>
+	 * @throws ClassesException
+	 */
+	public Iterable<Entity> getTeacherClasses(Key teacher) throws ClassesException;
+	
+	/**
+	 * @param student
+	 * @return Iterable<Entity>
+	 * @throws ClassesException
+	 */
+	public Iterable<Entity> getStudentClasses(Key student) throws ClassesException;
+	
+	/**
 	 * @return Iterable<Entity> get all Classes with Category
 	 */
 	public Iterable<Entity> getAllClassesByCategory(Key Category) throws ClassesException;
