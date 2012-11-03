@@ -1,5 +1,9 @@
 @CHARSET "ISO-8859-1";
 
+h1.header
+{
+	color:#003366;
+}
 ul
 {
     list-style-type: none;
@@ -14,13 +18,14 @@ ul.table li
 {
 	clear: both;
 	display: block;
+	align:left;
 }
 
 ul.table
 {
 	margin: 0;
 	padding: 0px;
-	text-align:left
+	text-align:left;
 }
 
 ul.menu
