@@ -46,6 +46,30 @@ public class DaoCmds {
 	}
 	
 	/**
+	 * @param openId
+	 * @return LinkedList<Classes>
+	 */
+	@SuppressWarnings("unchecked")
+	public static LinkedList<Classes> getTeacherClasses(String openId) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new GetTeacherClassesCmd(openId);
+		run.setCommand(cmd);
+		return (LinkedList<Classes>) run.getExecute();
+	}
+	
+	/**
+	 * @param openId
+	 * @return LinkedList<Classes>
+	 */
+	@SuppressWarnings("unchecked")
+	public static LinkedList<Classes> getStudentClasses(String openId) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new GetStudentClassesCmd(openId);
+		run.setCommand(cmd);
+		return (LinkedList<Classes>) run.getExecute();
+	}
+	
+	/**
 	 * Provides a linked list of the persons. This is nice because it does not provide a raw Entity.
 	 * @return LinkedList<Person>
 	 */
