@@ -82,7 +82,7 @@
 </ul>
 
 <div id="home" class="submenustyle">
-<a href="#">About</a>
+<a href="/displayAboutPage.do">About</a>
 </div>
 
 <%
