@@ -63,12 +63,19 @@ public class CreateClassFormController {
 			e1.printStackTrace();
 		}
 		category.setName(formBean.getClassCategory());
+		category.setDescription("to be written");
+		System.out.println("setCategoryName");
+		System.out.println("CategoryID: " + category.getId().toString());
+		catDAO.saveCategory(category);
 		catKey = catDAO.saveCategory(category);
+		System.out.println("saved Category");
 		
 		clazz.setTeacher(vcUser.getId());
 		clazz.setClassName(formBean.getClassTitle());
 		clazz.setDescription(formBean.getClassDescription());
+		System.out.println("setting class Category");
 		clazz.setCategory(catKey);
+		System.out.println("class Category set");
 		clazz.setMinStudents(Integer.parseInt(formBean.getMinStudents()));
 		clazz.setMaxStudents(Integer.parseInt(formBean.getMaxStudents()));
 		
