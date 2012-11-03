@@ -1,5 +1,17 @@
 package edu.depaul.se491.opentok;
 
+/** 
+ * 
+ * Used as a placeholder for the session info of a specific user 
+ * for a specific class
+ * 
+ * apiKey - unique for the application
+ * sessionId - unique for a class
+ * token - unique for a user in a class
+ * 
+ * @author petrasadi
+ * 
+ */
 class OpenTokSessionInfo {
 	private int apiKey;
 	private String sessionId;
