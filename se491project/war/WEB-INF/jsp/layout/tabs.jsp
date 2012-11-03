@@ -96,9 +96,8 @@
 
 <div id="teacher" class="submenustyle">
 <a href="/displayCreateClassPage.do">Create Class</a>
-<a href="/displayListClassesPage.do">Scheduled Classes</a>
+<a href="/displayTeacherListCurrentClasses.do">Scheduled Classes</a>
 <a href="#">Completed Classes</a>
-<a href="/displayViewClassPage.do">View Class</a>
 </div>
 
 <% 

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="edu.depaul.se491.model.Person"%>
-
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 
 
 <Table>
@@ -59,24 +59,20 @@
 	<tr>
 		<td>Signed up as a Student</td>
 		<td>
-		     <% 
-		     Person vcUser = (Person)session.getAttribute("vcUser");
-		   		     
-		     if(vcUser.isStudent()){  %>
-				Yes
-			 <% }else{  %>			
-				No
-			 <% }  %>
+		   <c:choose>
+               <c:when test="${sessionScope.vcUser.student}">Yes </c:when>
+        	   <c:otherwise>No  </c:otherwise>    
+            </c:choose>		   
 	    </td>
 	</tr>
 	<tr>
 		<td>Signed up as a Teacher</td>
-		<td> <% 		 	     
-		     if(vcUser.isTeacher()){  %>
-				Yes
-			 <% }else{  %>			
-				No
-			 <% }  %>
+		<td> 
+			 <c:choose>
+               <c:when test="${sessionScope.vcUser.teacher}">Yes </c:when>
+        	   <c:otherwise>No  </c:otherwise>    
+            </c:choose>	
+	
 		</td>
 	</tr>
 </Table>

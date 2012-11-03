@@ -95,6 +95,11 @@
     <definition name="editUserInformationPage" extends="base.definition">
         <put-attribute name="title" value="Edit User Information" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/useredit.jsp" />
+    </definition> 
+    
+    <definition name="displayTeacherListCurrentClasses" extends="base.definition">
+        <put-attribute name="title" value="Edit User Information" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherlistcurrentclasses.jsp" />
     </definition>
  
 </tiles-definitions>

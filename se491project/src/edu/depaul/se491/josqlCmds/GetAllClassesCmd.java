@@ -37,8 +37,8 @@ class GetAllClassesCmd implements IDaoCommands {
 					cl.setClassStartTime((Date) e.getProperty("classstarttime"));
 					cl.setClassName((String) e.getProperty("className"));
 					cl.setDescription((String) e.getProperty("description"));
-					cl.setMaxStudents(((Integer) e.getProperty("maxstudents")).intValue());
-					cl.setMinStudents(((Integer) e.getProperty("minstudents")).intValue());
+					cl.setMaxStudents(((Long) e.getProperty("maxstudents")).intValue());
+					cl.setMinStudents(((Long) e.getProperty("minstudents")).intValue());
 					cl.setOpenTokId(((Long) e.getProperty("opentokid")).longValue());
 					cl.setTeacher((Key) e.getProperty("teacher"));
 					cl.setStudents((List<Key>) e.getProperty("students"));
