@@ -51,6 +51,44 @@ public class ClassesDAO implements IClassesDAO {
 	/*******************************************************************************
 	*
 	*   {@literal}
+	*    getTeacherClasses - gets all classes with teacher
+	*
+	*   {@param} void
+	*
+	*   {@return} Iterable<Entity> - the retrieved list
+	*
+	******************************************************************************/
+	public Iterable<Entity> getTeacherClasses(Key teacher) throws ClassesException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter classesFilter = new FilterPredicate("teacher", FilterOperator.EQUAL, teacher);
+		Query classesByTeacherQuery = new Query("Classes").setFilter(classesFilter);
+		
+		PreparedQuery pq = datastore.prepare(classesByTeacherQuery);
+		return pq.asIterable();
+	}
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
+	*    getStudentClasses - gets all classes with student
+	*
+	*   {@param} void
+	*
+	*   {@return} Iterable<Entity> - the retrieved list
+	*
+	******************************************************************************/
+	public Iterable<Entity> getStudentClasses(Key student) throws ClassesException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter classesFilter = new FilterPredicate("students", FilterOperator.IN, student);
+		Query classesByStudentQuery = new Query("Classes").setFilter(classesFilter);
+		
+		PreparedQuery pq = datastore.prepare(classesByStudentQuery);
+		return pq.asIterable();
+	}
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
 	*    getOpenTokId - gets open tok id
 	*
 	*   {@param} Key classes
