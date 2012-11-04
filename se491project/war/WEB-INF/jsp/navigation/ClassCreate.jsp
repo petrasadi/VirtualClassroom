@@ -12,23 +12,27 @@
 <title>Create Class</title>
 <link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/zurbFoundationCustom.css" />
 </head>
 <body>
 	<div class="container_9">
 	<div class="grid_9"><h1>Create a Class</h1></div>
-	<form:form action="/classCreate.do" method="post">
+	<form:form action="/classCreate.do" method="post" commandName="createClassFormBean">
+	       <form:errors path="*" >
+        	<div class="error" >Please correct the registration errors and resubmit the form.</div>
+        </form:errors>
       <ul class=table> 
    		
    			<li>
    				<div class="grid_3">
    					<form:label path="classTitle">Class Title</form:label>
    					<form:input path="classTitle" />
+   					<form:errors path="classTitle" cssClass="error" />
    				</div>
    				
    				<div class="grid_3">
    					<form:label path="classDescription">Class Description</form:label>
-   					<form:input path="classDescription" />
+   					<form:textarea path="classDescription" />
+   					<form:errors path="classDescription" cssClass="error" />
    				</div>
    				
    			</li>  

@@ -68,9 +68,14 @@
 	border-right: 1px dashed black;
 	padding: 1px 5px;
 	text-decoration: none;
-	color: #667;
+	color: #003366;
 }
 
 .submenustyle a:hover {
 	color: #B88A00;
+}
+
+a
+{
+	text-rendering: optimizeLegibility;
 }

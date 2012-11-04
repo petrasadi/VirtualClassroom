@@ -5,9 +5,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Validator;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,11 +40,27 @@ import edu.depaul.se491.model.Person;
 @SessionAttributes
 public class CreateClassFormController {
 	
+/*	@Autowired
+    private Validator validator;
+    
+    public void setValidator(Validator validator) {
+        this.validator = validator;
+    }*/
+	
 	@RequestMapping(value = "/classCreate", method = RequestMethod.POST)
-    public ModelAndView addContact(@ModelAttribute("CreateClassFormBean")
-    		CreateClassFormBean formBean, BindingResult result) 
+    public ModelAndView classCreate(@Valid CreateClassFormBean createClassFormBean, BindingResult result, HttpServletRequest request) 
 	{
-         
+		ModelAndView view = new ModelAndView();
+		//validator.validate(createClassFormBean, result);
+        if (result.hasErrors()) 
+        { 
+        	System.out.println("Found Form Errors");
+        	view.setViewName("displayCreateClassPage");
+        	view.addObject("createClassFormBean", createClassFormBean);
+    		view.addObject("tab", "teacher");
+        	return view;
+        } 
+		
 		DateFormat dateFmt;
 		String classStartStr, classEndStr;
 		Date classStartDate = null; 
@@ -62,26 +83,26 @@ public class CreateClassFormController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		category.setName(formBean.getClassCategory());
+		/*category.setName(formBean.getClassCategory());
 		category.setDescription("to be written");
 		System.out.println("setCategoryName");
 		System.out.println("CategoryID: " + category.getId().toString());
 		catDAO.saveCategory(category);
 		catKey = catDAO.saveCategory(category);
-		System.out.println("saved Category");
+		System.out.println("saved Category");*/
 		
 		clazz.setTeacher(vcUser.getId());
-		clazz.setClassName(formBean.getClassTitle());
-		clazz.setDescription(formBean.getClassDescription());
-		System.out.println("setting class Category");
+		clazz.setClassName(createClassFormBean.getClassTitle());
+		clazz.setDescription(createClassFormBean.getClassDescription());
+/*		System.out.println("setting class Category");
 		clazz.setCategory(catKey);
-		System.out.println("class Category set");
-		clazz.setMinStudents(Integer.parseInt(formBean.getMinStudents()));
-		clazz.setMaxStudents(Integer.parseInt(formBean.getMaxStudents()));
+		System.out.println("class Category set");*/
+		clazz.setMinStudents(Integer.parseInt(createClassFormBean.getMinStudents()));
+		clazz.setMaxStudents(Integer.parseInt(createClassFormBean.getMaxStudents()));
 		
 		dateFmt = new SimpleDateFormat("MM/dd/yyyy HH:mm aaa");
-		classStartStr = formBean.getClassDate() + " " + formBean.getClassStartTime();
-		classEndStr = formBean.getClassDate() + " " + formBean.getClassEndTime();
+		classStartStr = createClassFormBean.getClassDate() + " " + createClassFormBean.getClassStartTime();
+		classEndStr = createClassFormBean.getClassDate() + " " + createClassFormBean.getClassEndTime();
 		try 
 		{
 			classStartDate = dateFmt.parse(classStartStr);
@@ -103,10 +124,10 @@ public class CreateClassFormController {
 			e.printStackTrace();
 		}
 		
-		ModelAndView view = new ModelAndView();
+		view = new ModelAndView();
 		view.setViewName("displayClassCreatedPage");
 		view.addObject("tab", "teacher");
-	    return view;
+		return view;
     }
 
 }

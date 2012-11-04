@@ -1,11 +1,15 @@
 package edu.depaul.se491.formBeans;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 public class CreateClassFormBean {
 	
+	@NotBlank
 	private String classTitle;
 	private String minStudents;
 	private String maxStudents;
 	private String classDate;
+	@NotBlank
 	private String classDescription;
 	private String classCategory;
 	private String classLevel;
