@@ -9,7 +9,7 @@ function endOpenTokSession() {
 
 function getSessionInfo(userOpenId) {
 	//TODO - read classId from request params
-	var classOpenTokId = 123;
+	var classOpenTokId = 0;
 	$.post('opentok', {classId: classOpenTokId, user: userOpenId} ,
 		function (data) {
 			handleOpenTok(data);
@@ -62,7 +62,7 @@ function handleOpenTok(data){
 			$('#subscribers').append(div);
 			                   
 			// Subscribe to the stream
-			var subscribeProps = {width:480, height:270};
+			var subscribeProps = {width:400, height:225};
 			session.subscribe(streams[i], div.id, subscribeProps);
 
 			//$('#myPublisherDiv').hide();
