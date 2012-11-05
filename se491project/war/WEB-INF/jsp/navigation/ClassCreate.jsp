@@ -7,7 +7,8 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/error.css" />
-<script type="text/javascript" src="/javascript/datetimepicker.js" ></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/datepicker.css" />
+<script type="text/javascript" src="/javascript/datepicker.js" ></script>
 
 
 	<div class="container_9">
@@ -23,13 +24,13 @@
 			<li>
 				<div class="grid_3">
 					<form:label path="classTitle">Class Title</form:label>
-					<form:input path="classTitle" />
+					<form:input path="classTitle" /><br />
 					<form:errors path="classTitle" cssClass="error" />
 				</div>
 				
 						<div class="grid_3">
    					<form:label path="classDescription">Class Description</form:label>
-   					<form:textarea path="classDescription" />
+   					<form:textarea path="classDescription" /><br />
    					<form:errors path="classDescription" cssClass="error" />
    				</div>
    				
@@ -38,7 +39,7 @@
    			<li>
    				<div class="grid_3">
    					<form:label path="classCategory">Class Category</form:label>
-   					<form:input path="classCategory" />
+   					<form:input path="classCategory" /><br />
    					<form:errors path="classCategory" cssClass="error" />
    				</div>
    				<div class="grid_3">
@@ -63,29 +64,29 @@
    			<li>
    				<div class="grid_3">
    					<form:label path="minStudents">Minimum Class Size:</form:label>
-   					<form:input path="minStudents" />
+   					<form:input path="minStudents" maxlength="3" size="3" /><br />
    					<form:errors path="minStudents" cssClass="error" />
    				</div>
    				<div class="grid_3">
    					<form:label path="maxStudents">Maximum Class Size:</form:label>
-   					<form:input path="maxStudents" />
+   					<form:input path="maxStudents" maxlength="3" size="3" /><br />
    					<form:errors path="maxStudents" cssClass="error" />
    				</div>
    			</li>
    			<li>
    				<div class="grid_3">
-   					<form:label path="classDate">Class Date</form:label>
-   					<form:input readonly="true" path="classDate" /><a href="javascript:NewCal('classDate','mmddyyyy',true,12)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+   					<form:label path="classDate">Class Date</form:label>   					
+   					<form:input readonly="true" path="classDate" /><a href="javascript:displayDatePicker('classDate')"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a><br />
    					<form:errors path="classDate" cssClass="error" />
    				</div>
    				<div class="grid_3">
    					<form:label path="classStartTime">Class Start Time</form:label>
-   					<form:input path="classStartTime" />
+   					<form:input path="classStartTime" /><br />
    					<form:errors path="classStartTime" cssClass="error" />
    				</div>
    				<div class="grid_3">
    					<form:label path="classEndTime">Class End Time</form:label>
-   					<form:input path="classEndTime" />
+   					<form:input path="classEndTime" /><br />
    					<form:errors path="classEndTime" cssClass="error" />
    				</div>
    			</li>
