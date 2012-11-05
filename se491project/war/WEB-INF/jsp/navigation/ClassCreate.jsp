@@ -75,7 +75,7 @@
    			<li>
    				<div class="grid_3">
    					<form:label path="classDate">Class Date</form:label>
-   					<form:input readonly="true" path="classDate" /><a href="javascript:NewCal('classDate','MMddyyyy HH:mm aaa',true,12)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+   					<form:input readonly="true" path="classDate" /><a href="javascript:NewCal('classDate','mmddyyyy',true,12)"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
    					<form:errors path="classDate" cssClass="error" />
    				</div>
    				<div class="grid_3">
