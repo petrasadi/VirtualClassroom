@@ -16,12 +16,6 @@ public class NavigationViewController extends AbstractController{
 
 
 
-	@RequestMapping("/displayCreateClassPage")
-	public ModelAndView displayCreateClassPage() {
-		return new ModelAndView("displayCreateClassPage", "command",
-				new CreateClassFormBean()).addObject("tab", "teacher");
-	}
-
 	@RequestMapping("/displayListClassesPage")
 	public ModelAndView displayListClassesPage() {
 

@@ -40,94 +40,101 @@ import edu.depaul.se491.model.Person;
 @SessionAttributes
 public class CreateClassFormController {
 	
-/*	@Autowired
-    private Validator validator;
-    
-    public void setValidator(Validator validator) {
-        this.validator = validator;
-    }*/
-	
+
 	@RequestMapping(value = "/classCreate", method = RequestMethod.POST)
-    public ModelAndView classCreate(@Valid CreateClassFormBean createClassFormBean, BindingResult result, HttpServletRequest request) 
-	{
+	public ModelAndView classCreate(
+			@Valid CreateClassFormBean createClassFormBean,
+			BindingResult result, HttpServletRequest request) {
+
 		ModelAndView view = new ModelAndView();
-		//validator.validate(createClassFormBean, result);
-        if (result.hasErrors()) 
-        { 
-        	System.out.println("Found Form Errors");
-        	view.setViewName("displayCreateClassPage");
-        	view.addObject("createClassFormBean", createClassFormBean);
-    		view.addObject("tab", "teacher");
-        	return view;
-        } 
-		
+		// validator.validate(createClassFormBean, result);
+		if (result.hasErrors()) {
+			view.setViewName("displayCreateClassPage");
+			view.addObject("createClassFormBean", createClassFormBean);
+			view.addObject("tab", "teacher");
+			return view;
+		}
+
 		DateFormat dateFmt;
 		String classStartStr, classEndStr;
-		Date classStartDate = null; 
+		Date classStartDate = null;
 		Date classEndDate = null;
-		
+
 		Classes clazz = new Classes();
 		IClassesDAO clazzDAO = new ClassesDAO();
 		Key clazzKey;
 		ICategoryDAO catDAO = new CategoryDAO();
 		Category category = new Category();
 		Key catKey;
-		
+
 		UserService userService = UserServiceFactory.getUserService();
 		IPersonDAO personDAO = new PersonDAO();
 		Person vcUser = null;
-		
+
 		try {
-			vcUser = personDAO.getPersonByOpenId(userService.getCurrentUser().getUserId());
+			vcUser = personDAO.getPersonByOpenId(userService.getCurrentUser()
+					.getUserId());
 		} catch (PersonException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		/*category.setName(formBean.getClassCategory());
-		category.setDescription("to be written");
-		System.out.println("setCategoryName");
-		System.out.println("CategoryID: " + category.getId().toString());
-		catDAO.saveCategory(category);
-		catKey = catDAO.saveCategory(category);
-		System.out.println("saved Category");*/
-		
+		/*
+		 * category.setName(formBean.getClassCategory());
+		 * category.setDescription("to be written");
+		 * System.out.println("setCategoryName");
+		 * System.out.println("CategoryID: " + category.getId().toString());
+		 * catDAO.saveCategory(category); catKey =
+		 * catDAO.saveCategory(category); System.out.println("saved Category");
+		 */
+
 		clazz.setTeacher(vcUser.getId());
 		clazz.setClassName(createClassFormBean.getClassTitle());
 		clazz.setDescription(createClassFormBean.getClassDescription());
-/*		System.out.println("setting class Category");
-		clazz.setCategory(catKey);
-		System.out.println("class Category set");*/
-		clazz.setMinStudents(Integer.parseInt(createClassFormBean.getMinStudents()));
-		clazz.setMaxStudents(Integer.parseInt(createClassFormBean.getMaxStudents()));
-		
+		/*
+		 * System.out.println("setting class Category");
+		 * clazz.setCategory(catKey); System.out.println("class Category set");
+		 */
+		clazz.setMinStudents(Integer.parseInt(createClassFormBean
+				.getMinStudents()));
+		clazz.setMaxStudents(Integer.parseInt(createClassFormBean
+				.getMaxStudents()));
+
 		dateFmt = new SimpleDateFormat("MM/dd/yyyy HH:mm aaa");
-		classStartStr = createClassFormBean.getClassDate() + " " + createClassFormBean.getClassStartTime();
-		classEndStr = createClassFormBean.getClassDate() + " " + createClassFormBean.getClassEndTime();
-		try 
-		{
+		classStartStr = createClassFormBean.getClassDate();
+		classEndStr = createClassFormBean.getClassDate();
+		try {
 			classStartDate = dateFmt.parse(classStartStr);
 			classEndDate = dateFmt.parse(classEndStr);
-		} catch (ParseException e) 
-		{
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
+
 		clazz.setClassStartTime(classStartDate);
 		clazz.setClassEndTime(classEndDate);
-		try 
-		{
+		try {
 			clazzKey = clazzDAO.saveClasses(clazz);
-		} catch (ClassesException e) 
-		{
+		} catch (ClassesException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		view = new ModelAndView();
 		view.setViewName("displayClassCreatedPage");
 		view.addObject("tab", "teacher");
 		return view;
-    }
+	}
+	
+	@RequestMapping("/displayCreateClassPage")
+	public ModelAndView displayCreateClassPage() {
+		ModelAndView view = new ModelAndView();
+
+		CreateClassFormBean createClassFormBean = new CreateClassFormBean();
+		createClassFormBean.setClassLevel("beginner");
+		view.setViewName("displayCreateClassPage");
+		view.addObject("tab", "teacher");
+		view.addObject("createClassFormBean", createClassFormBean);
+		return view;
+	}
 
 }

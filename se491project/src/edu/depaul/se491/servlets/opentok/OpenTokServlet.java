@@ -27,7 +27,7 @@ public class OpenTokServlet extends HttpServlet {
 					throws ServletException, IOException {
 		doStuff(request, response);
 	}
-	
+
 
 	protected void doStuff(HttpServletRequest request, 
 			HttpServletResponse response) 

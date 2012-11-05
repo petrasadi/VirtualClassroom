@@ -39,6 +39,16 @@ public class TabViewController {
 	public ModelAndView displayLoginPage(HttpServletRequest request) {
 		return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
 	}
+	
+	@RequestMapping("/displayErrorJavaExceptionPage")
+	public ModelAndView displayErrorJavaExceptionPage(HttpServletRequest request) {
+		return new ModelAndView("displayErrorJavaExceptionPage", "command", new Object()).addObject("tab", "home");
+	}
+	
+	@RequestMapping("/displayError404Page")
+	public ModelAndView displayError404Page(HttpServletRequest request) {
+		return new ModelAndView("displayError404Page", "command", new Object()).addObject("tab", "home");
+	}
 
 
 }

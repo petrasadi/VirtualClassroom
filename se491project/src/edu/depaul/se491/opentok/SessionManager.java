@@ -15,7 +15,7 @@ import edu.depaul.se491.josqlCmds.DaoCmds;
  */
 public class SessionManager {
 	Map<Long, String> sessionData = new ConcurrentHashMap<Long, String>();
-	
+
 	/**
 	 * Gets or generates the session info for a particular user
 	 * in a particular class
@@ -32,20 +32,20 @@ public class SessionManager {
 		} else {
 			sessionId = generateOpenTokSessionId();
 			sessionData.put(classId, sessionId);
-			
+
 			userToken = generateOpenTokUserToken(sessionId, classId, userOpenId);
 		}
-		
+
 		OpenTokSessionInfo sessionInfo = new OpenTokSessionInfo();
 		sessionInfo.setApiKey(OpenTok_API_Consts.API_KEY);
 		sessionInfo.setSessionId(sessionId);
 		sessionInfo.setToken(userToken);
-		
+
 		String gson = new Gson().toJson(sessionInfo);
 		return gson;
 	}
-	
-	
+
+
 	/**
 	 * Generates an OpenTok session id. Used as a box for a particular class  
 	 * @return the session id
@@ -61,7 +61,7 @@ public class SessionManager {
 		}
 		return sessionId;
 	}
-	
+
 	/**
 	 * Generates an OpenTok token. Used to identify a particular user in a particular class session
 	 * @param sessionId - the session to be joined
@@ -80,8 +80,8 @@ public class SessionManager {
 		}
 		return token;
 	}
-	
-	
+
+
 	/**
 	 * Returns the role of the OpenTok user based on the role in class (teacher, student).
 	 * The if not student or teacher returns a default subscriber
