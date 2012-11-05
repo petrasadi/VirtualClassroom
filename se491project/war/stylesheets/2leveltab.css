@@ -18,10 +18,10 @@
 	text-decoration: none;
 	padding: 3px 0.5em;
 	margin-left: 3px;
-	border: 1px solid #667;
+	border: 1px solid #006699;
 	border-bottom: none;
-	background: #AAE;
-	color: #000;
+	background: #f2f2f2;
+	color: #006699;
 }
 
 .basictab li a:visited {
@@ -29,7 +29,7 @@
 }
 
 .basictab li a:hover {
-	color: #B88A00;
+	color: #009966;
 }
 
 .basictab li a:active {
@@ -40,8 +40,8 @@
 	position: relative;
 	top: 1px;
 	padding-top: 4px;
-	background: #DDE;
-	border-bottom: 1px solid #DDE;
+	background: #66CCCC;
+	border-bottom: 1px solid #006699;
 }
 
 .basictab li.notselected a {
@@ -57,7 +57,7 @@
 	display: none;
 	filter: alpha(opacity = 0);
 	-moz-opacity: 0;
-	background: #DDE;
+	background: #66CCCC;
 }
 
 * html .submenustyle { 
@@ -68,9 +68,14 @@
 	border-right: 1px dashed black;
 	padding: 1px 5px;
 	text-decoration: none;
-	color: #667;
+	color: #003366;
 }
 
 .submenustyle a:hover {
 	color: #B88A00;
+}
+
+a
+{
+	text-rendering: optimizeLegibility;
 }

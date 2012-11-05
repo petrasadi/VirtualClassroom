@@ -240,8 +240,6 @@ public class UserController {
 	}
 	
 	
-	
-	
 	private Map  <String, String> createCountryMap(){
 		
 		Map<String,String> countries = new LinkedHashMap<String,String>();
