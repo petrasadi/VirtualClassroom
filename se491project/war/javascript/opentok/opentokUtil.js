@@ -1,3 +1,5 @@
+var session;
+
 function handleOpenTok(data){
 	var apiKey = data.apiKey;
 	var sessionId = data.sessionId;
@@ -7,9 +9,10 @@ function handleOpenTok(data){
 	//TODO - this should change in production
 	TB.setLogLevel(TB.DEBUG);
 
-	var session = TB.initSession(sessionId);      
+	session = TB.initSession(sessionId);      
 	session.addEventListener('sessionConnected', sessionConnectedHandler);
 	session.addEventListener('streamCreated', streamCreatedHandler);
+	session.addEventListener("signalReceived", raiseHandHandler);
 	session.connect(apiKey, token);
 
 	var publisher;
@@ -56,9 +59,18 @@ function handleOpenTok(data){
 			}
 		}
 	}
+	
+	//TODO - fix raiseHand event
+	function raiseHandHandler(event){
+		alert("hand raised");
+	}
 
 	function accessAllowedHandler(event){
 		//make the publisher img invisible after receiving access
 		$("#myPublisherDiv").addClass("invisible");
 	}
+}
+
+function raisehand(){
+	session.signal();
 }

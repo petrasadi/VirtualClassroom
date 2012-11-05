@@ -18,7 +18,22 @@
 	<div id="conferenceContainer">
 		<div id="myPublisherDiv"></div>
 		<div id="subscribers"></div>
+		
+		<div id="speakRequest"></div>
+		
+		<div id="userDashboard">
+			<div id="teacherDashboard" style="display: none;">
+				<!-- TODO - create teacher dashboard -->
+			</div>
+			<div id="studentDashboard" style="display: none;">
+				<a href="" onclick="raisehand()">
+					<img src="images/opentok/raiseHand.png" alt="raise hand" title="raise hand" />
+				</a>
+			</div>
+		</div>
 	</div>
 	<div id="myDiv">
+		<!-- 
 		<button type="button" onclick="endOpenTokSession()">Close session</button>
+		-->
 	</div>

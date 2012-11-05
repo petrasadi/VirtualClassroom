@@ -13,7 +13,15 @@ function getSessionInfo(userOpenId) {
 	$.post('opentok', {classId: classOpenTokId, user: userOpenId} ,
 		function (data) {
 			handleOpenTok(data);
+			setupChatFunctionality(data.role);
 		},
 		'json'
 	);
+}
+
+function setupChatFunctionality(userRole) {
+	if (userRole == 'student'){
+		$('#studentDashboard').show();
+	} else
+		$('#teacherDashboard').show();
 }
