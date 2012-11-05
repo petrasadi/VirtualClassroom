@@ -80,7 +80,8 @@ public class SessionManager {
 			if (userRole.equals("teacher"))
 				tokenRole = RoleConstants.MODERATOR;
 			else
-				tokenRole = RoleConstants.SUBSCRIBER;
+				//TODO - publisher role needed for raiseHand event- revise
+				tokenRole = RoleConstants.PUBLISHER;
 				
 			token = sdk.generate_token(sessionId, tokenRole, null);
 		} catch (OpenTokException e) {
