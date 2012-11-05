@@ -28,59 +28,59 @@
 			<li>
 				<div class="grid_3">
 					<form:label path="firstName">First Name</form:label>
-					<form:input path="firstName" />
+					<form:input path="firstName" /><br />
 					<form:errors path="firstName" cssClass="error" />
 				</div>
 				<div class="grid_3">
 					<form:label path="lastName">Last Name</form:label>
-					<form:input path="lastName" />
+					<form:input path="lastName" /><br />
 					<form:errors path="lastName" cssClass="error" />
 				</div>
 
 				<div class="grid_3">
 					<form:label path="middleName">Middle Name</form:label>
-					<form:input path="middleName" />
+					<form:input path="middleName" /><br />
 					<form:errors path="middleName" cssClass="error" />
 				</div>
 			</li>
 			<li>
 				<div class="grid_3">
 					<form:label path="phone">Phone</form:label>
-					<form:input path="phone" />
+					<form:input path="phone" /><br />
 					<form:errors path="phone" cssClass="error" />
 				</div>
 				
 				<div class="grid_3">
 					<form:label path="phone2">Phone 2</form:label>
-					<form:input path="phone2" />
+					<form:input path="phone2" /><br />
 					<form:errors path="phone2" cssClass="error" />
 				</div>
 			</li>
 			<li>
 				<div class="grid_3">
 					<form:label path="email">Email</form:label>
-					<form:input path="email" />
+					<form:input path="email" /><br />
 					<form:errors path="email" cssClass="error" />
 				</div>
 			</li>
 			<li>
 				<div class="grid_3">
 					<form:label path="address">Address</form:label>
-					<form:input path="address" />
+					<form:input path="address" /><br />
 					<form:errors path="address" cssClass="error" />
 				</div>
 			</li>
 			<li>
 				<div class="grid_3">
 					<form:label path="address2">Address 2</form:label>
-					<form:input path="address2" />
+					<form:input path="address2" /><br />
 					<form:errors path="address2" cssClass="error" />
 				</div>
 			</li>
 			<li>
 				<div class="grid_3">
 					<form:label path="city">City</form:label>
-					<form:input path="city" />
+					<form:input path="city" /><br />
 					<form:errors path="city" cssClass="error" />
 				</div>
 			
@@ -95,7 +95,7 @@
 				
 				<div class="grid_3">
 					<form:label path="zip">Zip</form:label>
-					<form:input path="zip" />
+					<form:input path="zip" /><br />
 					<form:errors path="zip" cssClass="error" />
 				</div>
 			</li>
@@ -105,24 +105,25 @@
 					<form:select path="country">
    						<form:option value="NONE" label="--- Select ---"/>
   						<form:options items="${countryList}" />
-					</form:select>
+					</form:select><br />
         			<form:errors path="country" cssClass="error" />
         		</div>
 			</li>
 			<li>
-				<div class="grid_3">
+			  		<div class="grid_3">
 					<form:label path="student">Sign up as a Student</form:label>
-					<form:checkbox path="student" value="student" />
+					<form:checkbox path="student" value="student" /><br />
 					<form:errors path="student" cssClass="error" />
 				</div>
 
 				<div class="grid_3">
 					<form:label path="teacher">Sign up as a Teacher</form:label>
-					<form:checkbox path="teacher" value="teacher" />
+					<form:checkbox path="teacher" value="teacher" /><br />
 					<form:errors path="teacher" cssClass="error" />
 				</div>
 			</li>
 			<li>
+			    <br />
 				<div class="grid_3 prefix_3"><input type="submit" value="Register" /></div>			
 			</li>
 
