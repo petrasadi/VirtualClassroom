@@ -16,6 +16,7 @@ class OpenTokSessionInfo {
 	private int apiKey;
 	private String sessionId;
 	private String token;
+	private String role;
 
 	int getApiKey() {
 		return apiKey;
@@ -39,6 +40,14 @@ class OpenTokSessionInfo {
 
 	void setToken(String token) {
 		this.token = token;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 	

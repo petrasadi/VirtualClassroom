@@ -26,20 +26,22 @@ public class SessionManager {
 	public String getSessionInfo(Long classId, String userOpenId){
 		String sessionId = "";
 		String userToken = "";
+		String userRole = getUserRole(classId, userOpenId);
 		if (sessionData.containsKey(classId)) {
 			sessionId = sessionData.get(classId);
-			userToken = generateOpenTokUserToken(sessionId, classId, userOpenId);
+			userToken = generateOpenTokUserToken(sessionId, classId, userOpenId, userRole);
 		} else {
 			sessionId = generateOpenTokSessionId();
 			sessionData.put(classId, sessionId);
 			
-			userToken = generateOpenTokUserToken(sessionId, classId, userOpenId);
+			userToken = generateOpenTokUserToken(sessionId, classId, userOpenId, userRole);
 		}
 		
 		OpenTokSessionInfo sessionInfo = new OpenTokSessionInfo();
 		sessionInfo.setApiKey(OpenTok_API_Consts.API_KEY);
 		sessionInfo.setSessionId(sessionId);
 		sessionInfo.setToken(userToken);
+		sessionInfo.setRole(userRole);
 		
 		String gson = new Gson().toJson(sessionInfo);
 		return gson;
@@ -65,22 +67,27 @@ public class SessionManager {
 	/**
 	 * Generates an OpenTok token. Used to identify a particular user in a particular class session
 	 * @param sessionId - the session to be joined
+	 * @param userRole 
 	 * @return the token
 	 */
-	private String generateOpenTokUserToken(String sessionId, Long classId, String userOpenId){
+	private String generateOpenTokUserToken(String sessionId, Long classId, String userOpenId, String userRole){
 		OpenTokSDK sdk = new OpenTokSDK(OpenTok_API_Consts.API_KEY, OpenTok_API_Consts.API_SECRET);
 		// Generate a token. Use the RoleConstants value appropriate for the user.
 		String token = null;
 		try {
 			//FIXME - user token expiration
-			String userRole = getUserRole(classId, userOpenId);
-			token = sdk.generate_token(sessionId, userRole, null);
+			String tokenRole = "";
+			if (userRole.equals("teacher"))
+				tokenRole = RoleConstants.MODERATOR;
+			else
+				tokenRole = RoleConstants.SUBSCRIBER;
+				
+			token = sdk.generate_token(sessionId, tokenRole, null);
 		} catch (OpenTokException e) {
 			e.printStackTrace();
 		}
 		return token;
 	}
-	
 	
 	/**
 	 * Returns the role of the OpenTok user based on the role in class (teacher, student).
@@ -91,10 +98,11 @@ public class SessionManager {
 	 */
 	private String getUserRole(Long classId, String userOpenId){
 		if (DaoCmds.isTeacher(userOpenId, classId)){
-			return RoleConstants.MODERATOR;
-		} else if (DaoCmds.isStudent(userOpenId, classId)){
-			return RoleConstants.PUBLISHER;
+			return "teacher";
+		//TODO - uncomment this once student registration works
+/*		} else if (DaoCmds.isStudent(userOpenId, classId)){
+			return RoleConstants.PUBLISHER;*/
 		} else
-			return RoleConstants.SUBSCRIBER;
+			return "student";
 	}
 }
