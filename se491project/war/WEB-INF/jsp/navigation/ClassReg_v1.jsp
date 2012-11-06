@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
+<%@ page import="com.google.appengine.api.users.UserService"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="edu.depaul.se491.model.Classes"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Register for Class</title>
@@ -87,15 +91,24 @@ $.extend($.expr[":"],
 		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Registration</th></tr></thead>
 			<tfoot><tr><td colspan="4"></tr></tfoot>
 			<tbody>
-			<% boolean row = true; %>
-			<c:forEach items="${classes}" var="class">
-			<% if(row) { %>
-				<tr><td><c:out value="${class.value[0]}" /></td><td><c:out value="${class.value[1]}" /></td><td><c:out value="${class.value[2]}" /></td><td><c:out value="${class.value[3]}" /></td><td><a href="#" class="classname" action="${class.value[4]}">${class.value[5]}</a></td></tr>
-			<% 	row = !row; 
-				} else { %>
-				<tr class="alt"><c:out value="${class.value[0]}" /></td><td><c:out value="${class.value[1]}" /></td><td><c:out value="${class.value[2]}" /></td><td><c:out value="${class.value[3]}" /></td><td><a href="#" class="classname" action="${class.value[4]}">${class.value[5]}</a></td></tr>
-			<% 	row = !row;} %>
-			</c:forEach>
+			<c:forEach var="class" items="${classes}" varStatus="rowCounter">
+        <c:choose>
+          <c:when test="${rowCounter.count % 2 == 0}">
+            <c:set var="rowStyle" scope="page" value=""/>
+          </c:when>
+          <c:otherwise>
+            <c:set var="rowStyle" scope="page" value="alt"/>
+          </c:otherwise>
+        </c:choose>
+        <tr class="${rowStyle}">
+          <td>${class.className}</td>
+          <td>${class.description}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td><a href="/displayViewClassPage.do">View Class</a></td>
+        </tr>
+      </c:forEach>
 			</tbody>
 		</table>
 	</div>

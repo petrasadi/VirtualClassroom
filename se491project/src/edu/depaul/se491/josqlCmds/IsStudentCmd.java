@@ -32,7 +32,7 @@ class IsStudentCmd implements IDaoCommands {
 		IPersonDAO person = new PersonDAO();
 		
 		try {
-			List<Key> t = (List<Key>) classes.getClassByOpenId(OpenTokId).getProperty("students");
+			List<Key> t = (List<Key>) classes.getClassById(OpenTokId).getProperty("students");
 			Key p = person.getPersonByOpenId(this.OpenId).getId();
 			if (t.contains(p)) {
 				return true;

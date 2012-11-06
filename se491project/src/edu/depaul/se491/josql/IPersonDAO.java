@@ -24,6 +24,13 @@ public interface IPersonDAO {
 	public Iterable<Entity> getAllPerson() throws PersonException;
 	
 	/**
+	 * @param id
+	 * @return Entity
+	 * @throws PersonException
+	 */
+	public Entity getPersonById(Key id) throws PersonException;
+	
+	/**
 	 * @return Iterable<Entity> get all person by LastName
 	 */
 	public Iterable<Entity> getPersonByLastName(String lastName) throws PersonException;

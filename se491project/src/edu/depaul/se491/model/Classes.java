@@ -1,5 +1,7 @@
 package edu.depaul.se491.model;
 
+import javax.jdo.annotations.IdGeneratorStrategy;
+import javax.jdo.annotations.Persistent;
 import javax.persistence.*;
 
 import com.google.appengine.api.datastore.Key;
@@ -26,9 +28,9 @@ public class Classes {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Key id;
+	private Key id; //also openTokId --> classes.getKey().getId();
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.TIMESTAMP) 
 	@Column(name = "classendtime")
 	private Date classendtime;
 
@@ -57,12 +59,12 @@ public class Classes {
 	@Column(name = "students")
 	private List<Key> students;
 	
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	/*@Persistent(valueStrategy = IdGeneratorStrategy.SEQUENCE)
 	@Column(name = "opentokid")
 	private long opentokid;
 	
 	@Column(name = "opentoktoken")
-	private String opentoktoken;
+	private String opentoktoken;*/
 
 	//bi-directional many-to-one association to Category
 	@ManyToOne
@@ -147,7 +149,7 @@ public class Classes {
 		this.students.add(student);
 	}
 	
-	public void setOpenTokId(long opentokid) {
+	/*public void setOpenTokId(long opentokid) {
 		this.opentokid = opentokid;
 	}
 	
@@ -161,7 +163,7 @@ public class Classes {
 	
 	public String getOpenTokToken() {
 		return this.opentoktoken;
-	}
+	}*/
 
 	public Key getCategory() {
 		return this.category;

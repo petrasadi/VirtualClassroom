@@ -53,6 +53,25 @@ public class PersonDAO implements IPersonDAO {
 	/*******************************************************************************
 	*
 	*   {@literal}
+	*    getPersonById
+	*
+	*   {@param} Key
+	*
+	*   {@return} Entity
+	*
+	******************************************************************************/
+	public Entity getPersonById(Key id) throws PersonException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter idFilter = new FilterPredicate("id", FilterOperator.EQUAL, id);
+		Query person_tableQuery = new Query("Person").setFilter(idFilter);
+		
+		PreparedQuery pq = datastore.prepare(person_tableQuery);
+        return pq.asSingleEntity();
+	}
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
 	*    getPersonByLastName - gets all persons with given lastname
 	*
 	*   {@param} String lastName

@@ -34,9 +34,9 @@ public class OpenTokServlet extends HttpServlet {
 					throws ServletException, IOException {
 
 		//TODO - validation on classId
-		Long classId = Long.parseLong(request.getParameter("classId"));
+		long classId = Long.parseLong(request.getParameter("classId"));
 		String userOpenId = request.getParameter("user");
-		if (classId !=null){
+		if (classId != 0){
 			String sessionData = sessionManager.getSessionInfo(classId, userOpenId);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");

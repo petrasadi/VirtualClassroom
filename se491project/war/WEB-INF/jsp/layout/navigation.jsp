@@ -41,7 +41,7 @@
 			<li id="vertTabsExTab" class="active" style="display: block;">
 				<dl class="vertical tabs">
 					<dd><a href="/displaySearchClassPage.do">Class Search</a></dd> 
-					<dd><a href="/displayRegisterClassPage.do">Class Register</a></dd> 
+					<dd><a href="/displayClassRegistration.do">Class Register</a></dd> 
 					<dd>Class Schedule</dd> 
 					<dd>Class History </dd>
 					<dd><a href="/displayViewClassPage.do">View Class</a></dd>

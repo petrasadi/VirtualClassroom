@@ -41,11 +41,14 @@
         <put-attribute name="title" value="Search Class" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassSearch.html" />
     </definition>
-    
-    <definition name="displayRegisterClassPage" extends="base.definition">
+    <definition name="displayClassRegistration" extends="base.definition">
+        <put-attribute name="title" value="Register Class" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg_v1.jsp" />
+    </definition>
+    <!--  <definition name="displayRegisterClassPage" extends="base.definition">
         <put-attribute name="title" value="Register Class" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg.html" />
-    </definition>
+    </definition>-->
     
      <definition name="displayUserRegistrationPage" extends="base.definition">
         <put-attribute name="title" value="User registration" />

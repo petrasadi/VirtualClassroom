@@ -105,7 +105,7 @@
 %>
 <div id="student" class="submenustyle">
 <a href="/displaySearchClassPage.do">Search Classes</a>
-<a href="/displayRegisterClassPage.do">Register For Class</a>
+<a href="/displayClassRegistration.do">Register For Class</a>
 <a href="#">Scheduled Classes</a>
 <a href="#">Completed Classes</a>
 <a href="/displayViewClassPage.do">View Class</a>

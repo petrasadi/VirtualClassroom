@@ -27,7 +27,7 @@ class IsTeacherCmd implements IDaoCommands {
 		IClassesDAO classes = new ClassesDAO();
 		IPersonDAO person = new PersonDAO();
 		try {
-			Key t = (Key) classes.getClassByOpenId(OpenTokId).getProperty("teacher");
+			Key t = (Key) classes.getClassById(OpenTokId).getProperty("teacher");
 			Key p = person.getPersonByOpenId(this.OpenId).getId();
 			if (t.equals(p)) {
 				return true;

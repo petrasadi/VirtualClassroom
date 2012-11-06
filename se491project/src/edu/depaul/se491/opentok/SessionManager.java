@@ -3,6 +3,7 @@ package edu.depaul.se491.opentok;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import com.google.appengine.api.datastore.Key;
 import com.google.gson.Gson;
 import com.opentok.api.OpenTokSDK;
 import com.opentok.api.constants.RoleConstants;
@@ -23,7 +24,7 @@ public class SessionManager {
 	 * @param userOpenId - OpenId identifier of the user
 	 * @return the session info serialized to json
 	 */
-	public String getSessionInfo(Long classId, String userOpenId){
+	public String getSessionInfo(long classId, String userOpenId){
 		String sessionId = "";
 		String userToken = "";
 		String userRole = getUserRole(classId, userOpenId);
@@ -97,7 +98,7 @@ public class SessionManager {
 	 * @param userOpenId
 	 * @return
 	 */
-	private String getUserRole(Long classId, String userOpenId){
+	private String getUserRole(long classId, String userOpenId){
 		if (DaoCmds.isTeacher(userOpenId, classId)){
 			return "teacher";
 		//TODO - uncomment this once student registration works

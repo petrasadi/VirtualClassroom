@@ -104,7 +104,45 @@ public class ClassesDAO implements IClassesDAO {
 		PreparedQuery pq = datastore.prepare(classesByIdQuery);
 		Entity classesEntity = pq.asSingleEntity();
 		
-		return ((Long) classesEntity.getProperty("opentokid")).longValue();
+		return classesEntity.getKey().getId();
+	}
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
+	*    getClassById - gets enity by id
+	*
+	*   {@param} Key classes
+	*
+	*   {@return} Entity
+	*
+	******************************************************************************/
+	public Entity getClassById(Key classes) throws ClassesException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter classesFilter = new FilterPredicate("id", FilterOperator.EQUAL, classes);
+		Query classesByIdQuery = new Query("Classes").setFilter(classesFilter);
+		
+		PreparedQuery pq = datastore.prepare(classesByIdQuery);
+		return pq.asSingleEntity();
+	}
+	
+	/*******************************************************************************
+	*
+	*   {@literal}
+	*    getClassById - gets enity by id
+	*
+	*   {@param} long classes
+	*
+	*   {@return} Entity
+	*
+	******************************************************************************/
+	public Entity getClassById(long classes) throws ClassesException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter classesFilter = new FilterPredicate("id", FilterOperator.EQUAL, classes);
+		Query classesByIdQuery = new Query("Classes").setFilter(classesFilter);
+		
+		PreparedQuery pq = datastore.prepare(classesByIdQuery);
+		return pq.asSingleEntity();
 	}
 	
 	/*******************************************************************************
@@ -112,7 +150,7 @@ public class ClassesDAO implements IClassesDAO {
 	*   {@literal}
 	*    getClassByOpenId - gets enity by opentokid
 	*
-	*   {@param} String openTokId
+	*   {@param} long openTokId
 	*
 	*   {@return} Entity
 	*
@@ -273,7 +311,7 @@ public class ClassesDAO implements IClassesDAO {
 		pEntity.setProperty("teacher", classes.getTeacher());
 		pEntity.setProperty("students", classes.getStudents());
 		pEntity.setProperty("category", classes.getCategory());
-		pEntity.setProperty("opentokid", classes.getOpenTokId());
+		//pEntity.setProperty("opentokid", classes.getOpenTokId());
                 
         try {
         	datastore.put(pEntity);
@@ -309,7 +347,7 @@ public class ClassesDAO implements IClassesDAO {
 		pEntity.setProperty("teacher", classes.getTeacher());
 		pEntity.setProperty("students", classes.getStudents());
 		pEntity.setProperty("category", classes.getCategory());
-		pEntity.setProperty("opentokid", classes.getOpenTokId());
+		//pEntity.setProperty("opentokid", classes.getOpenTokId());
                 
         try {
         	datastore.put(pEntity);

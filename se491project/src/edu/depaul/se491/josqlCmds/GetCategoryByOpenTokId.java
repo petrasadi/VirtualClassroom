@@ -26,7 +26,7 @@ class GetCategoryByOpenTokId implements IDaoCommands {
 		IClassesDAO c = new ClassesDAO();
 		ICategoryDAO ct = new CategoryDAO();
 		try {
-			Key ctKey = (Key) c.getClassByOpenId(this.openTokId).getProperty("category");
+			Key ctKey = (Key) c.getClassById(openTokId).getProperty("category");
 			return (Category) ct.getCategoryById(ctKey);
 		} catch (ClassesException e) {
 			e.printStackTrace();

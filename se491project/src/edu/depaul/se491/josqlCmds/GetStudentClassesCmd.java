@@ -50,7 +50,7 @@ class GetStudentClassesCmd implements IDaoCommands {
 					cl.setDescription((String) e.getProperty("description"));
 					cl.setMaxStudents(((Long) e.getProperty("maxstudents")).intValue());
 					cl.setMinStudents(((Long) e.getProperty("minstudents")).intValue());
-					cl.setOpenTokId(((Long) e.getProperty("opentokid")).longValue());
+					//cl.setOpenTokId(((Long) e.getProperty("opentokid")).longValue());
 					cl.setTeacher((Key) e.getProperty("teacher"));
 					cl.setStudents((List<Key>) e.getProperty("students"));
 					clist.add(cl);

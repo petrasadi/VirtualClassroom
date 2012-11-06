@@ -2,6 +2,8 @@ package edu.depaul.se491.josqlCmds;
 
 import java.util.LinkedList;
 
+import javax.crypto.KeyGenerator;
+
 import com.google.appengine.api.datastore.Key;
 
 import edu.depaul.se491.model.Category;
