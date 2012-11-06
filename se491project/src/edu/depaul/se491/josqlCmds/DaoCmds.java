@@ -2,6 +2,8 @@ package edu.depaul.se491.josqlCmds;
 
 import java.util.LinkedList;
 
+import com.google.appengine.api.datastore.Key;
+
 import edu.depaul.se491.model.Category;
 import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
@@ -115,5 +117,28 @@ public class DaoCmds {
 		IDaoCommands cmd = new GetCategoryByOpenTokId(openTokId);
 		run.setCommand(cmd);
 		return (Category) run.getExecute();
+	}
+	
+	/**
+	 * @param classes
+	 * @return LinkedList<Person>
+	 */
+	@SuppressWarnings("unchecked")
+	public static LinkedList<Person> getClassRegistration(Key classes) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new GetClassRegistration(classes);
+		run.setCommand(cmd);
+		return (LinkedList<Person>) run.getExecute();
+	}
+	
+	/**
+	 * @param classes
+	 * @return Person
+	 */
+	public static Person getTeacherCmd(Key classes) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new GetClassTeacher(classes);
+		run.setCommand(cmd);
+		return (Person) run.getExecute();
 	}
 }

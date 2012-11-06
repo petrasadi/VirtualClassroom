@@ -14,7 +14,7 @@ import edu.depaul.se491.josql.PersonDAO;
 import edu.depaul.se491.josql.PersonException;
 import edu.depaul.se491.model.Person;
 
-class GetClassRegistration {
+class GetClassRegistration implements IDaoCommands {
 	Key classId;
 	public GetClassRegistration(Key classes) {
 		this.classId = classes;
