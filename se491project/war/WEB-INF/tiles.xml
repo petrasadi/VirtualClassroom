@@ -69,7 +69,7 @@
     
     <definition name="displayViewClassPage" extends="base.definition">
         <put-attribute name="title" value="View Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.html" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp" />
     </definition>
     
      <definition name="displayTeacherMainPage" extends="base.definition">

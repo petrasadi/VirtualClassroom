@@ -1,15 +1,28 @@
 package edu.depaul.se491.formBeans;
 
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class CreateClassFormBean {
 	
+	@NotEmpty
 	private String classTitle;
+	@Pattern(regexp ="[0-9]+")
 	private String minStudents;
+	@Pattern(regexp ="[0-9]+")
 	private String maxStudents;
+	@NotEmpty
 	private String classDate;
+	@NotEmpty
 	private String classDescription;
+	@NotEmpty
 	private String classCategory;
+	@NotEmpty
 	private String classLevel;
+	@NotEmpty
 	private String classStartTime;
+	@NotEmpty
 	private String classEndTime;
 	
 	public String getClassTitle() {

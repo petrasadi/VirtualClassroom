@@ -27,16 +27,17 @@ public class OpenTokServlet extends HttpServlet {
 					throws ServletException, IOException {
 		doStuff(request, response);
 	}
-	
+
 
 	protected void doStuff(HttpServletRequest request, 
 			HttpServletResponse response) 
 					throws ServletException, IOException {
 
 		//TODO - validation on classId
-		String classId = request.getParameter("classId");
+		Long classId = Long.parseLong(request.getParameter("classId"));
+		String userOpenId = request.getParameter("user");
 		if (classId !=null){
-			String sessionData = sessionManager.getSessionInfo(classId);
+			String sessionData = sessionManager.getSessionInfo(classId, userOpenId);
 			response.setContentType("application/json");
 			response.setCharacterEncoding("UTF-8");
 			response.getWriter().write(sessionData);

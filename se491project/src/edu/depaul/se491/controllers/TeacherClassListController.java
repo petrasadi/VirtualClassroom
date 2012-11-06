@@ -26,8 +26,7 @@ public class TeacherClassListController {
 		
 		Person vcUser = (Person)request.getSession().getAttribute("vcUser");
 		Key userKey = vcUser.getId();
-
-
+		
 		LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds.getClasses();
 		
 			

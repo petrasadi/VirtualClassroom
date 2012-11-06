@@ -17,8 +17,7 @@
 <body>
 You are teaching the following classes:
 
--------> ${vcUser.fname}
--------> ${numberofclasses}
+
  <table>
       <c:forEach var="vsclass" items="${vcClasses}">
         <tr>

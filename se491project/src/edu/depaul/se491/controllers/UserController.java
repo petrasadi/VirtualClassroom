@@ -103,8 +103,7 @@ public class UserController {
 	}
 	
 
-	
-	@RequestMapping("/checkRegistration")
+	@RequestMapping(value = "/checkRegistration", method = RequestMethod.GET)
 	public  ModelAndView checkRegistration(HttpServletRequest request) {
 		
 		 UserService userService = UserServiceFactory.getUserService();
@@ -168,7 +167,7 @@ public class UserController {
 	    	   
 	    try {
 	    	 Key personKey = personDAO.savePerson(person);
-	    	
+	    	 person.setId(personKey);
 		} catch (PersonException e) {
 			// need to figure out what to do with error.
 		}
@@ -238,8 +237,6 @@ public class UserController {
 		
 		return state;
 	}
-	
-	
 	
 	
 	private Map  <String, String> createCountryMap(){

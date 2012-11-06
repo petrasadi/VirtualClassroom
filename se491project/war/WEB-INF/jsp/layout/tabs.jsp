@@ -1,7 +1,6 @@
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/2leveltab.css" />
-<script type="text/javascript" src="/javascript/2leveltab.js">
-</script>
+<script type="text/javascript" src="/javascript/2leveltab.js"></script>
 	
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
@@ -82,7 +81,7 @@
 </ul>
 
 <div id="home" class="submenustyle">
-<a href="#">About</a>
+<a href="/displayAboutPage.do">About</a>
 </div>
 
 <%
