@@ -18,13 +18,16 @@
 	<div class="grid_9"><h1>You must complete the Virtual Classroom registration.</h1></div>
 	
 	<form:form action="/registerUser.do" method="post"  commandName="userRegistrationFormBean">
-        <form:errors path="*" >
-        	<div class="error" >Please correct the registration errors and resubmit the form.</div>
-        </form:errors>
         <br />
         <form:hidden path="openid"  value="<%=userService.getCurrentUser().getUserId()%>" />
         
     	<ul class="table">
+    		<li>
+    			 <form:errors path="*" >
+        			<div class="error" class="grid_9">Please correct the registration errors and resubmit the form.</div>
+        		</form:errors>
+    		</li>
+    	
 			<li>
 				<div class="grid_3">
 					<form:label path="firstName">First Name</form:label>

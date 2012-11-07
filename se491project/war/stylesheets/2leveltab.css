@@ -40,7 +40,7 @@
 	position: relative;
 	top: 1px;
 	padding-top: 4px;
-	background: #66CCCC;
+	background: #DDE;
 	border-bottom: 1px solid #006699;
 }
 
@@ -57,7 +57,7 @@
 	display: none;
 	filter: alpha(opacity = 0);
 	-moz-opacity: 0;
-	background: #66CCCC;
+	background: #DDE;
 }
 
 * html .submenustyle { 

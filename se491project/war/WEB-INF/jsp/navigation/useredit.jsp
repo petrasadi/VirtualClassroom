@@ -18,11 +18,15 @@
 	<div class="grid_9"><h1>You can update your Virtual Classroom User Information.</h1></div>
 	
 	<form:form action="/editUser.do" method="post"  commandName="userRegistrationFormBean">
-        <form:errors path="*" >
-        	<div class="error" >Please correct the errors and resubmit the form.</div>
-        </form:errors>
+
         <br />
      	<ul class="table">
+     		<li>
+    			 <form:errors path="*" >
+        			<div class="error" class="grid_9">Please correct the errors and resubmit the form.</div>
+        		</form:errors>
+    		</li>
+     		
 			<li>
 				<div class="grid_3">
 					<form:label path="firstName">First Name</form:label>

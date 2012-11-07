@@ -15,11 +15,13 @@
 	<div class="grid_9"><h1>Create A Class</h1></div>
 	
 	<form:form action="/classCreate.do" method="post"  commandName="createClassFormBean">
-        <form:errors path="*" >
-        	<div class="error" >Please correct the form errors and resubmit the form.</div>
-        </form:errors>
 		<br />
 		<ul class=table>
+			<li>
+			 	<form:errors path="*" >
+        			<div class="error" class="grid_9" >Please correct the form errors and resubmit the form.</div>
+        		</form:errors>
+			</li>
 
 			<li>
 				<div class="grid_3">

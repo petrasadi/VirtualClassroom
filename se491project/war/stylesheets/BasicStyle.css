@@ -56,3 +56,15 @@ input[type="submit"]
 	font-size: 15px; 
 	padding: 5px 20px 5px;
 }
+
+#footer {
+	background-color:#DDE;
+	border:  none;	
+	font-size:  12px;
+	padding-top:7px;
+    padding-bottom:7px;
+    padding-right:7px;
+    padding-left:7px
+
+}
+
