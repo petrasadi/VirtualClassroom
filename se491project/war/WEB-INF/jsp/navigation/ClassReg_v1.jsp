@@ -106,7 +106,6 @@ $.extend($.expr[":"],
           <td></td>
           <td></td>
           <td></td>
-          <td><a href="/displayViewClassPage.do">View Class</a></td>
         </tr>
       </c:forEach>
 			</tbody>

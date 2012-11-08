@@ -37,7 +37,7 @@ List of Schedule Classes
           <td></td>
           <td></td>
           <td></td>
-          <td><a href="/displayTeacherViewClassPage.do">View Class</a></td>
+          <td><a href="/displayStudentViewClassPage.do">View Class</a></td>
         </tr>
       </c:forEach>
       
