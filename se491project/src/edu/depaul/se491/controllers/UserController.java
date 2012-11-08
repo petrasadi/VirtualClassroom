@@ -4,6 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -38,7 +39,7 @@ public class UserController {
 		 UserRegistrationFormBean uf = new UserRegistrationFormBean();
 		 ModelAndView view = new ModelAndView();
 		 Person vcUser = (Person) request.getSession().getAttribute("vcUser");
-
+		 
 		 uf.setFirstName(vcUser.getFirstName());
 		 uf.setMiddleName(vcUser.getMiddleName());
 		 uf.setLastName(vcUser.getLastName());
@@ -166,10 +167,13 @@ public class UserController {
 	    person.setStudent(userRegistrationFormBean.isStudent());
 	    	   
 	    try {
-	    	 Key personKey = personDAO.savePerson(person);
+	    	 Key personKey;
+	    	 personKey = personDAO.savePerson(person);
 	    	 person.setId(personKey);
 		} catch (PersonException e) {
 			// need to figure out what to do with error.
+		} catch (EntityNotFoundException e) {
+			
 		}
 	    request.getSession().setAttribute("vcUser", person);
         view.setViewName("displayUserLoggedInPage");

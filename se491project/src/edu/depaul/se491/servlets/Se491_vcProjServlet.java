@@ -50,9 +50,9 @@ public class Se491_vcProjServlet extends HttpServlet {
 		Classes classes = new Classes();
 				
 		IPersonDAO personDAO = new PersonDAO();
-		try {
-			Key p = personDAO.savePerson(person);
-			personDAO.setPersonAsAdmin(p);
+		/*try {
+			//Key p = personDAO.savePerson(person);
+		//	personDAO.setPersonAsAdmin(p);
 			//personDAO.setPersonAsStudent(p);
 			resp.setContentType("text/plain");
 			resp.getWriter().println("Hello, world");
@@ -61,7 +61,7 @@ public class Se491_vcProjServlet extends HttpServlet {
 			e.printStackTrace();
 		} finally {
 			em.close();
-		}
+		}*/
 		
 	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {

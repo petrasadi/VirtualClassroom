@@ -101,19 +101,11 @@ $.extend($.expr[":"],
           </c:otherwise>
         </c:choose>
         <tr class="${rowStyle}">
-<<<<<<< Updated upstream
-          <td>${class.className}</td>
-          <td>${class.description}</td>
-          <td></td>
-          <td></td>
-          <td></td>
-=======
           <td>${class.name}</td>
           <td>${class.category}</td>
           <td>${class.startDate}</td>
           <td>${class.endDate}</td>
           <td><td><a href="#" class="classname">${class.registration}</a></td></td>
->>>>>>> Stashed changes
         </tr>
       </c:forEach>
 			</tbody>

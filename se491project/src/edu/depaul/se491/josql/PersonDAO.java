@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
@@ -220,9 +221,10 @@ public class PersonDAO implements IPersonDAO {
 	*   {@param} Person - the person table
 	*
 	*   {@return} Long - the person id
+	 * @throws EntityNotFoundException 
 	*
 	******************************************************************************/	
-    public Key savePerson(Person person) throws PersonException {
+    public Key savePerson(Person person) throws PersonException, EntityNotFoundException {
     	Key keyId = person.getId();
    	
     	if(person.getId() == null){
@@ -254,15 +256,19 @@ public class PersonDAO implements IPersonDAO {
 	*   {@param} Person - the person table
 	*
 	*   {@return} void
+     * @throws EntityNotFoundException 
 	*
 	******************************************************************************/
-    public void updatePerson(Person person) {
+    public void updatePerson(Person person) throws EntityNotFoundException {
       	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter idFilter = new FilterPredicate("id", FilterOperator.EQUAL, person.getId());
-		Query person_tableQuery = new Query("Person").setFilter(idFilter);
-		PreparedQuery pq = datastore.prepare(person_tableQuery);
+      	try {
+      		Entity pEntity = datastore.get(person.getId());
+      	
+		//Filter idFilter = new FilterPredicate("id", FilterOperator.EQUAL, person.getId());
+		//Query person_tableQuery = new Query("Person").setFilter(idFilter);
+		//PreparedQuery pq = datastore.prepare(person_tableQuery);
 		
-		Entity pEntity = pq.asSingleEntity();
+		//Entity pEntity = pq.asSingleEntity();
 		Transaction tx = datastore.beginTransaction();
 		pEntity.setProperty("firstname", person.getFirstName());
 		pEntity.setProperty("middlename", person.getMiddleName());
@@ -277,7 +283,7 @@ public class PersonDAO implements IPersonDAO {
         pEntity.setProperty("phone", person.getPhone());
         pEntity.setProperty("phone2", person.getPhone2());
         pEntity.setProperty("openid", person.getOpenid());
-                   
+    	
         try {
         	datastore.put(pEntity);
         	tx.commit();
@@ -286,6 +292,9 @@ public class PersonDAO implements IPersonDAO {
         		tx.rollback();
         	}
         }
+    } catch (EntityNotFoundException e) {
+  		
+  	}
     }
     
     /*******************************************************************************
