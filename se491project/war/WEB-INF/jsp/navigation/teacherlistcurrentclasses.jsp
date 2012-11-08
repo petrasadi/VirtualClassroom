@@ -17,9 +17,11 @@ List of Schedule Classes
    	  <tr class="rowheader">
           <td>Class Name</td>
           <td>Class Description</td>
+          <td>Class Date</td>
           <td>Start Time</td>
-          <td>Max Students</td>
+          <td>End Time</td>
           <td>Min Students</td>
+          <td>Max Students</td>
           <td>View Class</td>
       </tr>
       <c:forEach var="class" items="${classes}" varStatus="rowCounter">
@@ -34,9 +36,11 @@ List of Schedule Classes
         <tr class="${rowStyle}">
           <td>${class.className}</td>
           <td>${class.description}</td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>${class.displayClassDate}</td>
+          <td>${class.displayClassStartTime}</td>
+          <td>${class.displayClassEndTime}</td>
+          <td>${class.minStudents}</td>
+          <td>${class.maxStudents}</td>
           <td><a href="/displayTeacherViewClassPage.do">View Class</a></td>
         </tr>
       </c:forEach>

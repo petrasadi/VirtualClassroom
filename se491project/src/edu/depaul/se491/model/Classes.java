@@ -1,13 +1,22 @@
 package edu.depaul.se491.model;
 
-import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.Persistent;
-import javax.persistence.*;
-
-import com.google.appengine.api.datastore.Key;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import com.google.appengine.api.datastore.Key;
 
 /**
  * {@literal}
@@ -172,4 +181,37 @@ public class Classes {
 	public void setCategory(Key category) {
 		this.category = category;
 	}
+	
+	public String getDisplayClassDate(){
+		
+		if(classstarttime != null){
+			DateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
+			return dateFmt.format(classstarttime);
+		}else{
+			return "unavailable";
+		}
+	}
+	
+	public String getDisplayClassStartTime(){		
+
+		if(classstarttime != null){
+			DateFormat dateFmt = new SimpleDateFormat("HH:mm aaa");
+			return dateFmt.format(classstarttime);
+		}else{
+			return "unavailable";
+		}		
+	}
+	
+	public String getDisplayClassEndTime(){
+		
+		if(classstarttime != null){
+			DateFormat dateFmt = new SimpleDateFormat("HH:mm aaa");
+			return dateFmt.format(classendtime);
+		}else{
+			return "unavailable";
+		}		
+	}
+		
+	
+	
 }

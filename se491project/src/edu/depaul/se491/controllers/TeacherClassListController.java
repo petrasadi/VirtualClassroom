@@ -41,6 +41,8 @@ public class TeacherClassListController {
   	    		tlist.add(c);
   	    	}
 		 }
+  	     
+  	     
 
 		ModelAndView view = new ModelAndView();
 		view.setViewName("displayTeacherListCurrentClasses");
@@ -48,6 +50,5 @@ public class TeacherClassListController {
 		view.addObject("classes",tlist);
 	    return view;	
 	
-	}
-	
+	}	
 }

@@ -81,13 +81,19 @@
    				</div>
    				<div class="grid_3">
    					<form:label path="classStartTime">Class Start Time</form:label>
-   					<form:input path="classStartTime" /><br />
-   					<form:errors path="classStartTime" cssClass="error" />
+					<form:select path="classStartTime">
+   						<form:option value="NONE" label="--- Select ---"/>
+  						<form:options items="${timeList}" />
+					</form:select><br />
+					<form:errors path="classStartTime" cssClass="error" />
    				</div>
    				<div class="grid_3">
    					<form:label path="classEndTime">Class End Time</form:label>
-   					<form:input path="classEndTime" /><br />
-   					<form:errors path="classEndTime" cssClass="error" />
+					<form:select path="classEndTime">
+   						<form:option value="NONE" label="--- Select ---"/>
+  						<form:options items="${timeList}" />
+					</form:select><br />
+					<form:errors path="classEndTime" cssClass="error" />
    				</div>
    			</li>
    			<li>
