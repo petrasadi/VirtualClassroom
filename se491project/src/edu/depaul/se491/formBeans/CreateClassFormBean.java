@@ -20,9 +20,9 @@ public class CreateClassFormBean {
 	private String classCategory;
 	@NotEmpty
 	private String classLevel;
-	@NotEmpty
+	@Pattern(regexp = "(1[012]|[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)")
 	private String classStartTime;
-	@NotEmpty
+	@Pattern(regexp = "(1[012]|[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)")
 	private String classEndTime;
 	
 	public String getClassTitle() {

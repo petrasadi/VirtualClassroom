@@ -101,7 +101,9 @@ public class CreateClassFormController {
 
 		dateFmt = new SimpleDateFormat("MM/dd/yyyy HH:mm aaa");
 		classStartStr = createClassFormBean.getClassDate();
+		classStartStr = classStartStr + " " + createClassFormBean.getClassStartTime();
 		classEndStr = createClassFormBean.getClassDate();
+		classEndStr = classEndStr + " " + createClassFormBean.getClassEndTime();
 		try {
 			classStartDate = dateFmt.parse(classStartStr);
 			classEndDate = dateFmt.parse(classEndStr);
