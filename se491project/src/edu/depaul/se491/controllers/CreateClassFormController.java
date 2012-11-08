@@ -30,6 +30,7 @@ import edu.depaul.se491.josql.IClassesDAO;
 import edu.depaul.se491.josql.IPersonDAO;
 import edu.depaul.se491.josql.PersonDAO;
 import edu.depaul.se491.josql.PersonException;
+import edu.depaul.se491.josqlCmds.DaoCmds;
 import edu.depaul.se491.model.Category;
 import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
@@ -61,8 +62,10 @@ public class CreateClassFormController {
 		Classes clazz = new Classes();
 		IClassesDAO clazzDAO = new ClassesDAO();
 		Key clazzKey;
-		ICategoryDAO catDAO = new CategoryDAO();
-		Category category = new Category();
+		/*
+		* ICategoryDAO catDAO = new CategoryDAO();
+		* Category category = new Category();
+		*/
 		Key catKey;
 
 		UserService userService = UserServiceFactory.getUserService();
@@ -88,6 +91,8 @@ public class CreateClassFormController {
 		clazz.setTeacher(vcUser.getId());
 		clazz.setClassName(createClassFormBean.getClassTitle());
 		clazz.setDescription(createClassFormBean.getClassDescription());
+		clazz.setCategory((Key) DaoCmds.createCategoryCmd(createClassFormBean.getClassCategory(),
+				"decrip")); 
 		/*
 		 * System.out.println("setting class Category");
 		 * clazz.setCategory(catKey); System.out.println("class Category set");
