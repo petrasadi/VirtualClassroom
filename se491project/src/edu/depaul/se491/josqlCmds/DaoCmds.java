@@ -143,4 +143,15 @@ public class DaoCmds {
 		run.setCommand(cmd);
 		return (Person) run.getExecute();
 	}
+	
+	/**
+	 * @param classes
+	 * @return boolean
+	 */
+	public static boolean isClassFull(Key classes) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new IsClassFullCmd(classes);
+		run.setCommand(cmd);
+		return run.isExecute();
+	}
 }

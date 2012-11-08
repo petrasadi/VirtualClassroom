@@ -8,7 +8,7 @@
 
 
 
-List of Schedule Classes
+List ofAvailable Classes
 <br />
 <br />
 <br />
@@ -20,7 +20,6 @@ List of Schedule Classes
           <td>Start Time</td>
           <td>Max Students</td>
           <td>Min Students</td>
-          <td>View Class</td>
       </tr>
       <c:forEach var="class" items="${classes}" varStatus="rowCounter">
         <c:choose>
@@ -37,7 +36,6 @@ List of Schedule Classes
           <td></td>
           <td></td>
           <td></td>
-          <td><a href="/displayTeacherViewClassPage.do">View Class</a></td>
         </tr>
       </c:forEach>
       

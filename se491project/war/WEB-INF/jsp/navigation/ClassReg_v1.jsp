@@ -4,7 +4,7 @@
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="edu.depaul.se491.model.Classes"%>
+<%@ page import="edu.depaul.se491.formBeans.ClassRegistrationListBean"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Register for Class</title>
@@ -101,12 +101,19 @@ $.extend($.expr[":"],
           </c:otherwise>
         </c:choose>
         <tr class="${rowStyle}">
+<<<<<<< Updated upstream
           <td>${class.className}</td>
           <td>${class.description}</td>
           <td></td>
           <td></td>
           <td></td>
-          <td><a href="/displayViewClassPage.do">View Class</a></td>
+=======
+          <td>${class.name}</td>
+          <td>${class.category}</td>
+          <td>${class.startDate}</td>
+          <td>${class.endDate}</td>
+          <td><td><a href="#" class="classname">${class.registration}</a></td></td>
+>>>>>>> Stashed changes
         </tr>
       </c:forEach>
 			</tbody>
