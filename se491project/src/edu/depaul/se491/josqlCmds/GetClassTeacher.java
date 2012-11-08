@@ -16,8 +16,8 @@ class GetClassTeacher implements IDaoCommands {
 	public GetClassTeacher(Key classes) {
 		this.classId = classes;
 	}
-	public void execute() {
-		return;
+	public Key execute() {
+		return null;
 	}
 	
 	public boolean isExecute() {

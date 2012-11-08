@@ -16,8 +16,8 @@ public class IsClassFullCmd implements IDaoCommands {
 	public IsClassFullCmd(Key classes) {
 		this.classId = classes;
 	}
-	public void execute() {
-		return;
+	public Key execute() {
+		return null;
 	}
 	
 	@SuppressWarnings("unchecked")

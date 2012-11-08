@@ -19,8 +19,8 @@ class IsStudentCmd implements IDaoCommands {
 		this.OpenId = OpenId;
 		this.OpenTokId = OpenTokId;
 	}
-	public void execute() {
-		return;
+	public Key execute() {
+		return null;
 	}
 	public Object getExecute() {
 		return null;

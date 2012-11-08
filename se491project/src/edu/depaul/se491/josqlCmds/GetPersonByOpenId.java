@@ -1,5 +1,7 @@
 package edu.depaul.se491.josqlCmds;
 
+import com.google.appengine.api.datastore.Key;
+
 import edu.depaul.se491.josql.IPersonDAO;
 import edu.depaul.se491.josql.PersonDAO;
 import edu.depaul.se491.josql.PersonException;
@@ -11,8 +13,8 @@ class GetPersonByOpenId implements IDaoCommands {
 	public GetPersonByOpenId(String openId) {
 		this.openId = openId;
 	}
-	public void execute() {
-		return;
+	public Key execute() {
+		return null;
 	}
 	public boolean isExecute() {
 		return false;

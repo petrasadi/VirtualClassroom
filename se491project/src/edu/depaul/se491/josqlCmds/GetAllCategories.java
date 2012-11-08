@@ -3,6 +3,7 @@ package edu.depaul.se491.josqlCmds;
 import java.util.LinkedList;
 
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.Key;
 
 import edu.depaul.se491.josql.CategoryDAO;
 import edu.depaul.se491.josql.CategoryException;
@@ -12,8 +13,8 @@ import edu.depaul.se491.model.Category;
 
 
 class GetAllCategories implements IDaoCommands {
-	public void execute() {
-		return;
+	public Key execute() {
+		return null;
 	}
 	
 	public boolean isExecute() {

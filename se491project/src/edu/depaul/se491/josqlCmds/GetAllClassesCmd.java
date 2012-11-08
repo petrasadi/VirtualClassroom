@@ -13,8 +13,8 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
 class GetAllClassesCmd implements IDaoCommands {
-	public void execute() {
-		return;
+	public Key execute() {
+		return null;
 	}
 	
 	public boolean isExecute() {

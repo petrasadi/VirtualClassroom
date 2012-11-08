@@ -31,7 +31,7 @@ public class CategoryDAO implements ICategoryDAO {
 		PreparedQuery pq = datastore.prepare(categoryByIdQuery);
         return pq.asIterable();
 	}
-    public Key saveCategory(Category category) {
+    public Key saveCategory(Category category) throws CategoryException {
     	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Filter categoryIdFilter = new FilterPredicate("category", FilterOperator.EQUAL, category);
 		Query categoryByIdQuery = new Query("Classes").setFilter(categoryIdFilter);

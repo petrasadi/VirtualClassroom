@@ -1,10 +1,12 @@
 package edu.depaul.se491.josqlCmds;
 
+import com.google.appengine.api.datastore.Key;
+
 interface IDaoCommands {
 	/**
 	 * Executes a command on dao layer
 	 */
-	public void execute();
+	public Key execute();
 	
 	/**
 	 * Executes a command to check if an object matches on dao layer
