@@ -35,7 +35,7 @@ public interface ICategoryDAO {
      * @param category - category information to save
      * @return category id
      */
-    public Key saveCategory(Category category);
+    public Key saveCategory(Category category) throws CategoryException;
     
     /**
      * Delete category data.  If category exists then will delete.  If category is blank then it

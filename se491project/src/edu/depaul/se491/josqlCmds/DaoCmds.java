@@ -122,6 +122,19 @@ public class DaoCmds {
 	}
 	
 	/**
+	 * Provide a Category Key of the category created.
+	 * @param name
+	 * @param description
+	 * @return Key
+	 */
+	public static Key createCategoryCmd(String name, String description) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new CreateCategoryCmd(name, description);
+		run.setCommand(cmd);
+		return (Key) run.execute();
+	}
+	
+	/**
 	 * @param classes
 	 * @return LinkedList<Person>
 	 */
@@ -142,5 +155,16 @@ public class DaoCmds {
 		IDaoCommands cmd = new GetClassTeacher(classes);
 		run.setCommand(cmd);
 		return (Person) run.getExecute();
+	}
+	
+	/**
+	 * @param classes
+	 * @return boolean
+	 */
+	public static boolean isClassFull(Key classes) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new IsClassFullCmd(classes);
+		run.setCommand(cmd);
+		return run.isExecute();
 	}
 }

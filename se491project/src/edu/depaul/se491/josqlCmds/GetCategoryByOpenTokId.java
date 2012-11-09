@@ -16,8 +16,8 @@ class GetCategoryByOpenTokId implements IDaoCommands {
 	public GetCategoryByOpenTokId(long openTokId) {
 		this.openTokId = openTokId;
 	}
-	public void execute() {
-		return;
+	public Key execute() {
+		return null;
 	}
 	public boolean isExecute() {
 		return false;

@@ -1,6 +1,7 @@
 package edu.depaul.se491.josql;
 
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 
 import edu.depaul.se491.model.Person;
@@ -72,7 +73,7 @@ public interface IPersonDAO {
      * @param person - person information to save
      * @return person id
      */
-    public Key savePerson(Person person) throws PersonException;
+    public Key savePerson(Person person) throws PersonException, EntityNotFoundException;
     
     /**
      * Delete person data.  If person exists then will delete.  If person is blank then it

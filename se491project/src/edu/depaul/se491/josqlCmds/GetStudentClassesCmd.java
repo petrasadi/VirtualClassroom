@@ -22,8 +22,8 @@ class GetStudentClassesCmd implements IDaoCommands {
 		this.openId = openId;
 	}
 	
-	public void execute() {
-		return;
+	public Key execute() {
+		return null;
 	}
 	
 	public boolean isExecute() {

@@ -19,8 +19,8 @@ class GetClassRegistration implements IDaoCommands {
 	public GetClassRegistration(Key classes) {
 		this.classId = classes;
 	}
-	public void execute() {
-		return;
+	public Key execute() {
+		return null;
 	}
 	
 	public boolean isExecute() {

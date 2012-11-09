@@ -25,16 +25,16 @@ public class CategoryDAO implements ICategoryDAO {
 	}
 	public Iterable<Entity> getCategoryById(Key category) throws CategoryException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter categoryIdFilter = new FilterPredicate("category", FilterOperator.EQUAL, category);
-		Query categoryByIdQuery = new Query("Classes").setFilter(categoryIdFilter);
+		Filter categoryIdFilter = new FilterPredicate("id", FilterOperator.EQUAL, category.getId());
+		Query categoryByIdQuery = new Query("Category").setFilter(categoryIdFilter);
 		
 		PreparedQuery pq = datastore.prepare(categoryByIdQuery);
         return pq.asIterable();
 	}
-    public Key saveCategory(Category category) {
+    public Key saveCategory(Category category) throws CategoryException {
     	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter categoryIdFilter = new FilterPredicate("category", FilterOperator.EQUAL, category);
-		Query categoryByIdQuery = new Query("Classes").setFilter(categoryIdFilter);
+		Filter categoryIdFilter = new FilterPredicate("id", FilterOperator.EQUAL, category.getId());
+		Query categoryByIdQuery = new Query("Category").setFilter(categoryIdFilter);
 		PreparedQuery pq = datastore.prepare(categoryByIdQuery);		
 		Entity pEntity = pq.asSingleEntity();
 		
@@ -52,8 +52,8 @@ public class CategoryDAO implements ICategoryDAO {
     }
     public void updateCategory(Category category) {
     	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter categoryIdFilter = new FilterPredicate("category", FilterOperator.EQUAL, category);
-		Query categoryByIdQuery = new Query("Classes").setFilter(categoryIdFilter);
+		Filter categoryIdFilter = new FilterPredicate("id", FilterOperator.EQUAL, category.getId());
+		Query categoryByIdQuery = new Query("Category").setFilter(categoryIdFilter);
 		PreparedQuery pq = datastore.prepare(categoryByIdQuery);
 		
 		Entity pEntity = pq.asSingleEntity();
@@ -90,8 +90,8 @@ public class CategoryDAO implements ICategoryDAO {
     }
     public void deleteCategory(Category category) {
     	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter categoryIdFilter = new FilterPredicate("category", FilterOperator.EQUAL, category);
-		Query categoryByIdQuery = new Query("Classes").setFilter(categoryIdFilter);
+		Filter categoryIdFilter = new FilterPredicate("id", FilterOperator.EQUAL, category.getId());
+		Query categoryByIdQuery = new Query("Category").setFilter(categoryIdFilter);
 		PreparedQuery pq = datastore.prepare(categoryByIdQuery);
     	
 		Transaction tx = datastore.beginTransaction();
