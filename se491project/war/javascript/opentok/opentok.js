@@ -16,7 +16,8 @@ function getSessionInfo(userOpenId, classOpenTokId) {
 	);
 }
 
-function setupChatFunctionality(userRole) {
+function generateUserDashBoard(userRole) {
+	//FIXME - this implem uses more bandwidth than necessary
 	if (userRole == 'student'){
 		$('#teacherDashboard').remove();
 	} else

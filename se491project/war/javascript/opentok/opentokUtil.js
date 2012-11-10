@@ -1,6 +1,10 @@
 var session;
+var speakRequestsSet = { };
 
 function handleOpenTok(data){
+	
+	var publisher;
+	
 	var apiKey = data.apiKey;
 	var sessionId = data.sessionId;
 	var token = data.token;
@@ -14,8 +18,6 @@ function handleOpenTok(data){
 	session.addEventListener('streamCreated', streamCreatedHandler);
 	session.addEventListener("signalReceived", raiseHandHandler);
 	session.connect(apiKey, token);
-
-	var publisher;
 
 	function sessionConnectedHandler(event) {
 		//only a teacher can publish when connecting to the session
@@ -57,18 +59,43 @@ function handleOpenTok(data){
 				var subscribeProps = {width:400, height:225};
 				session.subscribe(streams[i], div.id, subscribeProps);
 			}
-			setupChatFunctionality(data.role);
+			generateUserDashBoard(data.role);
 		}
 	}
 	
 	//TODO - fix raiseHand event
 	function raiseHandHandler(event){
-		$('#speakRequests').append('<input class="dashboardButton" type="image" src="images/opentok/face.png" title="student speak request">');
+		var connectionId = event.fromConnection.connectionId;
+		//ignore request if already registered
+		if (!(connectionId in speakRequestsSet) ||
+				(speakRequestsSet[connectionId] === false)){
+			speakRequestsSet[connectionId] = true;
+
+			var rqstParams = "'" + data.role + "', '" + connectionId + "'";
+			var btnId = "requestButton" + connectionId;
+			var element = '<input class="dashboardButton" ';
+			element += 'id="' + btnId + '"';
+			element += 'type="image" src="images/opentok/face.png" title="student speak request"';
+ 			element += 'onclick="switchPublishingUser(' + rqstParams + ')"';
+			element += '>';
+			$('#speakRequests').append(element);
+		}
 	}
 
 	function accessAllowedHandler(event){
 		//make the publisher img invisible after receiving access
 		$("#myPublisherDiv").addClass("invisible");
+	}
+}
+
+
+function switchPublishingUser(userRole, connectionId){
+	if (userRole === 'teacher') {
+		//remove from set so that the student can ask other questions
+		speakRequestsSet[connectionId] = false;
+		var btnId = "#requestButton" + connectionId;
+		$(btnId).remove();
+		alert("done");
 	}
 }
 

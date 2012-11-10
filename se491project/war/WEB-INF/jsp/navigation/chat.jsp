@@ -22,12 +22,15 @@
 		
 		<div id="userDashboard" style="display: none;">
 			<div id="teacherDashboard">
-				<!-- TODO - create teacher dashboard -->
+				<!-- TODO - handle regain control -->
+				<input class="dashboardButton" type="image" src="images/opentok/regainControl.png" title="regain control" onclick="alert('TODO - teacher regain control')">
 			</div>
 			<div id="studentDashboard">
 				<input class="dashboardButton" type="image" src="images/opentok/speaker.png" title="request mic" onclick="raisehand()">
-				<input class="dashboardButton" type="image" src="images/opentok/power.png" title="exit class">
 			</div>
+			
+			<input class="dashboardButton" type="image" src="images/opentok/chat.png" title="open chat window" onclick="alert('TODO - open chat window')">
+			<input class="dashboardButton" type="image" src="images/opentok/power.png" title="exit class" onclick="alert('TODO - exit chat')">
 		</div>
 		
 		<div id="speakRequests"></div>
