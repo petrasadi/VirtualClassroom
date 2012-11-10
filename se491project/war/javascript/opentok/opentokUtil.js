@@ -41,6 +41,23 @@ function switchPublishingUserHandler(event){
 	var btnId = "#requestButton" + connectionId;
 	$(btnId).remove();
 	//TODO - switch the viewable user
+	forcePublish(connectionId);
+}
+
+function forcePublish(connectionId){
+	if (connectionId === session.connection.connectionId){
+		//alert("it's me");
+		//TODO - REFACTOR
+		var div = document.createElement('div');
+		div.setAttribute('id', 'publisher');
+		$('#myPublisherDiv').append(div);
+		publisher = TB.initPublisher(data.apiKey, div);
+
+		//TODO - only add publisher if camera and mic detected
+		publisher.addEventListener('accessAllowed', accessAllowedHandler);
+
+		$("#conferenceContainer").width(1000);
+	}
 }
 
 function raisehand(){
@@ -51,8 +68,9 @@ function raisehand(){
 
 //TODO - fix raiseHand event
 function raiseHandHandler(event){
-	var connectionId = event.changedValues["raiseHand"];
 	//var connectionId = event.fromConnection.connectionId;
+	var connectionId = event.changedValues["raiseHand"];
+	
 	//ignore request if already registered
 	if (!(connectionId in speakRequestsSet) ||
 			(speakRequestsSet[connectionId] === false)){
@@ -69,13 +87,19 @@ function raiseHandHandler(event){
 	}
 }
 
-/*function testRaiseHandHandler2(event){
-	alert("switch users success");
-}*/
-
 function accessAllowedHandler(event){
+	
+/*	for (var i = 0; i < session.streams.length; i++) {
+		forceUnpublishStream(session.streams[i].streamId);
+	}*/
+
 	//make the publisher img invisible after receiving access
 	$("#myPublisherDiv").addClass("invisible");
+	session.publish(publisher);
+}
+
+function forceUnpublishStream(streamId) {
+    session.forceUnpublish(subscribers[streamId].stream);
 }
 
 function sessionConnectedHandler(event) {
@@ -93,7 +117,6 @@ function sessionConnectedHandler(event) {
 		//TODO - only add publisher if camera and mic detected
 
 		publisher.addEventListener('accessAllowed', accessAllowedHandler);
-		session.publish(publisher);
 	}
 
 	// Subscribe to streams that were in the session when we connected
