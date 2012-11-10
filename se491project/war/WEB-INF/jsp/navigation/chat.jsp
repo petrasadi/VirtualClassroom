@@ -8,7 +8,7 @@
 %>
 
 <link rel=StyleSheet href="stylesheets/opentok.css" type="text/css">
-<script src="http://static.opentok.com/v0.91/js/TB.min.js"></script>
+<script src='http://static.opentok.com/v1.1/js/TB.min.js'></script>
 <script type="text/javascript" src="javascript/jquery-1.8.2.js"></script> 
 <script type="text/javascript" src="javascript/opentok/opentok.js"></script>
 <script type="text/javascript" src="javascript/opentok/opentokUtil.js"></script>

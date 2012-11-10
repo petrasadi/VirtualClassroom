@@ -1,6 +1,7 @@
 var session;
 var speakRequestsSet = { };
 var data;
+var stateManager;
 
 function handleOpenTok(dt){
 	data = dt;
@@ -17,31 +18,41 @@ function handleOpenTok(dt){
 	session = TB.initSession(sessionId);      
 	session.addEventListener('sessionConnected', sessionConnectedHandler);
 	session.addEventListener('streamCreated', streamCreatedHandler);
-	session.addEventListener("signalReceived", raiseHandHandler);
-	session.connect(apiKey, token);
+	//session.addEventListener("signalReceived", raiseHandHandler);
+	session.connect(apiKey, token);	
 }
 
 
 function switchPublishingUser(userRole, connectionId){
-	if (userRole === 'teacher') {
+/*	if (userRole === 'teacher') {
 		//remove from set so that the student can ask other questions
 		speakRequestsSet[connectionId] = false;
 		var btnId = "#requestButton" + connectionId;
 		$(btnId).remove();
 		alert("done");
-	}
+	}*/
+	
+	stateManager.set("moderator_switchUser", connectionId);
+}
+
+function switchPublishingUserHandler(event){
+	var connectionId = event.changedValues["moderator_switchUser"];
+	speakRequestsSet[connectionId] = false;
+	var btnId = "#requestButton" + connectionId;
+	$(btnId).remove();
+	//TODO - switch the viewable user
 }
 
 function raisehand(){
-	session.signal();
-/*	var stateManager = session.getStateManager();
-	stateManager.addEventListener("changed:raiseHand", testRaiseHandHandler);
-	stateManager.set("raiseHand", "bar");*/
+	//session.signal();
+	var connectionId = session.connection.connectionId;
+	stateManager.set("raiseHand", connectionId);
 }
 
 //TODO - fix raiseHand event
 function raiseHandHandler(event){
-	var connectionId = event.fromConnection.connectionId;
+	var connectionId = event.changedValues["raiseHand"];
+	//var connectionId = event.fromConnection.connectionId;
 	//ignore request if already registered
 	if (!(connectionId in speakRequestsSet) ||
 			(speakRequestsSet[connectionId] === false)){
@@ -58,8 +69,40 @@ function raiseHandHandler(event){
 	}
 }
 
-function testRaiseHandHandler(event){
-	alert("success");
+/*function testRaiseHandHandler2(event){
+	alert("switch users success");
+}*/
+
+function accessAllowedHandler(event){
+	//make the publisher img invisible after receiving access
+	$("#myPublisherDiv").addClass("invisible");
+}
+
+function sessionConnectedHandler(event) {
+	stateManager = session.getStateManager();
+	stateManager.addEventListener("changed:raiseHand", raiseHandHandler);
+	stateManager.addEventListener("changed:moderator_switchUser", switchPublishingUserHandler);
+	
+	//only a teacher can publish when connecting to the session
+	if(data.role == "teacher"){
+		var div = document.createElement('div');
+		div.setAttribute('id', 'publisher');
+		$('#myPublisherDiv').append(div);
+		publisher = TB.initPublisher(data.apiKey, div);
+
+		//TODO - only add publisher if camera and mic detected
+
+		publisher.addEventListener('accessAllowed', accessAllowedHandler);
+		session.publish(publisher);
+	}
+
+	// Subscribe to streams that were in the session when we connected
+	subscribeToStreams(event.streams);
+}
+
+function streamCreatedHandler(event) {
+	// Subscribe to any new streams that are created
+	subscribeToStreams(event.streams);
 }
 
 function subscribeToStreams(streams) {
@@ -81,32 +124,4 @@ function subscribeToStreams(streams) {
 		}
 		generateUserDashBoard(data.role);
 	}
-}
-
-function accessAllowedHandler(event){
-	//make the publisher img invisible after receiving access
-	$("#myPublisherDiv").addClass("invisible");
-}
-
-function sessionConnectedHandler(event) {
-	//only a teacher can publish when connecting to the session
-	if(data.role == "teacher"){
-		var div = document.createElement('div');
-		div.setAttribute('id', 'publisher');
-		$('#myPublisherDiv').append(div);
-		publisher = TB.initPublisher(data.apiKey, div);
-
-		//TODO - only add publisher if camera and mic detected
-
-		publisher.addEventListener('accessAllowed', accessAllowedHandler);
-		session.publish(publisher);
-	}
-
-	// Subscribe to streams that were in the session when we connected
-	subscribeToStreams(event.streams);
-}
-
-function streamCreatedHandler(event) {
-	// Subscribe to any new streams that are created
-	subscribeToStreams(event.streams);
 }
