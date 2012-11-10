@@ -4,6 +4,14 @@
 	width: 0;
 }
 
+#conferenceContainer > *{
+	float:left;
+}
+
 #userDashboard {
-	float:right;
+	width: 100px;
+}
+
+.dashboardButton {
+	width: 72px;
 }

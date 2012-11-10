@@ -7,13 +7,10 @@ function endOpenTokSession() {
 	);
 }
 
-function getSessionInfo(userOpenId) {
-	//TODO - read classId from request params
-	var classOpenTokId = 0;
+function getSessionInfo(userOpenId, classOpenTokId) {
 	$.post('opentok', {classId: classOpenTokId, user: userOpenId} ,
 		function (data) {
 			handleOpenTok(data);
-			setupChatFunctionality(data.role);
 		},
 		'json'
 	);
@@ -21,7 +18,8 @@ function getSessionInfo(userOpenId) {
 
 function setupChatFunctionality(userRole) {
 	if (userRole == 'student'){
-		$('#studentDashboard').show();
+		$('#teacherDashboard').remove();
 	} else
-		$('#teacherDashboard').show();
+		$('#studentDashboard').remove();
+	$('#userDashboard').fadeIn("slow");
 }

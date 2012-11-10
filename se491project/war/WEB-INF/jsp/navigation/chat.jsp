@@ -13,22 +13,22 @@
 <script type="text/javascript" src="javascript/opentok/opentok.js"></script>
 <script type="text/javascript" src="javascript/opentok/opentokUtil.js"></script>
 </head>
- 
-<body onload="getSessionInfo('<%=user%>')">
+
+<!-- FIXME -user id is currently passed in clear text -->
+<body onload="getSessionInfo('<%=user%>', 149)">
 	<div id="conferenceContainer">
 		<div id="myPublisherDiv"></div>
 		<div id="subscribers"></div>
 		
 		<div id="speakRequest"></div>
 		
-		<div id="userDashboard">
-			<div id="teacherDashboard" style="display: none;">
+		<div id="userDashboard" style="display: none;">
+			<div id="teacherDashboard">
 				<!-- TODO - create teacher dashboard -->
 			</div>
-			<div id="studentDashboard" style="display: none;">
-				<a href="" onclick="raisehand()">
-					<img src="images/opentok/raiseHand.png" alt="raise hand" title="raise hand" />
-				</a>
+			<div id="studentDashboard">
+				<input class="dashboardButton" type="image" src="images/opentok/speaker.png" title="request mic" onclick="raisehand()">
+				<input class="dashboardButton" type="image" src="images/opentok/power.png" title="exit class">
 			</div>
 		</div>
 	</div>

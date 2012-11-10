@@ -99,12 +99,12 @@ public class SessionManager {
 	 * @return
 	 */
 	private String getUserRole(long classId, String userOpenId){
-		if (DaoCmds.isTeacher(userOpenId, classId)){
+		//FIXME - this is boraked because isTeacher method doesn't work
+		//if (DaoCmds.isTeacher(userOpenId, classId)){
+		if (userOpenId.equals("11954315423323014418")){
 			return "teacher";
-		//TODO - uncomment this once student registration works
-/*		} else if (DaoCmds.isStudent(userOpenId, classId)){
-			return RoleConstants.PUBLISHER;*/
 		} else
 			return "student";
+		//TODO - case when user is not a teacher or student (admin)
 	}
 }

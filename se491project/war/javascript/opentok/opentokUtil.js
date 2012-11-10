@@ -57,6 +57,7 @@ function handleOpenTok(data){
 				var subscribeProps = {width:400, height:225};
 				session.subscribe(streams[i], div.id, subscribeProps);
 			}
+			setupChatFunctionality(data.role);
 		}
 	}
 	
