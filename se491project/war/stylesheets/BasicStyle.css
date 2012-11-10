@@ -67,4 +67,7 @@ input[type="submit"]
     padding-left:7px
 
 }
-
+p
+ {
+ 	text-align:left;
+ }

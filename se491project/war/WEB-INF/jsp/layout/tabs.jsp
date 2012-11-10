@@ -105,7 +105,6 @@
 		if (vcUser.isStudent()) {
 %>
 <div id="student" class="submenustyle">
-<a href="/displaySearchClassPage.do">Search Classes</a>
 <a href="/displayClassRegistration.do">Register For Class</a>
 <a href="/displayStudentSchedule.do">Scheduled Classes</a>
 </div>
