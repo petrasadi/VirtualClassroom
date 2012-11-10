@@ -4,6 +4,12 @@
 	width: 0;
 }
 
+#conferenceContainer{
+	margin-left: auto;
+	margin-right: auto;
+	width: 500px;
+}
+
 #conferenceContainer > *{
 	float:left;
 }
@@ -14,4 +20,9 @@
 
 .dashboardButton {
 	width: 72px;
+}
+
+#speakRequests {
+	clear:both;
+	width:400px;
 }

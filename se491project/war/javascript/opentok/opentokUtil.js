@@ -63,7 +63,7 @@ function handleOpenTok(data){
 	
 	//TODO - fix raiseHand event
 	function raiseHandHandler(event){
-		alert("hand raised");
+		$('#speakRequests').append('<input class="dashboardButton" type="image" src="images/opentok/face.png" title="student speak request">');
 	}
 
 	function accessAllowedHandler(event){

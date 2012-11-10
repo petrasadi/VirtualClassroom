@@ -20,8 +20,6 @@
 		<div id="myPublisherDiv"></div>
 		<div id="subscribers"></div>
 		
-		<div id="speakRequest"></div>
-		
 		<div id="userDashboard" style="display: none;">
 			<div id="teacherDashboard">
 				<!-- TODO - create teacher dashboard -->
@@ -31,6 +29,9 @@
 				<input class="dashboardButton" type="image" src="images/opentok/power.png" title="exit class">
 			</div>
 		</div>
+		
+		<div id="speakRequests"></div>
+		
 	</div>
 	<div id="myDiv">
 		<!-- 
