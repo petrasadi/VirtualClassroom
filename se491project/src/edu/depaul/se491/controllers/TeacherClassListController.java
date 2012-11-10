@@ -25,6 +25,9 @@ public class TeacherClassListController {
 	public ModelAndView displayTeacherListCurrentClasses(HttpServletRequest request) {
 		
 		Person vcUser = (Person)request.getSession().getAttribute("vcUser");
+		if(vcUser == null){
+			 return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+		}
 		Key userKey = vcUser.getId();
 		
 		LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds.getClasses();

@@ -68,17 +68,12 @@ public class CreateClassFormController {
 		*/
 		Key catKey;
 
-		UserService userService = UserServiceFactory.getUserService();
-		IPersonDAO personDAO = new PersonDAO();
-		Person vcUser = null;
-
-		try {
-			vcUser = personDAO.getPersonByOpenId(userService.getCurrentUser()
-					.getUserId());
-		} catch (PersonException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+	
+		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+		if(vcUser == null){
+			 return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
 		}
+		
 		/*
 		 * category.setName(formBean.getClassCategory());
 		 * category.setDescription("to be written");
@@ -132,8 +127,12 @@ public class CreateClassFormController {
 	}
 
 	@RequestMapping("/displayCreateClassPage")
-	public ModelAndView displayCreateClassPage() {
+	public ModelAndView displayCreateClassPage(HttpServletRequest request) {
 		ModelAndView view = new ModelAndView();
+		Person vcUser = (Person)request.getSession().getAttribute("vcUser");
+		if(vcUser == null){
+			 return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+		}
 
 		CreateClassFormBean createClassFormBean = new CreateClassFormBean();
 		createClassFormBean.setClassLevel("beginner");
