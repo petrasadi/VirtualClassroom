@@ -52,6 +52,13 @@ public interface IPersonDAO {
 	public Iterable<Entity> getPersonByEmail(String email) throws PersonException;
 	
 	/**
+	 * @param person
+	 * @param classes
+	 * @return boolean
+	 */
+	public boolean addClass(Key person, Key classes);
+	
+	/**
 	 * @param Key set person as admin
 	 */
 	public void setPersonAsAdmin(Key person);

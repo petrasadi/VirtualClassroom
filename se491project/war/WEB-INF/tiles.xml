@@ -45,6 +45,14 @@
         <put-attribute name="title" value="Register Class" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg_v1.jsp" />
     </definition>
+    <definition name="registerStudentForClass" extends="base.definition">
+        <put-attribute name="title" value="Register Class" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg_v1.jsp" />
+    </definition>
+    <definition name="joinClass" extends="base.definition">
+        <put-attribute name="title" value="Register Class" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg_v1.jsp" />
+    </definition>
     <!--  <definition name="displayRegisterClassPage" extends="base.definition">
         <put-attribute name="title" value="Register Class" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg.html" />

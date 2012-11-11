@@ -91,7 +91,7 @@ $.extend($.expr[":"],
 		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Registration</th></tr></thead>
 			<tfoot><tr><td colspan="4"></tr></tfoot>
 			<tbody>
-			<c:forEach var="class" items="${classes}" varStatus="rowCounter">
+			<c:forEach var="classes" items="${classes}" varStatus="rowCounter">
         <c:choose>
           <c:when test="${rowCounter.count % 2 == 0}">
             <c:set var="rowStyle" scope="page" value=""/>
@@ -101,11 +101,17 @@ $.extend($.expr[":"],
           </c:otherwise>
         </c:choose>
         <tr class="${rowStyle}">
-          <td>${class.name}</td>
-          <td>${class.category}</td>
-          <td>${class.startDate}</td>
-          <td>${class.endDate}</td>
-          <td><td><a href="#" class="classname">${class.registration}</a></td></td>
+          <td>${classes.name}</td>
+          <td>${classes.category}</td>
+          <td>${classes.startDate}</td>
+          <td>${classes.endDate}</td>
+          <c:set var="registration" scope="page" value="${classes.registration}"/>
+          <% String registration = pageContext.getAttribute("registration").toString();
+          if(registration.equals("Register")) { %>
+          <td><a href="/registerStudentForClass.do?classId=${classes.id}" class="classname">${classes.registration}</a></td>
+          <% } else if (registration.equals("Join")) { %>
+          <td><a href="/joinClass.do?classId=${classes.id}" class="classname">${classes.registration}</a></td>
+          <% } %>
         </tr>
       </c:forEach>
 			</tbody>

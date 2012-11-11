@@ -1,5 +1,6 @@
 package edu.depaul.se491.josql;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.jdo.PersistenceManager;
@@ -17,6 +18,7 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 
+import edu.depaul.se491.josqlCmds.DaoCmds;
 import edu.depaul.se491.model.Classes;
 
 /**
@@ -222,41 +224,24 @@ public class ClassesDAO implements IClassesDAO {
 	@SuppressWarnings("unchecked")
 	public boolean addStudent(Key person, Key classes) throws ClassesException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter classesFilter = new FilterPredicate("id", FilterOperator.EQUAL, classes);
-		Query classesQuery = new Query("Classes").setFilter(classesFilter);
-		
-		PreparedQuery pq = datastore.prepare(classesQuery);
-		Entity classEntity = pq.asSingleEntity();
-		
-		List<Key> students = (List<Key>) classEntity.getProperty("students");
-		Key teacher = (Key) classEntity.getProperty("teacher");
-		int maxStudents = ((Integer) classEntity.getProperty("maxstudents")).intValue();
-			if((!students.contains(person)) && (maxStudents > students.size()) && (person != teacher)) {
-				students.add(person);
-				Filter personFilter = new FilterPredicate("id", FilterOperator.EQUAL, person);
-				Query personQuery = new Query("Person").setFilter(personFilter);
-				PreparedQuery personq = datastore.prepare(personQuery);
-				Entity personEntity = personq.asSingleEntity();
-				
-				Transaction tx = datastore.beginTransaction();
-				classEntity.setProperty("students", students);
-				List<Key> classList = (List<Key>) personEntity.getProperty("classes");
-				classList.add(classes);
-				personEntity.setProperty("classes", classList);
-				
-				try {
-					datastore.put(personEntity);
-		        	datastore.put(classEntity);
-		        	tx.commit();
-		        } finally {
-		        	if(tx.isActive()) {
-		        		tx.rollback();
-		        		return false;
-		        	}
-		        }
-				return true;
-			}
-		return false;
+		try {
+    		Entity c = datastore.get(classes);
+    		List<Key> slist = (List<Key>) c.getProperty("students");
+    		if((slist != null) && (!slist.contains(person))) {
+    			slist.add(classes);
+    			c.setProperty("students", slist);
+    			datastore.put(c);
+    			return true;
+    		} else {
+    			slist = new LinkedList<Key>();
+    			slist.add(person);
+    			c.setProperty("students", slist);
+    			datastore.put(c);
+    			return true;
+    		}
+    	} catch (EntityNotFoundException e) {
+    		return false;
+    	}
 	}
 	
 	/*******************************************************************************

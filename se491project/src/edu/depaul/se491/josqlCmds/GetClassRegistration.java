@@ -33,8 +33,11 @@ class GetClassRegistration implements IDaoCommands {
 			IClassesDAO classes = new ClassesDAO();
 			Entity c = classes.getClassById(classId);
 			List<Key> slist = (List<Key>) c.getProperty("students");
+			if (slist == null) {
+				return null;
+			}
 			LinkedList<Person> plist = new LinkedList<Person>();
-			for(Key p : slist) {	
+			for(Key p : slist) {
 				Entity e = persons.getPersonById(p);
 		
 				Person pf = null;

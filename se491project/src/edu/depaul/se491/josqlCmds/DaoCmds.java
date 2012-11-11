@@ -37,6 +37,19 @@ public class DaoCmds {
 	}
 	
 	/**
+	 * Identifies if a person with a 'key' is a student of the class with the key.
+	 * @param Key person
+	 * @param Key classes
+	 * @return
+	 */
+	public static boolean isStudentByKey(Key person, Key classes) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new IsStudentByKeyCmd(person, classes);
+		run.setCommand(cmd);
+		return run.isExecute();
+	}
+	
+	/**
 	 * Provides a linked list of the classes. This is nice because it does not provide a raw Entity.
 	 * @return LinkedList<Classes>
 	 */
@@ -60,6 +73,17 @@ public class DaoCmds {
 		return (LinkedList<Classes>) run.getExecute();
 	}
 	
+	/**
+	 * @param Key person
+	 * @param Key classes
+	 * @return Key
+	 */
+	public static Key addStudentCmd(Key p, Key c) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new AddStudentsCmd(p, c);
+		run.setCommand(cmd);
+		return (Key) run.execute();
+	}
 	/**
 	 * @param openId
 	 * @return LinkedList<Classes>

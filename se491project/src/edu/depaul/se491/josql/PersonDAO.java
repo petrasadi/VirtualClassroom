@@ -2,6 +2,9 @@ package edu.depaul.se491.josql;
 
 import static com.google.appengine.api.datastore.FetchOptions.Builder.withLimit;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.jdo.PersistenceManager;
 
 import com.google.appengine.api.datastore.DatastoreService;
@@ -293,10 +296,40 @@ public class PersonDAO implements IPersonDAO {
         	}
         }
     } catch (EntityNotFoundException e) {
-  		
+  		return;
   	}
     }
     
+    /*******************************************************************************
+   	*
+   	*   {@literal}
+   	*    addClass - adds class to student classes list
+   	*
+   	*   {@param} Key person
+   	*
+   	******************************************************************************/	
+    @SuppressWarnings("unchecked")
+	public boolean addClass(Key person, Key classes) {
+    	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    	try {
+    		Entity p = datastore.get(person);
+    		List<Key> clist = (List<Key>) p.getProperty("classes");
+    		if((clist != null) && (!clist.contains(classes))) {
+    			clist.add(classes);
+    			p.setProperty("classes", clist);
+    			datastore.put(p);
+    			return true;
+    		} else {
+    			clist = new LinkedList<Key>();
+    			clist.add(classes);
+    			p.setProperty("classes", clist);
+    			datastore.put(p);
+    			return true;
+    		}
+    	} catch (EntityNotFoundException e) {
+    		return false;
+    	}
+    }
     /*******************************************************************************
    	*
    	*   {@literal}
