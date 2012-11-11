@@ -195,7 +195,7 @@ public class Classes {
 	public String getDisplayClassStartTime(){		
 
 		if(classstarttime != null){
-			DateFormat dateFmt = new SimpleDateFormat("HH:mm aaa");
+			DateFormat dateFmt = new SimpleDateFormat("hh:mm aaa");
 			return dateFmt.format(classstarttime);
 		}else{
 			return "unavailable";
@@ -205,7 +205,7 @@ public class Classes {
 	public String getDisplayClassEndTime(){
 		
 		if(classstarttime != null){
-			DateFormat dateFmt = new SimpleDateFormat("HH:mm aaa");
+			DateFormat dateFmt = new SimpleDateFormat("hh:mm aaa");
 			return dateFmt.format(classendtime);
 		}else{
 			return "unavailable";

@@ -97,7 +97,7 @@ public class CreateClassFormController {
 		clazz.setMaxStudents(Integer.parseInt(createClassFormBean
 				.getMaxStudents()));
 
-		dateFmt = new SimpleDateFormat("MM/dd/yyyy HH:mm a");
+		dateFmt = new SimpleDateFormat("MM/dd/yyyy hh:mm aa");
 		classStartStr = createClassFormBean.getClassDate() + " "
 				+ createClassFormBean.getClassStartTime();
 		classEndStr = createClassFormBean.getClassDate() + " "
