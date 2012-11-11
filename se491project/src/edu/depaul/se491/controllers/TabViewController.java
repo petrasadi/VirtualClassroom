@@ -15,6 +15,7 @@ public class TabViewController {
 
 	@RequestMapping("/logout")
 	public ModelAndView displayLogoutPage(HttpServletRequest request) {
+		request.getSession().setAttribute("vcUser", null);
 		return new ModelAndView("displayAboutPage", "command", new Object()).addObject("tab", "home");
 	}
 	
