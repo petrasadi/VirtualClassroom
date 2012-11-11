@@ -7,7 +7,9 @@ import javax.jdo.PersistenceManager;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.Filter;
@@ -115,15 +117,17 @@ public class ClassesDAO implements IClassesDAO {
 	*   {@param} Key classes
 	*
 	*   {@return} Entity
+	 * @throws  
 	*
 	******************************************************************************/
 	public Entity getClassById(Key classes) throws ClassesException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter classesFilter = new FilterPredicate("id", FilterOperator.EQUAL, classes);
-		Query classesByIdQuery = new Query("Classes").setFilter(classesFilter);
 		
-		PreparedQuery pq = datastore.prepare(classesByIdQuery);
-		return pq.asSingleEntity();
+		try {
+			return datastore.get(classes);
+		} catch (EntityNotFoundException e) {
+			return null;
+		}
 	}
 	
 	/*******************************************************************************
@@ -138,11 +142,12 @@ public class ClassesDAO implements IClassesDAO {
 	******************************************************************************/
 	public Entity getClassById(long classes) throws ClassesException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter classesFilter = new FilterPredicate("id", FilterOperator.EQUAL, classes);
-		Query classesByIdQuery = new Query("Classes").setFilter(classesFilter);
-		
-		PreparedQuery pq = datastore.prepare(classesByIdQuery);
-		return pq.asSingleEntity();
+		Key n = KeyFactory.createKey("Classes", classes);
+		try {
+			return datastore.get(n);
+		} catch (EntityNotFoundException e) {
+			return null;
+		}
 	}
 	
 	/*******************************************************************************

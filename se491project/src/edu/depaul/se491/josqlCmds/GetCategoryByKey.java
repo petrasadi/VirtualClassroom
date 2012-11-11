@@ -1,5 +1,6 @@
 package edu.depaul.se491.josqlCmds;
 
+import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
 import edu.depaul.se491.josql.CategoryDAO;
@@ -14,6 +15,7 @@ class GetCategoryByKey implements IDaoCommands {
 	Key id;
 	
 	public GetCategoryByKey(Key id) {
+		System.out.println("initialize getCategoryByKey: " + id.toString());
 		this.id = id;
 	}
 	public Key execute() {
@@ -22,12 +24,14 @@ class GetCategoryByKey implements IDaoCommands {
 	public boolean isExecute() {
 		return false;
 	}
-	public Category getExecute() {
+	public Entity getExecute() {
 		IClassesDAO c = new ClassesDAO();
 		ICategoryDAO ct = new CategoryDAO();
 		try {
-			Key ctKey = (Key) c.getClassById(id).getProperty("category");
-			return (Category) ct.getCategoryById(ctKey);
+			Entity classes = c.getClassById(id);
+			Key ctKey = (Key) classes.getProperty("category");
+			Entity e = ct.getCategoryById(ctKey);
+			return e;
 		} catch (ClassesException e) {
 			e.printStackTrace();
 			return null;

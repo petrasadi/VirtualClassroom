@@ -2,8 +2,7 @@ package edu.depaul.se491.josqlCmds;
 
 import java.util.LinkedList;
 
-import javax.crypto.KeyGenerator;
-
+import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
 import edu.depaul.se491.model.Category;
@@ -119,6 +118,18 @@ public class DaoCmds {
 		IDaoCommands cmd = new GetCategoryByOpenTokId(openTokId);
 		run.setCommand(cmd);
 		return (Category) run.getExecute();
+	}
+	
+	/**
+	 * Provides a Category of a class by a id.
+	 * @param Key id
+	 * @return Category
+	 */
+	public static Entity getCategoryByKey(Key id) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new GetCategoryByKey(id);
+		run.setCommand(cmd);
+		return (Entity) run.getExecute();
 	}
 	
 	/**

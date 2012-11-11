@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
@@ -23,7 +24,7 @@ public class ClassRegistrationController {
 	@RequestMapping(value = "/displayClassRegistration", method = RequestMethod.GET)
 	public ModelAndView displayClassRegistration(HttpServletRequest request) {
 		
-		//Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
 		
 		LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds.getClasses();
 		LinkedList<ClassRegistrationListBean> cBeanList = new LinkedList<ClassRegistrationListBean>();
@@ -39,11 +40,11 @@ public class ClassRegistrationController {
 		for (Classes c : clist) {
 			ClassRegistrationListBean cBean = new ClassRegistrationListBean();
 			cBean.setName(c.getClassName());
-			cBean.setCategory("category"); /* Todo: needs to be updated */
-			cBean.setStartDate("start");
-			cBean.setEndDate("end");
+			cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
+			cBean.setStartDate(c.getClassStartTime().toString());
+			cBean.setEndDate(c.getClassEndTime().toString());
 			
-			/*if(DaoCmds.isStudent(vcUser.getOpenid(), c.getId().getId()) && (c.getClassStartTime().compareTo(today) == 0)) {
+			if(DaoCmds.isStudent(vcUser.getOpenid(), c.getId().getId()) && (c.getClassStartTime().compareTo(today) == 0)) {
 				cBean.setRegistration("Join");
 			} else if(DaoCmds.isStudent(vcUser.getOpenid(), c.getId().getId())) {
 				cBean.setRegistration("Registered");
@@ -51,7 +52,8 @@ public class ClassRegistrationController {
 				cBean.setRegistration("Register");
 			} else {
 				cBean.setRegistration("Full");
-			}*/
+			}
+			cBean.setId(c.getId());
 			cBean.setRegistration("Register");
 			cBeanList.add(cBean);
 		}
@@ -60,5 +62,14 @@ public class ClassRegistrationController {
 		view.addObject("tab","student");
 		view.addObject("classes", cBeanList);
 	    return view;	
+	}
+
+	@RequestMapping(value = "/registerStudentForClass")
+	public ModelAndView registerStudentForClass(@ModelAttribute("classId") Classes id, HttpServletRequest request) {
+		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+		
+		ModelAndView view = new ModelAndView();
+		view.setViewName("displayClassRegistration");
+		return view;
 	}
 }

@@ -1,6 +1,10 @@
 package edu.depaul.se491.formBeans;
 
+import com.google.appengine.api.datastore.Key;
+
 public class ClassRegistrationListBean {
+	private Key id;
+	
 	private String name;
 	
 	private String category;
@@ -53,5 +57,13 @@ public class ClassRegistrationListBean {
 
 	public void setRegistration(String registration) {
 		this.registration = registration;
+	}
+
+	public Key getId() {
+		return id;
+	}
+
+	public void setId(Key id) {
+		this.id = id;
 	}
 }

@@ -26,7 +26,7 @@ public interface ICategoryDAO {
 	/**
 	 * @return Iterable<Entity> get all category with givn key
 	 */
-	public Iterable<Entity> getCategoryById(Key Category) throws CategoryException;
+	public Entity getCategoryById(Key Category) throws CategoryException;
 	
 	/**
      * Save category data.  If category exists then will update.  If category is blank then it

@@ -26,6 +26,9 @@ public class IsClassFullCmd implements IDaoCommands {
 		try {
 			Entity c = classes.getClassById(classId);
 			List<Key> slist = (List<Key>) c.getProperty("students");
+			if(slist == null) {
+				return false;
+			}
 			if(((Integer) c.getProperty("maxstudents")).intValue() > slist.size()) {
 				return false;
 			} else {

@@ -1,5 +1,6 @@
 package edu.depaul.se491.josqlCmds;
 
+import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
 import edu.depaul.se491.josql.CategoryDAO;
@@ -26,8 +27,16 @@ class GetCategoryByOpenTokId implements IDaoCommands {
 		IClassesDAO c = new ClassesDAO();
 		ICategoryDAO ct = new CategoryDAO();
 		try {
-			Key ctKey = (Key) c.getClassById(openTokId).getProperty("category");
-			return (Category) ct.getCategoryById(ctKey);
+			Entity classes = c.getClassById(openTokId);
+			Key ctKey = (Key) classes.getProperty("category");
+			Entity e = ct.getCategoryById(ctKey);
+			Category cat = null;
+			
+				cat.setName((String) e.getProperty("name"));
+				cat.setDescription((String) e.getProperty("description"));
+				cat.setId((Key) e.getProperty("id"));
+			
+			return cat;
 		} catch (ClassesException e) {
 			e.printStackTrace();
 			return null;
