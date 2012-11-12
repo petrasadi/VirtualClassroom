@@ -51,7 +51,7 @@
     </definition>
     <definition name="joinClass" extends="base.definition">
         <put-attribute name="title" value="Register Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg_v1.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp" />
     </definition>
     <!--  <definition name="displayRegisterClassPage" extends="base.definition">
         <put-attribute name="title" value="Register Class" />
@@ -77,7 +77,10 @@
         <put-attribute name="title" value="Class Created" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/classlist.jsp" />
     </definition>
-    
+    <definition name="displayStudentViewClassPage" extends="base.definition">
+        <put-attribute name="title" value="View Class" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp" />
+    </definition>
     <definition name="displayViewClassPage" extends="base.definition">
         <put-attribute name="title" value="View Class" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp" />

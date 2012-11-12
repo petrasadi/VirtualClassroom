@@ -5,6 +5,8 @@
 <%
 	UserService userService = UserServiceFactory.getUserService();
 	String user = userService.getCurrentUser().getUserId();
+	
+	long classId = ((Long) session.getAttribute("classId")).longValue();
 %>
 
 <link rel=StyleSheet href="stylesheets/opentok.css" type="text/css">
@@ -15,7 +17,7 @@
 </head>
 
 <!-- FIXME -user id is currently passed in clear text -->
-<body onload="getSessionInfo('<%=user%>', 149)">
+<body onload="getSessionInfo('<%=user%>', '<%=classId%>'">
 	<div id="conferenceContainer">
 		<div id="myPublisherDiv"></div>
 		<div id="subscribers"></div>

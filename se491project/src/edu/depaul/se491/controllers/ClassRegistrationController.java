@@ -93,7 +93,7 @@ public class ClassRegistrationController {
 		session.setAttribute("classId", id);
 		
 		ModelAndView view = new ModelAndView();
-		view.setViewName("/displayStudentViewClassPage");
+		view.setViewName("displayStudentViewClassPage");
 		return view;
 	}
 }
