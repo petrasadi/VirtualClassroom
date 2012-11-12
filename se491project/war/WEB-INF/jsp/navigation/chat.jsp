@@ -9,7 +9,13 @@
 
 
 	String user = userService.getCurrentUser().getUserId();
-	long classId = ((Long) request.getAttribute("classid")).longValue();
+	long classId = 0;
+	if (request.getAttribute("classid") != null){
+		classId = ((Long) request.getAttribute("classid")).longValue();
+	} else {
+		classId = ((Long) session.getAttribute("classId")).longValue();
+	}
+
 
 %>
 

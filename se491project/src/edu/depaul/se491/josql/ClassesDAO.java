@@ -228,16 +228,18 @@ public class ClassesDAO implements IClassesDAO {
     		Entity c = datastore.get(classes);
     		List<Key> slist = (List<Key>) c.getProperty("students");
     		if((slist != null) && (!slist.contains(person))) {
-    			slist.add(classes);
+    			slist.add(person);
     			c.setProperty("students", slist);
     			datastore.put(c);
     			return true;
-    		} else {
+    		} else if(slist == null) {
     			slist = new LinkedList<Key>();
     			slist.add(person);
     			c.setProperty("students", slist);
     			datastore.put(c);
     			return true;
+    		}else{
+    			return false;
     		}
     	} catch (EntityNotFoundException e) {
     		return false;
