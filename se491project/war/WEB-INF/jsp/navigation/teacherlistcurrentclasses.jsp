@@ -41,7 +41,7 @@ List of Schedule Classes
           <td>${class.displayClassEndTime}</td>
           <td>${class.minStudents}</td>
           <td>${class.maxStudents}</td>
-          <td><a href="/displayTeacherViewClassPage.do">View Class</a></td>
+          <td><a href="/displayTeacherViewClassPage.do?classid=${class.id.id}">View Class</a></td>
         </tr>
       </c:forEach>
       

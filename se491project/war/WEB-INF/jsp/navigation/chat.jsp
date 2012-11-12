@@ -4,9 +4,13 @@
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%
 	UserService userService = UserServiceFactory.getUserService();
+
+
+
+
 	String user = userService.getCurrentUser().getUserId();
-	
-	long classId = ((Long) session.getAttribute("classId")).longValue();
+	long classId = ((Long) request.getAttribute("classid")).longValue();
+
 %>
 
 <link rel=StyleSheet href="stylesheets/opentok.css" type="text/css">
