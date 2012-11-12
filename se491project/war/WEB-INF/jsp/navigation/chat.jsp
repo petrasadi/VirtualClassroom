@@ -17,7 +17,7 @@
 </head>
 
 <!-- FIXME -user id is currently passed in clear text -->
-<body onload="getSessionInfo('<%=user%>', '<%=classId%>'">
+<body onload="getSessionInfo('<%=user%>', '<%=classId%>')">
 	<div id="conferenceContainer">
 		<div id="myPublisherDiv"></div>
 		<div id="subscribers"></div>
@@ -25,7 +25,7 @@
 		<div id="userDashboard" style="display: none;">
 			<div id="teacherDashboard">
 				<!-- TODO - handle regain control -->
-				<input class="dashboardButton" type="image" src="images/opentok/regainControl.png" title="regain control" onclick="alert('TODO - teacher regain control')">
+				<input class="dashboardButton" type="image" src="images/opentok/regainControl.png" title="regain control" onclick="unsubscribeAll()">
 			</div>
 			<div id="studentDashboard">
 				<input class="dashboardButton" type="image" src="images/opentok/speaker.png" title="request mic" onclick="raisehand()">

@@ -29,7 +29,7 @@ public class IsClassFullCmd implements IDaoCommands {
 			if(slist == null) {
 				return false;
 			}
-			if(((Integer) c.getProperty("maxstudents")).intValue() > slist.size()) {
+			if(((Long) c.getProperty("maxstudents")).intValue() > slist.size()) {
 				return false;
 			} else {
 				return true;
