@@ -125,5 +125,10 @@
         <put-attribute name="title" value="Available Classes" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/availableclasses.jsp" />
     </definition>
+    
+      <definition name="displayUserInstructions" extends="base.definition">
+        <put-attribute name="title" value="User Instruvtions" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/userinstructions.jsp" />
+    </definition>
  
 </tiles-definitions>

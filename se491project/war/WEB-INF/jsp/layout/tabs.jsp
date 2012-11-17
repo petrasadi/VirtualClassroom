@@ -83,6 +83,7 @@
 <div id="home" class="submenustyle">
 <a href="/displayAboutPage.do">About</a>
 <a href="/displayAvailableClasses.do">Available Classes</a>
+<a href="/displayUserInstructions.do">Instructions</a>
 </div>
 
 <%
@@ -106,7 +107,6 @@
 %>
 <div id="student" class="submenustyle">
 <a href="/displayClassRegistration.do">Register For Class</a>
-<a href="/displayStudentSchedule.do">Scheduled Classes</a>
 </div>
 
 <%
@@ -129,7 +129,7 @@
 
 <div id="account" class="submenustyle">
 <a href="/displayUserInformationPage.do">User Account</a>
-<a href="/editUserInformationPage.do"">Edit</a>
+<a href="/editUserInformationPage.do">Edit</a>
 </div>
 
 
