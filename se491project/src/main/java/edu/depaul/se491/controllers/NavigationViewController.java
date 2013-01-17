@@ -1,4 +1,4 @@
-package edu.depaul.se491.controllers;
+package main.java.edu.depaul.se491.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import edu.depaul.se491.formBeans.CreateClassFormBean;
+import main.java.edu.depaul.se491.formBeans.CreateClassFormBean;
 
 @Controller
 @SessionAttributes

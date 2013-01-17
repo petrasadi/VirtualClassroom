@@ -1,4 +1,4 @@
-package edu.depaul.se491.opentok;
+package main.java.edu.depaul.se491.opentok;
 
 /** 
  * 

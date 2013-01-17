@@ -1,4 +1,4 @@
-package edu.depaul.se491.controllers;
+package main.java.edu.depaul.se491.controllers;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -18,10 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 
-import edu.depaul.se491.formBeans.ClassRegistrationListBean;
-import edu.depaul.se491.josqlCmds.DaoCmds;
-import edu.depaul.se491.model.Classes;
-import edu.depaul.se491.model.Person;
+import main.java.edu.depaul.se491.formBeans.ClassRegistrationListBean;
+import main.java.edu.depaul.se491.josqlCmds.DaoCmds;
+import main.java.edu.depaul.se491.model.Classes;
+import main.java.edu.depaul.se491.model.Person;
 
 @Controller
 @SessionAttributes

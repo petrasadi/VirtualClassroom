@@ -1,4 +1,4 @@
-package edu.depaul.se491.formBeans;
+package main.java.edu.depaul.se491.formBeans;
 
 import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;

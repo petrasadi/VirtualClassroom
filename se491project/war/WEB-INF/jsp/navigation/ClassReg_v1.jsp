@@ -4,7 +4,7 @@
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="edu.depaul.se491.formBeans.ClassRegistrationListBean"%>
+<%@ page import="main.java.edu.depaul.se491.formBeans.ClassRegistrationListBean"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Register for Class</title>

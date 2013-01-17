@@ -13,7 +13,7 @@
 
 
 
-  <context:component-scan base-package="edu.depaul.se491.controllers" />
+  <context:component-scan base-package="main.java.main.java.edu.depaul.se491.controllers" />
   
    <!-- support JSR303 annotation if JSR 303 validation present on classpath -->
 	<mvc:annotation-driven />

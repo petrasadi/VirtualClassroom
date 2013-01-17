@@ -1,4 +1,4 @@
-package edu.depaul.se491.servlets;
+package main.java.edu.depaul.se491.servlets;
 
 import java.io.IOException;
 import java.util.Date;
@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.appengine.api.datastore.Key;
 
-import edu.depaul.se491.josql.EntityManagerService;
-import edu.depaul.se491.josql.IPersonDAO;
-import edu.depaul.se491.josql.PersonDAO;
-import edu.depaul.se491.josql.PersonException;
-import edu.depaul.se491.model.Category;
-import edu.depaul.se491.model.Classes;
-import edu.depaul.se491.model.Person;
+import main.java.edu.depaul.se491.josql.EntityManagerService;
+import main.java.edu.depaul.se491.josql.IPersonDAO;
+import main.java.edu.depaul.se491.josql.PersonDAO;
+import main.java.edu.depaul.se491.josql.PersonException;
+import main.java.edu.depaul.se491.model.Category;
+import main.java.edu.depaul.se491.model.Classes;
+import main.java.edu.depaul.se491.model.Person;
 
 @SuppressWarnings("serial")
 public class Se491_vcProjServlet extends HttpServlet {

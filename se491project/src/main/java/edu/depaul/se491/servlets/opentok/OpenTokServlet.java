@@ -1,10 +1,10 @@
-package edu.depaul.se491.servlets.opentok;
+package main.java.edu.depaul.se491.servlets.opentok;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 
-import edu.depaul.se491.opentok.SessionManager;
+import main.java.edu.depaul.se491.opentok.SessionManager;
 
 public class OpenTokServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

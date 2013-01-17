@@ -1,9 +1,9 @@
-package edu.depaul.se491.josqlCmds;
+package main.java.edu.depaul.se491.josqlCmds;
 
-import edu.depaul.se491.josql.ClassesDAO;
-import edu.depaul.se491.josql.ClassesException;
-import edu.depaul.se491.josql.IClassesDAO;
-import edu.depaul.se491.model.Classes;
+import main.java.edu.depaul.se491.josql.ClassesDAO;
+import main.java.edu.depaul.se491.josql.ClassesException;
+import main.java.edu.depaul.se491.josql.IClassesDAO;
+import main.java.edu.depaul.se491.model.Classes;
 
 import java.util.Date;
 import java.util.LinkedList;

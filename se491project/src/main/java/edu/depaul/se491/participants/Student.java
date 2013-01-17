@@ -1,6 +1,6 @@
-package edu.depaul.se491.participants;
+package main.java.edu.depaul.se491.participants;
 
-import edu.depaul.se491.engine.VirtualClass;
+import main.java.edu.depaul.se491.engine.VirtualClass;
 
 public class Student extends Participant {
 

@@ -1,13 +1,13 @@
-package edu.depaul.se491.josqlCmds;
+package main.java.edu.depaul.se491.josqlCmds;
 
 import java.util.LinkedList;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
-import edu.depaul.se491.model.Category;
-import edu.depaul.se491.model.Classes;
-import edu.depaul.se491.model.Person;
+import main.java.edu.depaul.se491.model.Category;
+import main.java.edu.depaul.se491.model.Classes;
+import main.java.edu.depaul.se491.model.Person;
 
 public class DaoCmds {
 	/**

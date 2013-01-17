@@ -1,4 +1,4 @@
-package edu.depaul.se491.josql;
+package main.java.edu.depaul.se491.josql;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -18,8 +18,8 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 
-import edu.depaul.se491.josqlCmds.DaoCmds;
-import edu.depaul.se491.model.Classes;
+import main.java.edu.depaul.se491.josqlCmds.DaoCmds;
+import main.java.edu.depaul.se491.model.Classes;
 
 /**
  * {@literal}

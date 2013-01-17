@@ -1,4 +1,4 @@
-package edu.depaul.se491.josql;
+package main.java.edu.depaul.se491.josql;
 
 import static com.google.appengine.api.datastore.FetchOptions.Builder.withLimit;
 
@@ -20,7 +20,7 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 
-import edu.depaul.se491.model.Person;
+import main.java.edu.depaul.se491.model.Person;
 
 /**
  * {@literal}

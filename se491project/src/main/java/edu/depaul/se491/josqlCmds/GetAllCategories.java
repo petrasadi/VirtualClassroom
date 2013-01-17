@@ -1,14 +1,14 @@
-package edu.depaul.se491.josqlCmds;
+package main.java.edu.depaul.se491.josqlCmds;
 
 import java.util.LinkedList;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
-import edu.depaul.se491.josql.CategoryDAO;
-import edu.depaul.se491.josql.CategoryException;
-import edu.depaul.se491.josql.ICategoryDAO;
-import edu.depaul.se491.model.Category;
+import main.java.edu.depaul.se491.josql.CategoryDAO;
+import main.java.edu.depaul.se491.josql.CategoryException;
+import main.java.edu.depaul.se491.josql.ICategoryDAO;
+import main.java.edu.depaul.se491.model.Category;
 
 
 
