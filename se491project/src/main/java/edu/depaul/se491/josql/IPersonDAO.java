@@ -1,10 +1,10 @@
-package main.java.edu.depaul.se491.josql;
+package edu.depaul.se491.josql;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 
-import main.java.edu.depaul.se491.model.Person;
+import edu.depaul.se491.model.Person;
 
 /**
  * {@literal}

@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.servlets.login;
+package edu.depaul.se491.servlets.login;
 
 import java.io.IOException;
 

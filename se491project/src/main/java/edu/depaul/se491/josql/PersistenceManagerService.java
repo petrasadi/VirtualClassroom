@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.josql;
+package edu.depaul.se491.josql;
 
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;

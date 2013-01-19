@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.opentok;
+package edu.depaul.se491.opentok;
 
 class OpenTok_API_Consts {
 	final static int API_KEY = 20729321;

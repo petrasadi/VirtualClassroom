@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.participants;
+package edu.depaul.se491.participants;
 
 public abstract class Participant {
 

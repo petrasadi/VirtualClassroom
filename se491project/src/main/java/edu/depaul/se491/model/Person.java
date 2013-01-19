@@ -1,4 +1,4 @@
- package main.java.edu.depaul.se491.model;
+ package edu.depaul.se491.model;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

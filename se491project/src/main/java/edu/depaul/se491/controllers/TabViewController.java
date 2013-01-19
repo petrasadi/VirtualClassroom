@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.controllers;
+package edu.depaul.se491.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import main.java.edu.depaul.se491.model.Person;
+import edu.depaul.se491.model.Person;
 
 @Controller
 @SessionAttributes

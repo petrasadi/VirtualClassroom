@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.controllers;
+package edu.depaul.se491.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 

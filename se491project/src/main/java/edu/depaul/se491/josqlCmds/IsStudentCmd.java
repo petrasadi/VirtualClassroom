@@ -1,16 +1,16 @@
-package main.java.edu.depaul.se491.josqlCmds;
+package edu.depaul.se491.josqlCmds;
 
 import java.util.List;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
-import main.java.edu.depaul.se491.josql.ClassesDAO;
-import main.java.edu.depaul.se491.josql.ClassesException;
-import main.java.edu.depaul.se491.josql.IClassesDAO;
-import main.java.edu.depaul.se491.josql.IPersonDAO;
-import main.java.edu.depaul.se491.josql.PersonDAO;
-import main.java.edu.depaul.se491.josql.PersonException;
+import edu.depaul.se491.josql.ClassesDAO;
+import edu.depaul.se491.josql.ClassesException;
+import edu.depaul.se491.josql.IClassesDAO;
+import edu.depaul.se491.josql.IPersonDAO;
+import edu.depaul.se491.josql.PersonDAO;
+import edu.depaul.se491.josql.PersonException;
 
 class IsStudentCmd implements IDaoCommands {
 	String OpenId;

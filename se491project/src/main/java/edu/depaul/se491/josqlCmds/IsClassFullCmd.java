@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.josqlCmds;
+package edu.depaul.se491.josqlCmds;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
-import main.java.edu.depaul.se491.josql.ClassesDAO;
-import main.java.edu.depaul.se491.josql.ClassesException;
-import main.java.edu.depaul.se491.josql.IClassesDAO;
-import main.java.edu.depaul.se491.model.Person;
+import edu.depaul.se491.josql.ClassesDAO;
+import edu.depaul.se491.josql.ClassesException;
+import edu.depaul.se491.josql.IClassesDAO;
+import edu.depaul.se491.model.Person;
 
 public class IsClassFullCmd implements IDaoCommands {
 	Key classId;

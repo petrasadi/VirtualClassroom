@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.josql;
+package edu.depaul.se491.josql;
 
 public enum ClassHistoryEnum {
 	TAUGHT("taught"), ATTENDED("attended"), UNATTENDED("unattended"), UNTAUGHT("untaught");

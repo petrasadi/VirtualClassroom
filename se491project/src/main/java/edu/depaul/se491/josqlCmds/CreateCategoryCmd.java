@@ -1,13 +1,13 @@
-package main.java.edu.depaul.se491.josqlCmds;
+package edu.depaul.se491.josqlCmds;
 
 import java.util.LinkedList;
 
 import com.google.appengine.api.datastore.Key;
 
-import main.java.edu.depaul.se491.josql.CategoryDAO;
-import main.java.edu.depaul.se491.josql.CategoryException;
-import main.java.edu.depaul.se491.josql.ICategoryDAO;
-import main.java.edu.depaul.se491.model.Category;
+import edu.depaul.se491.josql.CategoryDAO;
+import edu.depaul.se491.josql.CategoryException;
+import edu.depaul.se491.josql.ICategoryDAO;
+import edu.depaul.se491.model.Category;
 
 class CreateCategoryCmd implements IDaoCommands {
 	String name;

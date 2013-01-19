@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.formBeans;
+package edu.depaul.se491.formBeans;
 
 import javax.validation.constraints.Pattern;
 

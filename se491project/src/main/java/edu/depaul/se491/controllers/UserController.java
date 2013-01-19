@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.controllers;
+package edu.depaul.se491.controllers;
 
 import java.util.LinkedHashMap;
 import java.util.Locale;
@@ -19,11 +19,11 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import main.java.edu.depaul.se491.formBeans.UserRegistrationFormBean;
-import main.java.edu.depaul.se491.josql.IPersonDAO;
-import main.java.edu.depaul.se491.josql.PersonDAO;
-import main.java.edu.depaul.se491.josql.PersonException;
-import main.java.edu.depaul.se491.model.Person;
+import edu.depaul.se491.formBeans.UserRegistrationFormBean;
+import edu.depaul.se491.josql.IPersonDAO;
+import edu.depaul.se491.josql.PersonDAO;
+import edu.depaul.se491.josql.PersonException;
+import edu.depaul.se491.model.Person;
 
 @Controller
 @SessionAttributes

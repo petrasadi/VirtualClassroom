@@ -1,11 +1,11 @@
-package main.java.edu.depaul.se491.engine;
+package edu.depaul.se491.engine;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import main.java.edu.depaul.se491.participants.Instructor;
+import edu.depaul.se491.participants.Instructor;
 
 /**
  * Singleton Class organizer. Main responsibility is to match 

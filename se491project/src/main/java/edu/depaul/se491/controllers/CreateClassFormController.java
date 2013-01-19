@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.controllers;
+package edu.depaul.se491.controllers;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -21,19 +21,19 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import main.java.edu.depaul.se491.formBeans.CreateClassFormBean;
-import main.java.edu.depaul.se491.josql.CategoryDAO;
-import main.java.edu.depaul.se491.josql.ClassesDAO;
-import main.java.edu.depaul.se491.josql.ClassesException;
-import main.java.edu.depaul.se491.josql.ICategoryDAO;
-import main.java.edu.depaul.se491.josql.IClassesDAO;
-import main.java.edu.depaul.se491.josql.IPersonDAO;
-import main.java.edu.depaul.se491.josql.PersonDAO;
-import main.java.edu.depaul.se491.josql.PersonException;
-import main.java.edu.depaul.se491.josqlCmds.DaoCmds;
-import main.java.edu.depaul.se491.model.Category;
-import main.java.edu.depaul.se491.model.Classes;
-import main.java.edu.depaul.se491.model.Person;
+import edu.depaul.se491.formBeans.CreateClassFormBean;
+import edu.depaul.se491.josql.CategoryDAO;
+import edu.depaul.se491.josql.ClassesDAO;
+import edu.depaul.se491.josql.ClassesException;
+import edu.depaul.se491.josql.ICategoryDAO;
+import edu.depaul.se491.josql.IClassesDAO;
+import edu.depaul.se491.josql.IPersonDAO;
+import edu.depaul.se491.josql.PersonDAO;
+import edu.depaul.se491.josql.PersonException;
+import edu.depaul.se491.josqlCmds.DaoCmds;
+import edu.depaul.se491.model.Category;
+import edu.depaul.se491.model.Classes;
+import edu.depaul.se491.model.Person;
 
 @Controller
 @SessionAttributes

@@ -1,15 +1,15 @@
-package main.java.edu.depaul.se491.josqlCmds;
+package edu.depaul.se491.josqlCmds;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
-import main.java.edu.depaul.se491.josql.CategoryDAO;
-import main.java.edu.depaul.se491.josql.CategoryException;
-import main.java.edu.depaul.se491.josql.ICategoryDAO;
-import main.java.edu.depaul.se491.josql.IClassesDAO;
-import main.java.edu.depaul.se491.josql.ClassesDAO;
-import main.java.edu.depaul.se491.josql.ClassesException;
-import main.java.edu.depaul.se491.model.Category;
+import edu.depaul.se491.josql.CategoryDAO;
+import edu.depaul.se491.josql.CategoryException;
+import edu.depaul.se491.josql.ICategoryDAO;
+import edu.depaul.se491.josql.IClassesDAO;
+import edu.depaul.se491.josql.ClassesDAO;
+import edu.depaul.se491.josql.ClassesException;
+import edu.depaul.se491.model.Category;
 
 class GetCategoryByKey implements IDaoCommands {
 	Key id;

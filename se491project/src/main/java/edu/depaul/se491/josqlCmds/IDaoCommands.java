@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.josqlCmds;
+package edu.depaul.se491.josqlCmds;
 
 import com.google.appengine.api.datastore.Key;
 

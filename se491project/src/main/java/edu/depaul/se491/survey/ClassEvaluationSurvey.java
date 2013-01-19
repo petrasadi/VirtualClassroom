@@ -1,4 +1,4 @@
-package main.java.edu.depaul.se491.survey;
+package edu.depaul.se491.survey;
 
 import java.util.HashMap;
 
