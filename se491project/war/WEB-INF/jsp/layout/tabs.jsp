@@ -4,7 +4,7 @@
 	
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
 <%@ page import="com.google.appengine.api.users.UserService"%>
-<%@ page import="main.java.edu.depaul.se491.model.Person"%>
+<%@ page import="edu.depaul.se491.model.Person"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 
 <%

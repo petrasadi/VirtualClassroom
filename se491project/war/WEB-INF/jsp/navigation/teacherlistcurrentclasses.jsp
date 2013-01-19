@@ -3,7 +3,7 @@
 
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ page import="main.java.edu.depaul.se491.model.Classes"%>
+<%@ page import="edu.depaul.se491.model.Classes"%>
 <link rel="stylesheet" type="text/css" href="/stylesheets/row.css" />
 
 
