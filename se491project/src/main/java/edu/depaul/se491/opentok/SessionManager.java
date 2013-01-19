@@ -1,4 +1,4 @@
-package edu.depaul.se491.opentok;
+package main.java.edu.depaul.se491.opentok;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -9,7 +9,7 @@ import com.opentok.api.OpenTokSDK;
 import com.opentok.api.constants.RoleConstants;
 import com.opentok.exception.OpenTokException;
 
-import edu.depaul.se491.josqlCmds.DaoCmds;
+import main.java.edu.depaul.se491.josqlCmds.DaoCmds;
 
 /**
  * Class designed to manage the OpenTok API session information for all classes/courses in progress.

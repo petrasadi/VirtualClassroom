@@ -1,4 +1,4 @@
-package edu.depaul.se491.formBeans;
+package main.java.edu.depaul.se491.formBeans;
 
 import com.google.appengine.api.datastore.Key;
 

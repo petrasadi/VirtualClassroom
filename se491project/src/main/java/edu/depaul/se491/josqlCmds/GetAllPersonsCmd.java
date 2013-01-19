@@ -1,14 +1,14 @@
-package edu.depaul.se491.josqlCmds;
+package main.java.edu.depaul.se491.josqlCmds;
 
 import java.util.LinkedList;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 
-import edu.depaul.se491.josql.PersonDAO;
-import edu.depaul.se491.josql.PersonException;
-import edu.depaul.se491.josql.IPersonDAO;
-import edu.depaul.se491.model.Person;
+import main.java.edu.depaul.se491.josql.PersonDAO;
+import main.java.edu.depaul.se491.josql.PersonException;
+import main.java.edu.depaul.se491.josql.IPersonDAO;
+import main.java.edu.depaul.se491.model.Person;
 
 class GetAllPersonsCmd implements IDaoCommands {
 	public Key execute() {

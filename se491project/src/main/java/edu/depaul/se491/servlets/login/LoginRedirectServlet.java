@@ -1,4 +1,4 @@
-package edu.depaul.se491.servlets.login;
+package main.java.edu.depaul.se491.servlets.login;
 
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;

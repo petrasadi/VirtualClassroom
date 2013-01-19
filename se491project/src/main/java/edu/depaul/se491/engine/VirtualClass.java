@@ -1,10 +1,10 @@
-package edu.depaul.se491.engine;
+package main.java.edu.depaul.se491.engine;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import edu.depaul.se491.participants.Instructor;
-import edu.depaul.se491.participants.Student;
+import main.java.edu.depaul.se491.participants.Instructor;
+import main.java.edu.depaul.se491.participants.Student;
 
 public class VirtualClass {
 

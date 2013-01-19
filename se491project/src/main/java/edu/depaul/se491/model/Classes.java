@@ -1,4 +1,4 @@
-package edu.depaul.se491.model;
+package main.java.edu.depaul.se491.model;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
