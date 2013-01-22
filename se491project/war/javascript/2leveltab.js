@@ -55,12 +55,12 @@ function initalizetab(tabid) {
 													// with main tab
 			mastertabvar[tabid][mastertabvar[tabid].length] = menuitems[i]
 					.getAttribute("rel"); // store ids of submenus of tab menu
-			if (menuitems[i].className == "selected")
+			if (menuitems[i].className == "active")
 				showsubmenu(tabid, menuitems[i].getAttribute("rel"));
 			menuitems[i].getElementsByTagName("a")[0].onclick = function() {
 				showsubmenu(this.parentNode.getAttribute("rev"),this.parentNode.getAttribute("rel"));
 				setTabsAsNotSelected();
-				this.parentNode.setAttribute("class", "selected");
+				this.parentNode.setAttribute("class", "active");
 			};
 		}
 	}

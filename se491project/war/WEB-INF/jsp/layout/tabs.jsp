@@ -1,5 +1,6 @@
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/2leveltab.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css" />
 <script type="text/javascript" src="/javascript/2leveltab.js"></script>
 	
 <%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
@@ -20,19 +21,19 @@
  if(tab == null){
    	tab = "home";
  }else if(tab.equals("home")){
- 	homeSelect = "selected";
+ 	homeSelect = "active";
  }else if(tab.equals("teacher")){
- 	teacherSelect = "selected";
+ 	teacherSelect = "active";//"selected";
  }else if(tab.equals("student")){
- 	studentSelect = "selected";
+ 	studentSelect = "active";//"selected";
  }else if(tab.equals("admin")){
- 	adminSelect = "selected";
+ 	adminSelect = "active";//"selected";
  }else if(tab.equals("userinformation")){
- 	accountSelect = "selected";
+ 	accountSelect = "active";//"selected";
  }else if(tab.equals("login")){
- 	loginSelect = "selected";
+ 	loginSelect = "active";//"selected";
  }else{
- 	homeSelect = "selected";
+ 	homeSelect = "active";//"selected";
  }
  
 
@@ -41,7 +42,7 @@
  Person vcUser = (Person)session.getAttribute("vcUser");
 
 %>
-<ul id="maintab" class="basictab">
+<ul id="maintab" class="nav nav-tabs"><!-- class="basictab">-->
     <li  class="<%= homeSelect %>" rel="home"><a href="#">Home</a></li>
 	
 <%
@@ -80,11 +81,11 @@
 %>
 </ul>
 
-<div id="home" class="submenustyle">
-<a href="/displayAboutPage.do">About</a>
-<a href="/displayAvailableClasses.do">Available Classes</a>
-<a href="/displayUserInstructions.do">Instructions</a>
-</div>
+<ul id="home" class="btn-group" style="display: block;">
+<button class="btn" onclick="window.location.href='/displayAboutPage.do'">About</button>
+<button class="btn" onclick="window.location.href='/displayAvailableClasses.do'">Available Classes</button>
+<button class="btn" onclick="window.location.href='/displayUserInstructions.do'">Instructions</button>
+</ul>
 
 <%
 	if (userService.isUserLoggedIn() && vcUser != null) {
@@ -92,22 +93,22 @@
 
 
 <%
-		if (vcUser.isTeacher()) {
+		if (vcUser.isTeacher()){
 %> 
 
-<div id="teacher" class="submenustyle">
-<a href="/displayCreateClassPage.do">Create Class</a>
-<a href="/displayTeacherListCurrentClasses.do">Scheduled Classes</a>
-<a href="#">Completed Classes</a>
-</div>
+<ul id="teacher" class="btn-group" style="display: none;">
+<button class="btn" onclick="window.location.href='/displayCreateClassPage.do'">Create Class</button>
+<button class="btn" onclick="window.location.href='/displayTeacherListCurrentClasses.do">Scheduled Classes</button>
+<button class="btn" onclick="window.location.href='#''">Completed Classes</button>
+</ul>
 
 <% 
 		}
 		if (vcUser.isStudent()) {
 %>
-<div id="student" class="submenustyle">
-<a href="/displayClassRegistration.do">Register For Class</a>
-</div>
+<ul id="student" class="btn-group" style="display: none;">
+<button class="btn" onclick="window.location.href='/displayClassRegistration.do'">Register For Class</button>
+</ul>
 
 <%
 
@@ -115,11 +116,11 @@
 		if (vcUser.isAdmin()) {
 %> 
 
-<div id="admin" class="submenustyle">
-<a href="#">Create Category</a>
-<a href="#">List Users</a>
-<a href="#">List Classes</a>
-</div>
+<ul id="admin" class="btn-group" style="display: none;">
+<button class="btn" onclick="window.location.href='#'">Create Category</button>
+<button class="btn" onclick="window.location.href='#'">List Users</button>
+<button class="btn" onclick="window.location.href='#'">List Classes</button>
+</ul>
 
 <%
 	} 
@@ -127,10 +128,10 @@
 %>
 
 
-<div id="account" class="submenustyle">
-<a href="/displayUserInformationPage.do">User Account</a>
-<a href="/editUserInformationPage.do">Edit</a>
-</div>
+<ul id="account" class="btn-group" style="display: none;">
+<button class="btn" onclick="window.location.href='/displayUserInformationPage.do'">User Account</button>
+<button class="btn" onclick="window.location.href='/editUserInformationPage.do'">Edit</button>
+</ul>
 
 
 <script type="text/javascript">
