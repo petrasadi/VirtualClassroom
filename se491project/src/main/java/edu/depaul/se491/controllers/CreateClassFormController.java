@@ -18,20 +18,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.users.UserService;
-import com.google.appengine.api.users.UserServiceFactory;
 
 import edu.depaul.se491.formBeans.CreateClassFormBean;
-import edu.depaul.se491.josql.CategoryDAO;
 import edu.depaul.se491.josql.ClassesDAO;
 import edu.depaul.se491.josql.ClassesException;
-import edu.depaul.se491.josql.ICategoryDAO;
 import edu.depaul.se491.josql.IClassesDAO;
-import edu.depaul.se491.josql.IPersonDAO;
-import edu.depaul.se491.josql.PersonDAO;
-import edu.depaul.se491.josql.PersonException;
 import edu.depaul.se491.josqlCmds.DaoCmds;
-import edu.depaul.se491.model.Category;
 import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
 
@@ -66,8 +58,6 @@ public class CreateClassFormController {
 		* ICategoryDAO catDAO = new CategoryDAO();
 		* Category category = new Category();
 		*/
-		Key catKey;
-
 	
 		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
 		if(vcUser == null){

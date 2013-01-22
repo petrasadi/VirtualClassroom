@@ -8,14 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.appengine.api.datastore.Key;
-
 import edu.depaul.se491.josql.EntityManagerService;
-import edu.depaul.se491.josql.IPersonDAO;
-import edu.depaul.se491.josql.PersonDAO;
-import edu.depaul.se491.josql.PersonException;
 import edu.depaul.se491.model.Category;
-import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
 
 @SuppressWarnings("serial")
@@ -46,10 +40,7 @@ public class Se491_vcProjServlet extends HttpServlet {
 		Category category = new Category();
 		category.setName("Computer Information Systems");
 		category.setDescription("Python programming");
-		
-		Classes classes = new Classes();
-				
-		IPersonDAO personDAO = new PersonDAO();
+
 		/*try {
 			//Key p = personDAO.savePerson(person);
 		//	personDAO.setPersonAsAdmin(p);

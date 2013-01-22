@@ -5,11 +5,10 @@ import com.google.appengine.api.datastore.Key;
 
 import edu.depaul.se491.josql.CategoryDAO;
 import edu.depaul.se491.josql.CategoryException;
-import edu.depaul.se491.josql.ICategoryDAO;
-import edu.depaul.se491.josql.IClassesDAO;
 import edu.depaul.se491.josql.ClassesDAO;
 import edu.depaul.se491.josql.ClassesException;
-import edu.depaul.se491.model.Category;
+import edu.depaul.se491.josql.ICategoryDAO;
+import edu.depaul.se491.josql.IClassesDAO;
 
 class GetCategoryByKey implements IDaoCommands {
 	Key id;

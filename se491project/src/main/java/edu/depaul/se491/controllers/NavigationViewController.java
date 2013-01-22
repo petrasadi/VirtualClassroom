@@ -8,8 +8,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 
-import edu.depaul.se491.formBeans.CreateClassFormBean;
-
 @Controller
 @SessionAttributes
 public class NavigationViewController extends AbstractController{
