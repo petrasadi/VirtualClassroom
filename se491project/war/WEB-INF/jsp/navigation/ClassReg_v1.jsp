@@ -8,8 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Register for Class</title>
-<link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
+
 <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css" />
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 <script>
@@ -41,10 +40,10 @@ $.extend($.expr[":"],
 </script>
 </head>
 <body>
-<div class="container_9">
+<div class="container">
 	<div class="row-fluid"><div class="span1"><label for="kwd_search">Search:</label></div><div class="span1"><input type="text" id="kwd_search" value=""/></div></div>
 	<div class="datagrid">
-		<table class="table table-hover">
+		<table id="my-table" class="table table-hover">
 		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Registration</th></tr></thead>
 			<tfoot><tr><td colspan="4"></tr></tfoot>
 			<tbody>

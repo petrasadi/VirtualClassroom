@@ -4,13 +4,34 @@
 <html>
 <head>
 <style type="text/css">
-html, body, .fullheight {
-    height: 100%;
-    width: 100%;
-    margin: 0; 
-    padding: 0;
-  }
-  
+html,
+body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+#page_container {
+   min-height:100%;
+   position:relative;
+}
+#header {
+  height: 10px;
+  padding: 10px;
+}
+#tabs {
+	padding-top: 50px;
+}
+#body {
+   padding:10px;
+   padding-bottom:20px;   /* Height of the footer */
+}
+#footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:20px;   /* Height of the footer */
+   background:#6cf;
+}
  .navigation {
     vertical-align:top;
     width: 10%;
@@ -19,21 +40,11 @@ html, body, .fullheight {
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
-<body>
-<table class="fullheight" border="0" cellpadding="2" cellspacing="2" align="left">
-    <tr>
-        <td height="8%"><tiles:insertAttribute name="header" /></td>
-    </tr>
-    <tr>
-    	 <td height="10px"><tiles:insertAttribute name="tabs" /></td>    
-    </tr>
-    <tr>
-         <td align="center"><tiles:insertAttribute name="body" /></td>
-    </tr>
-    <tr>
-        <td height="10px"><tiles:insertAttribute name="footer" /></td>
-    </tr>
-</table>
-</body>
+<div id="page_container" border="0" cellpadding="2" cellspacing="2" align="left">
+    <div id="header"><tiles:insertAttribute name="header" /></div>
+    <div id="tabs"><tiles:insertAttribute name="tabs" /></div>    
+    <div id="body"><tiles:insertAttribute name="body" /></div>
+    <div id="footer"><tiles:insertAttribute name="footer" /></div> 
+</div>
 </html>
     
