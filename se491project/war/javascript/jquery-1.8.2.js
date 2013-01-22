@@ -601,7 +601,7 @@ jQuery.extend({
 		// A special, fast, case for the most common use of each
 		} else {
 			if ( isObj ) {
-				for ( name in obj ) {
+				for ( var name in obj ) {
 					if ( callback.call( obj[ name ], name, obj[ name ] ) === false ) {
 						break;
 					}
