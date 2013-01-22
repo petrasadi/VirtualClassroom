@@ -3,7 +3,6 @@ package edu.depaul.se491.opentok;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.google.appengine.api.datastore.Key;
 import com.google.gson.Gson;
 import com.opentok.api.OpenTokSDK;
 import com.opentok.api.constants.RoleConstants;

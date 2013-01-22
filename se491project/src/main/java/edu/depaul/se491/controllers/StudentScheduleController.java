@@ -1,7 +1,6 @@
 package edu.depaul.se491.controllers;
 
 import java.util.LinkedList;
-import java.util.ListIterator;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.google.appengine.api.datastore.Key;
 
 import edu.depaul.se491.josqlCmds.DaoCmds;
 import edu.depaul.se491.model.Classes;

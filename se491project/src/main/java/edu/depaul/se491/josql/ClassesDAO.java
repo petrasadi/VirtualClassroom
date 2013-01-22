@@ -18,7 +18,6 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Transaction;
 
-import edu.depaul.se491.josqlCmds.DaoCmds;
 import edu.depaul.se491.model.Classes;
 
 /**

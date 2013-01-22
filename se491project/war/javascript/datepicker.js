@@ -29,7 +29,7 @@ var monthArrayLong = new Array('January', 'February', 'March', 'April', 'May',
 
 var defaultDateSeparator = "/"; // common values would be "/" or "."
 
-var defaultDateFormat = "mdy" // valid values are "mdy", "dmy", and "ymd"
+var defaultDateFormat = "mdy";// valid values are "mdy", "dmy", and "ymd"
 
 var dateSeparator = defaultDateSeparator;
 
@@ -286,7 +286,7 @@ function refreshDatePicker(dateFieldName, year, month, day)
 
 	html += TR_days;
 
-	for (i = 0; i < dayArrayShort.length; i++)
+	for (var i = 0; i < dayArrayShort.length; i++)
 
 		html += TD_days + dayArrayShort[i] + xTD;
 
@@ -347,10 +347,6 @@ function refreshDatePicker(dateFieldName, year, month, day)
 	// add a button to allow the user to easily return to today, or close the
 	// calendar
 
-	var today = new Date();
-
-	var todayString = "Today is " + dayArrayMed[today.getDay()] + ", "
-			+ monthArrayMed[today.getMonth()] + " " + today.getDate();
 
 	html += TR_todaybutton + TD_todaybutton;
 

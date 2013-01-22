@@ -8,9 +8,6 @@ import com.google.appengine.api.datastore.Key;
 import edu.depaul.se491.josql.ClassesDAO;
 import edu.depaul.se491.josql.ClassesException;
 import edu.depaul.se491.josql.IClassesDAO;
-import edu.depaul.se491.josql.IPersonDAO;
-import edu.depaul.se491.josql.PersonDAO;
-import edu.depaul.se491.josql.PersonException;
 
 class IsStudentByKeyCmd implements IDaoCommands {
 	Key person;

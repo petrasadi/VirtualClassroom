@@ -30,11 +30,11 @@ class GetCategoryByOpenTokId implements IDaoCommands {
 			Entity classes = c.getClassById(openTokId);
 			Key ctKey = (Key) classes.getProperty("category");
 			Entity e = ct.getCategoryById(ctKey);
-			Category cat = null;
+			Category cat = new Category();
 			
-				cat.setName((String) e.getProperty("name"));
-				cat.setDescription((String) e.getProperty("description"));
-				cat.setId((Key) e.getProperty("id"));
+			cat.setName((String) e.getProperty("name"));
+			cat.setDescription((String) e.getProperty("description"));
+			cat.setId((Key) e.getProperty("id"));
 			
 			return cat;
 		} catch (ClassesException e) {

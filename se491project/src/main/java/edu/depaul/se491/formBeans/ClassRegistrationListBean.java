@@ -1,6 +1,5 @@
 package edu.depaul.se491.formBeans;
 
-import com.google.appengine.api.datastore.Key;
 
 public class ClassRegistrationListBean {
 	private long id;
