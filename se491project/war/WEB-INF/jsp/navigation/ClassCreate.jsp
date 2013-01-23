@@ -4,14 +4,13 @@
 <%@ page import="com.google.appengine.api.users.UserService"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/error.css" />
 <link rel="stylesheet" type="text/css" href="/stylesheets/datepicker.css" />
 <script type="text/javascript" src="/javascript/datepicker.js" ></script>
 
 
-	<div class="container_9">
+	<div class="container">
 	<div class="grid_9"><h1>Create A Class</h1></div>
 	
 	<form:form action="/classCreate.do" method="post"  commandName="createClassFormBean">
@@ -78,7 +77,7 @@
    			<li>
    				<div class="grid_3">
    					<form:label path="classDate">Class Date</form:label>   					
-   					<form:input readonly="true" path="classDate" /><a href="javascript:displayDatePicker('classDate')"><img src="images/cal.gif" width="16" height="16" border="0" alt="Pick a date"></a><br />
+   					<form:input readonly="true" path="classDate" /><a href="javascript:displayDatePicker('classDate')"> <i class="icon-calendar"></i></a><br />
    					<form:errors path="classDate" cssClass="error" />
    				</div>
    				<div class="grid_3">
@@ -99,7 +98,7 @@
    				</div>
    			</li>
    			<li>
-				<div class="grid_3 prefix_3"><input type="submit" value="Create Class" /></div>			
+				<input class="btn btn-primary" type="submit" value="Create Class" />		
 			</li>
 				
 		</ul>

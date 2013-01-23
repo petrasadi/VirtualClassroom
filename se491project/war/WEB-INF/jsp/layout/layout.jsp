@@ -20,6 +20,7 @@ body {
 }
 #tabs {
 	padding-top: 50px;
+
 }
 #body {
    padding:10px;

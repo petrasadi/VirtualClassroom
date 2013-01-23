@@ -41,7 +41,7 @@ $.extend($.expr[":"],
 </head>
 <body>
 <div class="container">
-	<div class="row-fluid"><div class="span1"><label for="kwd_search">Search:</label></div><div class="span1"><input type="text" id="kwd_search" value=""/></div></div>
+	<form class="navbar-form pull-left"><input type="text" id="kwd_search" class="span2" placeholder="Search"></form>
 	<div class="datagrid">
 		<table id="my-table" class="table table-hover">
 		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Registration</th></tr></thead>

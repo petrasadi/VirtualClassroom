@@ -42,8 +42,10 @@
  Person vcUser = (Person)session.getAttribute("vcUser");
 
 %>
-<ul id="maintab" class="nav nav-tabs"><!-- class="basictab">-->
-    <li  class="<%= homeSelect %>" rel="home"><a href="#">Home</a></li>
+<div class="navbar">
+<div class="navbar-inner">
+<ul id="maintab" class="nav">
+    <li  class="<%= homeSelect %>" rel="home"><a href="#"><i class="icon-home"></i> Home</a></li>
 	
 <%
 	if (userService.isUserLoggedIn() && vcUser != null) {
@@ -80,6 +82,8 @@
 	} 
 %>
 </ul>
+</div>
+</div>
 
 <ul id="home" class="btn-group" style="display: block;">
 <button class="btn" onclick="window.location.href='/displayAboutPage.do'">About</button>
@@ -98,8 +102,8 @@
 
 <ul id="teacher" class="btn-group" style="display: none;">
 <button class="btn" onclick="window.location.href='/displayCreateClassPage.do'">Create Class</button>
-<button class="btn" onclick="window.location.href='/displayTeacherListCurrentClasses.do">Scheduled Classes</button>
-<button class="btn" onclick="window.location.href='#''">Completed Classes</button>
+<button class="btn" onclick="window.location.href='/displayTeacherListCurrentClasses.do'">Scheduled Classes</button>
+<button class="btn" onclick="window.location.href='#'">Completed Classes</button>
 </ul>
 
 <% 

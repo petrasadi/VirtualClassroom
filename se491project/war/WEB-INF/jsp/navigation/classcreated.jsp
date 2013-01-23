@@ -10,10 +10,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Create Class</title>
-<link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css" />
 </head>
 <body>
-	The class was created.
+<div class="container">
+<div class="alert">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>Created!</strong> Class created and scheduled successfully.
+</div>
 </body>
 </html>
