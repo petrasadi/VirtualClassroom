@@ -82,9 +82,9 @@ public class ClassesDAO implements IClassesDAO {
 	******************************************************************************/
 	public Iterable<Entity> getStudentClasses(Key student) throws ClassesException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter classesFilter = new FilterPredicate("students", FilterOperator.IN, student);
+		Filter classesFilter = new FilterPredicate("students", FilterOperator.EQUAL, student);
 		Query classesByStudentQuery = new Query("Classes").setFilter(classesFilter);
-		
+
 		PreparedQuery pq = datastore.prepare(classesByStudentQuery);
 		return pq.asIterable();
 	}

@@ -38,6 +38,7 @@ class GetStudentClassesCmd implements IDaoCommands {
 			Key p = person.getPersonByOpenId(this.openId).getId();
 			LinkedList<Classes> clist = new LinkedList<Classes>();
 			Iterable<Entity> c = classes.getStudentClasses(p);
+
 			for(Entity e : c) {
 				Classes cl = null;
 				if (e != null && e.getKey() != null)
