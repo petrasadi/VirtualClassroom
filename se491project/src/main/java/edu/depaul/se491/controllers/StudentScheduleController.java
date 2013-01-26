@@ -23,7 +23,7 @@ import edu.depaul.se491.model.Person;
 @SessionAttributes
 public class StudentScheduleController {
 
-	@RequestMapping(value = "/displayClassSchedule", method = RequestMethod.GET)
+	@RequestMapping(value = "/displayStudentClassSchedule", method = RequestMethod.GET)
 	public ModelAndView displayStudentSchedule(HttpServletRequest request) {
 		SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
 		SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
@@ -48,8 +48,7 @@ public class StudentScheduleController {
 
 		for (Classes c : clist) {
 			ClassRegistrationListBean cBean = new ClassRegistrationListBean();
-			cBean.setName(c.getClassName());
-			cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
+		
 			
 			try {
 				classStartDayStr = dateFmt.format(c.getClassStartTime());
@@ -60,12 +59,19 @@ public class StudentScheduleController {
 			}
 			try {
 				classEndDayStr = dateFmt.format(c.getClassEndTime());
-				classEndTimeStr = timeFmt.format(c.getClassEndTime());								
+				classEndTimeStr = timeFmt.format(c.getClassEndTime());			
+				// if the end date has past do not add this class to the current schedule
+				if(today.after(c.getClassEndTime())){
+					continue;
+				}
+				
 			} catch (Exception e) {
 				classEndDayStr="unavailable";
 				classEndTimeStr="unavailable";
 			}
-		
+			
+			cBean.setName(c.getClassName());
+			cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));		
 			cBean.setClassEndDay(classEndDayStr);
 			cBean.setClassEndTime(classEndTimeStr);
 			cBean.setClassStartDay(classStartDayStr);

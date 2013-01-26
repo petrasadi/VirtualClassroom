@@ -28,7 +28,6 @@ import edu.depaul.se491.model.Person;
 public class ClassRegistrationController {
 	@RequestMapping(value = "/displayClassRegistration", method = RequestMethod.GET)
 	public ModelAndView displayClassRegistration(HttpServletRequest request) {
-		
 		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
 		
 		LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds.getClasses();

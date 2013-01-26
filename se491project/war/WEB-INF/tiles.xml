@@ -121,6 +121,11 @@
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentschedule.jsp" />
     </definition>
     
+     <definition name="displayStudentHistory" extends="base.definition">
+        <put-attribute name="title" value="Student Schedule" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studenthistory.jsp" />
+    </definition>
+    
       <definition name="displayAvailableClasses" extends="base.definition">
         <put-attribute name="title" value="Available Classes" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/availableclasses.jsp" />

@@ -112,8 +112,8 @@
 %>
 <ul id="student" class="btn-group" style="display: none;">
 <button class="btn" onclick="window.location.href='/displayClassRegistration.do'">Register For Class</button>
-<button class="btn" onclick="window.location.href='/displayClassSchedule.do'">Class Schedule</button>
-<button class="btn" onclick="window.location.href='/displayClassHistory.do'">Class History</button>
+<button class="btn" onclick="window.location.href='/displayStudentClassSchedule.do'">Class Schedule</button>
+<button class="btn" onclick="window.location.href='/displayStudentClassHistory.do'">Class History</button>
 </ul>
 
 <%
