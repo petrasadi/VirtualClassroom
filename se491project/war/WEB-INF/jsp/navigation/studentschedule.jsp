@@ -8,7 +8,7 @@
 
 
 
-List of Schedule Classes 7
+List of Schedule Classes 
 <br />
 <br />
 <br />
@@ -16,7 +16,7 @@ List of Schedule Classes 7
 <div class="container">
 	<div class="datagrid">
 		<table id="my-table" class="table table-hover">
-		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>View Class</th></tr></thead>
+		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Start Time</th><th>End Time</th><th>View Class</th></tr></thead>
 		<tfoot><tr><td colspan="4"></tr></tfoot>
 		<tbody>
 			<c:forEach var="class" items="${classes}" varStatus="rowCounter">
@@ -31,9 +31,11 @@ List of Schedule Classes 7
         		<tr class="${rowStyle}">
           			<td>${class.name}</td>
           			<td>${class.category}</td>
-                    <td>${class.startDate}</td>
-                    <td>${class.endDate}</td>
-          			<td><a href="/joinClass.do?classId=${class.id}" class="btn btn-success"><i class="icon-play icon-white"></i>Join Class</a></td>
+                    <td>${class.classStartDay}</td>
+                    <td>${class.classEndDay}</td>
+                    <td>${class.classStartTime}</td>
+                    <td>${class.classEndTime}</td>
+                 	<td><a href="/joinClass.do?classId=${class.id}" class="btn btn-success"><i class="icon-play icon-white"></i>Join Class</a></td>
         		</tr>
       		</c:forEach>
 		</tbody>

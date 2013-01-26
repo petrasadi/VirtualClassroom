@@ -1,9 +1,10 @@
 package edu.depaul.se491.controllers;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,6 +25,12 @@ public class StudentScheduleController {
 
 	@RequestMapping(value = "/displayClassSchedule", method = RequestMethod.GET)
 	public ModelAndView displayStudentSchedule(HttpServletRequest request) {
+		SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
+		SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
+		String classStartTimeStr;
+		String classEndTimeStr;
+		String classStartDayStr;
+		String classEndDayStr;
 
 		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
 		String openId = vcUser.getOpenid();
@@ -43,8 +50,26 @@ public class StudentScheduleController {
 			ClassRegistrationListBean cBean = new ClassRegistrationListBean();
 			cBean.setName(c.getClassName());
 			cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
-			cBean.setStartDate(c.getClassStartTime().toString());
-			cBean.setEndDate(c.getClassEndTime().toString());
+			
+			try {
+				classStartDayStr = dateFmt.format(c.getClassStartTime());
+				classStartTimeStr = timeFmt.format(c.getClassStartTime());				
+			} catch (Exception e) {
+				classStartTimeStr="unavailable";
+				classStartDayStr="unavailable";
+			}
+			try {
+				classEndDayStr = dateFmt.format(c.getClassEndTime());
+				classEndTimeStr = timeFmt.format(c.getClassEndTime());								
+			} catch (Exception e) {
+				classEndDayStr="unavailable";
+				classEndTimeStr="unavailable";
+			}
+		
+			cBean.setClassEndDay(classEndDayStr);
+			cBean.setClassEndTime(classEndTimeStr);
+			cBean.setClassStartDay(classStartDayStr);
+			cBean.setClassStartTime(classStartTimeStr);
 			cBean.setRegistration("Join");			
 			cBean.setId(c.getId().getId());
 			cBeanList.add(cBean);

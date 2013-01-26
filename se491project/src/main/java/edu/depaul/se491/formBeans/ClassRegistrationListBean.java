@@ -14,6 +14,46 @@ public class ClassRegistrationListBean {
 	
 	private String registration;
 	
+	private String classEndTime;
+	
+	private String classStartTime;
+	
+	private String classStartDay;
+	
+	private String classEndDay;
+	
+	public String getClassEndTime() {
+		return classEndTime;
+	}
+
+	public void setClassEndTime(String classEndTime) {
+		this.classEndTime = classEndTime;
+	}
+
+	public String getClassStartTime() {
+		return classStartTime;
+	}
+
+	public void setClassStartTime(String classStartTime) {
+		this.classStartTime = classStartTime;
+	}
+
+	public String getClassStartDay() {
+		return classStartDay;
+	}
+
+	public void setClassStartDay(String classStartDay) {
+		this.classStartDay = classStartDay;
+	}
+
+	public String getClassEndDay() {
+		return classEndDay;
+	}
+
+	public void setClassEndDay(String classEndDay) {
+		this.classEndDay = classEndDay;
+	}
+
 	public ClassRegistrationListBean() {
 		
 	}
