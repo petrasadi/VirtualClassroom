@@ -78,6 +78,8 @@ public class StudentScheduleController {
 			cBean.setClassStartTime(classStartTimeStr);
 			cBean.setRegistration("Join");			
 			cBean.setId(c.getId().getId());
+			cBean.setTeacherKey(c.getTeacher().getId());
+			cBean.setTeacherName(DaoCmds.getTeacherCmd(c.getId()).getFirstName() + " " + DaoCmds.getTeacherCmd(c.getId()).getLastName());
 			cBeanList.add(cBean);
 
 		}

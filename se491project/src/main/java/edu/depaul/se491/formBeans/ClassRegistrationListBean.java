@@ -22,6 +22,27 @@ public class ClassRegistrationListBean {
 	
 	private String classEndDay;
 	
+	private String teacherName;
+	
+	private long teacherKey;
+	
+	public String getTeacherName() {
+		return teacherName;
+	}
+
+	public void setTeacherName(String teacherName) {
+		this.teacherName = teacherName;
+	}
+
+
+	public long getTeacherKey() {
+		return teacherKey;
+	}
+
+	public void setTeacherKey(long teacherKey) {
+		this.teacherKey = teacherKey;
+	}
+
 	public String getClassEndTime() {
 		return classEndTime;
 	}

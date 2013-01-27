@@ -16,7 +16,7 @@ List of Schedule Classes
 <div class="container">
 	<div class="datagrid">
 		<table id="my-table" class="table table-hover">
-		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Start Time</th><th>End Time</th><th>View Class</th></tr></thead>
+		<thead><tr><th>Class Name</th><th>Teacher</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Start Time</th><th>End Time</th><th>View Class</th></tr></thead>
 		<tfoot><tr><td colspan="4"></tr></tfoot>
 		<tbody>
 			<c:forEach var="class" items="${classes}" varStatus="rowCounter">
@@ -30,6 +30,7 @@ List of Schedule Classes
         		</c:choose>
         		<tr class="${rowStyle}">
           			<td>${class.name}</td>
+          			<td>${class.teacherName}</td>
           			<td>${class.category}</td>
                     <td>${class.classStartDay}</td>
                     <td>${class.classEndDay}</td>

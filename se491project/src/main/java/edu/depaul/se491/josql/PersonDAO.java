@@ -66,7 +66,7 @@ public class PersonDAO implements IPersonDAO {
 	******************************************************************************/
 	public Entity getPersonById(Key id) throws PersonException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Filter idFilter = new FilterPredicate("id", FilterOperator.EQUAL, id);
+		Filter idFilter = new FilterPredicate(Entity.KEY_RESERVED_PROPERTY, FilterOperator.EQUAL, id);
 		Query person_tableQuery = new Query("Person").setFilter(idFilter);
 		
 		PreparedQuery pq = datastore.prepare(person_tableQuery);

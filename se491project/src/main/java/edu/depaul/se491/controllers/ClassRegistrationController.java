@@ -47,7 +47,7 @@ public class ClassRegistrationController {
 			cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
 			cBean.setStartDate(c.getClassStartTime().toString());
 			cBean.setEndDate(c.getClassEndTime().toString());
-			
+	
 			if(DaoCmds.isStudentByKey(vcUser.getId(), c.getId()) && (c.getClassStartTime().compareTo(today) == 0)) {
 				cBean.setRegistration("Join");
 			} else if(DaoCmds.isStudentByKey(vcUser.getId(), c.getId())) {
