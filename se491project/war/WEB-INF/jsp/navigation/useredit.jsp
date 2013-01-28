@@ -7,7 +7,7 @@
 	UserService userService = UserServiceFactory.getUserService();
 %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/960.css" />
-<link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css" />
+
 <style>
 .error {
 	color: #ff0000;
@@ -20,14 +20,11 @@
 	<form:form action="/editUser.do" method="post"  commandName="userRegistrationFormBean">
 
         <br />
-     	<ul class="table">
-     		<li>
+      
     			 <form:errors path="*" >
         			<div class="error" class="grid_9">Please correct the errors and resubmit the form.</div>
         		</form:errors>
-    		</li>
-     		
-			<li>
+    		
 				<div class="grid_3">
 					<form:label path="firstName">First Name</form:label>
 					<form:input path="firstName" /><br />
@@ -44,8 +41,7 @@
 					<form:input path="middleName" /><br />
 					<form:errors path="middleName" cssClass="error" />
 				</div>
-			</li>
-			<li>
+			
 				<div class="grid_3">
 					<form:label path="phone">Phone</form:label>
 					<form:input path="phone" /><br />
@@ -57,29 +53,25 @@
 					<form:input path="phone2" /><br />
 					<form:errors path="phone2" cssClass="error" />
 				</div>
-			</li>
-			<li>
+			
 				<div class="grid_3">
 					<form:label path="email">Email</form:label>
 					<form:input path="email" /><br />
 					<form:errors path="email" cssClass="error" />
 				</div>
-			</li>
-			<li>
+			
 				<div class="grid_3">
 					<form:label path="address">Address</form:label>
 					<form:input path="address" /><br />
 					<form:errors path="address" cssClass="error" />
 				</div>
-			</li>
-			<li>
+			
 				<div class="grid_3">
 					<form:label path="address2">Address 2</form:label>
 					<form:input path="address2" /><br />
 					<form:errors path="address2" cssClass="error" />
 				</div>
-			</li>
-			<li>
+			
 				<div class="grid_3">
 					<form:label path="city">City</form:label>
 					<form:input path="city" /><br />
@@ -100,8 +92,7 @@
 					<form:input path="zip" /><br />
 					<form:errors path="zip" cssClass="error" />
 				</div>
-			</li>
-			<li>
+			
 				<div class="grid_3">
 					<form:label path="country">Country</form:label> 
 					<form:select path="country">
@@ -110,8 +101,7 @@
 					</form:select><br />
         			<form:errors path="country" cssClass="error" />
         		</div>
-			</li>
-			<li>
+		
 				<div class="grid_3">
 					<form:label path="student">Sign up as a Student</form:label>
 					<form:checkbox path="student" value="student" /><br />
@@ -123,12 +113,20 @@
 					<form:checkbox path="teacher" value="teacher" /><br />
 					<form:errors path="teacher" cssClass="error" />
 				</div>
-			</li>
-			<li>
+				<div class="grid_3">
+				</div>
+			
+			    <br />
+				<div class="grid_12">
+   					<form:label path="userDescription">**** Let others know a little about yourself:</form:label><br />
+   					<form:textarea rows="10" cols="120" path="userDescription" /><br />
+   				</div>
+   			    <br />
+   			    <br />
 				<div class="grid_3 prefix_3"><input type="submit" value="Update" /></div>			
-			</li>
+		
 
-		</ul>
-
+     
 	</form:form>
+	</div>
 

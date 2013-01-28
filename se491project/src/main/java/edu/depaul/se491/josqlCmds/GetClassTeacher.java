@@ -49,6 +49,7 @@ class GetClassTeacher implements IDaoCommands {
 		        pf.setPhone2((String) e.getProperty("phone2"));
 		        pf.setEmail((String) e.getProperty("email"));
 		        pf.setOpenid((String) e.getProperty("openid"));
+		        pf.setDescription((String) e.getProperty("description"));
 			}
 			return pf;
 		} catch (PersonException e) {

@@ -30,7 +30,7 @@ List of Class Taken at virtual Classroom
         		</c:choose>
         		<tr class="${rowStyle}">
           			<td>${class.name}</td>
-          			<td>${class.teacherName}</td>
+          			<td><a href="/displayTeacherInformation.do?openId=${class.openId}">${class.teacherName}</a></td>
           			<td>${class.category}</td>
                     <td>${class.classEndDay}</td>
                     <td>Unavailable</td>

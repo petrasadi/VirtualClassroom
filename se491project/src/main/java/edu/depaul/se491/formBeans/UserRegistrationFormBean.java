@@ -28,7 +28,16 @@ public class UserRegistrationFormBean {
 	@NotEmpty
 	private String country;
 	
+	private String userDescription;
 	
+	public String getUserDescription() {
+		return userDescription;
+	}
+
+	public void setUserDescription(String userDescription) {
+		this.userDescription = userDescription;
+	}
+
 	@Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$|^(\\d{3})[\\.](\\d{3})[\\.](\\d{4})$")
 	private String phone;
 	

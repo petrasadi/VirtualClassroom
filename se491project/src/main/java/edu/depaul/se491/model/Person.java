@@ -117,7 +117,8 @@ public class Person implements Serializable{
  	@Pattern(regexp ="[0-9]+", message = "{Person.zip.Pattern}")
 	private String zip;
 
-
+	@Column(name = "description")
+	private String description;
 
 	
 	@Basic
@@ -339,5 +340,13 @@ public class Person implements Serializable{
 	
 	public void addClass(Key classes) {
 		this.classes.add(classes);
+	}
+	
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
