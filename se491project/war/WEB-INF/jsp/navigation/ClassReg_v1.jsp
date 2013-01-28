@@ -44,7 +44,7 @@ $.extend($.expr[":"],
 	<form class="navbar-form pull-left"><input type="text" id="kwd_search" class="span2" placeholder="Search"></form>
 	<div class="datagrid">
 		<table id="my-table" class="table table-hover">
-		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Registration</th></tr></thead>
+		<thead><tr><th>Class Name</th><th>Teacher</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Registration</th></tr></thead>
 			<tfoot><tr><td colspan="4"></tr></tfoot>
 			<tbody>
 			<c:forEach var="classes" items="${classes}" varStatus="rowCounter">
@@ -58,6 +58,7 @@ $.extend($.expr[":"],
         </c:choose>
         <tr class="${rowStyle}">
           <td>${classes.name}</td>
+          <td><a href="/displayTeacherInformation.do?openId=${class.openId}">${class.teacherName}</a></td>
           <td>${classes.category}</td>
           <td>${classes.startDate}</td>
           <td>${classes.endDate}</td>

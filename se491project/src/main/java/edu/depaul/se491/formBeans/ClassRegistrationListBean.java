@@ -24,7 +24,15 @@ public class ClassRegistrationListBean {
 	
 	private String teacherName;
 	
-	private long teacherKey;
+	public String getOpenId() {
+		return openId;
+	}
+
+	public void setOpenId(String openId) {
+		this.openId = openId;
+	}
+
+	private String openId;
 	
 	public String getTeacherName() {
 		return teacherName;
@@ -34,14 +42,6 @@ public class ClassRegistrationListBean {
 		this.teacherName = teacherName;
 	}
 
-
-	public long getTeacherKey() {
-		return teacherKey;
-	}
-
-	public void setTeacherKey(long teacherKey) {
-		this.teacherKey = teacherKey;
-	}
 
 	public String getClassEndTime() {
 		return classEndTime;
