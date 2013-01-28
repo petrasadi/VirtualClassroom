@@ -122,7 +122,7 @@
     </definition>
     
      <definition name="displayStudentHistory" extends="base.definition">
-        <put-attribute name="title" value="Student Schedule" />
+        <put-attribute name="title" value="Student History" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/studenthistory.jsp" />
     </definition>
     
