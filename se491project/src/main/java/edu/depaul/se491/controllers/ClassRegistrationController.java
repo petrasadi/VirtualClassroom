@@ -44,7 +44,7 @@ public class ClassRegistrationController {
 		for (Classes c : clist) {
 			ClassRegistrationListBean cBean = new ClassRegistrationListBean();
 			cBean.setName(c.getClassName());
-			cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
+		//	cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
 			cBean.setStartDate(c.getClassStartTime().toString());
 			cBean.setEndDate(c.getClassEndTime().toString());
 			cBean.setOpenId(DaoCmds.getTeacherCmd(c.getId()).getOpenid());

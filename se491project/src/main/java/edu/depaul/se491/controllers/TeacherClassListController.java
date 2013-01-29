@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
-import java.util.ListIterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.google.appengine.api.datastore.Key;
 
 import edu.depaul.se491.formBeans.ClassRegistrationListBean;
 import edu.depaul.se491.josqlCmds.DaoCmds;
@@ -54,7 +52,7 @@ public class TeacherClassListController {
 
 		for (Classes c : clist) {
 			ClassRegistrationListBean cBean = new ClassRegistrationListBean();
-
+			List<Person> slist =DaoCmds.getStudentsInClass(c.getId());
 			try {
 				classStartDayStr = dateFmt.format(c.getClassStartTime());
 				classStartTimeStr = timeFmt.format(c.getClassStartTime());
@@ -79,7 +77,7 @@ public class TeacherClassListController {
 			cBean.setClassEndTime(classEndTimeStr);
 			cBean.setClassStartDay(classStartDayStr);
 			cBean.setClassStartTime(classStartTimeStr);
-
+			cBean.setStudentList(slist);
 			cBean.setId(c.getId().getId());
 
 			if (today.before(c.getClassStartTime())) {
@@ -93,6 +91,7 @@ public class TeacherClassListController {
 		view.setViewName("displayTeacherListCurrentClasses");
 		view.addObject("tab", "teacher");
 		view.addObject("scheduledclasses", cCurrentBeanList);
+
 		return view;
 	}
 }

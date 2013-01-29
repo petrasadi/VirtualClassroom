@@ -1,6 +1,7 @@
 package edu.depaul.se491.josqlCmds;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
@@ -192,6 +193,18 @@ public class DaoCmds {
 		return (Person) run.getExecute();
 	}
 	
+	
+	/**
+	 * @param personId
+	 * @return Person
+	 */
+	public static Entity getPersonById(Key personId) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new GetPersonById(personId);
+		run.setCommand(cmd);
+		return (Entity) run.getExecute();
+	}
+	
 	/**
 	 * @param classes
 	 * @return boolean
@@ -202,4 +215,19 @@ public class DaoCmds {
 		run.setCommand(cmd);
 		return run.isExecute();
 	}
+	
+	/**
+	 * @param classId
+	 * @return LinkedList<Person>
+	 */
+	public static List<Person>  getStudentsInClass(Key classId) {
+		CmdController run = new CmdController();
+		IDaoCommands cmd = new GetStudentsInClassCmd(classId);
+		run.setCommand(cmd);
+		return (LinkedList<Person>) run.getExecute();
+	}
+	
+
+	
+	
 }

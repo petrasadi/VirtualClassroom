@@ -15,7 +15,7 @@ List of scheduled classes to teach:
 <div class="container">
 	<div class="datagrid">
 		<table id="my-table" class="table table-hover">
-		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Start Time</th><th>End Time</th><th>Start Class</th></tr></thead>
+		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Start Time</th><th>End Time</th><th>Registered Students</th><th>Start Class</th></tr></thead>
 		<tfoot><tr><td colspan="4"></tr></tfoot>
 		<tbody>
 			<c:forEach var="class" items="${scheduledclasses}" varStatus="rowCounter">
@@ -34,6 +34,7 @@ List of scheduled classes to teach:
                     <td>${class.classEndDay}</td>
                     <td>${class.classStartTime}</td>
                     <td>${class.classEndTime}</td>
+                    <td>${class.numberOfRegisteredStudents} Students</td>
                     <td><a href="/joinClass.do?classId=${class.id}" class="btn btn-success"><i class="icon-play icon-white"></i>Start Class</a></td>
            		</tr>
       		</c:forEach>

@@ -36,6 +36,9 @@ public interface IPersonDAO {
 	 */
 	public Iterable<Entity> getPersonByLastName(String lastName) throws PersonException;
 	
+	
+	
+	
 	/**
 	 * @return Iterable<Entity> get all person by firstName
 	 */

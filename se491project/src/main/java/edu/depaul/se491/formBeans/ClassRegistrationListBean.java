@@ -1,5 +1,9 @@
 package edu.depaul.se491.formBeans;
 
+import java.util.List;
+
+import edu.depaul.se491.model.Person;
+
 
 public class ClassRegistrationListBean {
 	private long id;
@@ -24,6 +28,27 @@ public class ClassRegistrationListBean {
 	
 	private String teacherName;
 	
+	private int numberOfRegisteredStudents;
+	
+	private List <Person> studentList;
+	
+	public List<Person> getStudentList() {
+		return studentList;
+	}
+
+	public void setStudentList(List<Person> studentList) {
+		numberOfRegisteredStudents=studentList.size();
+		this.studentList = studentList;
+	}
+
+	public int getNumberOfRegisteredStudents() {
+		return numberOfRegisteredStudents;
+	}
+
+	public void setNumberOfRegisteredStudents(int numberOfRegisteredStudents) {
+		this.numberOfRegisteredStudents = numberOfRegisteredStudents;
+	}
+
 	public String getOpenId() {
 		return openId;
 	}

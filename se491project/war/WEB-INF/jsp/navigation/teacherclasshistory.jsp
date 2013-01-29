@@ -15,7 +15,7 @@ History of classes tought:
 <div class="container">
 	<div class="datagrid">
 		<table id="my-table" class="table table-hover">
-		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Start Time</th><th>End Time</th></tr></thead>
+		<thead><tr><th>Class Name</th><th>Category</th><th>Start Date</th><th>End Date</th><th>Start Time</th><th>End Time</th><th>Registered Students</th></tr></thead>
 		<tfoot><tr><td colspan="4"></tr></tfoot>
 		<tbody>
 			<c:forEach var="class" items="${scheduledclasses}" varStatus="rowCounter">
@@ -34,6 +34,7 @@ History of classes tought:
                     <td>${class.classEndDay}</td>
                     <td>${class.classStartTime}</td>
                     <td>${class.classEndTime}</td>
+                    <td>${class.numberOfRegisteredStudents} Students</td>
             	</tr>
       		</c:forEach>
 		</tbody>
