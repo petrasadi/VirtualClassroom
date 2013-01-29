@@ -143,5 +143,9 @@
         <put-attribute name="title" value="Teacher Class History" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherclasshistory.jsp" />
     </definition>
+     <definition name="displayStudentsInClass" extends="base.definition">
+        <put-attribute name="title" value="Class Roster" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentsinclass.jsp" />
+    </definition>
  
 </tiles-definitions>

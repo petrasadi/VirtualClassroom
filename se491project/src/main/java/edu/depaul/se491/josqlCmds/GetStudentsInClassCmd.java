@@ -48,9 +48,9 @@ class GetStudentsInClassCmd implements IDaoCommands {
 
 						pf.setId(pe.getKey());
 						pf.setOpenid((String) pe.getProperty("openid"));
-						pf.setFirstName((String) pe.getProperty("firstName"));
-						pf.setLastName((String) pe.getProperty("lastName"));
-						pf.setMiddleName((String) pe.getProperty("middleName"));
+						pf.setFirstName((String) pe.getProperty("firstname"));
+						pf.setLastName((String) pe.getProperty("lastname"));
+						pf.setMiddleName((String) pe.getProperty("middlename"));
 						pf.setAddress((String) pe.getProperty("address"));
 						pf.setAddress2((String) pe.getProperty("address2"));
 						pf.setCity((String) pe.getProperty("city"));

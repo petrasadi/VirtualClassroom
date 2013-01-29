@@ -34,7 +34,7 @@ List of scheduled classes to teach:
                     <td>${class.classEndDay}</td>
                     <td>${class.classStartTime}</td>
                     <td>${class.classEndTime}</td>
-                    <td>${class.numberOfRegisteredStudents} Students</td>
+                    <td><a href="/displayStudentInClass.do?classId=${class.id}" >${class.numberOfRegisteredStudents} Students</a></td>
                     <td><a href="/joinClass.do?classId=${class.id}" class="btn btn-success"><i class="icon-play icon-white"></i>Start Class</a></td>
            		</tr>
       		</c:forEach>
