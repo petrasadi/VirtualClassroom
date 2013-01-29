@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ListIterator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,6 +55,7 @@ public class TeacherClassHistoryController {
 
 		for (Classes c : clist) {
 			ClassRegistrationListBean cBean = new ClassRegistrationListBean();
+			List<Person> slist =DaoCmds.getStudentsInClass(c.getId());
 
 			try {
 				classStartDayStr = dateFmt.format(c.getClassStartTime());
@@ -79,6 +81,7 @@ public class TeacherClassHistoryController {
 			cBean.setClassEndTime(classEndTimeStr);
 			cBean.setClassStartDay(classStartDayStr);
 			cBean.setClassStartTime(classStartTimeStr);
+			cBean.setStudentList(slist);
 
 			cBean.setId(c.getId().getId());
 
