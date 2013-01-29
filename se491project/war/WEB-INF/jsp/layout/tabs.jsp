@@ -103,7 +103,7 @@
 <ul id="teacher" class="btn-group" style="display: none;">
 <button class="btn" onclick="window.location.href='/displayCreateClassPage.do'">Create Class</button>
 <button class="btn" onclick="window.location.href='/displayTeacherListCurrentClasses.do'">Scheduled Classes</button>
-<button class="btn" onclick="window.location.href='#'">Completed Classes</button>
+<button class="btn" onclick="window.location.href='/displayTeacherHistoryClasses.do'">Completed Classes</button>
 </ul>
 
 <% 

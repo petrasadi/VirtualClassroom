@@ -37,11 +37,6 @@ public class TeacherInformationController {
 		String classEndDayStr;
 		
 		Person teacher = DaoCmds.getPersonByOpenId(openId);
-		
-		
-		
-System.out.println("teacher id = " + openId);
-
 		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
 		LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds.getTeacherClasses(openId);
 		LinkedList<ClassRegistrationListBean> cCurrentBeanList = new LinkedList<ClassRegistrationListBean>();
@@ -55,9 +50,7 @@ System.out.println("teacher id = " + openId);
 		Date today = cd.getTime();
 
 		for (Classes c : clist) {
-			ClassRegistrationListBean cBean = new ClassRegistrationListBean();
-			
-		
+			ClassRegistrationListBean cBean = new ClassRegistrationListBean();	
 			
 			try {
 				classStartDayStr = dateFmt.format(c.getClassStartTime());

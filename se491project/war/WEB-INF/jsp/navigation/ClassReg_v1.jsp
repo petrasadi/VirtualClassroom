@@ -58,7 +58,7 @@ $.extend($.expr[":"],
         </c:choose>
         <tr class="${rowStyle}">
           <td>${classes.name}</td>
-          <td><a href="/displayTeacherInformation.do?openId=${class.openId}">${class.teacherName}</a></td>
+          <td><a href="/displayTeacherInformation.do?openId=${classes.openId}">${classes.teacherName}</a></td>
           <td>${classes.category}</td>
           <td>${classes.startDate}</td>
           <td>${classes.endDate}</td>

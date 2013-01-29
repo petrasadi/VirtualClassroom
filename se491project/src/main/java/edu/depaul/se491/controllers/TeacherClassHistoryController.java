@@ -23,9 +23,9 @@ import edu.depaul.se491.model.Person;
 
 @Controller
 @SessionAttributes
-public class TeacherClassListController {
+public class TeacherClassHistoryController {
 
-	@RequestMapping(value = "/displayTeacherListCurrentClasses", method = RequestMethod.GET)
+	@RequestMapping(value = "/displayTeacherHistoryClasses", method = RequestMethod.GET)
 	public ModelAndView displayTeacherListCurrentClasses(
 			HttpServletRequest request) {
 
@@ -82,7 +82,7 @@ public class TeacherClassListController {
 
 			cBean.setId(c.getId().getId());
 
-			if (today.before(c.getClassStartTime())) {
+			if (today.after(c.getClassStartTime())) {
 				cCurrentBeanList.add(cBean);
 			} else {
 				continue;
@@ -90,7 +90,7 @@ public class TeacherClassListController {
 		}
 
 		ModelAndView view = new ModelAndView();
-		view.setViewName("displayTeacherListCurrentClasses");
+		view.setViewName("displayTeacherHistoryClasses");
 		view.addObject("tab", "teacher");
 		view.addObject("scheduledclasses", cCurrentBeanList);
 		return view;
