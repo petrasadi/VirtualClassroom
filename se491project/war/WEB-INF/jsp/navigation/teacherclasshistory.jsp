@@ -34,7 +34,7 @@ History of classes tought:
                     <td>${class.classEndDay}</td>
                     <td>${class.classStartTime}</td>
                     <td>${class.classEndTime}</td>
-                    <td>${class.numberOfRegisteredStudents} Students</td>
+                    <td><a href="/displayStudentInClass.do?classId=${class.id}" >${class.numberOfRegisteredStudents} Students</a></td>
             	</tr>
       		</c:forEach>
 		</tbody>
