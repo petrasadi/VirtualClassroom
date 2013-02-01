@@ -163,6 +163,7 @@ function subscribeToStreams(streams) {
 	} else {
 		$('#noSession').remove();
 		for (var i = 0; i < streams.length; i++) {
+			
 			// Create the div to put the subscriber element in to
 			var div = document.createElement('div');
 			div.setAttribute('id', 'stream' + streams[i].streamId);
@@ -170,7 +171,14 @@ function subscribeToStreams(streams) {
 
 			// Subscribe to the stream
 			var subscribeProps = {width:400, height:225};
-			session.subscribe(streams[i], div.id, subscribeProps);
+			var subscriber = session.subscribe(streams[i], div.id, subscribeProps);
+			
+			//do not subscribe to own audio
+			//this eliminates the audio feedback issue
+			if (streams[i].connection.connectionId == session.connection.connectionId) {
+				subscriber.subscribeToAudio(false);  
+				//return;
+	        }
 		}
 		generateUserDashBoard(data.role);
 	}
