@@ -14,7 +14,7 @@
         </repository>
     </repositories>
     <build>
-        <finalName>Virtual_Classrom</finalName>
+        <finalName>Virtual_Classroom</finalName>
         <plugins>
             <plugin>
                 <groupId>com.google.appengine</groupId>
