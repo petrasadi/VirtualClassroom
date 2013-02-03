@@ -46,7 +46,7 @@
                         <include>**/*Test*.java</include>
                     </includes>
                 </configuration>
-            </plugin>`
+            </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>
