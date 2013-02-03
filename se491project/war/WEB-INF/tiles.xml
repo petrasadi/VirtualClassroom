@@ -1,151 +1,151 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
-       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
-       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
     <definition name="base.definition"
-        template="/WEB-INF/jsp/layout/layout.jsp">
-        <put-attribute name="title" value="" />
-        <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
-        <put-attribute name="tabs" value="/WEB-INF/jsp/layout/tabs.jsp" />
-        <put-attribute name="body" value="" />
-        <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
+                template="/WEB-INF/jsp/layout/layout.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp"/>
+        <put-attribute name="tabs" value="/WEB-INF/jsp/layout/tabs.jsp"/>
+        <put-attribute name="body" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp"/>
     </definition>
- 
+
     <definition name="displayAboutPage" extends="base.definition">
-        <put-attribute name="title" value="About" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tabs/about.jsp" />
+        <put-attribute name="title" value="About"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/tabs/about.jsp"/>
     </definition>
-    
-     <definition name="displayLoginPage" extends="base.definition">
-        <put-attribute name="title" value="Login" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tabs/openidlogin.jsp?continue=/checkRegistration.do" />
+
+    <definition name="displayLoginPage" extends="base.definition">
+        <put-attribute name="title" value="Login"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/tabs/openidlogin.jsp?continue=/checkRegistration.do"/>
     </definition>
-    
+
     <definition name="displayUserInformationPage" extends="base.definition">
-        <put-attribute name="title" value="Login" />
-        <put-attribute name="body" value="/WEB-INF/jsp/tabs/userInformation.jsp" />
+        <put-attribute name="title" value="Login"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/tabs/userInformation.jsp"/>
     </definition>
-    
+
     <definition name="displayCreateClassPage" extends="base.definition">
-        <put-attribute name="title" value="Create Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassCreate.jsp" />
+        <put-attribute name="title" value="Create Class"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassCreate.jsp"/>
     </definition>
-    
+
     <definition name="displayListClassesPage" extends="base.definition">
-        <put-attribute name="title" value="List Classes" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/classList.html" />
+        <put-attribute name="title" value="List Classes"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/classList.html"/>
     </definition>
-    
+
     <definition name="displaySearchClassPage" extends="base.definition">
-        <put-attribute name="title" value="Search Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassSearch.html" />
+        <put-attribute name="title" value="Search Class"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassSearch.html"/>
     </definition>
     <definition name="displayClassRegistration" extends="base.definition">
-        <put-attribute name="title" value="Register Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg_v1.jsp" />
+        <put-attribute name="title" value="Register Class"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg_v1.jsp"/>
     </definition>
     <definition name="registerStudentForClass" extends="base.definition">
-        <put-attribute name="title" value="Register Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg_v1.jsp" />
+        <put-attribute name="title" value="Register Class"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg_v1.jsp"/>
     </definition>
     <definition name="joinClass" extends="base.definition">
-        <put-attribute name="title" value="Register Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp" />
+        <put-attribute name="title" value="Register Class"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp"/>
     </definition>
     <!--  <definition name="displayRegisterClassPage" extends="base.definition">
         <put-attribute name="title" value="Register Class" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/ClassReg.html" />
     </definition>-->
-    
-     <definition name="displayUserRegistrationPage" extends="base.definition">
-        <put-attribute name="title" value="User registration" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/userregistration.jsp" />
+
+    <definition name="displayUserRegistrationPage" extends="base.definition">
+        <put-attribute name="title" value="User registration"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/userregistration.jsp"/>
     </definition>
-    
+
     <definition name="displayUserLoggedInPage" extends="base.definition">
-        <put-attribute name="title" value="Register Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/userwelcome.jsp" />
+        <put-attribute name="title" value="Register Class"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/userwelcome.jsp"/>
     </definition>
-    
+
     <definition name="displayClassCreatedPage" extends="base.definition">
-        <put-attribute name="title" value="Class Created" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/classcreated.jsp" />
+        <put-attribute name="title" value="Class Created"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/classcreated.jsp"/>
     </definition>
-    
-      <definition name="displayListClassesPage" extends="base.definition">
-        <put-attribute name="title" value="Class Created" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/classlist.jsp" />
+
+    <definition name="displayListClassesPage" extends="base.definition">
+        <put-attribute name="title" value="Class Created"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/classlist.jsp"/>
     </definition>
     <definition name="displayStudentViewClassPage" extends="base.definition">
-        <put-attribute name="title" value="View Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp" />
+        <put-attribute name="title" value="View Class"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp"/>
     </definition>
     <definition name="displayViewClassPage" extends="base.definition">
-        <put-attribute name="title" value="View Class" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp" />
+        <put-attribute name="title" value="View Class"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/chat.jsp"/>
     </definition>
-    
-     <definition name="displayTeacherMainPage" extends="base.definition">
-        <put-attribute name="title" value="Teacher Main Page" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teachermainpage.html" />
+
+    <definition name="displayTeacherMainPage" extends="base.definition">
+        <put-attribute name="title" value="Teacher Main Page"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teachermainpage.html"/>
     </definition>
-    
-     <definition name="displayStudentMainPage" extends="base.definition">
-        <put-attribute name="title" value="Student Main Page" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentmainpage.html" />
+
+    <definition name="displayStudentMainPage" extends="base.definition">
+        <put-attribute name="title" value="Student Main Page"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentmainpage.html"/>
     </definition>
-    
-      <definition name="displayErrorJavaExceptionPage" extends="base.definition">
-        <put-attribute name="title" value="Error Page" />
-        <put-attribute name="body" value="/WEB-INF/jsp/errors/errorjavaexception.html" />
-    </definition> 
-    
+
+    <definition name="displayErrorJavaExceptionPage" extends="base.definition">
+        <put-attribute name="title" value="Error Page"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/errors/errorjavaexception.html"/>
+    </definition>
+
     <definition name="displayError404Page" extends="base.definition">
-        <put-attribute name="title" value="Error 404 Page" />
-        <put-attribute name="body" value="/WEB-INF/jsp/errors/error404.html" />
+        <put-attribute name="title" value="Error 404 Page"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/errors/error404.html"/>
     </definition>
-    
+
     <definition name="editUserInformationPage" extends="base.definition">
-        <put-attribute name="title" value="Edit User Information" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/useredit.jsp" />
-    </definition> 
-    
+        <put-attribute name="title" value="Edit User Information"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/useredit.jsp"/>
+    </definition>
+
     <definition name="displayTeacherListCurrentClasses" extends="base.definition">
-        <put-attribute name="title" value="Edit User Information" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherlistcurrentclasses.jsp" />
+        <put-attribute name="title" value="Edit User Information"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherlistcurrentclasses.jsp"/>
     </definition>
-    
-     <definition name="displayStudentSchedule" extends="base.definition">
-        <put-attribute name="title" value="Student Schedule" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentschedule.jsp" />
+
+    <definition name="displayStudentSchedule" extends="base.definition">
+        <put-attribute name="title" value="Student Schedule"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentschedule.jsp"/>
     </definition>
-    
-     <definition name="displayStudentHistory" extends="base.definition">
-        <put-attribute name="title" value="Student History" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studenthistory.jsp" />
+
+    <definition name="displayStudentHistory" extends="base.definition">
+        <put-attribute name="title" value="Student History"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studenthistory.jsp"/>
     </definition>
-    
-      <definition name="displayAvailableClasses" extends="base.definition">
-        <put-attribute name="title" value="Available Classes" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/availableclasses.jsp" />
+
+    <definition name="displayAvailableClasses" extends="base.definition">
+        <put-attribute name="title" value="Available Classes"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/availableclasses.jsp"/>
     </definition>
-    
-      <definition name="displayUserInstructions" extends="base.definition">
-        <put-attribute name="title" value="User Instructions" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/userinstructions.jsp" />
+
+    <definition name="displayUserInstructions" extends="base.definition">
+        <put-attribute name="title" value="User Instructions"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/userinstructions.jsp"/>
     </definition>
     <definition name="displayTeacherInformation" extends="base.definition">
-        <put-attribute name="title" value="Teacher Information" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherinformation.jsp" />
+        <put-attribute name="title" value="Teacher Information"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherinformation.jsp"/>
     </definition>
     <definition name="displayTeacherHistoryClasses" extends="base.definition">
-        <put-attribute name="title" value="Teacher Class History" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherclasshistory.jsp" />
+        <put-attribute name="title" value="Teacher Class History"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherclasshistory.jsp"/>
     </definition>
-     <definition name="displayStudentsInClass" extends="base.definition">
-        <put-attribute name="title" value="Class Roster" />
-        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentsinclass.jsp" />
+    <definition name="displayStudentsInClass" extends="base.definition">
+        <put-attribute name="title" value="Class Roster"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentsinclass.jsp"/>
     </definition>
- 
+
 </tiles-definitions>

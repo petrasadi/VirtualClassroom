@@ -1,27 +1,26 @@
 .evenrow {
-	padding: 3px 0;
-	margin-left: 3px;
-	font: 12px Verdana, sans-serif;
-	margin-bottom: 0;
-	text-align: left;
-	background: #FFF;
+    padding: 3px 0;
+    margin-left: 3px;
+    font: 12px Verdana, sans-serif;
+    margin-bottom: 0;
+    text-align: left;
+    background: #FFF;
 }
 
-
 .oddrow {
-	padding: 3px 0;
-	margin-left: 3px;
-	font: 12px Verdana, sans-serif;
-	margin-bottom: 0;
-	text-align: left;
-	background: #DDE;
+    padding: 3px 0;
+    margin-left: 3px;
+    font: 12px Verdana, sans-serif;
+    margin-bottom: 0;
+    text-align: left;
+    background: #DDE;
 }
 
 .rowheader {
-	padding: 3px 0;
-	margin-left: 3px;
-	font: 12px Verdana, sans-serif;
-	margin-bottom: 0;
-	text-align: left;
-	background: #AAE;
+    padding: 3px 0;
+    margin-left: 3px;
+    font: 12px Verdana, sans-serif;
+    margin-bottom: 0;
+    text-align: left;
+    background: #AAE;
 }

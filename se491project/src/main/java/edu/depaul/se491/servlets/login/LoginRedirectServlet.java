@@ -13,21 +13,18 @@ import java.util.logging.Logger;
 public class LoginRedirectServlet extends HttpServlet
 {
     /**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	private static final Logger log = Logger.getLogger(LoginRedirectServlet.class.getName());
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    private static final Logger log = Logger.getLogger(LoginRedirectServlet.class.getName());
 
-	@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         String url;
-        if (request.getParameter("continue") != null)
-        {
+        if (request.getParameter("continue") != null) {
             url = request.getParameter("continue");
-        }
-        else
-        {
+        } else {
             url = request.getRequestURI();
         }
 
@@ -35,12 +32,10 @@ public class LoginRedirectServlet extends HttpServlet
 
         String openIdUrl = null;
         String openIdUserName = null;
-        if (request.getParameter("openid_identifier") != null)
-        {
+        if (request.getParameter("openid_identifier") != null) {
             openIdUrl = request.getParameter("openid_identifier");
         }
-        if (request.getParameter("openid_username") != null)
-        {
+        if (request.getParameter("openid_username") != null) {
             openIdUserName = request.getParameter("openid_username");
         }
 

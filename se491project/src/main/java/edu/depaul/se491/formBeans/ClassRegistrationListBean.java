@@ -1,154 +1,184 @@
 package edu.depaul.se491.formBeans;
 
-import java.util.List;
-
 import edu.depaul.se491.model.Person;
 
-
-public class ClassRegistrationListBean {
-	private long id;
-	
-	private String name;
-	
-	private String category;
-	
-	private String startDate;
-	
-	private String endDate;
-	
-	private String registration;
-	
-	private String classEndTime;
-	
-	private String classStartTime;
-	
-	private String classStartDay;
-	
-	private String classEndDay;
-	
-	private String teacherName;
-	
-	private int numberOfRegisteredStudents;
-	
-	private List <Person> studentList;
-	
-	public List<Person> getStudentList() {
-		return studentList;
-	}
-
-	public void setStudentList(List<Person> studentList) {
-		numberOfRegisteredStudents=studentList.size();
-		this.studentList = studentList;
-	}
-
-	public int getNumberOfRegisteredStudents() {
-		return numberOfRegisteredStudents;
-	}
-
-	public void setNumberOfRegisteredStudents(int numberOfRegisteredStudents) {
-		this.numberOfRegisteredStudents = numberOfRegisteredStudents;
-	}
-
-	public String getOpenId() {
-		return openId;
-	}
-
-	public void setOpenId(String openId) {
-		this.openId = openId;
-	}
-
-	private String openId;
-	
-	public String getTeacherName() {
-		return teacherName;
-	}
-
-	public void setTeacherName(String teacherName) {
-		this.teacherName = teacherName;
-	}
+import java.util.List;
 
 
-	public String getClassEndTime() {
-		return classEndTime;
-	}
+public class ClassRegistrationListBean
+{
+    private long id;
 
-	public void setClassEndTime(String classEndTime) {
-		this.classEndTime = classEndTime;
-	}
+    private String name;
 
-	public String getClassStartTime() {
-		return classStartTime;
-	}
+    private String category;
 
-	public void setClassStartTime(String classStartTime) {
-		this.classStartTime = classStartTime;
-	}
+    private String startDate;
 
-	public String getClassStartDay() {
-		return classStartDay;
-	}
+    private String endDate;
 
-	public void setClassStartDay(String classStartDay) {
-		this.classStartDay = classStartDay;
-	}
+    private String registration;
 
-	public String getClassEndDay() {
-		return classEndDay;
-	}
+    private String classEndTime;
 
-	public void setClassEndDay(String classEndDay) {
-		this.classEndDay = classEndDay;
-	}
+    private String classStartTime;
 
-	public ClassRegistrationListBean() {
-		
-	}
+    private String classStartDay;
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getName() {
-		return this.name;
-	}
+    private String classEndDay;
 
-	public String getCategory() {
-		return category;
-	}
+    private String teacherName;
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    private int numberOfRegisteredStudents;
 
-	public String getStartDate() {
-		return startDate;
-	}
+    private List<Person> studentList;
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
+    public List<Person> getStudentList()
+    {
+        return studentList;
+    }
 
-	public String getEndDate() {
-		return endDate;
-	}
+    public void setStudentList(List<Person> studentList)
+    {
+        numberOfRegisteredStudents = studentList.size();
+        this.studentList = studentList;
+    }
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
+    public int getNumberOfRegisteredStudents()
+    {
+        return numberOfRegisteredStudents;
+    }
 
-	public String getRegistration() {
-		return registration;
-	}
+    public void setNumberOfRegisteredStudents(int numberOfRegisteredStudents)
+    {
+        this.numberOfRegisteredStudents = numberOfRegisteredStudents;
+    }
 
-	public void setRegistration(String registration) {
-		this.registration = registration;
-	}
+    public String getOpenId()
+    {
+        return openId;
+    }
 
-	public long getId() {
-		return id;
-	}
+    public void setOpenId(String openId)
+    {
+        this.openId = openId;
+    }
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    private String openId;
+
+    public String getTeacherName()
+    {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName)
+    {
+        this.teacherName = teacherName;
+    }
+
+
+    public String getClassEndTime()
+    {
+        return classEndTime;
+    }
+
+    public void setClassEndTime(String classEndTime)
+    {
+        this.classEndTime = classEndTime;
+    }
+
+    public String getClassStartTime()
+    {
+        return classStartTime;
+    }
+
+    public void setClassStartTime(String classStartTime)
+    {
+        this.classStartTime = classStartTime;
+    }
+
+    public String getClassStartDay()
+    {
+        return classStartDay;
+    }
+
+    public void setClassStartDay(String classStartDay)
+    {
+        this.classStartDay = classStartDay;
+    }
+
+    public String getClassEndDay()
+    {
+        return classEndDay;
+    }
+
+    public void setClassEndDay(String classEndDay)
+    {
+        this.classEndDay = classEndDay;
+    }
+
+    public ClassRegistrationListBean()
+    {
+
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public String getCategory()
+    {
+        return category;
+    }
+
+    public void setCategory(String category)
+    {
+        this.category = category;
+    }
+
+    public String getStartDate()
+    {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate)
+    {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate()
+    {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate)
+    {
+        this.endDate = endDate;
+    }
+
+    public String getRegistration()
+    {
+        return registration;
+    }
+
+    public void setRegistration(String registration)
+    {
+        this.registration = registration;
+    }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    public void setId(long id)
+    {
+        this.id = id;
+    }
 }
