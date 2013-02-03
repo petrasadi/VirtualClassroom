@@ -23,4 +23,3 @@ appengine-web.xml
 #OTHER
 se491project/war/WEB-INF/appengine-generated/*
 *~
-target
