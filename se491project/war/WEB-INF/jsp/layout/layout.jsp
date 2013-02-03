@@ -16,10 +16,6 @@
             position: relative;
         }
 
-        #header {
-            height: 10px;
-            padding: 10px;
-        }
 
         #tabs {
             padding-top: 50px;
@@ -48,8 +44,13 @@
     <title><tiles:insertAttribute name="title" ignore="true"/></title>
 </head>
 <div id="page_container" border="0" cellpadding="2" cellspacing="2" align="left">
-    <div id="header"><tiles:insertAttribute name="header"/></div>
-    <div id="tabs"><tiles:insertAttribute name="tabs"/></div>
+    <div class="header"><tiles:insertAttribute name="header"/></div>
+	<div class="sub-header">
+		<tiles:insertAttribute name="sub-header"/>
+	</div>
+    <div class="tabs">
+    			
+				<tiles:insertAttribute name="tabs"/></div>
     <div id="body"><tiles:insertAttribute name="body"/></div>
     <div id="footer"><tiles:insertAttribute name="footer"/></div>
 </div>

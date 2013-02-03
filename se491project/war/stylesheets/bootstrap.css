@@ -8,6 +8,73 @@
  * Designed and built with all the love in the world @twitter by @mdo and @fat.
  */
 
+/*---------------------- header ----------------------*/
+.header{
+	background:url(../images/bg-header.gif) repeat-x;
+	height:40px;
+    padding-top:10px;
+    width: 100%;
+}
+.header div{
+	width:940px;
+	padding:0 10px;
+	margin:0 auto;
+	overflow:hidden;
+}
+.header div ul{
+	margin:0;
+	list-style:none;
+	padding:13px 0 0;
+	float:right;
+}
+.top-menu a{
+	float:right;
+	margin:0 0 0 20px;
+}
+.header div ul li a:hover{
+	color: grey;
+}
+.header div ul li.selected a{
+	font-weight:bold;
+	color: grey;
+}
+.header div ul li:first-child a{
+	background:none;
+}
+.header div ul li a{
+	font-size:18px;
+	text-shadow: 0 1px 0 #d1e6f7;
+	text-decoration:none;
+	color: grey;
+	font-family: 'RokkittRegular';
+	outline:none;
+	background:url(../images/interface.gif) no-repeat left 0;
+	padding:0 0 0 20px;
+}
+.sub-header {
+	margin-top: overflow: auto;
+	background:url(../images/bg-content.gif) repeat-x #90C5E7;
+}
+.sub-header div#featured{
+	overflow: auto;
+	padding-top: 180px;
+	background:url(../images/classpicker.png) no-repeat center !important;
+	height:180px;
+	margin:0 auto;
+	width:940px;
+}
+.sub-header div#featured img{
+	border:0;
+    height:102px;
+    width:392px;
+	position: relative; 
+	
+	font-family: 'RokkittRegular';
+	float: left;
+	margin:0;
+	outline:none;
+	display:block;
+}
 article,
 aside,
 details,
