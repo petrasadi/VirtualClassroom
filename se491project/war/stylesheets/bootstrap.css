@@ -75,6 +75,90 @@
 	outline:none;
 	display:block;
 }
+/*------------------------- Footer ------------------------*/ 
+.footer{
+	width:auto;
+	background:url(../images/bg-footer.gif) repeat-x left top !important;
+	padding:45px 0 105px;
+	margin:0 auto;
+	overflow:hidden;
+}
+.footer div{
+	width:960px;
+	margin:0 auto;
+	overflow:hidden;
+}
+.footer div ul{
+	list-style:none;
+	margin:0;
+	padding:0;
+	overflow:hidden;
+	float:left;
+}
+.footer div ul li{
+	margin:0 0 5px;
+}
+.footer div ul li a:hover{
+	color:#6CB2E6;
+}
+.footer div ul li a{
+	color:#d5ebf8;
+	font-size:18px;
+	font-family: 'RokkittRegular';
+	text-decoration:none;
+	outline:none;
+	line-height:35px;
+}
+.footer div p{
+	color:#22323f;
+	font-size:12px;
+	font-family:arial;
+	float:left;
+	margin:0 0 0 65px;
+	width:555px;
+	text-align:justify;
+	text-shadow: 0 1px 0 #99abb9;
+	line-height:21px;
+}
+.footer div p a{
+	color:#fff;
+}
+.footer div div.connect{
+	float:left;
+	margin:0 0 0 50px;
+	width:auto;
+	height:150px;
+	background:url(../images/interface.gif) no-repeat left -33px;
+}
+.footer div div.connect a:hover{
+	color:#3d4f5b;
+}
+.footer div div.connect a{
+	outline:none;
+	height:28px;
+	width:auto;
+	text-decoration:none;
+	margin:10px 0 0 45px;
+	font-family:arial;
+	color:#fff;
+	font-weight:bold;
+	text-shadow:0 1px 0 #546a77;
+	text-transform:capitalize;
+	font-size:14px;
+}
+.footer div p.footnote{
+	text-shadow: 0 1px 0 #99abb9;
+	color:#3e505c;
+	clear:both;
+	text-align:center;
+	margin:0;
+	float:none;
+	width:auto;
+	font-size:10px;
+	font-family:trebuchet MS;
+	font-weight:bold;
+	padding:30px 0 0;
+}
 article,
 aside,
 details,

@@ -2,6 +2,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
 <head>
     <style type="text/css">
         html,
@@ -10,6 +11,9 @@
             padding: 0;
             height: 100%;
         }
+        body {
+        	background:url(../images/bg-content2.gif);
+        }
 
         #page_container {
             min-height: 100%;
@@ -17,13 +21,8 @@
         }
 
 
-        #tabs {
-            padding-top: 50px;
-
-        }
-
         #body {
-            padding: 10px;
+            
             padding-bottom: 20px; /* Height of the footer */
         }
 
@@ -45,14 +44,10 @@
 </head>
 <div id="page_container" border="0" cellpadding="2" cellspacing="2" align="left">
     <div class="header"><tiles:insertAttribute name="header"/></div>
-	<div class="sub-header">
-		<tiles:insertAttribute name="sub-header"/>
-	</div>
-    <div class="tabs">
-    			
-				<tiles:insertAttribute name="tabs"/></div>
-    <div id="body"><tiles:insertAttribute name="body"/></div>
-    <div id="footer"><tiles:insertAttribute name="footer"/></div>
+	<div class="sub-header"><tiles:insertAttribute name="sub-header"/></div>
+    <div class="tabs"><tiles:insertAttribute name="tabs"/></div>
+    <div class="body"><tiles:insertAttribute name="body"/></div>
+    <div class="footer"><tiles:insertAttribute name="footer"/></div>
 </div>
 </html>
     
