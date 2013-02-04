@@ -1,6 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/stylesheets/2leveltab.css"/>
 <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
 <script type="text/javascript" src="/javascript/2leveltab.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 
 <%@ page import="com.google.appengine.api.users.UserService" %>
 <%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
@@ -84,9 +85,9 @@
 </div>
 
 <ul id="home" class="btn-group" style="display: block;">
-    <button class="btn" onclick="window.location.href='/displayAboutPage.do'">About</button>
-    <button class="btn" onclick="window.location.href='/displayAvailableClasses.do'">Available Classes</button>
-    <button class="btn" onclick="window.location.href='/displayUserInstructions.do'">Instructions</button>
+    <button id="b1" class="btn" onclick="window.location.href='/displayAboutPage.do'">About</button>
+    <button id="b2" class="btn" onclick="window.location.href='/displayAvailableClasses.do'">Available Classes</button>
+    <button id="b3" class="btn" onclick="window.location.href='/displayUserInstructions.do'">Instructions</button>
 </ul>
 
 <%
@@ -99,9 +100,9 @@
 %>
 
 <ul id="teacher" class="btn-group" style="display: none;">
-    <button class="btn" onclick="window.location.href='/displayCreateClassPage.do'">Create Class</button>
-    <button class="btn" onclick="window.location.href='/displayTeacherListCurrentClasses.do'">Scheduled Classes</button>
-    <button class="btn" onclick="window.location.href='/displayTeacherHistoryClasses.do'">Completed Classes</button>
+    <button id="b1" class="btn" onclick="window.location.href='/displayCreateClassPage.do'">Create Class</button>
+    <button id="b2" class="btn" onclick="window.location.href='/displayTeacherListCurrentClasses.do'">Scheduled Classes</button>
+    <button id="b3" class="btn" onclick="window.location.href='/displayTeacherHistoryClasses.do'">Completed Classes</button>
 </ul>
 
 <%
@@ -109,9 +110,9 @@
     if (vcUser.isStudent()) {
 %>
 <ul id="student" class="btn-group" style="display: none;">
-    <button class="btn" onclick="window.location.href='/displayClassRegistration.do'">Register For Class</button>
-    <button class="btn" onclick="window.location.href='/displayStudentClassSchedule.do'">Class Schedule</button>
-    <button class="btn" onclick="window.location.href='/displayStudentClassHistory.do'">Class History</button>
+    <button id="b1" class="btn" onclick="window.location.href='/displayClassRegistration.do'">Register For Class</button>
+    <button id="b2" class="btn" onclick="window.location.href='/displayStudentClassSchedule.do'">Class Schedule</button>
+    <button id="b3" class="btn" onclick="window.location.href='/displayStudentClassHistory.do'">Class History</button>
 </ul>
 
 <%
@@ -121,9 +122,9 @@
 %>
 
 <ul id="admin" class="btn-group" style="display: none;">
-    <button class="btn" onclick="window.location.href='#'">Create Category</button>
-    <button class="btn" onclick="window.location.href='#'">List Users</button>
-    <button class="btn" onclick="window.location.href='#'">List Classes</button>
+    <button id="b1" class="btn" onclick="window.location.href='#'">Create Category</button>
+    <button id="b2" class="btn" onclick="window.location.href='#'">List Users</button>
+    <button id="b3" class="btn" onclick="window.location.href='#'">List Classes</button>
 </ul>
 
 <%
@@ -133,8 +134,8 @@
 
 
 <ul id="account" class="btn-group" style="display: none;">
-    <button class="btn" onclick="window.location.href='/displayUserInformationPage.do'">User Account</button>
-    <button class="btn" onclick="window.location.href='/editUserInformationPage.do'">Edit</button>
+    <button id="b1" class="btn" onclick="window.location.href='/displayUserInformationPage.do'">User Account</button>
+    <button id="b2" class="btn" onclick="window.location.href='/editUserInformationPage.do'">Edit</button>
 </ul>
 
 

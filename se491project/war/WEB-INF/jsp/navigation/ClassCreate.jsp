@@ -9,7 +9,11 @@
 
 
 <div class="container">
-    <div class="grid_9"><h1>Create A Class</h1></div>
+<div class="navbar">
+    	<p class="brand">Create a Class</p>
+    	</div>
+   <br/>
+
 
     <form:form action="/classCreate.do" method="post" commandName="createClassFormBean">
         <br/>

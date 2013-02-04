@@ -35,6 +35,9 @@
 </head>
 <body>
 <div class="container">
+	<div class="navbar">
+    	<p class="brand">Register for Classes</p>
+    	</div><br/><br/>
     <form class="navbar-form pull-left"><input type="text" id="kwd_search" class="span2" placeholder="Search"></form>
     <div class="datagrid">
         <table id="my-table" class="table table-hover">

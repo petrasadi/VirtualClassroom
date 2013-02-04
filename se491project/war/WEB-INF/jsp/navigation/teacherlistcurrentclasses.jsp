@@ -5,13 +5,11 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/row.css"/>
 
-
-List of scheduled classes to teach:
-<br/>
-<br/>
-<br/>
-
 <div class="container">
+	<div class="navbar">
+    	<p class="brand">List of Scheduled Classes to Teach</p><br/>
+<br/>
+    	</div>
     <div class="datagrid">
         <table id="my-table" class="table table-hover">
             <thead>

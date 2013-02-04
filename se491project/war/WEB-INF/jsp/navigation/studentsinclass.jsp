@@ -3,16 +3,14 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<link rel="stylesheet" type="text/css" href="/stylesheets/row.css"/>
-
-
-Class Roster
-<br/>
-<br/>
-<br/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
 
 <div class="container">
+<div class="navbar">
+    <p class="brand">Class Roster</p>
+    	</div><br/><br/>
     <div class="datagrid">
+
         <table id="my-table" class="table table-hover">
             <thead>
             <tr>
