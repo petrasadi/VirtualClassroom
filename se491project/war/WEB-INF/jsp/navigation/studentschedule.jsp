@@ -4,15 +4,16 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/row.css"/>
-
-
-List of Schedule Classes
-<br/>
-<br/>
-<br/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
 
 <div class="container">
     <div class="datagrid">
+    <div class="navbar">
+    	<p class="brand">List of Scheduled Classes</p>
+    	</div>
+<br/>
+<br/>
+<br/>
         <table id="my-table" class="table table-hover">
             <thead>
             <tr>

@@ -5,14 +5,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/row.css"/>
 
-
-List of Class Taken at virtual Classroom
-<br/>
-<br/>
-<br/>
-
 <div class="container">
     <div class="datagrid">
+    <div class="navbar">
+    	<p class="brand">List of Class Taken at virtual Classroom</p><br/>
+<br/>
+
+    	</div>
         <table id="my-table" class="table table-hover">
             <thead>
             <tr>
