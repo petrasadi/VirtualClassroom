@@ -1,6 +1,9 @@
 package edu.depaul.se491.engine;
 
+import edu.depaul.se491.participants.Instructor;
 import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
 
 /**
  * User: James Raitsev
@@ -23,6 +26,8 @@ public class VirtualClassTest
     @Test
     public void testIsClassInSession() throws Exception
     {
+        VirtualClass vc = new VirtualClass("name", new Instructor("fn", "ln"));
+        assertFalse(vc.isClassInSession());
 
     }
 

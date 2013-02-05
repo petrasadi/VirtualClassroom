@@ -2,10 +2,10 @@
 <testng-results skipped="0" failed="0" total="0" passed="0">
   <reporter-output>
   </reporter-output>
-  <suite name="Command line suite" duration-ms="6" started-at="2013-02-04T23:47:04Z" finished-at="2013-02-04T23:47:04Z">
+  <suite name="edu.depaul.se491.engine.VirtualClassTest" duration-ms="5" started-at="2013-02-05T00:06:49Z" finished-at="2013-02-05T00:06:49Z">
     <groups>
     </groups>
-    <test name="Command line test" duration-ms="6" started-at="2013-02-04T23:47:04Z" finished-at="2013-02-04T23:47:04Z">
+    <test name="Command line test" duration-ms="5" started-at="2013-02-05T00:06:49Z" finished-at="2013-02-05T00:06:49Z">
     </test> <!-- Command line test -->
-  </suite> <!-- Command line suite -->
+  </suite> <!-- edu.depaul.se491.engine.VirtualClassTest -->
 </testng-results>
