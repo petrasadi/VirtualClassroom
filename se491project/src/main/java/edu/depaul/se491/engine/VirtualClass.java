@@ -19,7 +19,12 @@ public class VirtualClass
     private long startTime;
     private long endTime;
 
-    private int maxStudents = 10;
+    private final int maxStudents = 10;
+
+    public int getMaxStudents()
+    {
+        return maxStudents;
+    }
 
     public VirtualClass(String name, Instructor i)
     {
@@ -49,9 +54,6 @@ public class VirtualClass
      */
     public Set<Student> getStudents()
     {
-        if (students == null) {
-            return new HashSet<Student>();
-        }
         return students;
     }
 

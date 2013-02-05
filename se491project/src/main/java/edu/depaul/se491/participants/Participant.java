@@ -8,6 +8,14 @@ public abstract class Participant
 
     Participant(String fn, String ln)
     {
+        if (fn == null || ln == null) {
+            throw new RuntimeException("Participant's first and last names can't be null");
+        }
+
+        if (fn.trim().isEmpty() || ln.trim().isEmpty()) {
+            throw new RuntimeException("Participant's name can't be empty");
+        }
+
         firstName = fn;
         lastName = ln;
     }

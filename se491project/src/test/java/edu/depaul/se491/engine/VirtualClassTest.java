@@ -4,8 +4,7 @@ import edu.depaul.se491.participants.Instructor;
 import edu.depaul.se491.participants.Student;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * User: James Raitsev
@@ -30,13 +29,49 @@ public class VirtualClassTest
     {
         VirtualClass vc = new VirtualClass("name", new Instructor("fn", "ln"));
         assertFalse(vc.isClassInSession());
-
-
     }
 
     @Test
     public void testToString() throws Exception
     {
+        VirtualClass vc = new VirtualClass("class name", new Instructor("fn", "ln"));
+        System.out.println(vc.toString());
+        assertTrue(vc.toString().equals("VirtualClass [name=class name, instructor=Instructor [firstName=fn, lastName=ln], students=[]]"));
+
+    }
+
+    @Test
+    public void testCreation()
+    {
+        try {
+            new VirtualClass(null, null);
+            fail();
+        } catch (Exception e) {
+        }
+
+        try {
+            new VirtualClass("", null);
+            fail();
+        } catch (Exception e) {
+        }
+
+        try {
+            new VirtualClass("     ", null);
+            fail();
+        } catch (Exception e) {
+        }
+
+        try {
+            new VirtualClass("Name", null);
+            fail();
+        } catch (Exception e) {
+        }
+
+        try {
+            new VirtualClass("     ", new Instructor("", ""));
+            fail();
+        } catch (Exception e) {
+        }
 
     }
 
@@ -44,7 +79,16 @@ public class VirtualClassTest
     public void testAddStudent() throws Exception
     {
         VirtualClass vc = new VirtualClass("name", new Instructor("fn", "ln"));
-        vc.addStudent(new Student("a", "b"));
+
+        Student a = new Student("a", "b");
+        vc.addStudent(a);
+        assertTrue(vc.getStudents().size() == 1);
+
+        vc.addStudent(a);
+        assertTrue(vc.getStudents().size() == 1);
+
+        Student b = new Student("a", "b");
+        vc.addStudent(b);
         assertTrue(vc.getStudents().size() == 1);
     }
 
