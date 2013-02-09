@@ -80,11 +80,10 @@ public class TeacherClassListController
             cBean.setStudentList(slist);
             cBean.setId(c.getId().getId());
 
-            if (today.before(c.getClassStartTime())) {
-                cCurrentBeanList.add(cBean);
-            } else {
-                continue;
+            if (!c.getClassEndTime().after(today)) {
+            	continue;
             }
+            cCurrentBeanList.add(cBean);
         }
 
         ModelAndView view = new ModelAndView();
