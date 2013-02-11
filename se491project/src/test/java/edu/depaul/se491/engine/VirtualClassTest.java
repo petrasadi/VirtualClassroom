@@ -101,18 +101,28 @@ public class VirtualClassTest
     @Test
     public void testRemove() throws Exception
     {
+        VirtualClass vc1 = new VirtualClass("name", new Instructor("fn", "ln"));
+        vc1.addStudent(new Student("student", "joe"));
 
+        vc1.remove(new Student("student", "joe"));
+        assertTrue(vc1.getStudents().isEmpty());
     }
 
     @Test
     public void testHashCode() throws Exception
     {
+        VirtualClass vc1 = new VirtualClass("name", new Instructor("fn", "ln"));
+        VirtualClass vc2 = new VirtualClass("name", new Instructor("fn", "ln"));
 
+        assertTrue(vc1.hashCode() == vc2.hashCode());
     }
 
     @Test
     public void testEquals() throws Exception
     {
+        VirtualClass vc1 = new VirtualClass("name", new Instructor("fn", "ln"));
+        VirtualClass vc2 = new VirtualClass("name", new Instructor("fn", "ln"));
 
+        assertTrue(vc1.equals(vc2));
     }
 }
