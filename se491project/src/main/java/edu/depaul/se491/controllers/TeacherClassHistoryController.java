@@ -82,11 +82,10 @@ public class TeacherClassHistoryController
 
             cBean.setId(c.getId().getId());
 
-            if (today.after(c.getClassStartTime())) {
-                cCurrentBeanList.add(cBean);
-            } else {
-                continue;
-            }
+            if (c.getClassEndTime().after(today)) {
+            	 continue;                
+            } 
+            cCurrentBeanList.add(cBean);
         }
 
         ModelAndView view = new ModelAndView();

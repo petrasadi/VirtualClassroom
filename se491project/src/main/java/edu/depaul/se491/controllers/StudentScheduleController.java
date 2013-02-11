@@ -60,7 +60,7 @@ public class StudentScheduleController
                 classEndDayStr = dateFmt.format(c.getClassEndTime());
                 classEndTimeStr = timeFmt.format(c.getClassEndTime());
                 // if the end date has past do not add this class to the current schedule
-                if (today.after(c.getClassEndTime())) {
+                if (!c.getClassEndTime().after(today)) {
                     continue;
                 }
 

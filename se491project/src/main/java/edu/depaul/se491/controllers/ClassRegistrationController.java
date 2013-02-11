@@ -41,6 +41,19 @@ public class ClassRegistrationController
         Date today = cd.getTime();
 
         for (Classes c : clist) {
+        	
+        	// if the class has ended, do no let a student register.
+        	
+        	if (!c.getClassEndTime().after(today)) {
+                   continue;
+            }
+        	
+        	// If you are the teacher of the class, you can not register for it.
+        	if(c.getTeacher().equals(vcUser.getId())){
+        		 continue;
+        	}
+        	
+        	
             ClassRegistrationListBean cBean = new ClassRegistrationListBean();
             cBean.setName(c.getClassName());
             //	cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
@@ -49,6 +62,8 @@ public class ClassRegistrationController
             cBean.setOpenId(DaoCmds.getTeacherCmd(c.getId()).getOpenid());
             cBean.setTeacherName(DaoCmds.getTeacherCmd(c.getId()).getFirstName() + " " + DaoCmds.getTeacherCmd(c.getId()).getLastName());
 
+            
+         
 
             if (DaoCmds.isStudentByKey(vcUser.getId(), c.getId()) && (c.getClassStartTime().compareTo(today) == 0)) {
                 cBean.setRegistration("Join");
