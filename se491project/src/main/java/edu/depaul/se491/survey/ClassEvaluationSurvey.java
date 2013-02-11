@@ -25,7 +25,7 @@ public class ClassEvaluationSurvey
 
     public ClassEvaluationSurvey()
     {
-        questions.put("Course objectivs were clearly defined", Answers.values());
+        questions.put("Course objectives were clearly defined", Answers.values());
         questions.put("Information presented can be applied", Answers.values());
         questions.put("The content met my expectations", Answers.values());
         questions.put("This course was an appropriate length to cover the stated objectives", Answers.values());
