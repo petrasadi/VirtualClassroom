@@ -1,3 +1,8 @@
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+
+<div class="container">
+
 <h2>User Instructions</h2>
 
 
@@ -164,4 +169,4 @@
         href="mailto:se_491virtualclassroom@googlegroups.com">se_491virtualclassroom@googlegroups.com </a>.
     <br/>One of our team members will get with you as soon as posible.
 </div>
-
+</div>

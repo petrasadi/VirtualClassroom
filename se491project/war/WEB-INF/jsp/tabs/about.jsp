@@ -1,6 +1,6 @@
-<link rel="stylesheet" type="text/css" href="/stylesheets/960.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
 <link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css"/>
-<div class="container_9">
+<div class="container">
     <div class="grid_9">
         <p>
             There are many ways to learn something new. You can ask a friend, read a book, go to school, watch a lecture
