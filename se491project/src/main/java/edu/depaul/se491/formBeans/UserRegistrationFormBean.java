@@ -1,171 +1,216 @@
 package edu.depaul.se491.formBeans;
 
-import javax.validation.constraints.Pattern;
+import com.google.appengine.api.datastore.Key;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
-import com.google.appengine.api.datastore.Key;
 
-public class UserRegistrationFormBean {
+import javax.validation.constraints.Pattern;
 
-	@NotEmpty
-	private String firstName;		
-	@NotEmpty
-	private String lastName;	
-	@Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([a-z0-9-]+(\\.[a-z0-9-]+)*?\\.[a-z]{2,6}|(\\d{1,3}\\.){3}\\d{1,3})(:\\d{4})?$")
-	private String email;
-	private String openid;
-	private String middleName;	
-	@NotEmpty
-	private String city;
-	@NotEmpty
-	private String state;
-	@Pattern(regexp ="[0-9]+")
-	@Length(min=5, max=5)
-	private String zip;
-	@NotEmpty
-	private String address;
-	private String address2;
-	@NotEmpty
-	private String country;
-	
-	
-	@Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$|^(\\d{3})[\\.](\\d{3})[\\.](\\d{4})$")
-	private String phone;
-	
+public class UserRegistrationFormBean
+{
 
-	@Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$|^(\\d{3})[\\.](\\d{3})[\\.](\\d{4})$")
-	private String phone2;
-	
-	private boolean teacher;
-	private boolean student;
-	private Key id;
+    @NotEmpty
+    private String firstName;
+    @NotEmpty
+    private String lastName;
+    @Pattern(regexp = "^[\\w-]+(\\.[\\w-]+)*@([a-z0-9-]+(\\.[a-z0-9-]+)*?\\.[a-z]{2,6}|(\\d{1,3}\\.){3}\\d{1,3})(:\\d{4})?$")
+    private String email;
+    private String openid;
+    private String middleName;
+    @NotEmpty
+    private String city;
+    @NotEmpty
+    private String state;
+    @Pattern(regexp = "[0-9]+")
+    @Length(min = 5, max = 5)
+    private String zip;
+    @NotEmpty
+    private String address;
+    private String address2;
+    @NotEmpty
+    private String country;
 
-	public Key getId() {
-		return id;
-	}
+    private String userDescription;
 
-	public void setId(Key id) {
-		this.id = id;
-	}
+    public String getUserDescription()
+    {
+        return userDescription;
+    }
 
-	public boolean isTeacher() {
-		return teacher;
-	}
+    public void setUserDescription(String userDescription)
+    {
+        this.userDescription = userDescription;
+    }
 
-	public void setTeacher(boolean teacher) {
-		this.teacher = teacher;
-	}
+    @Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$|^(\\d{3})[\\.](\\d{3})[\\.](\\d{4})$")
+    private String phone;
 
-	public boolean isStudent() {
-		return student;
-	}
 
-	public void setStudent(boolean student) {
-		this.student = student;
-	}
+    @Pattern(regexp = "^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$|^(\\d{3})[\\.](\\d{3})[\\.](\\d{4})$")
+    private String phone2;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    private boolean teacher;
+    private boolean student;
+    private Key id;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public Key getId()
+    {
+        return id;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public void setId(Key id)
+    {
+        this.id = id;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public boolean isTeacher()
+    {
+        return teacher;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setTeacher(boolean teacher)
+    {
+        this.teacher = teacher;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public boolean isStudent()
+    {
+        return student;
+    }
 
-	public String getOpenid() {
-		return openid;
-	}
+    public void setStudent(boolean student)
+    {
+        this.student = student;
+    }
 
-	public void setOpenid(String openid) {
-		this.openid = openid;
-	}
+    public String getFirstName()
+    {
+        return firstName;
+    }
 
-	public String getMiddleName() {
-		return middleName;
-	}
+    public void setFirstName(String firstName)
+    {
+        this.firstName = firstName;
+    }
 
-	public void setMiddleName(String middleName) {
-		this.middleName = middleName;
-	}
+    public String getLastName()
+    {
+        return lastName;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public void setLastName(String lastName)
+    {
+        this.lastName = lastName;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public String getEmail()
+    {
+        return email;
+    }
 
-	public String getState() {
-		return state;
-	}
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
 
-	public void setState(String state) {
-		this.state = state;
-	}
+    public String getOpenid()
+    {
+        return openid;
+    }
 
-	public String getZip() {
-		return zip;
-	}
+    public void setOpenid(String openid)
+    {
+        this.openid = openid;
+    }
 
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
+    public String getMiddleName()
+    {
+        return middleName;
+    }
 
-	public String getAddress() {
-		return address;
-	}
+    public void setMiddleName(String middleName)
+    {
+        this.middleName = middleName;
+    }
 
-	public void setAddress(String address) {
-		this.address = address;
-	}
+    public String getCity()
+    {
+        return city;
+    }
 
-	public String getAddress2() {
-		return address2;
-	}
+    public void setCity(String city)
+    {
+        this.city = city;
+    }
 
-	public void setAddress2(String address2) {
-		this.address2 = address2;
-	}
+    public String getState()
+    {
+        return state;
+    }
 
-	public String getCountry() {
-		return country;
-	}
+    public void setState(String state)
+    {
+        this.state = state;
+    }
 
-	public void setCountry(String country) {
-		this.country = country;
-	}
+    public String getZip()
+    {
+        return zip;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public void setZip(String zip)
+    {
+        this.zip = zip;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public String getAddress()
+    {
+        return address;
+    }
 
-	public String getPhone2() {
-		return phone2;
-	}
+    public void setAddress(String address)
+    {
+        this.address = address;
+    }
 
-	public void setPhone2(String phone2) {
-		this.phone2 = phone2;
-	}
-	
+    public String getAddress2()
+    {
+        return address2;
+    }
+
+    public void setAddress2(String address2)
+    {
+        this.address2 = address2;
+    }
+
+    public String getCountry()
+    {
+        return country;
+    }
+
+    public void setCountry(String country)
+    {
+        this.country = country;
+    }
+
+    public String getPhone()
+    {
+        return phone;
+    }
+
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
+
+    public String getPhone2()
+    {
+        return phone2;
+    }
+
+    public void setPhone2(String phone2)
+    {
+        this.phone2 = phone2;
+    }
+
 }

@@ -1,54 +1,61 @@
 package edu.depaul.se491.opentok;
 
-/** 
- * 
- * Used as a placeholder for the session info of a specific user 
+/**
+ * Used as a placeholder for the session info of a specific user
  * for a specific class
- * 
+ * <p/>
  * apiKey - unique for the application
  * sessionId - unique for a class
  * token - unique for a user in a class
- * 
+ *
  * @author petrasadi
- * 
  */
-class OpenTokSessionInfo {
-	private int apiKey;
-	private String sessionId;
-	private String token;
-	private String role;
+class OpenTokSessionInfo
+{
+    private int apiKey;
+    private String sessionId;
+    private String token;
+    private String role;
 
-	int getApiKey() {
-		return apiKey;
-	}
+    int getApiKey()
+    {
+        return apiKey;
+    }
 
-	void setApiKey(int apiKey) {
-		this.apiKey = apiKey;
-	}
+    void setApiKey(int apiKey)
+    {
+        this.apiKey = apiKey;
+    }
 
-	String getSessionId() {
-		return sessionId;
-	}
+    String getSessionId()
+    {
+        return sessionId;
+    }
 
-	void setSessionId(String sessionId) {
-		this.sessionId = sessionId;
-	}
+    void setSessionId(String sessionId)
+    {
+        this.sessionId = sessionId;
+    }
 
-	String getToken() {
-		return token;
-	}
+    String getToken()
+    {
+        return token;
+    }
 
-	void setToken(String token) {
-		this.token = token;
-	}
+    void setToken(String token)
+    {
+        this.token = token;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public String getRole()
+    {
+        return role;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
-	
+    public void setRole(String role)
+    {
+        this.role = role;
+    }
+
+
 }

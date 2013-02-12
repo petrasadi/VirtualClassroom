@@ -1,69 +1,184 @@
 package edu.depaul.se491.formBeans;
 
-import com.google.appengine.api.datastore.Key;
+import edu.depaul.se491.model.Person;
 
-public class ClassRegistrationListBean {
-	private long id;
-	
-	private String name;
-	
-	private String category;
-	
-	private String startDate;
-	
-	private String endDate;
-	
-	private String registration;
-	
-	public ClassRegistrationListBean() {
-		
-	}
+import java.util.List;
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getName() {
-		return this.name;
-	}
 
-	public String getCategory() {
-		return category;
-	}
+public class ClassRegistrationListBean
+{
+    private long id;
 
-	public void setCategory(String category) {
-		this.category = category;
-	}
+    private String name;
 
-	public String getStartDate() {
-		return startDate;
-	}
+    private String category;
 
-	public void setStartDate(String startDate) {
-		this.startDate = startDate;
-	}
+    private String startDate;
 
-	public String getEndDate() {
-		return endDate;
-	}
+    private String endDate;
 
-	public void setEndDate(String endDate) {
-		this.endDate = endDate;
-	}
+    private String registration;
 
-	public String getRegistration() {
-		return registration;
-	}
+    private String classEndTime;
 
-	public void setRegistration(String registration) {
-		this.registration = registration;
-	}
+    private String classStartTime;
 
-	public long getId() {
-		return id;
-	}
+    private String classStartDay;
 
-	public void setId(long id) {
-		this.id = id;
-	}
+    private String classEndDay;
+
+    private String teacherName;
+
+    private int numberOfRegisteredStudents;
+
+    private List<Person> studentList;
+
+    public List<Person> getStudentList()
+    {
+        return studentList;
+    }
+
+    public void setStudentList(List<Person> studentList)
+    {
+        numberOfRegisteredStudents = studentList.size();
+        this.studentList = studentList;
+    }
+
+    public int getNumberOfRegisteredStudents()
+    {
+        return numberOfRegisteredStudents;
+    }
+
+    public void setNumberOfRegisteredStudents(int numberOfRegisteredStudents)
+    {
+        this.numberOfRegisteredStudents = numberOfRegisteredStudents;
+    }
+
+    public String getOpenId()
+    {
+        return openId;
+    }
+
+    public void setOpenId(String openId)
+    {
+        this.openId = openId;
+    }
+
+    private String openId;
+
+    public String getTeacherName()
+    {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName)
+    {
+        this.teacherName = teacherName;
+    }
+
+
+    public String getClassEndTime()
+    {
+        return classEndTime;
+    }
+
+    public void setClassEndTime(String classEndTime)
+    {
+        this.classEndTime = classEndTime;
+    }
+
+    public String getClassStartTime()
+    {
+        return classStartTime;
+    }
+
+    public void setClassStartTime(String classStartTime)
+    {
+        this.classStartTime = classStartTime;
+    }
+
+    public String getClassStartDay()
+    {
+        return classStartDay;
+    }
+
+    public void setClassStartDay(String classStartDay)
+    {
+        this.classStartDay = classStartDay;
+    }
+
+    public String getClassEndDay()
+    {
+        return classEndDay;
+    }
+
+    public void setClassEndDay(String classEndDay)
+    {
+        this.classEndDay = classEndDay;
+    }
+
+    public ClassRegistrationListBean()
+    {
+
+    }
+
+    public void setName(String name)
+    {
+        this.name = name;
+    }
+
+    public String getName()
+    {
+        return this.name;
+    }
+
+    public String getCategory()
+    {
+        return category;
+    }
+
+    public void setCategory(String category)
+    {
+        this.category = category;
+    }
+
+    public String getStartDate()
+    {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate)
+    {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate()
+    {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate)
+    {
+        this.endDate = endDate;
+    }
+
+    public String getRegistration()
+    {
+        return registration;
+    }
+
+    public void setRegistration(String registration)
+    {
+        this.registration = registration;
+    }
+
+    public long getId()
+    {
+        return id;
+    }
+
+    public void setId(long id)
+    {
+        this.id = id;
+    }
 }

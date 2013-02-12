@@ -1,136 +1,149 @@
 package edu.depaul.se491.engine;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import edu.depaul.se491.participants.Instructor;
 import edu.depaul.se491.participants.Student;
 
-public class VirtualClass {
+import java.util.HashSet;
+import java.util.Set;
 
-	private Instructor instructor;
-	private Set<Student> students = new HashSet<Student>();
-	
-	private boolean isAssignedToInstructor = false;
+public class VirtualClass
+{
 
-	private String name;
+    private Instructor instructor;
+    private Set<Student> students = new HashSet<Student>();
 
-	private long startTime;
-	private long endTime;
+    private boolean isAssignedToInstructor = false;
 
-	private int maxStudents = 10;
+    private String name;
 
-	public VirtualClass(String name, Instructor i) {
-		if (name == null || i == null) {
-			throw new RuntimeException(
-					"Class name or Instructor name is null. This is not cool");
-		}
+    private long startTime;
+    private long endTime;
 
-		this.name = name;
-		this.instructor = i;
-	}
+    private final int maxStudents = 10;
 
-	/**
-	 * If class has some students, it'll be added to the overall instructor
-	 * workload
-	 */
-	public void addToWorkload() {
-		if (students.size() > 0) {
-			ClassOrganizer.getInstance().addClass(this);
-			isAssignedToInstructor = true;
-		}
-	}
-	
-	/**
-	 * Returns students currently registered for class
-	 */
-	public Set<Student> getStudents() {
-		if (students == null) {
-			return new HashSet<Student>();
-		}
-		return students;
-	}
+    public int getMaxStudents()
+    {
+        return maxStudents;
+    }
 
-	/**
-	 * @return {@code true} if class is now in session (current time in between
-	 *         class start and end times)
-	 */
-	public boolean isClassInSession() {
-		long timeNow = System.currentTimeMillis();
-		return timeNow > startTime && timeNow < endTime;
-	}
+    public VirtualClass(String name, Instructor i)
+    {
+        if (name == null || i == null) {
+            throw new RuntimeException(
+                    "Class name or Instructor name is null. This is not cool");
+        }
 
-	@Override
-	public String toString() {
-		return "VirtualClass [name=" + name + ", instructor=" + instructor
-				+ ", students=" + students + "]";
-	}
+        this.name = name;
+        this.instructor = i;
+    }
 
-	/**
-	 * Adds student to class
-	 */
-	public boolean addStudent(Student s) {
-		boolean added = true;
-		if (students.size() <= maxStudents) {
-			students.add(s);
-		} else {
-			added = false;
-		}
+    /**
+     * If class has some students, it'll be added to the overall instructor
+     * workload
+     */
+    public void addToWorkload()
+    {
+        if (students.size() > 0) {
+            ClassOrganizer.getInstance().addClass(this);
+            isAssignedToInstructor = true;
+        }
+    }
 
-		
-		return added;
-	}
+    /**
+     * Returns students currently registered for class
+     */
+    public Set<Student> getStudents()
+    {
+        return students;
+    }
 
-	public Instructor getInstructor() {
-		return instructor;
-	}
-	
-	public void remove(Student s) {
-		if (students.contains(s)) {
-			students.remove(s);
-		}
-	}
+    /**
+     * @return {@code true} if class is now in session (current time in between
+     *         class start and end times)
+     */
+    public boolean isClassInSession()
+    {
+        long timeNow = System.currentTimeMillis();
+        return timeNow > startTime && timeNow < endTime;
+    }
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((instructor == null) ? 0 : instructor.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + (int) (startTime ^ (startTime >>> 32));
-		result = prime * result
-				+ ((students == null) ? 0 : students.hashCode());
-		return result;
-	}
+    @Override
+    public String toString()
+    {
+        return "VirtualClass [name=" + name + ", instructor=" + instructor
+                + ", students=" + students + "]";
+    }
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		VirtualClass other = (VirtualClass) obj;
-		if (instructor == null) {
-			if (other.instructor != null)
-				return false;
-		} else if (!instructor.equals(other.instructor))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (startTime != other.startTime)
-			return false;
-		if (students == null) {
-			if (other.students != null)
-				return false;
-		} else if (!students.equals(other.students))
-			return false;
-		return true;
-	}
+    /**
+     * Adds student to class
+     */
+    public boolean addStudent(Student s)
+    {
+        boolean added = true;
+        if (students.size() <= maxStudents) {
+            students.add(s);
+        } else {
+            added = false;
+        }
+
+
+        return added;
+    }
+
+    public Instructor getInstructor()
+    {
+        return instructor;
+    }
+
+    public void remove(Student s)
+    {
+        if (students.contains(s)) {
+            students.remove(s);
+        }
+    }
+
+    @Override
+    public int hashCode()
+    {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result
+                + ((instructor == null) ? 0 : instructor.hashCode());
+        result = prime * result + ((name == null) ? 0 : name.hashCode());
+        result = prime * result + (int) (startTime ^ (startTime >>> 32));
+        result = prime * result
+                + ((students == null) ? 0 : students.hashCode());
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        VirtualClass other = (VirtualClass) obj;
+        if (instructor == null) {
+            if (other.instructor != null)
+                return false;
+        } else if (!instructor.equals(other.instructor))
+            return false;
+        if (name == null) {
+            if (other.name != null)
+                return false;
+        } else if (!name.equals(other.name))
+            return false;
+        if (startTime != other.startTime)
+            return false;
+        if (students == null) {
+            if (other.students != null)
+                return false;
+        } else if (!students.equals(other.students))
+            return false;
+        return true;
+    }
 
 }
