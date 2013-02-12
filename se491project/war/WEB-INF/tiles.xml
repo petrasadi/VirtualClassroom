@@ -121,14 +121,34 @@
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentschedule.jsp" />
     </definition>
     
+     <definition name="displayStudentHistory" extends="base.definition">
+        <put-attribute name="title" value="Student History" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studenthistory.jsp" />
+    </definition>
+    
       <definition name="displayAvailableClasses" extends="base.definition">
         <put-attribute name="title" value="Available Classes" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/availableclasses.jsp" />
     </definition>
     
       <definition name="displayUserInstructions" extends="base.definition">
-        <put-attribute name="title" value="User Instruvtions" />
+        <put-attribute name="title" value="User Instructions" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/userinstructions.jsp" />
     </definition>
- 
+    <definition name="displayTeacherInformation" extends="base.definition">
+        <put-attribute name="title" value="Teacher Information" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherinformation.jsp" />
+    </definition>
+    <definition name="displayTeacherHistoryClasses" extends="base.definition">
+        <put-attribute name="title" value="Teacher Class History" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherclasshistory.jsp" />
+    </definition>
+     <definition name="displayStudentsInClass" extends="base.definition">
+        <put-attribute name="title" value="Class Roster" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentsinclass.jsp" />
+    </definition>
+ 	    <definition name="displayClassSurveyPage" extends="base.definition">
+        <put-attribute name="title" value="Class Survey" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/classsurvey.jsp" />
+    </definition>
 </tiles-definitions>
