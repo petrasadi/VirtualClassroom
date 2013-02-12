@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/openid.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
 
+<div class="container"><br/><br/>
 <form class="openid" method="get" action="/_ah/login_redirect">
     <div>
         <ul class="providers">
@@ -50,13 +52,14 @@
             <input type="submit" value="Login"/></div>
     </fieldset>
     <fieldset>
-        <div>
+          <div>
             <label for="openid_identifier">Enter your <a class="openid_logo" href="http://openid.net">OpenID</a></label>
             <input type="text" name="openid_identifier"/>
             <input type="submit" value="Login"/>
         </div>
     </fieldset>
 </form>
+</div>
 <br/>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="javascript/jquery.openid.js"></script>

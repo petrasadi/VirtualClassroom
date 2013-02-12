@@ -26,14 +26,15 @@
 
 <!-- FIXME -user id is currently passed in clear text -->
 <body onload="getSessionInfo('<%=user%>', '<%=classId%>')">
+<div class="container">
 <div id="conferenceContainer">
     <div id="myPublisherDiv"></div>
     <div id="subscribers"></div>
 
-    <div id="userDashboard" style="display: none;">
+    <div id="userDashboard" style="display: none; padding-left: 20px;">
         <div id="teacherDashboard">
             <!-- TODO - handle regain control -->
-            <input class="dashboardButton" type="image" src="images/opentok/regainControl.png" title="regain control"
+            <input class="dashboardButton" type="image" src="images/glyphicons_221_unshare.png" title="regain control"
                    onclick="unsubscribeAll()">
         </div>
         <div id="studentDashboard">
@@ -41,9 +42,9 @@
                    onclick="raisehand()">
         </div>
 
-        <input class="dashboardButton" type="image" src="images/opentok/chat.png" title="open chat window"
+        <input class="dashboardButton" type="image" src="images/glyphicons_245_chat.png" title="open chat window"
                onclick="alert('TODO - open chat window')">
-        <input class="dashboardButton" type="image" src="images/opentok/power.png" title="exit class"
+        <input class="dashboardButton" type="image" src="images/glyphicons_063_power.png" title="exit class"
                onclick="alert('TODO - exit chat')">
     </div>
 
@@ -54,4 +55,5 @@
     <!-- 
     <button type="button" onclick="endOpenTokSession()">Close session</button>
     -->
+</div>
 </div>
