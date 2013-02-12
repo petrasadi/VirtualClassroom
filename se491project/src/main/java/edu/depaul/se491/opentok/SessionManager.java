@@ -26,8 +26,9 @@ public class SessionManager
      */
     public String getSessionInfo(long classId, String userOpenId)
     {
-        String sessionId = "";
-        String userToken = "";
+        String sessionId;
+        String userToken;
+        
         String userRole = getUserRole(classId, userOpenId);
         if (sessionData.containsKey(classId)) {
             sessionId = sessionData.get(classId);
