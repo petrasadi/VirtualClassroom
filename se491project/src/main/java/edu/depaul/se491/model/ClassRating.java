@@ -1,5 +1,8 @@
 package edu.depaul.se491.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import com.google.appengine.api.datastore.Key;
 
 import javax.persistence.*;
@@ -19,6 +22,9 @@ public class ClassRating
     private int rating;
 
     private String review;
+    
+    @ElementCollection
+    private Map<String, String> survey = new HashMap<String, String>();
 
     //bi-directional many-to-one association to Class
     @ManyToOne
@@ -41,6 +47,24 @@ public class ClassRating
     public void setId(int id)
     {
         this.id = id;
+    }
+    
+    public void setSurvey(HashMap<String, String> s) {
+    	survey = s;
+    }
+    
+    public String get(String question) {
+    	return survey.get(question);
+    }
+    
+    public void put(String question, String answer) {
+    	if(!survey.containsKey(question)) {
+    		survey.put(question, answer);
+    	}
+    }
+    
+    public Map<String, String> getSurveyResults() {
+    	return survey;
     }
 
     public int getRating()
