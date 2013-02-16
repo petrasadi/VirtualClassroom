@@ -1,11 +1,13 @@
 package edu.depaul.se491.controllers;
 
-import com.google.appengine.api.datastore.Key;
-import com.google.appengine.api.datastore.KeyFactory;
-import edu.depaul.se491.formBeans.ClassRegistrationListBean;
-import edu.depaul.se491.josqlCmds.DaoCmds;
-import edu.depaul.se491.model.Classes;
-import edu.depaul.se491.model.Person;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +15,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
+import edu.depaul.se491.formBeans.ClassRegistrationListBean;
+import edu.depaul.se491.josqlCmds.DaoCmds;
+import edu.depaul.se491.model.Classes;
+import edu.depaul.se491.model.Person;
 
 @Controller
 @SessionAttributes
@@ -33,12 +36,8 @@ public class ClassRegistrationController
         LinkedList<ClassRegistrationListBean> cBeanList = new LinkedList<ClassRegistrationListBean>();
 
         Calendar cd = Calendar.getInstance();
-
-        cd.set(Calendar.HOUR, 0);
-        cd.set(Calendar.MINUTE, 0);
-        cd.set(Calendar.SECOND, 0);
-
         Date today = cd.getTime();
+
 
         for (Classes c : clist) {
         	
@@ -65,10 +64,10 @@ public class ClassRegistrationController
             
          
 
-            if (DaoCmds.isStudentByKey(vcUser.getId(), c.getId()) && (c.getClassStartTime().compareTo(today) == 0)) {
-                cBean.setRegistration("Join");
-            } else if (DaoCmds.isStudentByKey(vcUser.getId(), c.getId())) {
-                cBean.setRegistration("Join");
+            if (DaoCmds.isStudentByKey(vcUser.getId(), c.getId()) && canJoinClass(c.getClassStartTime(), c.getClassEndTime())) {
+          		cBean.setRegistration("Join");
+            } else if (DaoCmds.isStudentByKey(vcUser.getId(), c.getId()))  {
+          		cBean.setRegistration("Not Time To Join");
             } else if (!DaoCmds.isClassFull(c.getId()) && !DaoCmds.isStudentByKey(vcUser.getId(), c.getId())) {
                 cBean.setRegistration("Register");
             } else {
@@ -88,6 +87,8 @@ public class ClassRegistrationController
         view.setViewName("displayClassRegistration");
         view.addObject("tab", "student");
         view.addObject("classes", cBeanList);
+
+        
         return view;
     }
 
@@ -114,4 +115,18 @@ public class ClassRegistrationController
         view.setViewName("displayStudentViewClassPage");
         return view;
     }
+    
+    
+    
+    boolean canJoinClass(final Date classStartTime, final Date classEndTime)
+    {
+    	Calendar cal = Calendar.getInstance();
+    	cal.setTime(classStartTime);
+        cal.add(Calendar.MINUTE, -30);
+        
+    	Date timeToEnterClass = cal.getTime();   	
+        final Date now = new Date();
+        return now.after(timeToEnterClass) && now.before(classEndTime);
+    }
+    
 }

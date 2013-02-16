@@ -1,0 +1,73 @@
+@CHARSET "ISO-8859-1";
+
+body
+{
+	font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+	text-rendering: optimizeLegibility;
+}
+h1.header
+{
+	color:#003366;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+li
+{
+	min-height: 1.5em;
+}
+
+ul.table li
+{
+	clear: both;
+	display: block;
+	align:left;
+}
+
+ul.table
+{
+	margin: 0;
+	padding: 0px;
+	text-align:left;
+}
+
+ul.menu
+{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+}
+
+ul.menu li
+{
+	display:inline;
+}
+
+input[type="submit"] 
+{ 
+	background-color: #3399CC; 
+	border: 1px solid #006699;
+	color:#FFFFFF;
+	border-radius:25px;
+	width: auto;
+	font-size: 15px; 
+	padding: 5px 20px 5px;
+}
+
+#footer {
+	background-color:#DDE;
+	border:  none;	
+	font-size:  12px;
+	padding-top:7px;
+    padding-bottom:7px;
+    padding-right:7px;
+    padding-left:7px
+
+}
+p
+ {
+ 	text-align:left;
+ }

@@ -57,6 +57,9 @@
             </tr>
             </tfoot>
             <tbody>
+            ${classStartDayStr} <br />
+            ${classStartTimeStr} <br />
+            
             <c:forEach var="classes" items="${classes}" varStatus="rowCounter">
                 <c:choose>
                     <c:when test="${rowCounter.count % 2 == 0}">
@@ -80,6 +83,8 @@
                     <% } else if (registration.equals("Join")) { %>
                     <td><a href="/joinClass.do?classId=${classes.id}" class="btn btn-success"><i
                             class="icon-play icon-white"></i> ${classes.registration}</a></td>
+                    <% } else if (registration.equals("Not Time To Join")) { %>
+                    <td>Registered</td>
                     <% } %>
                 </tr>
             </c:forEach>
