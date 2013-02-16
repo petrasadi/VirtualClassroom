@@ -33,4 +33,12 @@ public class ClassSurveyFormBeanTest
         assertTrue(c.getA2().equals("Meets Expectations"));
         assertTrue(c.getA3().equals("Does NOT Meet Expectations"));
     }
+
+    @Test
+    public void testGetQuestions2() throws Exception
+    {
+        ClassSurveyFormBean c = new ClassSurveyFormBean();
+        assertTrue(c.getAnswers().size() == 3);
+        assertTrue(c.getQuestions().size() == 9);
+    }
 }
