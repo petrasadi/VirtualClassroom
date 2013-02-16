@@ -47,9 +47,16 @@
                     <td>${class.classStartTime}</td>
                     <td>${class.classEndTime}</td>
                     <td><a href="/displayStudentInClass.do?classId=${class.id}">${class.numberOfRegisteredStudents}
-                        Students</a></td>
+                        Students</a>
+                    </td>
+                    <c:set var="registration" scope="page" value="${class.registration}"/>
+                    <% String registration = pageContext.getAttribute("registration").toString();
+                    if (registration.equals("Join")) { %>
                     <td><a href="/joinClass.do?classId=${class.id}" class="btn btn-success"><i
                             class="icon-play icon-white"></i>Start Class</a></td>
+                    <% } else if (registration.equals("Not Time To Join")) { %>
+                    <td>Start Class 30 Minutes Prior To Start Time.</td>
+                    <% } %>     
                 </tr>
             </c:forEach>
             </tbody>
