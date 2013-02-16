@@ -19,7 +19,7 @@
                 <th>Teacher</th>
                 <th>Category</th>
                 <th>End Date</th>
-                <th>Grade</th>
+                <th>Survey</th>
             </tr>
             </thead>
             <tfoot>
@@ -42,7 +42,8 @@
                     <td><a href="/displayTeacherInformation.do?openId=${class.openId}">${class.teacherName}</a></td>
                     <td>${class.category}</td>
                     <td>${class.classEndDay}</td>
-                    <td>Unavailable</td>
+                    <td><a href="/displayClassSurveyPage.do?openId=${class.openId}&classId=${class.id}" class="btn btn-warning"><i
+                            class="icon-exclamation-sign icon-white"></i> Survey</a></td>
                 </tr>
             </c:forEach>
             </tbody>

@@ -82,6 +82,19 @@ public class DaoCmds
         run.setCommand(cmd);
         return (LinkedList<Classes>) run.getExecute();
     }
+    
+    /**
+     * @param classes
+     * @return Classes
+     */
+    @SuppressWarnings("unchecked")
+    public static Entity getClass(Key classes)
+    {
+        CmdController run = new CmdController();
+        IDaoCommands cmd = new GetClassesCmd(classes);
+        run.setCommand(cmd);
+        return (Entity) run.getExecute();
+    }
 
     /**
      * @param Key person

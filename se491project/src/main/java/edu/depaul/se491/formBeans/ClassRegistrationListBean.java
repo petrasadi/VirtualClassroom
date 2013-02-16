@@ -4,10 +4,14 @@ import edu.depaul.se491.model.Person;
 
 import java.util.List;
 
+import com.google.appengine.api.datastore.Key;
+
 
 public class ClassRegistrationListBean
 {
     private long id;
+    
+    private Key key;
 
     private String name;
 
@@ -32,7 +36,15 @@ public class ClassRegistrationListBean
     private int numberOfRegisteredStudents;
 
     private List<Person> studentList;
-
+    
+    public void setKey(Key key) {
+    	this.key = key;
+    }
+    
+    public Key getKey() {
+    	return key;
+    }
+    
     public List<Person> getStudentList()
     {
         return studentList;
