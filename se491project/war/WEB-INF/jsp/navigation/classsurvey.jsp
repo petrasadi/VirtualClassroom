@@ -18,7 +18,7 @@
 </style>
 
 	<div class="container">
-	<form class="form-horizontal" action="AddCompanyServlet" method="post" commandName="createClassFormBean">
+	<form class="form-horizontal" action="/submitClassSurvey.do" method="post" commandName="createClassFormBean">
 		<fieldset>
 		<div class="span9">
 		<legend>Survey for class: ${name}</legend>
@@ -28,7 +28,7 @@
     			<div class="controls">
     				<c:forEach var="answer" items="${answers}" varStatus="answerCounter">
       				<label class="radio inline">
-      					<input type="radio" name="optionsRadios${questionCounter.count}" id="answer${answerCounter.count}" value="option1" checked>
+      					<input type="radio" name="optionsRadios${questionCounter.count}" id="answer${answerCounter.count}" value="${answer}">
       					${answer}
       				</label>
       				</c:forEach>

@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -36,7 +37,18 @@ public class ClassSurveyFormController {
 	public ModelAndView submitClassSurvey(
 			@Valid ClassSurveyFormBean classSurveyFormBean,
 			BindingResult result, HttpServletRequest request) {
-
+		
+		HashMap<String, String> survey = new HashMap<String, String>();
+		survey.put(request.getParameter("question1"), request.getParameter("optionsRadios1"));
+		survey.put(request.getParameter("question2"), request.getParameter("optionsRadios2"));
+		survey.put(request.getParameter("question3"), request.getParameter("optionsRadios3"));
+		survey.put(request.getParameter("question4"), request.getParameter("optionsRadios4"));
+		survey.put(request.getParameter("question5"), request.getParameter("optionsRadios5"));
+		survey.put(request.getParameter("question6"), request.getParameter("optionsRadios6"));
+		survey.put(request.getParameter("question7"), request.getParameter("optionsRadios7"));
+		survey.put(request.getParameter("question8"), request.getParameter("optionsRadios8"));
+		survey.put(request.getParameter("question9"), request.getParameter("optionsRadios9"));
+		
 		//populate from bean with values from form
 		System.out.println("process form data");
 		ModelAndView view = new ModelAndView();
