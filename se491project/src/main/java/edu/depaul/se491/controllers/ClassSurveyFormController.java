@@ -36,7 +36,7 @@ public class ClassSurveyFormController {
 	@RequestMapping(value = "/submitClassSurvey", method = RequestMethod.POST)
 	public ModelAndView submitClassSurvey(
 			@Valid ClassSurveyFormBean classSurveyFormBean,
-			BindingResult result, HttpServletRequest request) {
+			BindingResult result, @ModelAttribute("classId") long id, HttpServletRequest request) {
 		
 		HashMap<String, String> survey = new HashMap<String, String>();
 		survey.put(request.getParameter("question1"), request.getParameter("optionsRadios1"));
@@ -50,7 +50,6 @@ public class ClassSurveyFormController {
 		survey.put(request.getParameter("question9"), request.getParameter("optionsRadios9"));
 		
 		//populate from bean with values from form
-		System.out.println("process form data");
 		ModelAndView view = new ModelAndView();
 		// validator.validate(createClassFormBean, result);
 		if (result.hasErrors()) {
@@ -59,10 +58,10 @@ public class ClassSurveyFormController {
 			view.addObject("tab", "student");
 			return view;
 		}
-
 	
 		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
-        
+		Key n = KeyFactory.createKey("Classes", id);
+		
 		if(vcUser == null){
 			 return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
 		}
@@ -92,6 +91,7 @@ public class ClassSurveyFormController {
 		view.addObject("tab", "student");
 		view.addObject("classSurveyFormBean", classSurveyFormBean);
 		view.addObject("name", cl.getProperty("className"));
+		view.addObject("classId", id);
 		view.addObject("questions", classSurveyFormBean.getQuestions());
 		view.addObject("answers", classSurveyFormBean.getAnswers());
 		return view;

@@ -18,7 +18,7 @@
 </style>
 
 	<div class="container">
-	<form class="form-horizontal" action="/submitClassSurvey.do" method="post" commandName="createClassFormBean">
+	<form class="form-horizontal" action="/submitClassSurvey.do?classId=${classId}" method="post" commandName="createClassFormBean">
 		<fieldset>
 		<div class="span9">
 		<legend>Survey for class: ${name}</legend>
