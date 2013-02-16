@@ -39,10 +39,6 @@ public class StudentScheduleController
         LinkedList<ClassRegistrationListBean> cBeanList = new LinkedList<ClassRegistrationListBean>();
 
         Calendar cd = Calendar.getInstance();
-
-        cd.set(Calendar.HOUR, 0);
-        cd.set(Calendar.MINUTE, 0);
-        cd.set(Calendar.SECOND, 0);
         Date today = cd.getTime();
 
         for (Classes c : clist) {
@@ -75,7 +71,11 @@ public class StudentScheduleController
             cBean.setClassEndTime(classEndTimeStr);
             cBean.setClassStartDay(classStartDayStr);
             cBean.setClassStartTime(classStartTimeStr);
-            cBean.setRegistration("Join");
+            if (canJoinClass(c.getClassStartTime(), c.getClassEndTime())) {
+          		cBean.setRegistration("Join");
+            } else  {
+          		cBean.setRegistration("Not Time To Join");
+            } 
             cBean.setId(c.getId().getId());
 
             cBean.setOpenId(DaoCmds.getTeacherCmd(c.getId()).getOpenid());
@@ -89,6 +89,17 @@ public class StudentScheduleController
         view.addObject("tab", "student");
         view.addObject("classes", cBeanList);
         return view;
+    }
+    
+    boolean canJoinClass(final Date classStartTime, final Date classEndTime)
+    {
+    	Calendar cal = Calendar.getInstance();
+    	cal.setTime(classStartTime);
+        cal.add(Calendar.MINUTE, -30);
+        
+    	Date timeToEnterClass = cal.getTime();   	
+        final Date now = new Date();
+        return now.after(timeToEnterClass) && now.before(classEndTime);
     }
 
 }

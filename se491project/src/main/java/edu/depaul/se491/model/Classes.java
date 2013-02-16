@@ -23,7 +23,6 @@ import java.util.List;
 @Table(name = "Classes")
 public class Classes
 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Key id; //also openTokId --> classes.getKey().getId();
@@ -57,14 +56,6 @@ public class Classes
     @Column(name = "students")
     private List<Key> students;
     
-	/*@Persistent(valueStrategy = IdGeneratorStrategy.SEQUENCE)
-	@Column(name = "opentokid")
-	private long opentokid;
-	
-	@Column(name = "opentoktoken")
-	private String opentoktoken;*/
-
-    //bi-directional many-to-one association to Category
     @ManyToOne
     @Column(name = "category")
     private Key category;
@@ -167,22 +158,6 @@ public class Classes
     {
         this.students.add(student);
     }
-	
-	/*public void setOpenTokId(long opentokid) {
-		this.opentokid = opentokid;
-	}
-	
-	public long getOpenTokId() {
-		return this.opentokid;
-	}
-	
-	public void setOpenTokToken(String opentoktoken) {
-		this.opentoktoken = opentoktoken;
-	}
-	
-	public String getOpenTokToken() {
-		return this.opentoktoken;
-	}*/
 
     public Key getCategory()
     {

@@ -7,6 +7,12 @@
     <artifactId>VirtualClassroom</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
+    <repositories>
+    <repository>
+      <id>google-api-services</id>
+      <url>http://google-api-client-libraries.appspot.com/mavenrepo</url>
+    </repository>
+  </repositories>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java-version>1.6</java-version>
@@ -93,6 +99,11 @@
             <artifactId>xdoclet</artifactId>
             <version>1.2</version>
         </dependency>
+        <dependency>
+      <groupId>com.google.apis</groupId>
+      <artifactId>google-api-services-drive</artifactId>
+      <version>v2-rev47-1.13.2-beta</version>
+    </dependency>
         <dependency>
             <groupId>javax.validation</groupId>
             <artifactId>validation-api</artifactId>
