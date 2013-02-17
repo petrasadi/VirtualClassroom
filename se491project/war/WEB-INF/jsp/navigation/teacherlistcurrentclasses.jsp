@@ -55,7 +55,7 @@
                     <td><a href="/joinClass.do?classId=${class.id}" class="btn btn-success"><i
                             class="icon-play icon-white"></i>Start Class</a></td>
                     <% } else if (registration.equals("Not Time To Join")) { %>
-                    <td>Start Class 30 Minutes Prior To Start Time.</td>
+                    <td></td>
                     <% } %>     
                 </tr>
             </c:forEach>

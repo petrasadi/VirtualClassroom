@@ -1,21 +1,24 @@
 package edu.depaul.se491.controllers;
 
-import edu.depaul.se491.formBeans.ClassRegistrationListBean;
-import edu.depaul.se491.josqlCmds.DaoCmds;
-import edu.depaul.se491.model.Classes;
-import edu.depaul.se491.model.Person;
+import java.text.SimpleDateFormat;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TimeZone;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import edu.depaul.se491.formBeans.ClassRegistrationListBean;
+import edu.depaul.se491.josqlCmds.DaoCmds;
+import edu.depaul.se491.model.Classes;
+import edu.depaul.se491.model.Person;
 
 @Controller
 @SessionAttributes
@@ -26,7 +29,7 @@ public class TeacherClassHistoryController
     public ModelAndView displayTeacherListCurrentClasses(
             HttpServletRequest request)
     {
-
+    	ModelAndView view = new ModelAndView();
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
             return new ModelAndView("displayLoginPage", "command", new Object())
@@ -43,12 +46,9 @@ public class TeacherClassHistoryController
                 .getTeacherClasses(vcUser.getOpenid());
         LinkedList<ClassRegistrationListBean> cCurrentBeanList = new LinkedList<ClassRegistrationListBean>();
 
-        Calendar cd = Calendar.getInstance();
-
-        cd.set(Calendar.HOUR, 0);
-        cd.set(Calendar.MINUTE, 0);
-        cd.set(Calendar.SECOND, 0);
-        Date today = cd.getTime();
+        TimeZone tz = TimeZone.getTimeZone("US/Central");
+        DateTime now = new DateTime(DateTimeZone.forTimeZone(tz));
+        
 
         for (Classes c : clist) {
             ClassRegistrationListBean cBean = new ClassRegistrationListBean();
@@ -81,17 +81,24 @@ public class TeacherClassHistoryController
             cBean.setStudentList(slist);
 
             cBean.setId(c.getId().getId());
+            boolean utc = false;
+            DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
+            if(DateTimeZone.getDefault().toString().equals("UTC")){
+            	 utc = true;
+            	classEndTime = classEndTime.plusHours(6);
+            }
+           classEndTime = classEndTime.plusMinutes(60);      
 
-            if (c.getClassEndTime().after(today)) {
-            	 continue;                
-            } 
-            cCurrentBeanList.add(cBean);
+            if (classEndTime.isBefore(now)) {
+            	cCurrentBeanList.add(cBean);
+            }         
         }
 
-        ModelAndView view = new ModelAndView();
+        
         view.setViewName("displayTeacherHistoryClasses");
         view.addObject("tab", "teacher");
         view.addObject("scheduledclasses", cCurrentBeanList);
+
         return view;
     }
 }

@@ -1,21 +1,25 @@
 package edu.depaul.se491.controllers;
 
-import edu.depaul.se491.formBeans.ClassRegistrationListBean;
-import edu.depaul.se491.josqlCmds.DaoCmds;
-import edu.depaul.se491.model.Classes;
-import edu.depaul.se491.model.Person;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.TimeZone;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
+import edu.depaul.se491.formBeans.ClassRegistrationListBean;
+import edu.depaul.se491.josqlCmds.DaoCmds;
+import edu.depaul.se491.model.Classes;
+import edu.depaul.se491.model.Person;
 
 @Controller
 @SessionAttributes
@@ -26,7 +30,7 @@ public class TeacherClassListController
     public ModelAndView displayTeacherListCurrentClasses(
             HttpServletRequest request)
     {
-
+    	 ModelAndView view = new ModelAndView();
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
             return new ModelAndView("displayLoginPage", "command", new Object())
@@ -43,9 +47,9 @@ public class TeacherClassListController
                 .getTeacherClasses(vcUser.getOpenid());
         LinkedList<ClassRegistrationListBean> cCurrentBeanList = new LinkedList<ClassRegistrationListBean>();
 
-        Calendar cd = Calendar.getInstance();
-        Date today = cd.getTime();
-
+        TimeZone tz = TimeZone.getTimeZone("US/Central");
+        DateTime now = new DateTime(DateTimeZone.forTimeZone(tz));
+      
         for (Classes c : clist) {
             ClassRegistrationListBean cBean = new ClassRegistrationListBean();
             List<Person> slist = DaoCmds.getStudentsInClass(c.getId());
@@ -80,31 +84,45 @@ public class TeacherClassListController
             } else {
           		cBean.setRegistration("Not Time To Join");
             } 
-
-            if (!c.getClassEndTime().after(today)) {
-            	continue;
+       
+            DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
+            if(DateTimeZone.getDefault().toString().equals("UTC")){
+            	classEndTime = classEndTime.plusHours(6);
             }
-            cCurrentBeanList.add(cBean);
+            classEndTime = classEndTime.plusMinutes(60);      
+
+            if (classEndTime.isAfter(now)) {
+            	cCurrentBeanList.add(cBean);
+            }
         }
 
-        ModelAndView view = new ModelAndView();
+       
         view.setViewName("displayTeacherListCurrentClasses");
         view.addObject("tab", "teacher");
         view.addObject("scheduledclasses", cCurrentBeanList);
-
+        
+       
+        
         return view;
     }
     
     
     boolean canJoinClass(final Date classStartTime, final Date classEndTime)
     {
-    	Calendar cal = Calendar.getInstance();
-    	cal.setTime(classStartTime);
-        cal.add(Calendar.MINUTE, -30);
-        
-    	Date timeToEnterClass = cal.getTime();   	
-        final Date now = new Date();
-        return now.after(timeToEnterClass) && now.before(classEndTime);
-    }
+    	  TimeZone tz = TimeZone.getTimeZone("US/Central");
+          DateTime now = new DateTime(DateTimeZone.forTimeZone(tz));
+                 
+          DateTime timeToEnterClass = new DateTime(classStartTime, DateTimeZone.forTimeZone(tz));          
+          DateTime timeToEndClass = new DateTime(classEndTime, DateTimeZone.forTimeZone(tz));
+          
+          if(DateTimeZone.getDefault().toString().equals("UTC")){
+        	  timeToEnterClass = timeToEnterClass.plusHours(6);
+              timeToEndClass = timeToEndClass.plusHours(6);          	
+          }         
+         
+          timeToEnterClass = timeToEnterClass.minusMinutes(30);
+          timeToEndClass = timeToEndClass.plusMinutes(60);
     
+          return now.isAfter(timeToEnterClass) && now.isBefore(timeToEndClass);
+    }
 }
