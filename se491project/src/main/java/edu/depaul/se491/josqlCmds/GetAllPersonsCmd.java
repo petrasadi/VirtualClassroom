@@ -33,9 +33,9 @@ class GetAllPersonsCmd implements IDaoCommands
                     pf = new Person();
                     pf.setId(e.getKey());
                     pf.setOpenid((String) e.getProperty("openid"));
-                    pf.setFirstName((String) e.getProperty("firstName"));
-                    pf.setLastName((String) e.getProperty("lastName"));
-                    pf.setMiddleName((String) e.getProperty("middleName"));
+                    pf.setFirstName((String) e.getProperty("firstname"));
+                    pf.setLastName((String) e.getProperty("lastname"));
+                    pf.setMiddleName((String) e.getProperty("middlename"));
                     pf.setAddress((String) e.getProperty("address"));
                     pf.setAddress2((String) e.getProperty("address2"));
                     pf.setCity((String) e.getProperty("city"));
