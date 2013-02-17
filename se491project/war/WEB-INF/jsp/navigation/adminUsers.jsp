@@ -16,6 +16,9 @@
             <tr>
                 <th>User</th>
                 <th>Email</th>
+                <th>Teacher</th>
+                <th>Student</th>
+                <th>Admin</th>
             </tr>
             </thead>
             <tfoot>
@@ -25,17 +28,23 @@
             </tfoot>
             <tbody>
             <c:forEach var="user" items="${userList}" varStatus="rowCounter">
-                <c:choose>
-                    <c:when test="${rowCounter.count % 2 == 0}">
-                        <c:set var="rowStyle" scope="page" value=""/>
-                    </c:when>
-                    <c:otherwise>
-                        <c:set var="rowStyle" scope="page" value="alt"/>
-                    </c:otherwise>
-                </c:choose>
-                <tr class="${rowStyle}">
+        
+                <tr >
                     <td>${user.firstName} ${user.lastName}</td>
                     <td>${user.email}</td>
+                    <c:choose>
+                       <c:when test="${user.teacher}"><td>Yes</td></c:when>
+                       <c:otherwise><td>No</td></c:otherwise>                    
+                    </c:choose>
+                     <c:choose>
+                       <c:when test="${user.student}"><td>Yes</td></c:when>
+                       <c:otherwise><td>No</td></c:otherwise>                    
+                    </c:choose>
+                     <c:choose>
+                       <c:when test="${user.admin}"><td>Yes</td></c:when>
+                       <c:otherwise><td>No</td></c:otherwise>                    
+                    </c:choose>
+                    
                 </tr>
             </c:forEach>
             </tbody>

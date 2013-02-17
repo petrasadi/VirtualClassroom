@@ -41,6 +41,7 @@
     Person vcUser = (Person) session.getAttribute("vcUser");
 
 %>
+
 <div class="navbar">
     <div class="navbar-inner">
         <ul id="maintab" class="nav">

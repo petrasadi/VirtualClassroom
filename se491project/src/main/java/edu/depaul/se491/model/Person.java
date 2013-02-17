@@ -110,15 +110,15 @@ public class Person implements Serializable
 
     @Basic
     @Column(name = "teacher")
-    private boolean isTeacher = false;
+    private boolean teacher = false;
 
     @Basic
     @Column(name = "student")
-    private boolean isStudent = false;
+    private boolean student = false;
 
     @Basic
     @Column(name = "admin")
-    private boolean isAdmin = false;
+    private boolean admin = false;
 
 
     //bi-directional many-to-one association to Class
@@ -180,37 +180,37 @@ public class Person implements Serializable
 
     public boolean isTeacher()
     {
-        return isTeacher;
+        return teacher;
     }
 
 
-    public void setTeacher(boolean isTeacher)
+    public void setTeacher(boolean teacher)
     {
-        this.isTeacher = isTeacher;
+        this.teacher = teacher;
     }
 
 
     public boolean isStudent()
     {
-        return isStudent;
+        return student;
     }
 
 
-    public void setStudent(boolean isStudent)
+    public void setStudent(boolean student)
     {
-        this.isStudent = isStudent;
+        this.student = student;
     }
 
 
     public boolean isAdmin()
     {
-        return isAdmin;
+        return admin;
     }
 
 
-    public void setAdmin(boolean isAdmin)
+    public void setAdmin(boolean admin)
     {
-        this.isAdmin = isAdmin;
+        this.admin = admin;
     }
 
 

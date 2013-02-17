@@ -20,7 +20,6 @@ public class LoginServlet extends HttpServlet
     {
         RequestDispatcher view = request.getRequestDispatcher("WEB-INF/jsp/tabs/openidlogin.jsp");
 
-        System.out.println("***************** in LoginServlet ");
         if (request.getParameter("continue") != null) {
             request.setAttribute("continue", request.getParameter("continue"));
         } else {

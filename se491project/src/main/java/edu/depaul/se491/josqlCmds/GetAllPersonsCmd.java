@@ -46,6 +46,9 @@ class GetAllPersonsCmd implements IDaoCommands
                     pf.setPhone2((String) e.getProperty("phone2"));
                     pf.setEmail((String) e.getProperty("email"));
                     pf.setOpenid((String) e.getProperty("openid"));
+                    pf.setTeacher((Boolean) e.getProperty("teacher"));
+                    pf.setStudent((Boolean) e.getProperty("student"));
+                    pf.setAdmin((Boolean) e.getProperty("admin"));
                     plist.add(pf);
                 }
             }

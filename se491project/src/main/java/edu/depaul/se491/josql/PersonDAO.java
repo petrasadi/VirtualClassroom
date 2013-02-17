@@ -181,8 +181,11 @@ public class PersonDAO implements IPersonDAO
             personFound.setEmail((String) pEntity.getProperty("email"));
             personFound.setOpenid((String) pEntity.getProperty("openid"));
             if (pEntity.getProperty("teacher") != null) {
+            	System.out.println("****************  " + (Boolean) pEntity.getProperty("teacher"));
                 personFound.setTeacher((Boolean) pEntity.getProperty("teacher"));
             } else {
+            	System.out.println("****************  teacher is false");
+                
                 personFound.setTeacher(false);
             }
             if (pEntity.getProperty("student") != null) {
