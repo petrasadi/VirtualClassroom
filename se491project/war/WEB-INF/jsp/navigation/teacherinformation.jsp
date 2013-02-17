@@ -4,22 +4,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/row.css"/>
-
-
-Teacher Information
-<br/>
-<br/>
-<br/>
-${teachername}
-<br/>
-${teacheremail}
-
-<br/>
-<br/>
-upcomming classes
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
 
 <div class="container">
     <div class="datagrid">
+    <div class="navbar">
+    <p class="brand">Teacher Information</p>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <p class="brand">${teachername}</p>
+    <p class="brand">${teacheremail}</p>
+    <br/>
+    <br/>
+    <div class="navbar">
+    <p class="brand">Scheduled Classes</p>
+     </div>
+
         <table id="my-table" class="table table-hover">
             <thead>
             <tr>
@@ -62,6 +64,8 @@ upcomming classes
                     <% } else if (registration.equals("Join")) { %>
                     <td><a href="/joinClass.do?classId=${class.id}" class="btn btn-success"><i
                             class="icon-play icon-white"></i> ${class.registration}</a></td>
+                    <% } else if (registration.equals("Not Time To Join")) { %>
+                    <td>Registered</td>
                     <% } %>
                 </tr>
             </c:forEach>
@@ -73,10 +77,13 @@ upcomming classes
 
 <br/>
 <br/>
-Class History
+
 
 <div class="container">
     <div class="datagrid">
+    <div class="navbar">
+    <p class="brand">Class History</p>
+    </div>
         <table id="my-table" class="table table-hover">
             <thead>
             <tr>
