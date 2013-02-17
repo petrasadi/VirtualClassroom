@@ -119,7 +119,7 @@
         <br/>
 
         <div class="grid_12">
-            <form:label path="userDescription">**** Let others know a little about yourself:</form:label><br/>
+            <form:label path="userDescription">Let others know a little about yourself:</form:label><br/>
             <form:textarea rows="10" cols="120" path="userDescription"/><br/>
         </div>
         <br/>
