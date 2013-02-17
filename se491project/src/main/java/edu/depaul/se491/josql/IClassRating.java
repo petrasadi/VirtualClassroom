@@ -1,13 +1,9 @@
 package edu.depaul.se491.josql;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
-
-import edu.depaul.se491.model.Classes;
-import edu.depaul.se491.model.Person;
 
 public interface IClassRating {
 	/**
@@ -19,28 +15,6 @@ public interface IClassRating {
 	 */
 	public Entity getClassRating(Key classes, Key person) throws ClassRatingException;
 	
-	/**
-	 * Set answer for a question.
-	 * 
-	 * @param question
-	 * @param answer
-	 * @param classes
-	 * @param person
-	 * @return
-	 * @throws ClassRatingException
-	 */
-	public String setAnswer(String question, String answer, Key classRating) throws ClassRatingException;
-	
-	/**
-	 * Provides answer given a question. Question is key of Map.
-	 * 
-	 * @param question
-	 * @param classes
-	 * @param person
-	 * @return
-	 * @throws ClassRatingException
-	 */
-	public String getAnswer(String question, Key classRating) throws ClassRatingException;
 	
 	 /**
      * Save Survey data.  If Survey exists then will update.  If Survey is blank then it
@@ -49,7 +23,7 @@ public interface IClassRating {
      * @param HashMap<String, String>, Classes classes, Person person
      * @return void
      */
-	public void setSurvey(HashMap<String, String> s, Key classes, Key person) throws ClassRatingException;
+	public Key setSurvey(List<String> s, Key classes, Key person) throws ClassRatingException;
 	
 	/**
 	 * 
@@ -67,5 +41,5 @@ public interface IClassRating {
 	 * @return
 	 * @throws ClassRatingException
 	 */
-	public Map<String, String> getSurvey(Key classes, Key person) throws ClassRatingException;
+	public List<String> getSurvey(Key classes, Key person) throws ClassRatingException;
 }

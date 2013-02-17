@@ -1,7 +1,6 @@
 package edu.depaul.se491.josql;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -30,15 +29,7 @@ public class ClassRatingDAO implements IClassRating {
 	}
 	
 	@Override
-	public String setAnswer(String question, String answer, Key classRating) throws ClassRatingException {
-		return null;
-	}
-	@Override
-	public String getAnswer(String question, Key classRating) throws ClassRatingException {
-		return null;
-    }
-	@Override
-	public void setSurvey(HashMap<String, String> s, Key classes, Key person) throws ClassRatingException {
+	public Key setSurvey(List<String> s, Key classes, Key person) throws ClassRatingException {
 		if(!isSurveyComplete(classes, person)) {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	        Entity createClassRating = new Entity("ClassRating");
@@ -56,6 +47,7 @@ public class ClassRatingDAO implements IClassRating {
 	                tx.rollback();
 	            }
 	        }
+	        return createClassRating.getKey();
 		} else {
 			DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 			Filter classesFilter = new FilterPredicate("classes", FilterOperator.EQUAL, classes);
@@ -68,6 +60,8 @@ public class ClassRatingDAO implements IClassRating {
 	        Entity crEntity = cr.asSingleEntity();
 	        crEntity.setProperty("survey", s);
 	        datastore.put(crEntity);
+	        
+	        return crEntity.getKey();
 		}
 	}
 	
@@ -90,7 +84,7 @@ public class ClassRatingDAO implements IClassRating {
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public Map<String, String> getSurvey(Key classes, Key person) throws ClassRatingException {
+	public List<String> getSurvey(Key classes, Key person) throws ClassRatingException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Filter classesFilter = new FilterPredicate("classes", FilterOperator.EQUAL, classes);
         Filter personFilter = new FilterPredicate("person", FilterOperator.EQUAL, person);
@@ -99,6 +93,6 @@ public class ClassRatingDAO implements IClassRating {
                 .addSort("classes", Query.SortDirection.DESCENDING);
         
         PreparedQuery cr = datastore.prepare(classRating_tableQuery);
-        return (Map<String, String>) cr.asSingleEntity().getProperty("survey");
+        return (List<String>) cr.asSingleEntity().getProperty("survey");
 	}
 }

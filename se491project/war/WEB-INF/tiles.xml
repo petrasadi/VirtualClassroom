@@ -73,6 +73,11 @@
         <put-attribute name="title" value="Class Created"/>
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/classcreated.jsp"/>
     </definition>
+    
+    <definition name="displaySurveyCompletedPage" extends="base.definition">
+        <put-attribute name="title" value="Survey Complete"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/surveySubmitted.jsp"/>
+    </definition>
 
     <definition name="displayListClassesPage" extends="base.definition">
         <put-attribute name="title" value="Class Created"/>

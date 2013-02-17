@@ -6,6 +6,7 @@ import edu.depaul.se491.model.Category;
 import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -107,6 +108,20 @@ public class DaoCmds
         IDaoCommands cmd = new AddStudentsCmd(p, c);
         run.setCommand(cmd);
         return (Key) run.execute();
+    }
+    
+    /**
+     * 
+     * @param c
+     * @param p
+     * @param survey
+     * @return
+     */
+    public static Key addSurvey(Key c, Key p, List<String> survey) {
+    	CmdController run = new CmdController();
+    	IDaoCommands cmd = new AddSurveyResults(c, p, survey);
+    	run.setCommand(cmd);
+    	return (Key) run.execute();
     }
 
     /**
