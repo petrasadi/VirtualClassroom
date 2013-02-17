@@ -63,7 +63,7 @@
             <%
 
                 }
-                if (vcUser.isAdmin()) {
+                if (true/*vcUser.isAdmin()*/) {
             %>
             <li class="<%=adminSelect %>" rel="admin"><a href="#">Admin</a></li>
             <%
@@ -118,13 +118,12 @@
 <%
 
     }
-    if (vcUser.isAdmin()) {
+    if (true/*vcUser.isAdmin()*/) {
 %>
 
 <ul id="admin" class="btn-group" style="display: none;">
-    <button id="b1" class="btn" onclick="window.location.href='#'">Create Category</button>
-    <button id="b2" class="btn" onclick="window.location.href='#'">List Users</button>
-    <button id="b3" class="btn" onclick="window.location.href='#'">List Classes</button>
+    <button id="b2" class="btn" onclick="window.location.href='/displayAdminUsersPage.do'">Users</button>
+    <button id="b1" class="btn" onclick="window.location.href='/displayAdminCategoriesPage.do'">Categories</button>
 </ul>
 
 <%
