@@ -1,11 +1,14 @@
 package edu.depaul.se491.controllers;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
+
 import edu.depaul.se491.formBeans.CreateClassFormBean;
 import edu.depaul.se491.josql.ClassesDAO;
 import edu.depaul.se491.josql.ClassesException;
 import edu.depaul.se491.josql.IClassesDAO;
 import edu.depaul.se491.josqlCmds.DaoCmds;
+import edu.depaul.se491.model.Category;
 import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 @Controller
@@ -75,8 +79,13 @@ public class CreateClassFormController
         clazz.setTeacher(vcUser.getId());
         clazz.setClassName(createClassFormBean.getClassTitle());
         clazz.setDescription(createClassFormBean.getClassDescription());
-        clazz.setCategory((Key) DaoCmds.createCategoryCmd(createClassFormBean.getClassCategory(),
-                "decrip")); 
+       // clazz.setCategory((Key) DaoCmds.createCategoryCmd(createClassFormBean.getClassCategory(),
+       //         "decrip")); 
+       
+       // set the category
+        clazz.setCategory(KeyFactory.createKey("Category", Long.parseLong(createClassFormBean.getClassCategory())));
+        
+        
 		/*
 		 * System.out.println("setting class Category");
 		 * clazz.setCategory(catKey); System.out.println("class Category set");
@@ -119,6 +128,11 @@ public class CreateClassFormController
     public ModelAndView displayCreateClassPage(HttpServletRequest request)
     {
         ModelAndView view = new ModelAndView();
+        LinkedList<Category> categoryList = (LinkedList<Category>) DaoCmds.getCategories();
+        
+        Category c = categoryList.get(0);
+     
+        
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
             return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
@@ -133,6 +147,7 @@ public class CreateClassFormController
         view.addObject("tab", "teacher");
         view.addObject("createClassFormBean", createClassFormBean);
         view.addObject("timeList", createTimeMap());
+        view.addObject("categoryList", categoryList);
         return view;
     }
 

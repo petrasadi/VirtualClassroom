@@ -10,8 +10,7 @@ class GetCategoryByKey implements IDaoCommands
 
     public GetCategoryByKey(Key id)
     {
-        System.out.println("initialize getCategoryByKey: " + id.toString());
-        this.id = id;
+       this.id = id;
     }
 
     public Key execute()

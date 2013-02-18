@@ -71,9 +71,7 @@ public class TeacherClassHistoryController
             }
 
             cBean.setName(c.getClassName());
-            //	cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId())
-            //			.getProperty("name"));
-            cBean.setCategory("test");
+            cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
             cBean.setClassEndDay(classEndDayStr);
             cBean.setClassEndTime(classEndTimeStr);
             cBean.setClassStartDay(classStartDayStr);

@@ -42,7 +42,10 @@
             <li>
                 <div class="grid_3">
                     <form:label path="classCategory">Class Category</form:label>
-                    <form:input path="classCategory"/><br/>
+                     <form:select path="classCategory" >
+                        <form:option value="NONE" label="--- Select ---"/>
+                        <form:options items="${categoryList}" itemValue="id.id" itemLabel="name" />
+                      </form:select><br/>
                     <form:errors path="classCategory" cssClass="error"/>
                 </div>
                 <div class="grid_3">

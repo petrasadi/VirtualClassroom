@@ -18,7 +18,7 @@ public class CreateClassFormBean
     @NotEmpty
     private String classDescription;
     @NotEmpty
-    private String classCategory;
+    private String classCategory;  
     @NotEmpty
     private String classLevel;
     @Pattern(regexp = "(1[012]|[1-9]):[0-5][0-9](\\s)?(?i)(am|pm)")
