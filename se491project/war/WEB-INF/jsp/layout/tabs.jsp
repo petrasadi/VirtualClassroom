@@ -64,7 +64,7 @@
             <%
 
                 }
-                if (true/*vcUser.isAdmin()*/) {
+                if (vcUser.isAdmin()) {
             %>
             <li class="<%=adminSelect %>" rel="admin"><a href="#">Admin</a></li>
             <%
@@ -119,7 +119,7 @@
 <%
 
     }
-    if (true/*vcUser.isAdmin()*/) {
+    if (vcUser.isAdmin()) {
 %>
 
 <ul id="admin" class="btn-group" style="display: none;">
