@@ -10,7 +10,7 @@
    <p class="brand">Current Category List</p>
     	</div><br/><br/>
     <div class="datagrid">
-        <form  action="/addCategory.do" method="post">
+        
         <table id="my-table" class="table table-hover">
             <thead>
             <tr>
@@ -32,7 +32,14 @@
        
             </tbody>
         </table>
-        <input type="submit" value="Save">
+        <div class="navbar">
+   			<p class="brand">Add A New Category</p>
+    	</div>
+    	<br /><br />
+    	<form  action="/createCategory.do" method="post">
+    	<br />
+        <input type="text" name="category"><br />
+        <input type="submit" value="Add Category">
         </form>
     </div>
 

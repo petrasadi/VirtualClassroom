@@ -79,9 +79,7 @@ public class CreateClassFormController
         clazz.setTeacher(vcUser.getId());
         clazz.setClassName(createClassFormBean.getClassTitle());
         clazz.setDescription(createClassFormBean.getClassDescription());
-       // clazz.setCategory((Key) DaoCmds.createCategoryCmd(createClassFormBean.getClassCategory(),
-       //         "decrip")); 
-       
+              
        // set the category
         clazz.setCategory(KeyFactory.createKey("Category", Long.parseLong(createClassFormBean.getClassCategory())));
         
