@@ -7,10 +7,10 @@
 
 <div class="container">
 <div class="navbar">
-    <p class="brand">Current User List</p>
+   <p class="brand">Current User List</p>
     	</div><br/><br/>
     <div class="datagrid">
-        <form>
+        <form  action="/updateAdminUsersPage.do" method="post">
         <table id="my-table" class="table table-hover">
             <thead>
             <tr>
@@ -41,8 +41,8 @@
                        <c:otherwise><td>No</td></c:otherwise>                    
                     </c:choose>
                      <c:choose>
-                       <c:when test="${user.admin}"><td><input type="checkbox" name="admin" value="admin" checked></td></c:when>
-                       <c:otherwise><td><input type="checkbox" name="admin" value="admin"></td></c:otherwise>                    
+                       <c:when test="${user.admin}"><td><input type="checkbox" name="admin" value="${user.openid}" checked></td></c:when>
+                       <c:otherwise><td><input type="checkbox" name="admin" value="${user.openid}"></td></c:otherwise>                    
                     </c:choose>
                     
                 </tr>

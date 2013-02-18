@@ -181,12 +181,9 @@ public class PersonDAO implements IPersonDAO
             personFound.setEmail((String) pEntity.getProperty("email"));
             personFound.setOpenid((String) pEntity.getProperty("openid"));
             if (pEntity.getProperty("teacher") != null) {
-            	System.out.println("****************  " + (Boolean) pEntity.getProperty("teacher"));
-                personFound.setTeacher((Boolean) pEntity.getProperty("teacher"));
+            	 personFound.setTeacher((Boolean) pEntity.getProperty("teacher"));
             } else {
-            	System.out.println("****************  teacher is false");
-                
-                personFound.setTeacher(false);
+            	 personFound.setTeacher(false);
             }
             if (pEntity.getProperty("student") != null) {
                 personFound.setStudent((Boolean) pEntity.getProperty("student"));
@@ -243,7 +240,6 @@ public class PersonDAO implements IPersonDAO
     public Key savePerson(Person person) throws PersonException, EntityNotFoundException
     {
         Key keyId = person.getId();
-
         if (person.getId() == null) {
             return createPerson(person);
         }
@@ -257,7 +253,7 @@ public class PersonDAO implements IPersonDAO
             keyId = person.getId();
             Person personFound = pm.getObjectById(Person.class, keyId);
             if (personFound != null) {
-                updatePerson(personFound);
+              updatePerson(person);
             }
             return personFound.getId();
         } else {
@@ -302,6 +298,9 @@ public class PersonDAO implements IPersonDAO
             pEntity.setProperty("phone", person.getPhone());
             pEntity.setProperty("phone2", person.getPhone2());
             pEntity.setProperty("openid", person.getOpenid());
+            pEntity.setProperty("teacher", person.isTeacher());
+            pEntity.setProperty("student", person.isStudent());
+            pEntity.setProperty("admin", person.isAdmin());
 
             try {
                 datastore.put(pEntity);

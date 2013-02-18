@@ -98,6 +98,19 @@ public class UserController
         vcUser.setStudent(userRegistrationFormBean.isStudent());
 
         request.getSession().setAttribute("vcUser", vcUser);
+        
+        IPersonDAO personDAO = new PersonDAO();
+        try {
+			personDAO.savePerson(vcUser);
+		} catch (PersonException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (EntityNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        
         view.setViewName("displayUserInformationPage");
         view.addObject("tab", "userinformation");
 
