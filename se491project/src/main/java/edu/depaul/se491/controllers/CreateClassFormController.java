@@ -127,9 +127,11 @@ public class CreateClassFormController
     {
         ModelAndView view = new ModelAndView();
         LinkedList<Category> categoryList = (LinkedList<Category>) DaoCmds.getCategories();
-        
-        Category c = categoryList.get(0);
-     
+      
+        if(categoryList.size() == 0){
+        	DaoCmds.createCategoryCmd( "Sports", "decrip"); 
+        	categoryList = (LinkedList<Category>) DaoCmds.getCategories();             
+        }
         
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
