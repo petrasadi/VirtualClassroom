@@ -22,5 +22,6 @@ appengine-web.xml
 
 #OTHER
 se491project/war/WEB-INF/appengine-generated/*
+se491project/war/WEB-INF/classes/*
 *~
 target
