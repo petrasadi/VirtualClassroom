@@ -22,14 +22,14 @@
 <script type="text/javascript" src="javascript/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="javascript/opentok/opentok.js"></script>
 <script type="text/javascript" src="javascript/opentok/opentokUtil.js"></script>
+<script type="text/javascript" src="javascript/chat/chat.js"></script>
 </head>
 
 <!-- FIXME -user id is currently passed in clear text -->
 <body onload="getSessionInfo('<%=user%>', '<%=classId%>')">
 <div class="container">
-	<button class="btn" type="button" title="Open chat"
-		onclick="initChat()">Open chat
-	</button>
+
+	<button class="btn" type="button" onclick="initChat('<%=user%>', '<%=classId%>')">Open chat</button>
 		
 	<div id="conferenceContainer">
 	    <div id="myPublisherDiv"></div>
@@ -47,7 +47,7 @@
 	        </div>
 	
 	        <input class="dashboardButton" type="image" src="images/glyphicons_245_chat.png" title="open chat window"
-	               onclick="alert('TODO - open chat window')">
+	               onclick="initChat('<%=user%>', '<%=classId%>')">
 	        <input class="dashboardButton" type="image" src="images/glyphicons_063_power.png" title="exit class"
 	               onclick="alert('TODO - exit chat')">
 	    </div>
@@ -55,6 +55,7 @@
 	    <div id="speakRequests"></div>
 	</div>
 	
+	<!-- //TODO - create this upon chat init -->
 	<div id="chat">
 		<div id="messageDisplay">
 			<ul id="messageList"></ul>
