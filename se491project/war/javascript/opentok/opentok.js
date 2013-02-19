@@ -18,6 +18,7 @@ function getSessionInfo(userOpenId, classOpenTokId) {
 
 function generateUserDashBoard(userRole) {
     //FIXME - this implem uses more bandwidth than necessary
+	//should be optimized for use on mobile devices
     if (userRole == 'student') {
         $('#teacherDashboard').remove();
     } else

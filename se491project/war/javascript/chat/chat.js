@@ -1,4 +1,15 @@
 function initChat(userOpenId, classOpenTokId) {
-	//TODO - implement initChat
-	alert("TODO - implement init chat");
+    $.post('initChat', {user: userOpenId, classId: classOpenTokId},
+        function (data) {
+            getChatToken(data);
+        },
+        'json'
+    );
+    
+	//TODO - create and open the chat div
+}
+
+function getChatToken(data){
+	//TODO - persist the token in the session?
+	alert(data.chatToken);
 }

@@ -43,6 +43,15 @@
         <servlet-name>OpenTok</servlet-name>
         <url-pattern>/opentok</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+    	<servlet-name>InitChatServlet</servlet-name>
+    	<servlet-class>edu.depaul.se491.servlets.chat.InitChatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+    	<servlet-name>InitChatServlet</servlet-name>
+    	<url-pattern>/initChat</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>SystemServiceServlet</servlet-name>
