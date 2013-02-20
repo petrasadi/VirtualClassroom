@@ -13,20 +13,28 @@
     <script type="text/javascript">
       function drawVisualization() {
         // Create and populate the data table.
+        var options = {
+  width: 600,
+  height: 400,
+  title: 'Survey Result for class: ${name}',
+  colors: ['#51a351', '#B2C7D6', '#f89406', '#f3b49f', '#f6c7b6'],
+  backgroundColor: 'transparent',
+  is3D: true
+};
         var data = google.visualization.arrayToDataTable([
           ['Task', 'Total Survey Result Counts'],
           ['Exceeds Expectations', ${ee}],
           ['Meets Expectations', ${me}],
           ['Does NOT Meets Expectations', ${dnm}]
         ]);
-      
+       
         // Create and draw the visualization.
         new google.visualization.PieChart(document.getElementById('visualization')).
-          draw(data, {title:"Survey Result for ${name}"});
+          draw(data, options);
       }
 
       google.setOnLoadCallback(drawVisualization);
     </script>
   </head>
-    <div class="container" id="visualization" style="width: 600px; height: 400px; backgroundColor: blue;"/>
+    <div id="visualization" style="width: 600px; height: 400px;"/>
 ​
