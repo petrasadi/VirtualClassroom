@@ -6,7 +6,6 @@ import edu.depaul.se491.model.Category;
 import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -88,7 +87,6 @@ public class DaoCmds
      * @param classes
      * @return Classes
      */
-    @SuppressWarnings("unchecked")
     public static Entity getClass(Key classes)
     {
         CmdController run = new CmdController();
@@ -276,7 +274,8 @@ public class DaoCmds
      * @param classId
      * @return LinkedList<Person>
      */
-    public static List<Person> getStudentsInClass(Key classId)
+    @SuppressWarnings("unchecked")
+	public static List<Person> getStudentsInClass(Key classId)
     {
         CmdController run = new CmdController();
         IDaoCommands cmd = new GetStudentsInClassCmd(classId);
@@ -284,5 +283,39 @@ public class DaoCmds
         return (LinkedList<Person>) run.getExecute();
     }
 
-
+    /**
+     * 
+     * @param classId
+     * @return
+     */
+    public static int getEEClass(Key classId) {
+    	CmdController run = new CmdController();
+        IDaoCommands cmd = new GetExceedExpectationsCount(classId);
+        run.setCommand(cmd);
+        return ((Integer) run.getExecute()).intValue();
+    }
+    
+    /**
+     * 
+     * @param classId
+     * @return
+     */
+    public static int getMEClass(Key classId) {
+    	CmdController run = new CmdController();
+        IDaoCommands cmd = new GetMeetsExpectationsCount(classId);
+        run.setCommand(cmd);
+        return ((Integer) run.getExecute()).intValue();
+    }
+    
+    /**
+     * 
+     * @param classId
+     * @return
+     */
+    public static int getDNMClass(Key classId) {
+    	CmdController run = new CmdController();
+        IDaoCommands cmd = new GetDoesNotMeetExpectationsCount(classId);
+        run.setCommand(cmd);
+        return ((Integer) run.getExecute()).intValue();
+    }
 }

@@ -69,7 +69,8 @@ public class TeacherClassHistoryController
                 classEndDayStr = "unavailable";
                 classEndTimeStr = "unavailable";
             }
-
+            
+            cBean.setKey(c.getId());
             cBean.setName(c.getClassName());
             cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
             cBean.setClassEndDay(classEndDayStr);
