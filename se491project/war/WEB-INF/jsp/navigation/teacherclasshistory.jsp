@@ -20,6 +20,7 @@
                 <th>Start Time</th>
                 <th>End Time</th>
                 <th>Registered Students</th>
+                <th>Survey Results</th>
             </tr>
             </thead>
             <tfoot>
@@ -46,6 +47,8 @@
                     <td>${class.classEndTime}</td>
                     <td><a href="/displayStudentInClass.do?classId=${class.id}">${class.numberOfRegisteredStudents}
                         Students</a></td>
+                    <td><a href="/displaySurveyResults.do?classId=${class.id}" class="btn btn-warning"><i
+                            class="icon-filter icon-white"></i> Survey Overview</a></td>
                 </tr>
             </c:forEach>
             </tbody>
