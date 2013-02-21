@@ -76,15 +76,19 @@
 	display:block;
 }
 /*------------------------- Footer ------------------------*/ 
+.footer, .push {
+    height: 5px; /* Height of the footer */
+        }
 .footer{
 	width:auto;
-	background:url(../images/bg-footer.gif) repeat-x left top !important;
+	background:url(../images/bg-footer.gif) repeat !important;
 	padding:45px 0 105px;
 	margin:0 auto;
 	overflow:hidden;
 }
 .footer div{
 	width:960px;
+	
 	margin:0 auto;
 	overflow:hidden;
 }

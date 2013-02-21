@@ -10,28 +10,14 @@
             margin: 0;
             padding: 0;
             height: 100%;
-        }
-        body {
-        	background:url(../images/bg-content2.gif);
-        }
+            background:url(../images/bg-content2.gif);
+        }       
 
-        #page_container {
+        .page_container {
             min-height: 100%;
-            position: relative;
-        }
-
-
-        #body {
-            
-            padding-bottom: 20px; /* Height of the footer */
-        }
-
-        #footer {
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-            height: 20px; /* Height of the footer */
-            background: #6cf;
+    		height: auto !important;
+    		height: 100%;
+    		margin: 0 auto -5px;
         }
 
         .navigation {
@@ -42,12 +28,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title><tiles:insertAttribute name="title" ignore="true"/></title>
 </head>
-<div id="page_container" border="0" cellpadding="2" cellspacing="2" align="left">
+<div class="page_container" border="0" cellpadding="2" cellspacing="2" align="left">
     <div class="header"><tiles:insertAttribute name="header"/></div>
 	<div class="sub-header"><tiles:insertAttribute name="sub-header"/></div>
     <div class="tabs"><tiles:insertAttribute name="tabs"/></div>
     <div class="body"><tiles:insertAttribute name="body"/></div>
-    <div class="footer"><tiles:insertAttribute name="footer"/></div>
+    <div class="push"></div>
 </div>
+<div class="footer"><tiles:insertAttribute name="footer"/></div>
 </html>
     
