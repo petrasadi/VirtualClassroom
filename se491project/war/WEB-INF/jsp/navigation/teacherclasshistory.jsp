@@ -47,8 +47,16 @@
                     <td>${class.classEndTime}</td>
                     <td><a href="/displayStudentInClass.do?classId=${class.id}">${class.numberOfRegisteredStudents}
                         Students</a></td>
+                    <c:choose>
+                    <c:when test = "${class.surveysComplete == 0}">
+                    <td><a href="/displaySurveyResults.do?classId=${class.id}" class="btn btn-warning disabled" onClick='return false'><i
+                            class="icon-remove icon-white"></i> Survey Overview</a></td>
+                    </c:when>
+                    <c:otherwise>
                     <td><a href="/displaySurveyResults.do?classId=${class.id}" class="btn btn-warning"><i
                             class="icon-filter icon-white"></i> Survey Overview</a></td>
+                    </c:otherwise>
+                    </c:choose>
                 </tr>
             </c:forEach>
             </tbody>

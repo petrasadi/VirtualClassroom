@@ -23,7 +23,7 @@
           ['Task', 'Total Survey Result Counts'],
           ['Exceeds Expectations', ${ee}],
           ['Meets Expectations', ${me}],
-          ['Does NOT Meets Expectations', ${dnm}]
+          ['Does NOT Meet Expectations', ${dnm}],
         ]);
        
         // Create and draw the visualization.

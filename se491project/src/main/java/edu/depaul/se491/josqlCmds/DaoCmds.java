@@ -55,6 +55,19 @@ public class DaoCmds
         run.setCommand(cmd);
         return run.isExecute();
     }
+    
+    /**
+     * 
+     * @param classes
+     * @param person
+     * @return
+     */
+    public static boolean GetIsSurveyCmd(Key classes, Key person) {
+    	CmdController run = new CmdController();
+    	IDaoCommands cmd = new GetIsSurveyComplete(classes, person);
+    	run.setCommand(cmd);
+    	return run.isExecute();
+    }
 
     /**
      * Provides a linked list of the classes. This is nice because it does not provide a raw Entity.
@@ -281,6 +294,18 @@ public class DaoCmds
         IDaoCommands cmd = new GetStudentsInClassCmd(classId);
         run.setCommand(cmd);
         return (LinkedList<Person>) run.getExecute();
+    }
+    
+    /**
+     * 
+     * @param classes
+     * @return
+     */
+    public static int getSurveyCount(Key classes) {
+    	CmdController run = new CmdController();
+    	IDaoCommands cmd = new GetIsSurveyCount(classes);
+    	run.setCommand(cmd);
+    	return ((Integer) run.getExecute()).intValue();
     }
 
     /**

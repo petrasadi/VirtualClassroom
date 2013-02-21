@@ -78,7 +78,7 @@ public class TeacherClassHistoryController
             cBean.setClassStartDay(classStartDayStr);
             cBean.setClassStartTime(classStartTimeStr);
             cBean.setStudentList(slist);
-
+            cBean.setSurveysComplete(DaoCmds.getSurveyCount(c.getId()));
             cBean.setId(c.getId().getId());
             boolean utc = false;
             DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
@@ -92,7 +92,6 @@ public class TeacherClassHistoryController
             	cCurrentBeanList.add(cBean);
             }         
         }
-
         
         view.setViewName("displayTeacherHistoryClasses");
         view.addObject("tab", "teacher");
