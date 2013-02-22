@@ -29,7 +29,10 @@
 <div class="container">
 <div id="conferenceContainer">
     <div id="myPublisherDiv"></div>
-    <div id="subscribers"></div>
+    <div id="subscribers">
+    	<div id="presenter"></div>
+    	<div class="hor" id="students"></div>
+    </div>
 
     <div id="userDashboard" style="display: none; padding-left: 20px;">
         <div id="teacherDashboard">
