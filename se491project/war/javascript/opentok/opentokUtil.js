@@ -137,21 +137,21 @@ function subscribeToStreams(streams) {
         for (var i = 0; i < streams.length; i++) {
         	
         	if (data.role == "teacher") {
-            // Create the div to put the subscriber element in to
-            var div = document.createElement('div');
-            div.setAttribute('id', 'stream' + streams[i].streamId);
-            $('#presenter').append(div);
+        		// Create the div to put the subscriber element in to
+        		var div = document.createElement('div');
+        		div.setAttribute('id', 'stream' + streams[i].streamId);
+        		$('#presenter').append(div);
 
-            // Subscribe to the stream
-            var subscribeProps = {width: 400, height: 225};
-            var subscriber = session.subscribe(streams[i], div.id, subscribeProps);
+        		// Subscribe to the stream
+        		var subscribeProps = {width: 400, height: 225};
+        		var subscriber = session.subscribe(streams[i], div.id, subscribeProps);
 
-            //do not subscribe to own audio
-            //this eliminates the audio feedback issue
-            if (streams[i].connection.connectionId == session.connection.connectionId) {
-                subscriber.subscribeToAudio(false);
-                //return;
-            }
+        		//do not subscribe to own audio
+        		//this eliminates the audio feedback issue
+        		if (streams[i].connection.connectionId == session.connection.connectionId) {
+        			subscriber.subscribeToAudio(false);
+        			//return;
+        		}
         	} else {
         		// Create the div to put the subscriber element in to
                 var div = document.createElement('div');

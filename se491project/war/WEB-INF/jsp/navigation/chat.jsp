@@ -22,6 +22,29 @@
 <script type="text/javascript" src="javascript/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="javascript/opentok/opentok.js"></script>
 <script type="text/javascript" src="javascript/opentok/opentokUtil.js"></script>
+<style>
+	#subscribers {
+		margin-left:auto;
+		margin-right:auto;
+		width:70%;
+		height:  100%;
+	}
+	#presenter {
+		width: 400px;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.hor{
+	width:500px;
+	height:100px;
+	overflow-x:auto;
+	margin-left:auto;
+	margin-right:auto;
+	white-space: nowrap;
+	overflow-y:hidden;
+	padding-top:10px;
+	}
+</style>
 </head>
 
 <!-- FIXME -user id is currently passed in clear text -->
