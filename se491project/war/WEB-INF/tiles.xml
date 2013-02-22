@@ -158,6 +158,10 @@
         <put-attribute name="title" value="Class Survey" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/classsurvey.jsp" />
     </definition>
+    <definition name="displaySurveyResultsPage" extends="base.definition">
+        <put-attribute name="title" value="Class Survey" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/SurveyResult.jsp" />
+    </definition>
     <definition name="displayAdminUsers" extends="base.definition">
         <put-attribute name="title" value="Admin User List" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/adminUsers.jsp" />

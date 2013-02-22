@@ -32,6 +32,10 @@ public class ClassRegistrationListBean
     private String classEndDay;
 
     private String teacherName;
+    
+    private boolean survey;
+    
+    private int surveysComplete;
 
     private int numberOfRegisteredStudents;
 
@@ -193,4 +197,20 @@ public class ClassRegistrationListBean
     {
         this.id = id;
     }
+
+	public boolean isSurvey() {
+		return survey;
+	}
+
+	public void setSurvey(boolean survey) {
+		this.survey = survey;
+	}
+
+	public int getSurveysComplete() {
+		return surveysComplete;
+	}
+
+	public void setSurveysComplete(int surveysComplete) {
+		this.surveysComplete = surveysComplete;
+	}
 }

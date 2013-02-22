@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.PreparedQuery;
 
 public interface IClassRating {
 	/**
@@ -33,6 +34,14 @@ public interface IClassRating {
 	 * @throws ClassRatingExcpetion
 	 */
 	public boolean isSurveyComplete(Key classes, Key person) throws ClassRatingException;
+	
+	/**
+	 * 
+	 * @param classes
+	 * @return
+	 * @throws ClassRatingException
+	 */
+	public PreparedQuery getClassRatings(Key classes) throws ClassRatingException;
 	
 	/**
 	 * 

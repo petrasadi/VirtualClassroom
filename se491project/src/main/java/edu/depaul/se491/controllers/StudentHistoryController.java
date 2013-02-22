@@ -74,6 +74,7 @@ public class StudentHistoryController
             cBean.setId(c.getId().getId());
             cBean.setOpenId(DaoCmds.getTeacherCmd(c.getId()).getOpenid());
             cBean.setTeacherName(DaoCmds.getTeacherCmd(c.getId()).getFirstName() + " " + DaoCmds.getTeacherCmd(c.getId()).getLastName());
+            cBean.setSurvey(DaoCmds.GetIsSurveyCmd(c.getId(), vcUser.getId()));
             
             DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
             if(DateTimeZone.getDefault().toString().equals("UTC")){
