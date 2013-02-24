@@ -126,13 +126,9 @@
                     <form:errors path="teacher" cssClass="error"/>
                 </div>
             </li>
+
             <li>
-                <div class="grid_3">
-                    <form:label path="userDescription">Let other know a little about yourself:</form:label><br/>
-                    <form:textarea path="userDescription"/><br/>
-                </div>
-            </li>
-            <li>
+                <br/>
                 <br/>
 
                 <div class="grid_3 prefix_3"><input type="submit" value="Register"/></div>

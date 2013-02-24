@@ -1,80 +1,106 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-
-<Table>
-    <tr>
-        <td align="center" colspan="2">User Information</td>
-    </tr>
-    <tr>
-        <td>First Name</td>
-        <td>${sessionScope.vcUser.firstName}</td>
-    </tr>
-    <tr>
-        <td>Last Name</td>
-        <td>${sessionScope.vcUser.lastName}</td>
-    </tr>
-    <tr>
-        <td>Middle Name</td>
-        <td>${sessionScope.vcUser.middleName}</td>
-    </tr>
-    <tr>
-        <td>Phone</td>
-        <td>${sessionScope.vcUser.phone}</td>
-    </tr>
-    <tr>
-        <td>Phone 2</td>
-        <td>${sessionScope.vcUser.phone2}</td>
-    </tr>
-    <tr>
-        <td>Email</td>
-        <td>${sessionScope.vcUser.email}</td>
-    </tr>
-    <tr>
-        <td>Address</td>
-        <td>${sessionScope.vcUser.address}</td>
-    </tr>
-    <tr>
-        <td>Address 2</td>
-        <td>${sessionScope.vcUser.address2}</td>
-    </tr>
-    <tr>
-        <td>City</td>
-        <td>${sessionScope.vcUser.city}</td>
-    </tr>
-    <tr>
-        <td>State</td>
-        <td>${sessionScope.vcUser.state}</td>
-    </tr>
-    <tr>
-        <td>Zip</td>
-        <td>${sessionScope.vcUser.zip}</td>
-    </tr>
-    <tr>
-        <td>Country</td>
-        <td>${sessionScope.vcUser.country}</td>
-    </tr>
-    <tr>
-        <td>Signed up as a Student</td>
-        <td>
-            <c:choose>
-                <c:when test="${sessionScope.vcUser.student}">Yes </c:when>
-                <c:otherwise>No </c:otherwise>
-            </c:choose>
-        </td>
-    </tr>
-    <tr>
-        <td>Signed up as a Teacher</td>
-        <td>
-            <c:choose>
-                <c:when test="${sessionScope.vcUser.teacher}">Yes </c:when>
-                <c:otherwise>No </c:otherwise>
-            </c:choose>
-
-        </td>
-    </tr>
-</Table>
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
+ 
+ 
+<div class="container">
+  <div class="datagrid">
+    <div class="navbar">
+      <div ><p class="brand">User Information</p></div>
+      <br/><br/>
+    </div>
+  </div>
+  <div  class="row">
+  	<div class="span2"><strong>First Name</strong></div>
+  	<div class="span10">${sessionScope.vcUser.firstName}</div>  
+  </div>
+  
+  <div  class="row">
+  	<div class="span2"><strong>Last Name</strong></div>
+  	<div class="span10">${sessionScope.vcUser.lastName}</div>  
+  </div>
+  
+  <div  class="row">
+  	<div class="span2"><strong>Middle Name</strong></div>
+  	<div class="span10">${sessionScope.vcUser.middleName}</div>  
+  </div>
+  
+  <div  class="row">
+  	<div class="span2"><strong>Phone</strong></div>
+  	<div class="span10">${sessionScope.vcUser.phone}</div>  
+  </div>
+  
+    <div  class="row">
+  	<div class="span2"><strong>Phone 2</strong></div>
+  	<div class="span10">${sessionScope.vcUser.phone2}</div>  
+  </div>
+  
+    <div  class="row">
+  	<div class="span2"><strong>Email</strong></div>
+  	<div class="span10">${sessionScope.vcUser.email}</div>  
+  </div>
+  
+    <div  class="row">
+  	<div class="span2"><strong>Address</strong></div>
+  	<div class="span10">${sessionScope.vcUser.address}</div>  
+  </div>
+  
+       <div  class="row">
+  	<div class="span2"><strong>Address 2</strong></div>
+  	<div class="span10">${sessionScope.vcUser.address2}</div>  
+  </div>
+  
+    <div  class="row">
+  	<div class="span2"><strong>City</strong></div>
+  	<div class="span10">${sessionScope.vcUser.city}</div>  
+  </div>
+  
+    <div  class="row">
+  	<div class="span2"><strong>State</strong></div>
+  	<div class="span10">${sessionScope.vcUser.firstName}</div>  
+  </div>
+  
+    <div  class="row">
+  	<div class="span2"><strong>Zip</strong></div>
+  	<div class="span10">${sessionScope.vcUser.zip}</div>  
+  </div>
+  
+    <div  class="row">
+  	<div class="span2"><strong>Country</strong></div>
+  	<div class="span10">${sessionScope.vcUser.country}</div>  
+  </div>
+  <br />
+  <br />
+    <div  class="row">
+  	<div class="span2"><strong>Student</strong></div>
+  	<div class="span10">
+       <c:choose>
+         <c:when test="${sessionScope.vcUser.student}">Yes </c:when>
+         <c:otherwise>No </c:otherwise>
+         </c:choose>
+    </div>  
+  </div>
+  
+    <div  class="row">
+  	<div class="span2"><strong>Teacher</strong></div>
+  	<div class="span10">
+        <c:choose>
+          <c:when test="${sessionScope.vcUser.teacher}">Yes </c:when>
+          <c:otherwise>No </c:otherwise>
+        </c:choose> 
+    </div>  
+  </div> 
+  
+</div>
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
 
 
 
