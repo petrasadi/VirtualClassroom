@@ -10,7 +10,7 @@
       <div ><p class="brand">User Information</p></div>
       <br/><br/>
     </div>
-  </div>
+  
   <div  class="row">
   	<div class="span2"><strong>First Name</strong></div>
   	<div class="span10">${sessionScope.vcUser.firstName}</div>  
@@ -91,7 +91,7 @@
         </c:choose> 
     </div>  
   </div> 
-  
+  </div>
 </div>
  <br />
  <br />
