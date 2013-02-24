@@ -15,7 +15,7 @@
     String homeSelect = "notselected";
     String adminSelect = "notselected";
     String accountSelect = "notselected";
-    String loginSelect = "notselected";
+  
 
     String tab = (String) request.getAttribute("tab");
     if (tab == null) {
@@ -30,9 +30,7 @@
         adminSelect = "active";//"selected";
     } else if (tab.equals("userinformation")) {
         accountSelect = "active";//"selected";
-    } else if (tab.equals("login")) {
-        loginSelect = "active";//"selected";
-    } else {
+    }else {
         homeSelect = "active";//"selected";
     }
 
@@ -72,15 +70,11 @@
             %>
 
             <li class="<%=accountSelect %>" rel="account"><a href="#">Account Information</a></li>
-            <li class="notselected"><a href="<%=userService.createLogoutURL("/")%>">Log Out</a></li>
 
             <%
-            } else {
+            } 
             %>
-            <li class="<%=loginSelect %>"><a href="/displayLoginPage.do">Log In</a></li>
-            <%
-                }
-            %>
+           
         </ul>
     </div>
 </div>

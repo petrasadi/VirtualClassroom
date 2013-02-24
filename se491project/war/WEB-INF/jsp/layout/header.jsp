@@ -10,6 +10,6 @@ Person vcUser = (Person) session.getAttribute("vcUser");
 	 <a class="btn btn-warning" href="<%=userService.createLogoutURL("/")%>">logout</a>
 	
 	<% } else { %>
-   <a class="btn btn-success" href="/displayLoginPage.do">login</a>
+   <a class="btn btn-success" href="/_ah/login_redirect">login</a>
     <% } %>
 </div>
