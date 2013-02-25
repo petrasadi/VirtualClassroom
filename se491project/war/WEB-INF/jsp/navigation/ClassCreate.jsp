@@ -25,18 +25,18 @@
         <br />
         <div  class="row">     
           <div class="span4">
+            <form:errors path="classTitle" cssClass="error"/><br/> 
             <form:label path="classTitle">Class Title</form:label>
-            <form:errors path="classTitle" cssClass="error"/><br/>  
             <form:input path="classTitle"/><br/>            
           </div>
           <div class="span4">
+            <form:errors path="classDescription" cssClass="error"/><br/> 
             <form:label path="classDescription">Class Description</form:label>
-             <form:errors path="classDescription" cssClass="error"/><br/>  
             <form:textarea path="classDescription"/><br/>           
           </div>
           <div class="span4">
-            <form:label path="classCategory">Class Category</form:label>
             <form:errors path="classCategory" cssClass="error"/><br />
+            <form:label path="classCategory">Class Category</form:label>            
             <form:select path="classCategory" >
               <form:option value="NONE" label="--- Select ---"/>
               <form:options items="${categoryList}" itemValue="id.id" itemLabel="name" />
@@ -46,22 +46,22 @@
          
           <div  class="row">
            <div class="span4">
-             <form:label path="classDate">Class Date</form:label>
-             <form:errors path="classDate" cssClass="error"/><br />           
+             <form:errors path="classDate" cssClass="error"/><br /> 
+             <form:label path="classDate">Class Date</form:label>                       
              <form:input readonly="true" path="classDate"/><a href="javascript:displayDatePicker('classDate')">
              <i class="icon-calendar"></i></a><br/>             
            </div>
            <div class="span4">
-             <form:label path="classStartTime">Class Start Time</form:label>
              <form:errors path="classStartTime" cssClass="error"/><br />
+             <form:label path="classStartTime">Class Start Time</form:label>             
              <form:select path="classStartTime">
                <form:option value="NONE" label="--- Select ---"/>
                <form:options items="${timeList}"/>
              </form:select><br/>             
            </div>
            <div class="span4">
-             <form:label path="classEndTime">Class End Time</form:label>
-              <form:errors path="classEndTime" cssClass="error"/><br />
+             <form:errors path="classEndTime" cssClass="error"/><br />
+             <form:label path="classEndTime">Class End Time</form:label>              
                <form:select path="classEndTime">
                <form:option value="NONE" label="--- Select ---"/>
                <form:options items="${timeList}"/>
@@ -77,14 +77,14 @@
              <form:radiobutton path="classLevel" value="advanced"/> &nbsp &nbsp Advanced 
            </div>
            <div class="span4">
-             <form:label path="minStudents">Minimum Class Size:</form:label>
              <form:errors path="minStudents" cssClass="error"/><br/>
+             <form:label path="minStudents">Minimum Class Size:</form:label>            
              <form:input path="minStudents" maxlength="3" size="3"/><br/>
              
            </div>
            <div class="span4">
-             <form:label path="maxStudents">Maximum Class Size:</form:label>
              <form:errors path="maxStudents" cssClass="error"/><br/>
+             <form:label path="maxStudents">Maximum Class Size:</form:label>
              <form:input path="maxStudents" maxlength="3" size="3"/><br/>             
            </div>
          </div>
