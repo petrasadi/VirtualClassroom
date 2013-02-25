@@ -134,7 +134,7 @@
         
         <div  class="row">
            <div class="span12">
-              <input type="submit" value="Register"/>
+              <input class="btn btn-primary" type="submit" value="Update"/>
            </div>
         </div>
 
