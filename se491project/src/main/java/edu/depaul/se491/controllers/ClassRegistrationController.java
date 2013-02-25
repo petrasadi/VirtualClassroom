@@ -135,9 +135,7 @@ public class ClassRegistrationController
         Key n = KeyFactory.createKey("Classes", val);
         DaoCmds.addStudentCmd(vcUser.getId(), n).toString();
 
-        ModelAndView view = new ModelAndView();
-        view.setViewName("displayClassRegistration");
-        return view;
+        return displayClassRegistration(request);
     }
 
     @RequestMapping(value = "/joinClass")
