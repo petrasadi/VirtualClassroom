@@ -40,6 +40,12 @@ public class CreateClassFormController
     {
 
         ModelAndView view = new ModelAndView();
+        
+        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+        }
+        
         // validator.validate(createClassFormBean, result);
         if (result.hasErrors()) {
         	
@@ -67,12 +73,6 @@ public class CreateClassFormController
         IClassesDAO clazzDAO = new ClassesDAO();
         Key clazzKey;
 
-
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
-        if (vcUser == null) {
-            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
-        }
-		
 
         clazz.setTeacher(vcUser.getId());
         clazz.setClassName(createClassFormBean.getClassTitle());
@@ -128,7 +128,7 @@ public class CreateClassFormController
         
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
-            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
         }
 
         CreateClassFormBean createClassFormBean = new CreateClassFormBean();

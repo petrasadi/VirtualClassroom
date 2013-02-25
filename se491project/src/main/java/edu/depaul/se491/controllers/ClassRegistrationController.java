@@ -35,6 +35,9 @@ public class ClassRegistrationController
     public ModelAndView displayClassRegistration(HttpServletRequest request)
     {
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
         SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
         SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
         String classStartTimeStr;
@@ -125,8 +128,10 @@ public class ClassRegistrationController
     @RequestMapping(value = "/registerStudentForClass")
     public ModelAndView registerStudentForClass(@ModelAttribute("classId") long val, HttpServletRequest request)
     {
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
-
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+        }
         Key n = KeyFactory.createKey("Classes", val);
         DaoCmds.addStudentCmd(vcUser.getId(), n).toString();
 
@@ -138,6 +143,12 @@ public class ClassRegistrationController
     @RequestMapping(value = "/joinClass")
     public ModelAndView joinClass(@ModelAttribute("classId") long id, HttpServletRequest request)
     {
+    	
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+        }
+    	
         HttpSession session = request.getSession(true);
         session.setAttribute("classId", id);
 

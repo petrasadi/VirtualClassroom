@@ -29,12 +29,16 @@ public class TeacherClassHistoryController
     public ModelAndView displayTeacherListCurrentClasses(
             HttpServletRequest request)
     {
+    	
+    	
     	ModelAndView view = new ModelAndView();
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+    	
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
-            return new ModelAndView("displayLoginPage", "command", new Object())
-                    .addObject("tab", "login");
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
         }
+         
+     
         SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
         SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
         String classStartTimeStr;

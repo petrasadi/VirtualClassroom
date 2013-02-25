@@ -26,6 +26,10 @@ public class AdminCategory
       
 
         ModelAndView view = new ModelAndView();
+        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
         
         LinkedList<Category> categoryList = (LinkedList<Category>) DaoCmds.getCategories();
         
@@ -44,6 +48,11 @@ public class AdminCategory
       
 
         ModelAndView view = new ModelAndView();
+        
+        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
         
         if(category!=null && !category.trim().equals("")){
         	DaoCmds.createCategoryCmd( category, "decrip"); 

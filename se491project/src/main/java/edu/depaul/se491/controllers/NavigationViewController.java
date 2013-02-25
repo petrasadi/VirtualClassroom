@@ -20,11 +20,11 @@ public class NavigationViewController extends AbstractController
         UserService userService = UserServiceFactory.getUserService();
 
         if (!userService.isUserLoggedIn()) {
-            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
         }
 
         ModelAndView mav = new ModelAndView("displayListClassesPage", "command", new Object()).addObject("tab", "teacher");
-        ;
+       
 
         return mav;
     }

@@ -29,7 +29,11 @@ public class TeacherInformationController
     @RequestMapping(value = "/displayTeacherInformation", method = RequestMethod.GET)
     public ModelAndView displayStudentSchedule(@RequestParam(value = "openId") String openId, HttpServletRequest request)
     {
-
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
+         
 
         SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
         SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
@@ -39,7 +43,7 @@ public class TeacherInformationController
         String classEndDayStr;
 
         Person teacher = DaoCmds.getPersonByOpenId(openId);
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+    
         LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds.getTeacherClasses(openId);
         LinkedList<ClassRegistrationListBean> cCurrentBeanList = new LinkedList<ClassRegistrationListBean>();
         LinkedList<ClassRegistrationListBean> cHistoryBeanList = new LinkedList<ClassRegistrationListBean>();

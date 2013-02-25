@@ -12,7 +12,7 @@
   <div class="datagrid">
     <div class="navbar">
       <div ><p class="brand">Create a Class</p></div>
-      <br/><br/>
+      <br/>
     </div>
     
     <form:form action="/classCreate.do" method="post" commandName="createClassFormBean">
@@ -21,7 +21,6 @@
   			 <div class="span12"> <div class="error" >Please correct the errors and resubmit the form.</div></div>
            </div>
         </form:errors>
-        <br />
         <br />
         <div  class="row">     
           <div class="span4">

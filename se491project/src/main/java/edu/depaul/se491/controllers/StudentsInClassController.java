@@ -26,7 +26,7 @@ public class StudentsInClassController
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
             return new ModelAndView("displayLoginPage", "command", new Object())
-                    .addObject("tab", "login");
+                    .addObject("tab", "home");
         }
 
 

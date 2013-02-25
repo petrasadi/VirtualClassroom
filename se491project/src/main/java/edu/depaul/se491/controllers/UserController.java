@@ -27,19 +27,32 @@ import java.util.Map;
 public class UserController
 {
 
+	
+	
     @RequestMapping("/displayUserInformationPage")
     public ModelAndView displayUserInformationPage(HttpServletRequest request)
     {
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
+         
         return new ModelAndView("displayUserInformationPage", "command", new Object()).addObject("tab", "userinformation");
     }
 
     @RequestMapping("/editUserInformationPage")
     public ModelAndView editUserInformationPage(HttpServletRequest request)
     {
+    	
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
+         
+        
         UserRegistrationFormBean uf = new UserRegistrationFormBean();
         ModelAndView view = new ModelAndView();
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
-
+      
         uf.setFirstName(vcUser.getFirstName());
         uf.setMiddleName(vcUser.getMiddleName());
         uf.setLastName(vcUser.getLastName());
@@ -67,6 +80,11 @@ public class UserController
     @RequestMapping(value = "/editUser", method = RequestMethod.POST)
     public ModelAndView editUser(@Valid UserRegistrationFormBean userRegistrationFormBean, BindingResult result, HttpServletRequest request)
     {
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
+         
 
         ModelAndView view = new ModelAndView();
 
@@ -80,7 +98,7 @@ public class UserController
         }
 
 
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+     
 
         vcUser.setFirstName(userRegistrationFormBean.getFirstName());
         vcUser.setMiddleName(userRegistrationFormBean.getMiddleName());
@@ -127,7 +145,7 @@ public class UserController
         ModelAndView view = new ModelAndView();
 
         if (!userService.isUserLoggedIn()) {
-            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+            return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
         }
 
         try {

@@ -19,7 +19,7 @@
 
     <definition name="displayLoginPage" extends="base.definition">
         <put-attribute name="title" value="Login"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/tabs/openidlogin.jsp?continue=/checkRegistration.do"/>
+        <put-attribute name="body" value="/_ah/login_redirect"/>
     </definition>
 
     <definition name="displayUserInformationPage" extends="base.definition">
