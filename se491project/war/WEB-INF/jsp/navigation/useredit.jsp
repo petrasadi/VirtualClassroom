@@ -17,7 +17,7 @@
 <div class="container">
   <div class="datagrid">
     <div class="navbar">
-      <div ><p class="brand">You can update your Virtual Classroom User Information.</p></div>
+      <div ><p class="brand">You can update your Virtual Classroom user information.</p></div>
       <br/><br/>
     </div>
   
@@ -28,7 +28,7 @@
 
         <form:errors path="*">
            <div  class="row">
-  			 <div class="span12"> <div class="error" class="grid_9">Please correct the errors and resubmit the form.</div></div>
+  			 <div class="span12"> <div class="error" >Please correct the errors and resubmit the form.</div></div>
            </div>
         </form:errors>
 
