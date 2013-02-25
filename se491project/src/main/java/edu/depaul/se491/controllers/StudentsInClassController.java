@@ -31,7 +31,7 @@ public class StudentsInClassController
 
 
         List<Person> slist = DaoCmds.getStudentsInClass(KeyFactory.createKey("Classes", Long.parseLong(classId)));
-
+      
         ModelAndView view = new ModelAndView();
         view.setViewName("displayStudentsInClass");
         view.addObject("tab", "teacher");
