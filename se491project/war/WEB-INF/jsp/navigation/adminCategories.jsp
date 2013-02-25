@@ -39,7 +39,8 @@
     	<form  action="/createCategory.do" method="post">
     	<br />
         <input type="text" name="category"><br />
-        <input type="submit" value="Add Category">
+        <input class="btn btn-primary" type="submit" value="Add Category"/>
+
         </form>
     </div>
 
