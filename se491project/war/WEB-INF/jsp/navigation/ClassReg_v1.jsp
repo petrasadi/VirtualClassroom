@@ -48,6 +48,8 @@
                 <th>Category</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th>Start Time</th>
+                <th>End Time</th>
                 <th>Registration</th>
             </tr>
             </thead>
@@ -57,8 +59,6 @@
             </tr>
             </tfoot>
             <tbody>
-            ${classStartDayStr} <br />
-            ${classStartTimeStr} <br />
             
             <c:forEach var="classes" items="${classes}" varStatus="rowCounter">
                 <c:choose>
@@ -73,8 +73,10 @@
                     <td>${classes.name}</td>
                     <td><a href="/displayTeacherInformation.do?openId=${classes.openId}">${classes.teacherName}</a></td>
                     <td>${classes.category}</td>
-                    <td>${classes.startDate}</td>
-                    <td>${classes.endDate}</td>
+                    <td>${classes.classStartDay}</td>
+                    <td>${classes.classEndDay}</td>
+                    <td>${classes.classStartTime}</td>
+                    <td>${classes.classEndTime}</td>
                     <c:set var="registration" scope="page" value="${classes.registration}"/>
                     <% String registration = pageContext.getAttribute("registration").toString();
                         if (registration.equals("Register")) { %>
