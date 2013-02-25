@@ -23,5 +23,6 @@
 			$('.alert').alert('close');
 		});
 	</script>
+	</div>
 </body>
 </html>
