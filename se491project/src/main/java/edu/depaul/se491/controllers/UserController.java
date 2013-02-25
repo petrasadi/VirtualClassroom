@@ -1,7 +1,11 @@
 package edu.depaul.se491.controllers;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.Transaction;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import edu.depaul.se491.formBeans.UserRegistrationFormBean;
@@ -96,38 +100,40 @@ public class UserController
             view.addObject("tab", "userinformation");
             return view;
         }
+        DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+        try {
+        Entity pEntity = datastore.get(vcUser.getId());
 
-
-     
-
-        vcUser.setFirstName(userRegistrationFormBean.getFirstName());
-        vcUser.setMiddleName(userRegistrationFormBean.getMiddleName());
-        vcUser.setLastName(userRegistrationFormBean.getLastName());
-        vcUser.setAddress(userRegistrationFormBean.getAddress());
-        vcUser.setAddress2(userRegistrationFormBean.getAddress2());
-        vcUser.setCity(userRegistrationFormBean.getCity());
-        vcUser.setState(userRegistrationFormBean.getState());
-        vcUser.setZip(userRegistrationFormBean.getZip());
-        vcUser.setCountry(userRegistrationFormBean.getCountry());
-        vcUser.setEmail(userRegistrationFormBean.getEmail());
-        vcUser.setPhone(userRegistrationFormBean.getPhone());
-        vcUser.setPhone2(userRegistrationFormBean.getPhone2());
-        vcUser.setTeacher(userRegistrationFormBean.isTeacher());
-        vcUser.setStudent(userRegistrationFormBean.isStudent());
+        Transaction tx = datastore.beginTransaction();
+        pEntity.setProperty("firstname", userRegistrationFormBean.getFirstName());
+        pEntity.setProperty("middlename", userRegistrationFormBean.getMiddleName());
+        pEntity.setProperty("lastname", userRegistrationFormBean.getLastName());
+        pEntity.setProperty("email", userRegistrationFormBean.getEmail());
+        pEntity.setProperty("address", userRegistrationFormBean.getAddress());
+        pEntity.setProperty("address2", userRegistrationFormBean.getAddress2());
+        pEntity.setProperty("city", userRegistrationFormBean.getCity());
+        pEntity.setProperty("state", userRegistrationFormBean.getState());
+        pEntity.setProperty("zip", userRegistrationFormBean.getZip());
+        pEntity.setProperty("country", userRegistrationFormBean.getCountry());
+        pEntity.setProperty("phone", userRegistrationFormBean.getPhone());
+        pEntity.setProperty("phone2", userRegistrationFormBean.getPhone2());
+        pEntity.setProperty("teacher", userRegistrationFormBean.isTeacher());
+        pEntity.setProperty("student", userRegistrationFormBean.isStudent());
 
         request.getSession().setAttribute("vcUser", vcUser);
         
-        IPersonDAO personDAO = new PersonDAO();
         try {
-			personDAO.savePerson(vcUser);
-		} catch (PersonException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (EntityNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-        
+        	System.out.println("persisting: updating user");
+            datastore.put(pEntity);
+            tx.commit();
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+        }
+        } catch (EntityNotFoundException enf) {
+        	enf.printStackTrace();
+        }
         
         view.setViewName("displayUserInformationPage");
         view.addObject("tab", "userinformation");
