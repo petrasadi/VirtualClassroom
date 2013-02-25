@@ -13,6 +13,9 @@ function showsubmenu(masterid, id) {
     submenuobject.style.display = "block";
     instantset(mastertabvar.baseopacity);
     highlighting = setInterval("gradualfade(submenuobject)", 50);
+    if ((id != "home") && (document.getElementById('featured') != null)) {
+    	document.getElementById('featured').id = 'subfeatured';
+    }
 }
 
 function hidesubmenus(submenuarray) {
