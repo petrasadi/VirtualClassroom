@@ -21,50 +21,51 @@
   			 <div class="span12"> <div class="error" >Please correct the errors and resubmit the form.</div></div>
            </div>
         </form:errors>
-        
+        <br />
+        <br />
         <div  class="row">     
           <div class="span4">
             <form:label path="classTitle">Class Title</form:label>
-            <form:input path="classTitle"/><br/>
-            <form:errors path="classTitle" cssClass="error"/>
+            <form:errors path="classTitle" cssClass="error"/><br/>  
+            <form:input path="classTitle"/><br/>            
           </div>
           <div class="span4">
             <form:label path="classDescription">Class Description</form:label>
-            <form:textarea path="classDescription"/><br/>
-            <form:errors path="classDescription" cssClass="error"/>
+             <form:errors path="classDescription" cssClass="error"/><br/>  
+            <form:textarea path="classDescription"/><br/>           
           </div>
           <div class="span4">
             <form:label path="classCategory">Class Category</form:label>
+            <form:errors path="classCategory" cssClass="error"/><br />
             <form:select path="classCategory" >
               <form:option value="NONE" label="--- Select ---"/>
               <form:options items="${categoryList}" itemValue="id.id" itemLabel="name" />
-            </form:select><br/>
-            <form:errors path="classCategory" cssClass="error"/>
+            </form:select><br/>            
           </div>
          </div>
          
           <div  class="row">
            <div class="span4">
              <form:label path="classDate">Class Date</form:label>
+             <form:errors path="classDate" cssClass="error"/><br />           
              <form:input readonly="true" path="classDate"/><a href="javascript:displayDatePicker('classDate')">
-             <i class="icon-calendar"></i></a><br/>
-             <form:errors path="classDate" cssClass="error"/>
+             <i class="icon-calendar"></i></a><br/>             
            </div>
            <div class="span4">
              <form:label path="classStartTime">Class Start Time</form:label>
+             <form:errors path="classStartTime" cssClass="error"/><br />
              <form:select path="classStartTime">
                <form:option value="NONE" label="--- Select ---"/>
                <form:options items="${timeList}"/>
-             </form:select><br/>
-             <form:errors path="classStartTime" cssClass="error"/>
+             </form:select><br/>             
            </div>
            <div class="span4">
              <form:label path="classEndTime">Class End Time</form:label>
+              <form:errors path="classEndTime" cssClass="error"/><br />
                <form:select path="classEndTime">
                <form:option value="NONE" label="--- Select ---"/>
                <form:options items="${timeList}"/>
-              </form:select><br/>
-              <form:errors path="classEndTime" cssClass="error"/>
+              </form:select><br/>             
             </div>
          </div>
          
@@ -77,13 +78,14 @@
            </div>
            <div class="span4">
              <form:label path="minStudents">Minimum Class Size:</form:label>
+             <form:errors path="minStudents" cssClass="error"/><br/>
              <form:input path="minStudents" maxlength="3" size="3"/><br/>
-             <form:errors path="minStudents" cssClass="error"/>
+             
            </div>
            <div class="span4">
              <form:label path="maxStudents">Maximum Class Size:</form:label>
-             <form:input path="maxStudents" maxlength="3" size="3"/><br/>
-             <form:errors path="maxStudents" cssClass="error"/>
+             <form:errors path="maxStudents" cssClass="error"/><br/>
+             <form:input path="maxStudents" maxlength="3" size="3"/><br/>             
            </div>
          </div>
          

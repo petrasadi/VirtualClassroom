@@ -42,9 +42,18 @@ public class CreateClassFormController
         ModelAndView view = new ModelAndView();
         // validator.validate(createClassFormBean, result);
         if (result.hasErrors()) {
+        	
+        	LinkedList<Category> categoryList = (LinkedList<Category>) DaoCmds.getCategories();
+             
+            if(categoryList.size() == 0){
+              DaoCmds.createCategoryCmd( "Sports", "decrip"); 
+              categoryList = (LinkedList<Category>) DaoCmds.getCategories();             
+            }
+             
             view.setViewName("displayCreateClassPage");
             view.addObject("timeList", createTimeMap());
             view.addObject("createClassFormBean", createClassFormBean);
+            view.addObject("categoryList", categoryList);
             view.addObject("tab", "teacher");
             return view;
         }
@@ -57,24 +66,13 @@ public class CreateClassFormController
         Classes clazz = new Classes();
         IClassesDAO clazzDAO = new ClassesDAO();
         Key clazzKey;
-        /*
-		* ICategoryDAO catDAO = new CategoryDAO();
-		* Category category = new Category();
-		*/
+
 
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
             return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
         }
 		
-		/*
-		 * category.setName(formBean.getClassCategory());
-		 * category.setDescription("to be written");
-		 * System.out.println("setCategoryName");
-		 * System.out.println("CategoryID: " + category.getId().toString());
-		 * catDAO.saveCategory(category); catKey =
-		 * catDAO.saveCategory(category); System.out.println("saved Category");
-		 */
 
         clazz.setTeacher(vcUser.getId());
         clazz.setClassName(createClassFormBean.getClassTitle());
@@ -82,12 +80,7 @@ public class CreateClassFormController
               
        // set the category
         clazz.setCategory(KeyFactory.createKey("Category", Long.parseLong(createClassFormBean.getClassCategory())));
-        
-        
-		/*
-		 * System.out.println("setting class Category");
-		 * clazz.setCategory(catKey); System.out.println("class Category set");
-		 */
+    
         clazz.setMinStudents(Integer.parseInt(createClassFormBean
                 .getMinStudents()));
         clazz.setMaxStudents(Integer.parseInt(createClassFormBean
