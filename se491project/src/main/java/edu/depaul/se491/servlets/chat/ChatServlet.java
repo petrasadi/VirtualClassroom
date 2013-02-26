@@ -7,14 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.depaul.se491.chat.ChatTokenManager;
+import edu.depaul.se491.chat.ChatManager;
 
-/*
- * chat implemented using the Channel API
- */
-public class InitChatServlet extends HttpServlet {
+public class ChatServlet extends HttpServlet {
 	private static final long serialVersionUID = 1420462622633565245L;
-	private ChatTokenManager chatManager = new ChatTokenManager();
+	ChatManager chatManager = new ChatManager();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response)
@@ -31,17 +28,20 @@ public class InitChatServlet extends HttpServlet {
 	protected void handleRequest(HttpServletRequest request,
 			HttpServletResponse response)
 					throws ServletException, IOException {
+		//TODO - implement the ChatManager servlet
 		
-		//FIXME - what if parseLong fails
-        String userOpenId = request.getParameter("user");
+		//FIXME - validation for the params
+        String userId = request.getParameter("user");
         long classId = Long.parseLong(request.getParameter("classId"));
         
-        //FIXME - why is classId=0?
-		if (userOpenId!= null && classId!=0){
-            String chatToken = chatManager.getTokenAsJson(userOpenId, classId);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(chatToken);
-		}
+        if (userId!= null && classId!=0){
+        	if (chatManager.isUserInClass(userId, classId)) {
+        		//TODO - add message to list
+        		//TODO - broadcast message
+        	} else {
+        		//TODO
+        	}
+        }
+		
 	}
 }

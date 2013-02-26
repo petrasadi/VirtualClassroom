@@ -19,7 +19,7 @@ class UserList {
 		return userList.get(classId);
 	}
 	
-	boolean isUserInClass(long classId, String userId){
+	boolean isUserInClass(String userId, long classId){
 		List<String> classUserList = userList.get(classId);
 		if (classUserList != null &&
 				classUserList.contains(userId))
