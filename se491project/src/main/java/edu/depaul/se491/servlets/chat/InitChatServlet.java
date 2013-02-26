@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import edu.depaul.se491.chat.ChatManager;
+import edu.depaul.se491.chat.ChatTokenManager;
 
 /*
  * chat implemented using the Channel API
@@ -15,7 +15,7 @@ import edu.depaul.se491.chat.ChatManager;
 public class InitChatServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1420462622633565245L;
-	private ChatManager chatManager = new ChatManager();
+	private ChatTokenManager chatManager = new ChatTokenManager();
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response)

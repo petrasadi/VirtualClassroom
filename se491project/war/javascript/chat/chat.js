@@ -1,5 +1,11 @@
+var channel;
+var socket;
+var userId;
+var classId;
+
 function initChat(userOpenId, classOpenTokId) {
-    $.post('initChat', {user: userOpenId, classId: classOpenTokId},
+	userId = userOpenId; classId = classOpenTokId; 
+    $.post('initChat', {user: userId, classId: classId},
         function (data) {
             getChatToken(data);
         },
@@ -10,6 +16,10 @@ function initChat(userOpenId, classOpenTokId) {
 }
 
 function getChatToken(data){
-	//TODO - persist the token in the session?
-	alert(data.chatToken);
+	channel = new goog.appengine.Channel(data.token);
+	socket = channel.open();
+	socket.onopen = onOpened;
+/*    socket.onmessage = onMessage;
+    socket.onerror = onError;
+    socket.onclose = onClose;*/
 }

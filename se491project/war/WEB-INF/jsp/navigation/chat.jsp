@@ -13,16 +13,19 @@
     } else {
         classId = ((Long) session.getAttribute("classId")).longValue();
     }
-
-
 %>
 
 <link rel=StyleSheet href="stylesheets/opentok.css" type="text/css">
 <script src='http://static.opentok.com/v1.1/js/TB.min.js'></script>
 <script type="text/javascript" src="javascript/jquery-1.8.2.js"></script>
+
 <script type="text/javascript" src="javascript/opentok/opentok.js"></script>
 <script type="text/javascript" src="javascript/opentok/opentokUtil.js"></script>
+
+<script type="text/javascript" src="/_ah/channel/jsapi"></script>
 <script type="text/javascript" src="javascript/chat/chat.js"></script>
+<script type="text/javascript" src="javascript/chat/chatSocketListeners.js"></script>
+
 <style>
 	#subscribers {
 		margin-left:auto;
@@ -85,7 +88,7 @@
 	</div>
 	
 	<!-- //TODO - create this upon chat init -->
-	<div id="chat">
+	<div id="chat" style="float:right;">
 		<div id="messageDisplay">
 			<ul id="messageList"></ul>
 		</div>
