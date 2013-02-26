@@ -13,5 +13,6 @@ onOpened = function() {
 //TODO - onClose;
 
 function sendMessage (message) {
+	//TODO
 	alert("onOpened succesfully called");
 }

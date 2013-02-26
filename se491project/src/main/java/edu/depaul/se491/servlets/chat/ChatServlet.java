@@ -33,14 +33,10 @@ public class ChatServlet extends HttpServlet {
 		//FIXME - validation for the params
         String userId = request.getParameter("user");
         long classId = Long.parseLong(request.getParameter("classId"));
+        String message = request.getParameter("message");
         
-        if (userId!= null && classId!=0){
-        	if (chatManager.isUserInClass(userId, classId)) {
-        		//TODO - add message to list
-        		//TODO - broadcast message
-        	} else {
-        		//TODO
-        	}
+        if (userId!= null && classId!=0 && message != null){
+    		chatManager.updateClients(classId, userId, message);
         }
 		
 	}
