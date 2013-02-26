@@ -29,6 +29,9 @@ public class AdminUsers
     {
       
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
   
         LinkedList<Person> userlist = (LinkedList<Person>) DaoCmds.getPersons();
         
@@ -49,6 +52,9 @@ public class AdminUsers
     {
       
        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+       if (vcUser == null) {
+        return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+       }
        LinkedList<Person> userlist = (LinkedList<Person>) DaoCmds.getPersons();
        IPersonDAO personDAO = new PersonDAO();
        
@@ -98,6 +104,4 @@ public class AdminUsers
 
         return view;
     }
-
-
 }

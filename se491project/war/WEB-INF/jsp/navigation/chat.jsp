@@ -23,6 +23,32 @@
 <script type="text/javascript" src="javascript/opentok/opentok.js"></script>
 <script type="text/javascript" src="javascript/opentok/opentokUtil.js"></script>
 <script type="text/javascript" src="javascript/chat/chat.js"></script>
+<style>
+	#subscribers {
+		margin-left:auto;
+		margin-right:auto;
+		width:70%;
+		height:  100%;
+	}
+	#presenter {
+		width: 400px;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	.hor{
+		width:500px;
+		height:100px;
+		overflow-x:auto;
+		margin-left:auto;
+		margin-right:auto;
+		white-space: nowrap;
+		overflow:hidden;
+		padding-top:10px;
+	}
+	.hor:hover {
+		overflow-x: scroll;
+	}
+</style>
 </head>
 
 <!-- FIXME -user id is currently passed in clear text -->
@@ -33,7 +59,10 @@
 		
 	<div id="conferenceContainer">
 	    <div id="myPublisherDiv"></div>
-	    <div id="subscribers"></div>
+	    <div id="subscribers">
+	    	<div id="presenter"></div>
+	    	<div class="hor" id="students"></div>
+	    </div>
 	
 	    <div id="userDashboard" style="display: none; padding-left: 20px;">
 	        <div id="teacherDashboard">

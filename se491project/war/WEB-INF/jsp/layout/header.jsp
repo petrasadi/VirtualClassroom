@@ -7,9 +7,9 @@ Person vcUser = (Person) session.getAttribute("vcUser");
 %>
 <div class="top-menu">
 	<% if (userService.isUserLoggedIn() && vcUser != null) { %>
-	 <a class="btn btn-warning" href="<%=userService.createLogoutURL("/")%>">logout</a>
+	 <a class="btn btn-warning" href="<%=userService.createLogoutURL("/logout.do")%>">logout</a>
 	
 	<% } else { %>
-   <a class="btn btn-success" href="/displayLoginPage.do">login</a>
+    <a class="btn btn-success" href="/_ah/login_redirect">login</a>
     <% } %>
 </div>

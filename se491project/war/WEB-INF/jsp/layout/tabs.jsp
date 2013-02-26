@@ -15,7 +15,7 @@
     String homeSelect = "notselected";
     String adminSelect = "notselected";
     String accountSelect = "notselected";
-    String loginSelect = "notselected";
+  
 
     String tab = (String) request.getAttribute("tab");
     if (tab == null) {
@@ -30,9 +30,7 @@
         adminSelect = "active";//"selected";
     } else if (tab.equals("userinformation")) {
         accountSelect = "active";//"selected";
-    } else if (tab.equals("login")) {
-        loginSelect = "active";//"selected";
-    } else {
+    }else {
         homeSelect = "active";//"selected";
     }
 
@@ -45,7 +43,7 @@
 <div class="navbar">
     <div class="navbar-inner">
         <ul id="maintab" class="nav">
-            <li class="<%= homeSelect %>" rel="home"><a href="#"><i class="icon-home"></i> Home</a></li>
+            <li class="<%= homeSelect %>" rel="home" ><a href="#"><i class="icon-home"></i> Home</a></li>
 
             <%
                 if (userService.isUserLoggedIn() && vcUser != null) {
@@ -55,32 +53,28 @@
             <%
                 if (vcUser.isTeacher()) {
             %>
-            <li class="<%= teacherSelect %>" rel="teacher"><a href="#">Teacher</a></li>
+            <li class="<%= teacherSelect %>" rel="teacher" ><a href="#">Teacher</a></li>
             <%
                 }
                 if (vcUser.isStudent()) {
             %>
-            <li class="<%=studentSelect %>" rel="student"><a href="#">Student</a></li>
+            <li class="<%=studentSelect %>" rel="student" ><a href="#">Student</a></li>
             <%
 
                 }
                 if (vcUser.isAdmin()) {
             %>
-            <li class="<%=adminSelect %>" rel="admin"><a href="#">Admin</a></li>
+            <li class="<%=adminSelect %>" rel="admin" ><a href="#">Admin</a></li>
             <%
                 }
             %>
 
-            <li class="<%=accountSelect %>" rel="account"><a href="#">Account Information</a></li>
-            <li class="notselected"><a href="<%=userService.createLogoutURL("/")%>">Log Out</a></li>
+            <li class="<%=accountSelect %>" rel="account" ><a href="#">Account Information</a></li>
 
             <%
-            } else {
+            } 
             %>
-            <li class="<%=loginSelect %>"><a href="/displayLoginPage.do">Log In</a></li>
-            <%
-                }
-            %>
+           
         </ul>
     </div>
 </div>

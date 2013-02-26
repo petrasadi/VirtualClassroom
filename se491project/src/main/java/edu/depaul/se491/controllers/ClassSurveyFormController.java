@@ -32,6 +32,12 @@ public class ClassSurveyFormController {
 			@Valid ClassSurveyFormBean classSurveyFormBean,
 			BindingResult result, @ModelAttribute("classId") long id, HttpServletRequest request) {
 		
+		
+		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+	    if (vcUser == null) {
+	      return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+	    }
+		
 		List<String> survey = new LinkedList<String>();
 		survey.add(request.getParameter("optionsRadios1"));
 		survey.add(request.getParameter("optionsRadios2"));
@@ -46,11 +52,6 @@ public class ClassSurveyFormController {
 		//populate from bean with values from form
 		ModelAndView view = new ModelAndView();
 	
-		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
-		
-		if(vcUser == null){
-			 return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
-		}
 		
 		Key n = KeyFactory.createKey("Classes", id);
 		
@@ -72,7 +73,7 @@ public class ClassSurveyFormController {
 		ModelAndView view = new ModelAndView();
 		Person vcUser = (Person)request.getSession().getAttribute("vcUser");
 		if(vcUser == null){
-			 return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+			 return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
 		}
 
 		ClassSurveyFormBean classSurveyFormBean = new ClassSurveyFormBean();
@@ -92,5 +93,29 @@ public class ClassSurveyFormController {
 		return view;
 	}
 
-
+	@RequestMapping("/displaySurveyResults")
+	public ModelAndView displayClassSurveyResults(@ModelAttribute("classId") long id, HttpServletRequest request) {
+		ModelAndView view = new ModelAndView();
+		Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+		if(vcUser == null){
+			 return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+		}
+		
+		String openId = vcUser.getOpenid();
+        
+        Key n = KeyFactory.createKey("Classes", id);
+        Entity cl = DaoCmds.getClass(n);
+        int ee = DaoCmds.getEEClass(n);
+        int me = DaoCmds.getMEClass(n);
+        int dnm = DaoCmds.getDNMClass(n);
+        
+        view.setViewName("displaySurveyResultsPage");
+        view.addObject("tab", "teacher");
+        view.addObject("name", cl.getProperty("className"));
+        view.addObject("ee", ee);
+        view.addObject("me", me);
+        view.addObject("dnm", dnm);
+        return view;
+        
+	}
 }

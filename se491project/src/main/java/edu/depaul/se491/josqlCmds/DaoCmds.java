@@ -6,7 +6,6 @@ import edu.depaul.se491.model.Category;
 import edu.depaul.se491.model.Classes;
 import edu.depaul.se491.model.Person;
 
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -56,6 +55,19 @@ public class DaoCmds
         run.setCommand(cmd);
         return run.isExecute();
     }
+    
+    /**
+     * 
+     * @param classes
+     * @param person
+     * @return
+     */
+    public static boolean GetIsSurveyCmd(Key classes, Key person) {
+    	CmdController run = new CmdController();
+    	IDaoCommands cmd = new GetIsSurveyComplete(classes, person);
+    	run.setCommand(cmd);
+    	return run.isExecute();
+    }
 
     /**
      * Provides a linked list of the classes. This is nice because it does not provide a raw Entity.
@@ -88,7 +100,6 @@ public class DaoCmds
      * @param classes
      * @return Classes
      */
-    @SuppressWarnings("unchecked")
     public static Entity getClass(Key classes)
     {
         CmdController run = new CmdController();
@@ -276,13 +287,60 @@ public class DaoCmds
      * @param classId
      * @return LinkedList<Person>
      */
-    public static List<Person> getStudentsInClass(Key classId)
+    @SuppressWarnings("unchecked")
+	public static List<Person> getStudentsInClass(Key classId)
     {
         CmdController run = new CmdController();
         IDaoCommands cmd = new GetStudentsInClassCmd(classId);
         run.setCommand(cmd);
         return (LinkedList<Person>) run.getExecute();
     }
+    
+    /**
+     * 
+     * @param classes
+     * @return
+     */
+    public static int getSurveyCount(Key classes) {
+    	CmdController run = new CmdController();
+    	IDaoCommands cmd = new GetIsSurveyCount(classes);
+    	run.setCommand(cmd);
+    	return ((Integer) run.getExecute()).intValue();
+    }
 
-
+    /**
+     * 
+     * @param classId
+     * @return
+     */
+    public static int getEEClass(Key classId) {
+    	CmdController run = new CmdController();
+        IDaoCommands cmd = new GetExceedExpectationsCount(classId);
+        run.setCommand(cmd);
+        return ((Integer) run.getExecute()).intValue();
+    }
+    
+    /**
+     * 
+     * @param classId
+     * @return
+     */
+    public static int getMEClass(Key classId) {
+    	CmdController run = new CmdController();
+        IDaoCommands cmd = new GetMeetsExpectationsCount(classId);
+        run.setCommand(cmd);
+        return ((Integer) run.getExecute()).intValue();
+    }
+    
+    /**
+     * 
+     * @param classId
+     * @return
+     */
+    public static int getDNMClass(Key classId) {
+    	CmdController run = new CmdController();
+        IDaoCommands cmd = new GetDoesNotMeetExpectationsCount(classId);
+        run.setCommand(cmd);
+        return ((Integer) run.getExecute()).intValue();
+    }
 }

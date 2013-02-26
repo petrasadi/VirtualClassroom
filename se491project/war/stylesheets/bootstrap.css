@@ -63,6 +63,14 @@
 	margin:0 auto;
 	width:940px;
 }
+.sub-header div#subfeatured{
+	overflow: auto;
+	padding-top: 50px;
+	background:url(../images/sub_classpicker.png) no-repeat right !important;
+	height:100px;
+	margin:0 auto;
+	width:940px;
+}
 .sub-header div#featured img{
 	border:0;
     height:102px;
@@ -76,15 +84,19 @@
 	display:block;
 }
 /*------------------------- Footer ------------------------*/ 
+.footer, .push {
+    height: 5px; /* Height of the footer */
+        }
 .footer{
 	width:auto;
-	background:url(../images/bg-footer.gif) repeat-x left top !important;
+	background:url(../images/bg-footer.gif) repeat !important;
 	padding:45px 0 105px;
 	margin:0 auto;
 	overflow:hidden;
 }
 .footer div{
 	width:960px;
+	
 	margin:0 auto;
 	overflow:hidden;
 }
@@ -127,7 +139,7 @@
 	float:left;
 	margin:0 0 0 50px;
 	width:auto;
-	height:150px;
+	height:100px;
 	background:url(../images/interface.gif) no-repeat left -33px;
 }
 .footer div div.connect a:hover{

@@ -42,8 +42,16 @@
                     <td><a href="/displayTeacherInformation.do?openId=${class.openId}">${class.teacherName}</a></td>
                     <td>${class.category}</td>
                     <td>${class.classEndDay}</td>
-                    <td><a href="/displayClassSurveyPage.do?openId=${class.openId}&classId=${class.id}" class="btn btn-warning"><i
+                    <c:choose>
+                    <c:when test = "${class.survey}">
+						<td><a href="/displayClassSurveyPage.do?openId=${class.openId}&classId=${class.id}" class="btn btn-warning disabled" onClick='return false'><i
+                            class="icon-remove icon-white"></i> Survey</a></td>
+                    </c:when>
+                    <c:otherwise>
+                    	<td><a href="/displayClassSurveyPage.do?openId=${class.openId}&classId=${class.id}" class="btn btn-warning"><i
                             class="icon-exclamation-sign icon-white"></i> Survey</a></td>
+                    </c:otherwise>
+                    </c:choose>
                 </tr>
             </c:forEach>
             </tbody>

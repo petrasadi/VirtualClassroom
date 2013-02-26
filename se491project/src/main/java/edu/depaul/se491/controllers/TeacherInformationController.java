@@ -29,7 +29,11 @@ public class TeacherInformationController
     @RequestMapping(value = "/displayTeacherInformation", method = RequestMethod.GET)
     public ModelAndView displayStudentSchedule(@RequestParam(value = "openId") String openId, HttpServletRequest request)
     {
-
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
+         
 
         SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
         SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
@@ -39,14 +43,18 @@ public class TeacherInformationController
         String classEndDayStr;
 
         Person teacher = DaoCmds.getPersonByOpenId(openId);
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+    
         LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds.getTeacherClasses(openId);
         LinkedList<ClassRegistrationListBean> cCurrentBeanList = new LinkedList<ClassRegistrationListBean>();
         LinkedList<ClassRegistrationListBean> cHistoryBeanList = new LinkedList<ClassRegistrationListBean>();
 
         TimeZone tz = TimeZone.getTimeZone("US/Central");
         DateTime now = new DateTime(DateTimeZone.forTimeZone(tz));
-
+        
+        int ee = 0;
+        int me = 0;
+        int dnm = 0;
+        
         for (Classes c : clist) {
             ClassRegistrationListBean cBean = new ClassRegistrationListBean();
 
@@ -83,6 +91,11 @@ public class TeacherInformationController
             }
             cBean.setId(c.getId().getId());
             
+            if (DaoCmds.getSurveyCount(c.getId()) > 0) {
+            	ee += DaoCmds.getEEClass(c.getId());
+            	me += DaoCmds.getMEClass(c.getId());
+            	dnm += DaoCmds.getDNMClass(c.getId());
+            }
             
             DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
             if(DateTimeZone.getDefault().toString().equals("UTC")){
@@ -102,6 +115,9 @@ public class TeacherInformationController
         ModelAndView view = new ModelAndView();
         view.setViewName("displayTeacherInformation");
         view.addObject("tab", "student");
+        view.addObject("ee", ee);
+        view.addObject("me", me);
+        view.addObject("dnm", dnm);
         view.addObject("scheduledclasses", cCurrentBeanList);
         view.addObject("historyclasses", cHistoryBeanList);
         view.addObject("teachername", teacher.getFirstName() + " " + teacher.getLastName());

@@ -66,6 +66,15 @@ public class ClassRatingDAO implements IClassRating {
 	}
 	
 	@Override
+	public PreparedQuery getClassRatings(Key classes) throws ClassRatingException {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Filter classesFilter = new FilterPredicate("classes", FilterOperator.EQUAL, classes);
+		Query classRating_tableQuery = new Query("ClassRating").setFilter(classesFilter);
+		
+		PreparedQuery cr = datastore.prepare(classRating_tableQuery);
+		return cr;
+	}
+	@Override
 	public boolean isSurveyComplete(Key classes, Key person) throws ClassRatingException {
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Filter classesFilter = new FilterPredicate("classes", FilterOperator.EQUAL, classes);

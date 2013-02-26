@@ -27,6 +27,11 @@ public class StudentHistoryController
     @RequestMapping(value = "/displayStudentClassHistory", method = RequestMethod.GET)
     public ModelAndView displayStudentSchedule(HttpServletRequest request)
     {
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
+         
         SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
         SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
         String classStartTimeStr;
@@ -34,7 +39,7 @@ public class StudentHistoryController
         String classStartDayStr;
         String classEndDayStr;
 
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+      
         String openId = vcUser.getOpenid();
 
         LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds
@@ -74,6 +79,7 @@ public class StudentHistoryController
             cBean.setId(c.getId().getId());
             cBean.setOpenId(DaoCmds.getTeacherCmd(c.getId()).getOpenid());
             cBean.setTeacherName(DaoCmds.getTeacherCmd(c.getId()).getFirstName() + " " + DaoCmds.getTeacherCmd(c.getId()).getLastName());
+            cBean.setSurvey(DaoCmds.GetIsSurveyCmd(c.getId(), vcUser.getId()));
             
             DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
             if(DateTimeZone.getDefault().toString().equals("UTC")){
@@ -93,5 +99,4 @@ public class StudentHistoryController
         view.addObject("classes", cBeanList);
         return view;
     }
-
 }

@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE tiles-definitions PUBLIC
         "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
@@ -20,7 +19,7 @@
 
     <definition name="displayLoginPage" extends="base.definition">
         <put-attribute name="title" value="Login"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/tabs/openidlogin.jsp?continue=/checkRegistration.do"/>
+        <put-attribute name="body" value="/_ah/login_redirect"/>
     </definition>
 
     <definition name="displayUserInformationPage" extends="base.definition">
@@ -145,6 +144,10 @@
         <put-attribute name="title" value="Teacher Information"/>
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherinformation.jsp"/>
     </definition>
+    <definition name="displayStudentInformation" extends="base.definition">
+        <put-attribute name="title" value="Student Information"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentinformation.jsp"/>
+    </definition>
     <definition name="displayTeacherHistoryClasses" extends="base.definition">
         <put-attribute name="title" value="Teacher Class History"/>
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherclasshistory.jsp"/>
@@ -157,6 +160,10 @@
  	<definition name="displayClassSurveyPage" extends="base.definition">
         <put-attribute name="title" value="Class Survey" />
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/classsurvey.jsp" />
+    </definition>
+    <definition name="displaySurveyResultsPage" extends="base.definition">
+        <put-attribute name="title" value="Class Survey" />
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/SurveyResult.jsp" />
     </definition>
     <definition name="displayAdminUsers" extends="base.definition">
         <put-attribute name="title" value="Admin User List" />

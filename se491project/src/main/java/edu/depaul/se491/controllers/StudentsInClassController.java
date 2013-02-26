@@ -26,12 +26,12 @@ public class StudentsInClassController
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
             return new ModelAndView("displayLoginPage", "command", new Object())
-                    .addObject("tab", "login");
+                    .addObject("tab", "home");
         }
 
 
         List<Person> slist = DaoCmds.getStudentsInClass(KeyFactory.createKey("Classes", Long.parseLong(classId)));
-
+      
         ModelAndView view = new ModelAndView();
         view.setViewName("displayStudentsInClass");
         view.addObject("tab", "teacher");
