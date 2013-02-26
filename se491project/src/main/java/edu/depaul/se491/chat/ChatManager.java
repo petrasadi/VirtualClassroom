@@ -2,14 +2,16 @@ package edu.depaul.se491.chat;
 
 import com.google.appengine.api.channel.ChannelService;
 import com.google.appengine.api.channel.ChannelServiceFactory;
+import com.google.gson.Gson;
 
 public class ChatManager {
 	public String getTokenAsJson(String userId, long classId){
 		String token = generateToken(userId, classId);
-
-		//TODO - transform this to json
 		
-		return token;
+		ChatSessionData chatSessionData = new ChatSessionData();
+		chatSessionData.setToken(token);
+        String gson = new Gson().toJson(chatSessionData);
+        return gson;
 	}
 	
 	/**
@@ -29,5 +31,17 @@ public class ChatManager {
 		ChannelService channelService = ChannelServiceFactory.getChannelService();
 		String token = channelService.createChannel(String.valueOf(uniq));
 		return token;
+	}
+	
+	private class ChatSessionData {
+		private String token;
+
+		String getToken() {
+			return token;
+		}
+
+		void setToken(String token) {
+			this.token = token;
+		}
 	}
 }
