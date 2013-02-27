@@ -16,6 +16,8 @@
 %>
 
 <link rel=StyleSheet href="stylesheets/opentok.css" type="text/css">
+<link rel=StyleSheet href="stylesheets/chat.css" type="text/css">
+
 <script src='http://static.opentok.com/v1.1/js/TB.min.js'></script>
 <script type="text/javascript" src="javascript/jquery-1.8.2.js"></script>
 
@@ -92,8 +94,12 @@
 		<div id="messageDisplay">
 			<ul id="messageList"></ul>
 		</div>
-		<div id="messageInput">
-			<input type="text" name="message">
+		<div id="messageInputDiv">
+			<input id="messageInput" type="text" name="messageInput" value="Write a comment..." />
+			<!-- 
+				onkeypress="submitOnEnter(event,'form value')"
+			/>
+			-->
 		</div>
 	</div>
 	

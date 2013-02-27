@@ -36,5 +36,4 @@ public class ChatManager {
 	        channelService.sendMessage(cMessage);
       }
 	}
-
 }

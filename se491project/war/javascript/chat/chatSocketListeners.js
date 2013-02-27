@@ -2,8 +2,6 @@ var counter=1;
 
 onOpened = function() {
   connected = true;
-  //TODO - create/show the chat divs
-  
   //TODO - customize the message sent to chat server
   sendMessage(userId + ' joind the class');
 };
@@ -16,8 +14,6 @@ onMessage = function(aMessage){
     li.textContent = aMessage.data;
     $('#messageList').append(li);
 };
-//TODO - onError;
-//TODO - onClose;
 
 function sendMessage (message) {
 	$.post('chat', 
