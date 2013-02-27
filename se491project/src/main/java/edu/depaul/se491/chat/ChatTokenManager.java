@@ -22,15 +22,8 @@ public class ChatTokenManager {
 	 * @return the token
 	 */
 	private String generateToken(String userId, long classId){
-		StringBuilder tokenBuilder = new StringBuilder();
-		tokenBuilder.append(userId);
-		tokenBuilder.append(classId);
-		int uniq = tokenBuilder.toString().hashCode();
-		
 		//part of appengine - creates a unique token to use by the requesting user
 		ChannelService channelService = ChannelServiceFactory.getChannelService();
-		
-		//FIXME - REDO
 		String token = channelService.createChannel(userId);
 		return token;
 	}

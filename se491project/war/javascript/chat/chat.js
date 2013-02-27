@@ -20,8 +20,6 @@ function getChatToken(data){
 	socket = channel.open();
 	socket.onopen = onOpened;
 	socket.onmessage = onMessage;
-    /*
-    socket.onerror = onError;
-    socket.onclose = onClose;
-    */
+    socket.onerror = function() {alert("Error");}; //onError;
+    socket.onclose = function() {alert("Close");}; //onClose;
 }

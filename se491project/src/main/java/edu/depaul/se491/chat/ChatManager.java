@@ -17,8 +17,8 @@ public class ChatManager {
 	public void updateClients(long classId, String userId, String message) {
 		ChannelMessage cMessage = new ChannelMessage(userId, message);
 		messageList.addMessage(classId, cMessage);
-		
 		userList.addUser(classId, userId);
+		
 		List<String>users = userList.getUsersForClass(classId);
 				
 		for (String user : users){
