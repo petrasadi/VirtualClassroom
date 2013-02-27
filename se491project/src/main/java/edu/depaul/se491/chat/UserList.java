@@ -7,14 +7,17 @@ import java.util.List;
 class UserList {
 	HashMap<Long, List<String>> userList = new HashMap<Long, List<String>>();
 	
-	void addUser(long classId, String userId){
+	boolean addUser(long classId, String userId){
 		List<String> classUserList = userList.get(classId);
 		if (classUserList == null)
 			userList.put(classId, 
 					classUserList = new ArrayList<String>());
 		
-		if (!classUserList.contains(userId))
+		if (!classUserList.contains(userId)) {
 			classUserList.add(userId);
+			return true;
+		}
+		return false;
 	}
 	
 	List<String> getUsersForClass(long classId) {

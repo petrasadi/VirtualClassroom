@@ -59,10 +59,12 @@ function getChatToken(data){
 	socket = channel.open();
 	socket.onopen = onOpened;
 	socket.onmessage = onMessage;
+
+	//TODO - onError and onClose;
     socket.onerror = function() {alert("Error");};
     socket.onclose = function() {
     	token = null;
     	alert("Close");
+    	//TODO remove user from server's user list
 	};
-	//TODO - redo onError and onClose;
 }

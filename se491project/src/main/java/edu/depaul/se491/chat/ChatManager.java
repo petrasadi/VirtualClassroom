@@ -18,16 +18,24 @@ public class ChatManager {
 		//TODO - rethink how messages are stored
 		ChannelMessage cMessage = new ChannelMessage(userId, message);
 		messageList.addMessage(classId, cMessage);
-		userList.addUser(classId, userId);
+		boolean newUser = userList.addUser(classId, userId);
 		
 		List<String>users = userList.getUsersForClass(classId);
 				
 		for (String user : users){
-			cMessage = new ChannelMessage(user, message);
-			updateClient(user, cMessage);
+			if(!newUser){
+				cMessage = new ChannelMessage(user, message);
+				updateClient(user, cMessage);
+			} else
+				if (user.equals(userId)) {
+					//TODO - send all message history
+					for (ChannelMessage oldMessage : messageList.getMessages(classId)){
+						cMessage = new ChannelMessage(user, oldMessage.getMessage());
+						updateClient(user, cMessage);
+					}
+				}
 		}
 
-		//TODO - IF NEW USER - add to userList, then send all message history
 	}
 
 	private void updateClient(String user, ChannelMessage cMessage) {
