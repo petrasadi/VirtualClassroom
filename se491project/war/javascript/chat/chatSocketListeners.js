@@ -3,7 +3,7 @@ onOpened = function() {
   //TODO - create/show the chat divs
   
   //send message to chat server
-  sendMessage('opened');
+  sendMessage('onOpened succesfully called');
   
   //TODO - update the message board
 };
@@ -14,5 +14,5 @@ onOpened = function() {
 
 function sendMessage (message) {
 	//TODO
-	alert("onOpened succesfully called");
+	alert(message);
 }
