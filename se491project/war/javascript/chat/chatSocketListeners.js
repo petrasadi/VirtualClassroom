@@ -13,6 +13,14 @@ onOpened = function() {
 //TODO - onClose;
 
 function sendMessage (message) {
-	//TODO
-	alert(message);
+	$.post('chat', {user: userId, classId: classId, message: message},
+	    function (data) {
+	        getChatToken(data);
+	    },
+	    'json'
+	);
+}
+
+function getMessage (data){
+	alert(data);
 }
