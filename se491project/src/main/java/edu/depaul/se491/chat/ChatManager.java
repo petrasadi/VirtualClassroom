@@ -15,6 +15,7 @@ public class ChatManager {
 	}
 
 	public void updateClients(long classId, String userId, String message) {
+		//TODO - rethink how messages are stored
 		ChannelMessage cMessage = new ChannelMessage(userId, message);
 		messageList.addMessage(classId, cMessage);
 		userList.addUser(classId, userId);
@@ -22,6 +23,7 @@ public class ChatManager {
 		List<String>users = userList.getUsersForClass(classId);
 				
 		for (String user : users){
+			cMessage = new ChannelMessage(user, message);
 			updateClient(user, cMessage);
 		}
 
