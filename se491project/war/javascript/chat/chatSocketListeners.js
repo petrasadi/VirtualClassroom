@@ -5,7 +5,7 @@ onOpened = function() {
   //TODO - create/show the chat divs
   
   //TODO - customize the message sent to chat server
-  sendMessage((counter++) + ' joind the class');
+  sendMessage(userId + ' joind the class');
 };
 
 //FIXME - function called multiple times for same message
