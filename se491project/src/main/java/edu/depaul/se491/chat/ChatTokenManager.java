@@ -29,7 +29,9 @@ public class ChatTokenManager {
 		
 		//part of appengine - creates a unique token to use by the requesting user
 		ChannelService channelService = ChannelServiceFactory.getChannelService();
-		String token = channelService.createChannel(String.valueOf(uniq));
+		
+		//FIXME - REDO
+		String token = channelService.createChannel(userId);
 		return token;
 	}
 	

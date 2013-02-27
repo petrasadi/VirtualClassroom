@@ -19,7 +19,9 @@ function getChatToken(data){
 	channel = new goog.appengine.Channel(data.token);
 	socket = channel.open();
 	socket.onopen = onOpened;
-/*    socket.onmessage = onMessage;
+	socket.onmessage = onMessage;
+    /*
     socket.onerror = onError;
-    socket.onclose = onClose;*/
+    socket.onclose = onClose;
+    */
 }

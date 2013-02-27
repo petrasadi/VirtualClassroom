@@ -12,7 +12,9 @@ class UserList {
 		if (classUserList == null)
 			userList.put(classId, 
 					classUserList = new ArrayList<String>());
-		classUserList.add(userId);
+		
+		if (!classUserList.contains(userId))
+			classUserList.add(userId);
 	}
 	
 	List<String> getUsersForClass(long classId) {
