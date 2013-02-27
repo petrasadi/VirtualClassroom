@@ -17,7 +17,7 @@ function initChat(userOpenId, classOpenTokId) {
 	  //TODO - create/show the chat divs like below 
 	  /*
 	  var commentForm = "<div id=\"formDiv\" style='margin:0px 10px 5px 5px;'> " +
-	  "<input type='text' name=\"commentInput\" id=\"commentInput\" value='Write a comment...' />" +
+	  "<input type='text' name=\"MessageInput\" id=\"MessageInput\" value='Write a comment...' />" +
 	"</div>";
 	  */
 	
@@ -25,14 +25,12 @@ function initChat(userOpenId, classOpenTokId) {
 	$('#messageInputDiv > #messageInput').keypress(function (k) {
 	    if (k.which == 13) {
 	        k.preventDefault();
-	        var newComment = $('#messageInputDiv > #messageInput').val();
-	        if ((newComment == "Write a comment...") || (newComment == "")) {
+	        var newMessage = $('#messageInputDiv > #messageInput').val();
+	        if ((newMessage == "Write a comment...") || (newMessage == "")) {
 	            //do nothing
 	        } else {
 	            //TODO - security validation()
-	            //write the new comment to db
-	            //persistComment(newComment, this);
-	            alert(newComment);
+	        	sendMessage(newMessage);
 
 	            //reset the input field to the initial state
 	            $('#messageInputDiv > #messageInput').blur().val("Write a comment...");
@@ -40,7 +38,7 @@ function initChat(userOpenId, classOpenTokId) {
 	    }
 	});
 
-	//functionality for the comments form
+	//functionality for the Messages form
 	//change the default value of the input field on focus
 	$('#messageInputDiv > #messageInput').focus(function () {
 	    if ($(this).val() == "Write a comment...") {
@@ -67,11 +65,4 @@ function getChatToken(data){
     	alert("Close");
 	};
 	//TODO - redo onError and onClose;
-}
-
-function submitOnEnter(e,value){
-	var key=e.keyCode || e.which;
-	if (key==13){
-		alert(value);
-	}
 }

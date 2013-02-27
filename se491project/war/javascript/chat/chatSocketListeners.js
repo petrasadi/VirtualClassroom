@@ -8,7 +8,7 @@ onOpened = function() {
 
 //FIXME - function called multiple times for same message
 onMessage = function(aMessage){
-	alert(aMessage.data);
+	//alert(aMessage.data);
     var li = document.createElement('li');
     li.setAttribute('class', 'message');
     li.textContent = aMessage.data;
