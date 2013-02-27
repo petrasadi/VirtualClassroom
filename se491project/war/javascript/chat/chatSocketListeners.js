@@ -13,7 +13,7 @@ onMessage = function(aMessage){
 	alert(aMessage.data);
     var li = document.createElement('li');
     li.setAttribute('class', 'message');
-    li.innerText = aMessage.data;
+    li.textContent = aMessage.data;
     $('#messageList').append(li);
 };
 //TODO - onError;
