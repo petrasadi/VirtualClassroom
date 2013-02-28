@@ -31,14 +31,12 @@ function handleOpenTok(dt){
 
 
 function raisehand(){
-	//session.signal();
 	var connectionId = session.connection.connectionId;
 	stateManager.set("raiseHand", connectionId);
 }
 
 //TODO - fix raiseHand event
 function raiseHandHandler(event){
-	//var connectionId = event.fromConnection.connectionId;
 	var connectionId = event.changedValues["raiseHand"];
 
 	//ignore request if already registered
@@ -68,14 +66,6 @@ function raiseHandHandler(event){
 
 
 function switchPublishingUser(userRole, connectionId){
-	/*	if (userRole === 'teacher') {
-		//remove from set so that the student can ask other questions
-		speakRequestsSet[connectionId] = false;
-		var btnId = "#requestButton" + connectionId;
-		$(btnId).remove();
-		alert("done");
-	}*/
-
 	stateManager.set("moderator_switchUser", connectionId);
 }
 
@@ -95,7 +85,9 @@ function forcePublish(connectionId){
 		var div = document.createElement('div');
 		div.setAttribute('id', 'publisher');
 		$('#myPublisherDiv').append(div);
-		publisher = TB.initPublisher(data.apiKey, div);
+		//TODO -  add user name
+		var publisherProperties = {rememberDeviceAccess:"true"};
+		publisher = TB.initPublisher(data.apiKey, div, publisherProperties);
 
 		//TODO - only add publisher if camera and mic detected
 		publisher.addEventListener('accessAllowed', accessAllowedHandler);
@@ -139,7 +131,13 @@ function sessionConnectedHandler(event) {
 		var div = document.createElement('div');
 		div.setAttribute('id', 'publisher');
 		$('#myPublisherDiv').append(div);
-		publisher = TB.initPublisher(data.apiKey, div);
+		
+		//TODO - get the profs name fromt the db and set here, or hide
+		
+		var publisherProperties = {name:"Instructor", rememberDeviceAccess:"true",
+				style:{nameDisplayMode:"off"}
+		};
+		publisher = TB.initPublisher(data.apiKey, div, publisherProperties);
 
 		//TODO - only add publisher if camera and mic detected
 
@@ -163,25 +161,32 @@ function subscribeToStreams(streams) {
 	} else {
 		$('#noSession').remove();
 		for (var i = 0; i < streams.length; i++) {
-			// Create the div to put the subscriber element in to
-			var div = document.createElement('div');
-			div.setAttribute('id', 'stream' + streams[i].streamId);
-			$('#subscribers').append(div);
+			var subscriber=null;
+			
+			if (streams[i].name=="Instructor") {
+				// Create the div to put the subscriber element in to
+				var div = document.createElement('div');
+				div.setAttribute('id', 'stream' + streams[i].streamId);
+				$('#teacherVideo').append(div);
 
-			// Subscribe to the stream
-			var subscribeProps = {width:400, height:225};
+				// Subscribe to the stream
+				var subscribeProps = {width: 400, height: 225};
+				subscriber = session.subscribe(streams[i], div.id, subscribeProps);
+			} else {
+				// Create the div to put the subscriber element in to
+				var div = document.createElement('div');
+				div.setAttribute('id', 'stream' + streams[i].streamId);
+				$('#studentsVideo').append(div);
 
-
-			var subscriber = session.subscribe(streams[i], div.id, subscribeProps);
-			//do not subscribe to own audio
-			//this eliminates the audio feedback issue
-			if (streams[i].connection.connectionId == session.connection.connectionId) {
-				subscriber.subscribeToAudio(false);
-				//return;
+				// Subscribe to the stream
+				var subscribeProps = {width: 150, height: 84};
+				var subscriber = session.subscribe(streams[i], div.id, subscribeProps);
 			}
 
 
-
+			if (streams[i].connection.connectionId == session.connection.connectionId) {
+				subscriber.subscribeToAudio(false);
+			}
 		}
 		generateUserDashBoard(data.role);
 	}
@@ -189,10 +194,6 @@ function subscribeToStreams(streams) {
 
 
 function accessAllowedHandler(event){
-
-	/*	for (var i = 0; i < session.streams.length; i++) {
-		forceUnpublishStream(session.streams[i].streamId);
-	}*/
 
 	//make the publisher img invisible after receiving access
 	$("#myPublisherDiv").addClass("invisible");

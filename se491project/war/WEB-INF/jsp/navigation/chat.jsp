@@ -38,10 +38,8 @@
 	<div id="conferenceContainer">
 	    <div id="myPublisherDiv"></div>
 	    <div id="subscribers">
-	    <!--
-	    	<div id="presenter"></div>
-	    	<div class="hor" id="students"></div>
-	    	-->
+	    	<div id="teacherVideo"></div>
+	    	<div class="hor" id="studentsVideo"></div>
 	    </div>
 	
 	    <div id="userDashboard" style="display: none;">
