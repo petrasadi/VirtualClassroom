@@ -100,7 +100,7 @@ function forcePublish(connectionId){
 		//TODO - only add publisher if camera and mic detected
 		publisher.addEventListener('accessAllowed', accessAllowedHandler);
 	}
-	$("#conferenceContainer").width(1000);
+	//$("#conferenceContainer").width(1000);
 }
 
 
