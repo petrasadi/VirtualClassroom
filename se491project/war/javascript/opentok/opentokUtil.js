@@ -51,7 +51,7 @@ function raiseHandHandler(event){
 		var element = '<input class="dashboardButton" ';
 		element += 'id="' + btnId + '"';
 		element += 'type="image" src="images/opentok/face.png" title="student speak request"';
-			element += 'onclick="switchPublishingUser(' + rqstParams + ')"';
+		element += 'onclick="switchPublishingUser(' + rqstParams + ')"';
 		element += '>';
 		$('#speakRequests').append(element);
 	}
@@ -68,7 +68,7 @@ function raiseHandHandler(event){
 
 
 function switchPublishingUser(userRole, connectionId){
-/*	if (userRole === 'teacher') {
+	/*	if (userRole === 'teacher') {
 		//remove from set so that the student can ask other questions
 		speakRequestsSet[connectionId] = false;
 		var btnId = "#requestButton" + connectionId;
@@ -170,7 +170,18 @@ function subscribeToStreams(streams) {
 
 			// Subscribe to the stream
 			var subscribeProps = {width:400, height:225};
-			session.subscribe(streams[i], div.id, subscribeProps);
+
+
+			var subscriber = session.subscribe(streams[i], div.id, subscribeProps);
+			//do not subscribe to own audio
+			//this eliminates the audio feedback issue
+			if (streams[i].connection.connectionId == session.connection.connectionId) {
+				subscriber.subscribeToAudio(false);
+				//return;
+			}
+
+
+
 		}
 		generateUserDashBoard(data.role);
 	}
@@ -179,7 +190,7 @@ function subscribeToStreams(streams) {
 
 function accessAllowedHandler(event){
 
-/*	for (var i = 0; i < session.streams.length; i++) {
+	/*	for (var i = 0; i < session.streams.length; i++) {
 		forceUnpublishStream(session.streams[i].streamId);
 	}*/
 
