@@ -28,32 +28,6 @@
 <script type="text/javascript" src="javascript/chat/chat.js"></script>
 <script type="text/javascript" src="javascript/chat/chatSocketListeners.js"></script>
 
-<style>
-	#subscribers {
-		margin-left:auto;
-		margin-right:auto;
-		width:70%;
-		height:  100%;
-	}
-	#presenter {
-		width: 400px;
-		margin-left:auto;
-		margin-right:auto;
-	}
-	.hor{
-		width:500px;
-		height:100px;
-		overflow-x:auto;
-		margin-left:auto;
-		margin-right:auto;
-		white-space: nowrap;
-		overflow:hidden;
-		padding-top:10px;
-	}
-	.hor:hover {
-		overflow-x: scroll;
-	}
-</style>
 </head>
 
 <!-- FIXME -user id is currently passed in clear text -->
