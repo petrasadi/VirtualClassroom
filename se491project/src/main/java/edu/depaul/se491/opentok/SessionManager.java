@@ -107,7 +107,6 @@ public class SessionManager
      */
     private String getUserRole(long classId, String userOpenId)
     {
-        //FIXME - this is boraked because isTeacher method doesn't work
         if (DaoCmds.isTeacher(userOpenId, classId)) {
             //if (userOpenId.equals("11954315423323014418")){
             return "teacher";

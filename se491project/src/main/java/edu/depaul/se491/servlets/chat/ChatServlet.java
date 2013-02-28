@@ -28,9 +28,7 @@ public class ChatServlet extends HttpServlet {
 	protected void handleRequest(HttpServletRequest request,
 			HttpServletResponse response)
 					throws ServletException, IOException {
-		//TODO - implement the ChatManager servlet
-		
-		//FIXME - validation for the params
+		//TODO - validation for the params
         String userId = request.getParameter("user");
         long classId = Long.parseLong(request.getParameter("classId"));
         String message = request.getParameter("message");

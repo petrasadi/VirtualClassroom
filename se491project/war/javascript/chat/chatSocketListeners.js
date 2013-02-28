@@ -6,7 +6,6 @@ onOpened = function() {
   sendMessage(userId + ' joind the class');
 };
 
-//FIXME - function called multiple times for same message
 onMessage = function(aMessage){
 	//alert(aMessage.data);
     var li = document.createElement('li');

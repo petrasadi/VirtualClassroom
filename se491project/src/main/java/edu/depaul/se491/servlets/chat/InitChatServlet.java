@@ -32,7 +32,7 @@ public class InitChatServlet extends HttpServlet {
 			HttpServletResponse response)
 					throws ServletException, IOException {
 		
-		//FIXME - what if parseLong fails
+		//TODO - param validation
         String userOpenId = request.getParameter("user");
         long classId = Long.parseLong(request.getParameter("classId"));
         
