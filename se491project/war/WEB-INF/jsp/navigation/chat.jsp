@@ -5,7 +5,6 @@
 <%
     UserService userService = UserServiceFactory.getUserService();
 
-
     String user = userService.getCurrentUser().getUserId();
     long classId = 0;
     if (request.getAttribute("classid") != null) {
@@ -39,11 +38,13 @@
 	<div id="conferenceContainer">
 	    <div id="myPublisherDiv"></div>
 	    <div id="subscribers">
+	    <!--
 	    	<div id="presenter"></div>
 	    	<div class="hor" id="students"></div>
+	    	-->
 	    </div>
 	
-	    <div id="userDashboard" style="display: none; padding-left: 20px;">
+	    <div id="userDashboard" style="display: none;">
 	        <div id="teacherDashboard">
 	            <!-- TODO - handle regain control -->
 	            <input class="dashboardButton" type="image" src="images/glyphicons_221_unshare.png" title="regain control"
@@ -57,29 +58,24 @@
 	        <input class="dashboardButton" type="image" src="images/glyphicons_245_chat.png" title="open chat window"
 	               onclick="initChat('<%=user%>', '<%=classId%>')">
 	        <input class="dashboardButton" type="image" src="images/glyphicons_063_power.png" title="exit class"
-	               onclick="alert('TODO - exit chat')">
+	               onclick="endOpenTokSession()">
 	    </div>
 	
 	    <div id="speakRequests"></div>
 	</div>
 	
+	
+	
 	<!-- //TODO - create this upon chat init -->
+	<!-- 
 	<div id="chat" style="float:right;">
 		<div id="messageDisplay">
 			<ul id="messageList"></ul>
 		</div>
 		<div id="messageInputDiv">
 			<input id="messageInput" type="text" name="messageInput" value="Write a comment..." />
-			<!-- 
-				onkeypress="submitOnEnter(event,'form value')"
-			/>
-			-->
 		</div>
 	</div>
+	-->
 	
-	<div id="myDiv">
-	    <!-- 
-	    <button type="button" onclick="endOpenTokSession()">Close session</button>
-	    -->
-	</div>
 </div>
