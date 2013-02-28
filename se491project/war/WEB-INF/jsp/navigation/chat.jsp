@@ -65,8 +65,8 @@
 	
 	
 	<!-- //TODO - create this upon chat init -->
-	<!-- 
-	<div id="chat" style="float:right;">
+
+	<div id="chat" style="display: none;">
 		<div id="messageDisplay">
 			<ul id="messageList"></ul>
 		</div>
@@ -74,6 +74,5 @@
 			<input id="messageInput" type="text" name="messageInput" value="Write a comment..." />
 		</div>
 	</div>
-	-->
 	
 </div>
