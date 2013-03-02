@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import edu.depaul.se491.model.Person;
+
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
@@ -34,19 +36,30 @@ public class TabViewController
     @RequestMapping("/displayTeacherMainPage")
     public ModelAndView displayTeacherMainPage(HttpServletRequest request)
     {
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
+         
+        
         return new ModelAndView("displayTeacherMainPage", "command", new Object()).addObject("tab", "teacher");
     }
 
     @RequestMapping("/displayStudentMainPage")
     public ModelAndView displayStudentMainPage(HttpServletRequest request)
     {
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
+         
         return new ModelAndView("displayStudentMainPage", "command", new Object()).addObject("tab", "student");
     }
 
     @RequestMapping("/displayLoginPage")
     public ModelAndView displayLoginPage(HttpServletRequest request)
     {
-        return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+        return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
     }
 
     @RequestMapping("/displayErrorJavaExceptionPage")

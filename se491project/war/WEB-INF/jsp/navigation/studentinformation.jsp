@@ -4,12 +4,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/row.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
 
 <div class="container">
-<div class="navbar">
-    	<p class="brand">History of Classes Taught</p><br/>
-<br/>
     <div class="datagrid">
+    <div class="navbar">
+    <p class="brand">Student Information</p>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <p class="brand">${studentname}</p>
+    <p class="brand">${studentemail}</p>
+    <br/>
+    <br/>
+    <div class="navbar">
+    <p class="brand">Scheduled Classes</p>
+     </div>
+
         <table id="my-table" class="table table-hover">
             <thead>
             <tr>
@@ -19,8 +31,6 @@
                 <th>End Date</th>
                 <th>Start Time</th>
                 <th>End Time</th>
-                <th>Registered Students</th>
-                <th>Survey Results</th>
             </tr>
             </thead>
             <tfoot>
@@ -30,6 +40,46 @@
             </tfoot>
             <tbody>
             <c:forEach var="class" items="${scheduledclasses}" varStatus="rowCounter">
+               <tr>
+                    <td>${class.name}</td>
+                    <td>${class.category}</td>
+                    <td>${class.classStartDay}</td>
+                    <td>${class.classEndDay}</td>
+                    <td>${class.classStartTime}</td>
+                    <td>${class.classEndTime}</td>                   
+               </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<br/>
+<br/>
+
+
+<div class="container">
+    <div class="datagrid">
+    <div class="navbar">
+    <p class="brand">Class History</p>
+    </div>
+        <table id="my-table" class="table table-hover">
+            <thead>
+            <tr>
+                <th>Class Name</th>
+                <th>Category</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <td colspan="4">
+            </tr>
+            </tfoot>
+            <tbody>
+            <c:forEach var="class" items="${historyclasses}" varStatus="rowCounter">
                 <c:choose>
                     <c:when test="${rowCounter.count % 2 == 0}">
                         <c:set var="rowStyle" scope="page" value=""/>
@@ -43,24 +93,10 @@
                     <td>${class.category}</td>
                     <td>${class.classStartDay}</td>
                     <td>${class.classEndDay}</td>
-                    <td>${class.classStartTime}</td>
-                    <td>${class.classEndTime}</td>
-                    <td><a href="/displayStudentInClass.do?classId=${class.id}">${class.numberOfRegisteredStudents}
-                        Students</a></td>
-                    <c:choose>
-                    <c:when test = "${class.surveysComplete == 0}">
-                    <td><a href="/displaySurveyResults.do?classId=${class.id}" class="btn btn-warning disabled" onClick='return false'><i
-                            class="icon-remove icon-white"></i> Survey Overview</a></td>
-                    </c:when>
-                    <c:otherwise>
-                    <td><a href="/displaySurveyResults.do?classId=${class.id}" class="btn btn-warning"><i
-                            class="icon-filter icon-white"></i> Survey Overview</a></td>
-                    </c:otherwise>
-                    </c:choose>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </div>
 </div>
-</div>
+

@@ -1,41 +1,40 @@
 package edu.depaul.se491.controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.TimeZone;
-
-import javax.servlet.http.HttpServletRequest;
+import edu.depaul.se491.formBeans.ClassRegistrationListBean;
+import edu.depaul.se491.josqlCmds.DaoCmds;
+import edu.depaul.se491.model.Classes;
+import edu.depaul.se491.model.Person;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
-import edu.depaul.se491.formBeans.ClassRegistrationListBean;
-import edu.depaul.se491.josqlCmds.DaoCmds;
-import edu.depaul.se491.model.Classes;
-import edu.depaul.se491.model.Person;
+import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.LinkedList;
+import java.util.TimeZone;
 
 @Controller
 @SessionAttributes
-public class TeacherClassListController
+public class StudentInformationController
 {
 
-    @RequestMapping(value = "/displayTeacherListCurrentClasses", method = RequestMethod.GET)
-    public ModelAndView displayTeacherListCurrentClasses(
-            HttpServletRequest request)
+    @RequestMapping(value = "/displayStudentInformation", method = RequestMethod.GET)
+    public ModelAndView displayStudentSchedule(@RequestParam(value = "openId") String openId, HttpServletRequest request)
     {
-    	ModelAndView view = new ModelAndView();
-    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
-        if (vcUser == null) {
+    
+       Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+       if (vcUser == null) {
           return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
-        }
-             
+       }
+
         SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
         SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
         String classStartTimeStr;
@@ -43,16 +42,17 @@ public class TeacherClassListController
         String classStartDayStr;
         String classEndDayStr;
 
-        LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds
-                .getTeacherClasses(vcUser.getOpenid());
+        Person student = DaoCmds.getPersonByOpenId(openId);
+        LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds.getStudentClasses(openId);
         LinkedList<ClassRegistrationListBean> cCurrentBeanList = new LinkedList<ClassRegistrationListBean>();
+        LinkedList<ClassRegistrationListBean> cHistoryBeanList = new LinkedList<ClassRegistrationListBean>();
 
         TimeZone tz = TimeZone.getTimeZone("US/Central");
         DateTime now = new DateTime(DateTimeZone.forTimeZone(tz));
-      
+
         for (Classes c : clist) {
             ClassRegistrationListBean cBean = new ClassRegistrationListBean();
-            List<Person> slist = DaoCmds.getStudentsInClass(c.getId());
+
             try {
                 classStartDayStr = dateFmt.format(c.getClassStartTime());
                 classStartTimeStr = timeFmt.format(c.getClassStartTime());
@@ -75,14 +75,18 @@ public class TeacherClassListController
             cBean.setClassEndTime(classEndTimeStr);
             cBean.setClassStartDay(classStartDayStr);
             cBean.setClassStartTime(classStartTimeStr);
-            cBean.setStudentList(slist);
-            cBean.setId(c.getId().getId());
-            if (canJoinClass(c.getClassStartTime(), c.getClassEndTime())) {
+            if (DaoCmds.isStudentByKey(vcUser.getId(), c.getId()) && canJoinClass(c.getClassStartTime(), c.getClassEndTime())) {
           		cBean.setRegistration("Join");
-            } else {
+            } else if (DaoCmds.isStudentByKey(vcUser.getId(), c.getId()))  {
           		cBean.setRegistration("Not Time To Join");
-            } 
-       
+            } else if (!DaoCmds.isClassFull(c.getId()) && !DaoCmds.isStudentByKey(vcUser.getId(), c.getId())) {
+                cBean.setRegistration("Register");
+            } else {
+                cBean.setRegistration("Full");
+            }
+            cBean.setId(c.getId().getId());
+            
+            
             DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
             if(DateTimeZone.getDefault().toString().equals("UTC")){
             	classEndTime = classEndTime.plusHours(6);
@@ -91,20 +95,23 @@ public class TeacherClassListController
 
             if (classEndTime.isAfter(now)) {
             	cCurrentBeanList.add(cBean);
+            } else {
+                cHistoryBeanList.add(cBean);
             }
+
+
         }
 
-       
-        view.setViewName("displayTeacherListCurrentClasses");
+        ModelAndView view = new ModelAndView();
+        view.setViewName("displayStudentInformation");
         view.addObject("tab", "teacher");
         view.addObject("scheduledclasses", cCurrentBeanList);
-        
-       
-        
+        view.addObject("historyclasses", cHistoryBeanList);
+        view.addObject("studentname", student.getFirstName() + " " + student.getLastName());
+        view.addObject("studentemail", student.getEmail());
         return view;
     }
-    
-    
+
     boolean canJoinClass(final Date classStartTime, final Date classEndTime)
     {
     	  TimeZone tz = TimeZone.getTimeZone("US/Central");

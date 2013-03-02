@@ -36,13 +36,12 @@
     	<div class="datagrid">
 <table id="my-table" class="table table-hover">
     <thead><tr class="rowheader">
-        <td>Class Name</td>
-        <td>Class Description</td>
-        <td>Class Date</td>
-        <td>Start Time</td>
-        <td>End Time</td>
-        <td>Min Students</td>
-        <td>Max Students</td>
+        <th>Class Name</th>
+        <th>Category</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Start Time</th>
+        <th>End Time</th>
     </tr></thead>
     <c:forEach var="class" items="${classes}" varStatus="rowCounter">
         <c:choose>
@@ -54,13 +53,12 @@
             </c:otherwise>
         </c:choose>
         <tr class="${rowStyle}">
-            <td>${class.className}</td>
-            <td>${class.description}</td>
-            <td>${class.displayClassDate}</td>
-            <td>${class.displayClassStartTime}</td>
-            <td>${class.displayClassEndTime}</td>
-            <td>${class.minStudents}</td>
-            <td>${class.maxStudents}</td>
+           <td>${class.name}</td>
+           <td>${class.category}</td>
+           <td>${class.classStartDay}</td>
+           <td>${class.classEndDay}</td>
+           <td>${class.classStartTime}</td>
+           <td>${class.classEndTime}</td>
         </tr>
     </c:forEach>
 

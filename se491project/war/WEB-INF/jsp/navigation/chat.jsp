@@ -35,14 +35,17 @@
 		margin-right:auto;
 	}
 	.hor{
-	width:500px;
-	height:100px;
-	overflow-x:auto;
-	margin-left:auto;
-	margin-right:auto;
-	white-space: nowrap;
-	overflow-y:hidden;
-	padding-top:10px;
+		width:500px;
+		height:100px;
+		overflow-x:auto;
+		margin-left:auto;
+		margin-right:auto;
+		white-space: nowrap;
+		overflow:hidden;
+		padding-top:10px;
+	}
+	.hor:hover {
+		overflow-x: scroll;
 	}
 </style>
 </head>

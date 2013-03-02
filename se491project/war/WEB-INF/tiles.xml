@@ -19,7 +19,7 @@
 
     <definition name="displayLoginPage" extends="base.definition">
         <put-attribute name="title" value="Login"/>
-        <put-attribute name="body" value="/WEB-INF/jsp/tabs/openidlogin.jsp?continue=/checkRegistration.do"/>
+        <put-attribute name="body" value="/_ah/login_redirect"/>
     </definition>
 
     <definition name="displayUserInformationPage" extends="base.definition">
@@ -143,6 +143,10 @@
     <definition name="displayTeacherInformation" extends="base.definition">
         <put-attribute name="title" value="Teacher Information"/>
         <put-attribute name="body" value="/WEB-INF/jsp/navigation/teacherinformation.jsp"/>
+    </definition>
+    <definition name="displayStudentInformation" extends="base.definition">
+        <put-attribute name="title" value="Student Information"/>
+        <put-attribute name="body" value="/WEB-INF/jsp/navigation/studentinformation.jsp"/>
     </definition>
     <definition name="displayTeacherHistoryClasses" extends="base.definition">
         <put-attribute name="title" value="Teacher Class History"/>

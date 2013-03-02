@@ -1,13 +1,17 @@
 package edu.depaul.se491.controllers;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,38 +35,67 @@ public class ClassRegistrationController
     public ModelAndView displayClassRegistration(HttpServletRequest request)
     {
         Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
+        }
+        SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
+        SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
+        String classStartTimeStr;
+        String classEndTimeStr;
+        String classStartDayStr;
+        String classEndDayStr;
 
         LinkedList<Classes> clist = (LinkedList<Classes>) DaoCmds.getClasses();
         LinkedList<ClassRegistrationListBean> cBeanList = new LinkedList<ClassRegistrationListBean>();
 
-        Calendar cd = Calendar.getInstance();
-        Date today = cd.getTime();
+        TimeZone tz = TimeZone.getTimeZone("US/Central");
+        DateTime now = new DateTime(DateTimeZone.forTimeZone(tz));
 
 
         for (Classes c : clist) {
         	
         	// if the class has ended, do no let a student register.
-        	
-        	if (!c.getClassEndTime().after(today)) {
-                   continue;
-            }
+        	 DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
+             if(DateTimeZone.getDefault().toString().equals("UTC")){
+             	classEndTime = classEndTime.plusHours(6);
+             }
+             classEndTime = classEndTime.plusMinutes(60);      
+
+             if (!classEndTime.isAfter(now)) {
+             	continue;
+             }
         	
         	// If you are the teacher of the class, you can not register for it.
         	if(c.getTeacher().equals(vcUser.getId())){
         		 continue;
         	}
         	
+        	 try {
+                 classStartDayStr = dateFmt.format(c.getClassStartTime());
+                 classStartTimeStr = timeFmt.format(c.getClassStartTime());
+             } catch (Exception e) {
+                 classStartTimeStr = "unavailable";
+                 classStartDayStr = "unavailable";
+             }
+             try {
+                 classEndDayStr = dateFmt.format(c.getClassEndTime());
+                 classEndTimeStr = timeFmt.format(c.getClassEndTime());
+            
+             } catch (Exception e) {
+                 classEndDayStr = "unavailable";
+                 classEndTimeStr = "unavailable";
+             }
         	
             ClassRegistrationListBean cBean = new ClassRegistrationListBean();
             cBean.setName(c.getClassName());
             cBean.setCategory((String) DaoCmds.getCategoryByKey(c.getId()).getProperty("name"));
-            cBean.setStartDate(c.getClassStartTime().toString());
-            cBean.setEndDate(c.getClassEndTime().toString());
+            cBean.setClassEndDay(classEndDayStr);
+            cBean.setClassEndTime(classEndTimeStr);
+            cBean.setClassStartDay(classStartDayStr);
+            cBean.setClassStartTime(classStartTimeStr);           
             cBean.setOpenId(DaoCmds.getTeacherCmd(c.getId()).getOpenid());
             cBean.setTeacherName(DaoCmds.getTeacherCmd(c.getId()).getFirstName() + " " + DaoCmds.getTeacherCmd(c.getId()).getLastName());
 
-            
-         
 
             if (DaoCmds.isStudentByKey(vcUser.getId(), c.getId()) && canJoinClass(c.getClassStartTime(), c.getClassEndTime())) {
           		cBean.setRegistration("Join");
@@ -95,19 +128,25 @@ public class ClassRegistrationController
     @RequestMapping(value = "/registerStudentForClass")
     public ModelAndView registerStudentForClass(@ModelAttribute("classId") long val, HttpServletRequest request)
     {
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
-
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+        }
         Key n = KeyFactory.createKey("Classes", val);
         DaoCmds.addStudentCmd(vcUser.getId(), n).toString();
 
-        ModelAndView view = new ModelAndView();
-        view.setViewName("displayClassRegistration");
-        return view;
+        return displayClassRegistration(request);
     }
 
     @RequestMapping(value = "/joinClass")
     public ModelAndView joinClass(@ModelAttribute("classId") long id, HttpServletRequest request)
     {
+    	
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+        if (vcUser == null) {
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "login");
+        }
+    	
         HttpSession session = request.getSession(true);
         session.setAttribute("classId", id);
 

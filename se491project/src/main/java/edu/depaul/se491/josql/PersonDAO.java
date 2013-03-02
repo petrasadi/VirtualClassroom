@@ -282,7 +282,7 @@ public class PersonDAO implements IPersonDAO
             //Filter idFilter = new FilterPredicate("id", FilterOperator.EQUAL, person.getId());
             //Query person_tableQuery = new Query("Person").setFilter(idFilter);
             //PreparedQuery pq = datastore.prepare(person_tableQuery);
-
+            System.out.println("in: updating user");
             //Entity pEntity = pq.asSingleEntity();
             Transaction tx = datastore.beginTransaction();
             pEntity.setProperty("firstname", person.getFirstName());
@@ -303,6 +303,7 @@ public class PersonDAO implements IPersonDAO
             pEntity.setProperty("admin", person.isAdmin());
 
             try {
+            	System.out.println("persisting: updating user");
                 datastore.put(pEntity);
                 tx.commit();
             } finally {

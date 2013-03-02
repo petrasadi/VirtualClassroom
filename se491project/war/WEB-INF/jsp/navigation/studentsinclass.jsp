@@ -25,16 +25,8 @@
             </tfoot>
             <tbody>
             <c:forEach var="student" items="${studentList}" varStatus="rowCounter">
-                <c:choose>
-                    <c:when test="${rowCounter.count % 2 == 0}">
-                        <c:set var="rowStyle" scope="page" value=""/>
-                    </c:when>
-                    <c:otherwise>
-                        <c:set var="rowStyle" scope="page" value="alt"/>
-                    </c:otherwise>
-                </c:choose>
-                <tr class="${rowStyle}">
-                    <td>${student.firstName} ${student.lastName}</td>
+                <tr>
+                    <td><a href="/displayStudentInformation.do?openId=${student.openid}">${student.firstName} ${student.lastName}</a></td>
                     <td>${student.email}</td>
                 </tr>
             </c:forEach>

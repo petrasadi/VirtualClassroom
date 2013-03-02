@@ -29,12 +29,16 @@ public class TeacherClassHistoryController
     public ModelAndView displayTeacherListCurrentClasses(
             HttpServletRequest request)
     {
+    	
+    	
     	ModelAndView view = new ModelAndView();
-        Person vcUser = (Person) request.getSession().getAttribute("vcUser");
+    	
+    	Person vcUser = (Person) request.getSession().getAttribute("vcUser");
         if (vcUser == null) {
-            return new ModelAndView("displayLoginPage", "command", new Object())
-                    .addObject("tab", "login");
+          return new ModelAndView("displayLoginPage", "command", new Object()).addObject("tab", "home");
         }
+         
+     
         SimpleDateFormat timeFmt = new SimpleDateFormat("hh:mm aa");
         SimpleDateFormat dateFmt = new SimpleDateFormat("MM/dd/yyyy");
         String classStartTimeStr;
@@ -49,7 +53,6 @@ public class TeacherClassHistoryController
         TimeZone tz = TimeZone.getTimeZone("US/Central");
         DateTime now = new DateTime(DateTimeZone.forTimeZone(tz));
         
-
         for (Classes c : clist) {
             ClassRegistrationListBean cBean = new ClassRegistrationListBean();
             List<Person> slist = DaoCmds.getStudentsInClass(c.getId());
@@ -80,6 +83,7 @@ public class TeacherClassHistoryController
             cBean.setStudentList(slist);
             cBean.setSurveysComplete(DaoCmds.getSurveyCount(c.getId()));
             cBean.setId(c.getId().getId());
+            
             boolean utc = false;
             DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
             if(DateTimeZone.getDefault().toString().equals("UTC")){

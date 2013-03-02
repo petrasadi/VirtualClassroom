@@ -5,9 +5,38 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <link rel="stylesheet" type="text/css" href="/stylesheets/row.css"/>
 <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+      function drawVisualization() {
+        // Create and populate the data table.
+        var options = {
+  width: 600,
+  height: 400,
+  colors: ['#51a351', '#B2C7D6', '#f89406', '#f3b49f', '#f6c7b6'],
+  backgroundColor: 'transparent',
+  is3D: true
+};
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Total Survey Result Counts'],
+          ['Exceeds Expectations', ${ee}],
+          ['Meets Expectations', ${me}],
+          ['Does NOT Meet Expectations', ${dnm}],
+        ]);
+       
+        // Create and draw the visualization.
+        new google.visualization.PieChart(document.getElementById('visualization')).
+          draw(data, options);
+      }
 
+      google.setOnLoadCallback(drawVisualization);
+    </script>
 <div class="container">
     <div class="datagrid">
+    <div class="row">
+    <div class="span6">
     <div class="navbar">
     <p class="brand">Teacher Information</p>
     </div>
@@ -18,6 +47,13 @@
     <p class="brand">${teacheremail}</p>
     <br/>
     <br/>
+    </div>
+    <div class="span6">
+    <div class="navbar">
+    	<p class="brand">Survey Result for Teacher: ${teachername}</p>
+    	</div>
+    <div id="visualization" style="width: 600px; height: 400px;"></div></div>
+    </div>
     <div class="navbar">
     <p class="brand">Scheduled Classes</p>
      </div>
