@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://localhost:8888/" />
+<title>NewTeacherAccount</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">NewTeacherAccount</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/displayLoginPage.do#</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=login</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>testEmail@gmail.com</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>name=action</td>
+	<td></td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=firstName</td>
+	<td>Lex</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=lastName</td>
+	<td>Luther</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=middleName</td>
+	<td>Bad Guy</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=phone</td>
+	<td>555-555-6666</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=phone2</td>
+	<td>555-999-2687</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=email</td>
+	<td>testEmail@gmail.com</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=address</td>
+	<td>360 N Broadway</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=city</td>
+	<td>New York</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=state</td>
+	<td>label=New York</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=zip</td>
+	<td>67648</td>
+</tr>
+<tr>
+	<td>select</td>
+	<td>id=country</td>
+	<td>label=United States</td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>id=teacher1</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=input[type=&quot;submit&quot;]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>verifyTextPresent</td>
+	<td>Welcome to your account on Virtual Classroom!!! </td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Teacher</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//button[@id='b1'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//button[@id='b2'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>xpath=(//button[@id='b3'])[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>link=Account Information</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//ul[@id='account']/button[2]</td>
+	<td></td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>//ul[@id='account']/button</td>
+	<td></td>
+</tr>
+</tbody></table>
+</body>
+</html>
