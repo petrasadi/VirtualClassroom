@@ -20,6 +20,8 @@
 <script src='http://static.opentok.com/v1.1/js/TB.min.js'></script>
 <script type="text/javascript" src="javascript/jquery-1.8.2.js"></script>
 
+<script type="text/javascript" src="javascript/vClassManager.js"></script>
+
 <script type="text/javascript" src="javascript/opentok/opentok.js"></script>
 <script type="text/javascript" src="javascript/opentok/opentokUtil.js"></script>
 
@@ -30,10 +32,10 @@
 </head>
 
 <!-- FIXME -user id is currently passed in clear text -->
-<body onload="getSessionInfo('<%=user%>', '<%=classId%>')">
+<body onload="initializeCommunication('<%=user%>', '<%=classId%>')">
 <div class="container">
 
-	<button class="btn" type="button" onclick="initChat('<%=user%>', '<%=classId%>')">Open chat</button>
+	<button class="btn" type="button" onclick="openChat()">Open chat</button>
 		
 	<div id="conferenceContainer">
 	    <div id="myPublisherDiv"></div>
@@ -53,19 +55,15 @@
 	                   onclick="raisehand()">
 	        </div>
 	
-	        <input class="dashboardButton" type="image" src="images/glyphicons_245_chat.png" title="open chat window"
-	               onclick="initChat('<%=user%>', '<%=classId%>')">
-	        <input class="dashboardButton" type="image" src="images/glyphicons_063_power.png" title="exit class"
-	               onclick="endOpenTokSession()">
+	        <input class="dashboardButton" type="image" src="images/glyphicons_245_chat.png" title="open chat"
+	               onclick="openChat()">
+	        <input class="dashboardButton" type="image" src="images/glyphicons_063_power.png" title="exit chat"
+	               onclick="closeChat()">
 	    </div>
 	
 	    <div id="speakRequests"></div>
 	</div>
 	
-	
-	
-	<!-- //TODO - create this upon chat init -->
-
 	<div id="chat" style="display: none;">
 		<div id="messageDisplay">
 			<ul id="messageList"></ul>

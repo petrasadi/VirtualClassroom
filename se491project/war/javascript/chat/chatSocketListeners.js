@@ -12,6 +12,15 @@ onMessage = function(aMessage){
     $('#messageList').append(li);
 };
 
+onClose = function() {
+	token = null;
+	//TODO remove user from server's user list
+}
+onError = function() {
+	
+	//TODO
+}
+
 function sendMessage (message) {
 	message = data.userData.firstName + ' says: ' + message;
 	$.post('chat', 

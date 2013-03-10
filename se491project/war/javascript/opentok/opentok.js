@@ -11,6 +11,8 @@ function getSessionInfo(userOpenId, classOpenTokId) {
     $.post('opentok', {classId: classOpenTokId, user: userOpenId},
         function (data) {
             handleOpenTok(data);
+        	//initialize chat
+        	initChat(userOpenId, classOpenTokId);
         },
         'json'
     );
