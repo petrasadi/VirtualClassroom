@@ -21,7 +21,7 @@ public class OpenTokServlet extends HttpServlet
                          HttpServletResponse response)
             throws ServletException, IOException
     {
-        doStuff(request, response);
+        handleRequest(request, response);
     }
 
     /**
@@ -31,11 +31,11 @@ public class OpenTokServlet extends HttpServlet
                           HttpServletResponse response)
             throws ServletException, IOException
     {
-        doStuff(request, response);
+        handleRequest(request, response);
     }
 
 
-    protected void doStuff(HttpServletRequest request,
+    protected void handleRequest(HttpServletRequest request,
                            HttpServletResponse response)
             throws ServletException, IOException
     {

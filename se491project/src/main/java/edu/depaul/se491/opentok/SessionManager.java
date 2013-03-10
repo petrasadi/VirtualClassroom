@@ -5,6 +5,7 @@ import com.opentok.api.OpenTokSDK;
 import com.opentok.api.constants.RoleConstants;
 import com.opentok.exception.OpenTokException;
 import edu.depaul.se491.josqlCmds.DaoCmds;
+import edu.depaul.se491.model.Person;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -39,19 +40,28 @@ public class SessionManager
 
             userToken = generateOpenTokUserToken(sessionId, classId, userOpenId, userRole);
         }
+        
+        Person person = getPersonByOpenId(userOpenId);
 
         OpenTokSessionInfo sessionInfo = new OpenTokSessionInfo();
         sessionInfo.setApiKey(OpenTok_API_Consts.API_KEY);
         sessionInfo.setSessionId(sessionId);
         sessionInfo.setToken(userToken);
         sessionInfo.setRole(userRole);
+        sessionInfo.setUserData(person);
 
         String gson = new Gson().toJson(sessionInfo);
         return gson;
     }
 
 
-    /**
+    private Person getPersonByOpenId(String userOpenId) {
+		Person person = DaoCmds.getPersonByOpenId(userOpenId);
+		return person;
+	}
+
+
+	/**
      * Generates an OpenTok session id. Used as a box for a particular class
      *
      * @return the session id
