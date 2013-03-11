@@ -47,7 +47,7 @@ public class AvailableClassesController
         	// if the class has ended, show as an available class.
         	 DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
              if(DateTimeZone.getDefault().toString().equals("UTC")){
-             	classEndTime = classEndTime.plusHours(6);
+             	classEndTime = classEndTime.plusHours(5);
              }              
 
              if (!classEndTime.isAfter(now)) {

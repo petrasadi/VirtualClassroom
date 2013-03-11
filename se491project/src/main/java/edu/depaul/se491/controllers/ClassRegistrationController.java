@@ -57,7 +57,7 @@ public class ClassRegistrationController
         	// if the class has ended, do no let a student register.
         	 DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
              if(DateTimeZone.getDefault().toString().equals("UTC")){
-             	classEndTime = classEndTime.plusHours(6);
+             	classEndTime = classEndTime.plusHours(5);
              }
              classEndTime = classEndTime.plusMinutes(60);      
 
