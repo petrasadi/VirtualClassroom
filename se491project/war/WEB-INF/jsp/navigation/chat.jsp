@@ -35,7 +35,7 @@
 <body onload="initializeCommunication('<%=user%>', '<%=classId%>')">
 <div class="container">
 
-	<button class="btn" type="button" onclick="openChat()">Open chat</button>
+	<button id="openChatBtn" class="btn" type="button" onclick="openChat()">Open chat</button>
 		
 	<div id="conferenceContainer">
 	    <div id="myPublisherDiv"></div>

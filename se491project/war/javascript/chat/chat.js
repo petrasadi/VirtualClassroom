@@ -34,6 +34,9 @@ function openChat() {
 	$('#conferenceContainer').addClass('slideLeft');
 	//show the chat div
 	$('#chat').show();
+	//hide the Open Chat button
+	$('#openChatBtn').hide();
+	
 
 	//if the ENTER key is pressed - send message
 	$('#messageInputDiv > #messageInput').keypress(function (k) {
@@ -71,6 +74,7 @@ function closeChat() {
 	
 	//show the chat div
 	$('#chat').hide();
+	$('#openChatBtn').show();
 	//slide the conferenceContainer back in the midle of page
 	$('#conferenceContainer').removeClass('slideLeft');
 }
