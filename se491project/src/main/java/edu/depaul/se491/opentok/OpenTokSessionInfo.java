@@ -1,5 +1,7 @@
 package edu.depaul.se491.opentok;
 
+import edu.depaul.se491.model.Person;
+
 /**
  * Used as a placeholder for the session info of a specific user
  * for a specific class
@@ -16,6 +18,7 @@ class OpenTokSessionInfo
     private String sessionId;
     private String token;
     private String role;
+    private Person userData;
 
     int getApiKey()
     {
@@ -56,6 +59,14 @@ class OpenTokSessionInfo
     {
         this.role = role;
     }
+
+	public Person getUserData() {
+		return userData;
+	}
+
+	public void setUserData(Person userData) {
+		this.userData = userData;
+	}
 
 
 }

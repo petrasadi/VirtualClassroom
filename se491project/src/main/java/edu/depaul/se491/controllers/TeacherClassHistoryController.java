@@ -88,7 +88,7 @@ public class TeacherClassHistoryController
             DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
             if(DateTimeZone.getDefault().toString().equals("UTC")){
             	 utc = true;
-            	classEndTime = classEndTime.plusHours(6);
+            	classEndTime = classEndTime.plusHours(5);
             }
            classEndTime = classEndTime.plusMinutes(60);      
 

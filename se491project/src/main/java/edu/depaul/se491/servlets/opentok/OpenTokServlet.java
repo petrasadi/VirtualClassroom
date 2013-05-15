@@ -10,8 +10,9 @@ import java.io.IOException;
 
 public class OpenTokServlet extends HttpServlet
 {
-    private static final long serialVersionUID = 1L;
-    private SessionManager sessionManager = new SessionManager();
+
+	private static final long serialVersionUID = -7826158042929606757L;
+	private SessionManager sessionManager = new SessionManager();
 
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -20,7 +21,7 @@ public class OpenTokServlet extends HttpServlet
                          HttpServletResponse response)
             throws ServletException, IOException
     {
-        doStuff(request, response);
+        handleRequest(request, response);
     }
 
     /**
@@ -30,11 +31,11 @@ public class OpenTokServlet extends HttpServlet
                           HttpServletResponse response)
             throws ServletException, IOException
     {
-        doStuff(request, response);
+        handleRequest(request, response);
     }
 
 
-    protected void doStuff(HttpServletRequest request,
+    protected void handleRequest(HttpServletRequest request,
                            HttpServletResponse response)
             throws ServletException, IOException
     {

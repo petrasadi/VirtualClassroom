@@ -31,7 +31,7 @@
   			 <div class="span12"> <div class="error" >Please correct the errors and resubmit the form.</div></div>
            </div>
         </form:errors>
-        <br /><br /><br />
+        <br /><br />
 
         <div  class="row">
            <div class="span4">
@@ -68,8 +68,6 @@
             <form:input path="email"/><br/>
           </div>
         </div>
-
-
         <div  class="row">
           <div class="span4">
             <form:label path="address">Address</form:label>
@@ -129,9 +127,7 @@
         </div>
         <br/>
         <br/>
-        <br/>
-        <br/>
-        
+           
         <div  class="row">
            <div class="span12">
               <input class="btn btn-primary" type="submit" value="Register"/>

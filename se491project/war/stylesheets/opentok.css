@@ -5,9 +5,12 @@
 }
 
 #conferenceContainer {
+	display: block;
+	/*float: left;*/
     margin-left: auto;
     margin-right: auto;
-    width: 500px;
+    /*width: 600px;*/
+    width: 50%;
 }
 
 #conferenceContainer > * {
@@ -15,7 +18,8 @@
 }
 
 #userDashboard {
-    width: 50px;
+    width: 10%;
+    padding-left: 15px;
 }
 
 .dashboardButton {
@@ -25,4 +29,37 @@
 #speakRequests {
     clear: both;
     width: 400px;
+}
+
+/*Andy's take on video conference*/
+#subscribers {
+	margin-left:auto;
+	margin-right:auto;
+	width:85%;
+	height:  100%;
+}
+#myPublisherDiv {
+	margin-left:auto;
+	margin-right:auto;
+	width:70%;
+	height:  100%;
+}
+
+#teacherVideo {
+	width: 400px;
+	margin-left:auto;
+	margin-right:auto;
+}
+.hor{
+	width:500px;
+	height:100px;
+	overflow-x:auto;
+	margin-left:auto;
+	margin-right:auto;
+	white-space: nowrap;
+	overflow:hidden;
+	padding-top:10px;
+}
+.hor:hover {
+	overflow-x: scroll;
 }

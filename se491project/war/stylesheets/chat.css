@@ -1,0 +1,32 @@
+#chat {
+ 	float: right;
+	/*height: 500px;*/
+	border: 1px solid rgb(51, 149, 204);
+	padding: 10px;
+}
+ 
+#messageDisplay {
+ 	width: 300px;
+	height: 180px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	/*border: 1px solid rgb(51, 149, 204);*/
+}
+ 
+ #messageInput {
+ 	width: 285px;
+ }
+ 
+ ul#messageList {
+ 	list-style-type: none;
+	margin-left: 0px;
+}
+
+.btn {
+	/*float: left;*/
+	margin-left: -100px;
+}
+
+.slideLeft {
+	float: left;
+}

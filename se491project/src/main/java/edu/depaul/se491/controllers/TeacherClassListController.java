@@ -85,7 +85,7 @@ public class TeacherClassListController
        
             DateTime classEndTime = new DateTime(c.getClassEndTime(), DateTimeZone.forTimeZone(tz));
             if(DateTimeZone.getDefault().toString().equals("UTC")){
-            	classEndTime = classEndTime.plusHours(6);
+            	classEndTime = classEndTime.plusHours(5);
             }
             classEndTime = classEndTime.plusMinutes(60);      
 
@@ -114,8 +114,8 @@ public class TeacherClassListController
           DateTime timeToEndClass = new DateTime(classEndTime, DateTimeZone.forTimeZone(tz));
           
           if(DateTimeZone.getDefault().toString().equals("UTC")){
-        	  timeToEnterClass = timeToEnterClass.plusHours(6);
-              timeToEndClass = timeToEndClass.plusHours(6);          	
+        	  timeToEnterClass = timeToEnterClass.plusHours(5);
+              timeToEndClass = timeToEndClass.plusHours(5);          	
           }         
          
           timeToEnterClass = timeToEnterClass.minusMinutes(30);

@@ -8,7 +8,7 @@
 <div class="container">
     <div class="datagrid">
     <div class="navbar">
-    	<p class="brand">List of Class Taken at virtual Classroom</p><br/>
+    	<p class="brand">List of Classes Taken at Virtual Classroom</p><br/>
 <br/>
 
     	</div>
