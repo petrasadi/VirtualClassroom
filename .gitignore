@@ -12,7 +12,16 @@
 .metadata
 
 #TEST
-se491project/test-output/
+se491project/test-output/*
 
 #SERVERS
-Servers
+Servers/*
+
+#GAE
+appengine-web.xml
+
+#OTHER
+se491project/war/WEB-INF/appengine-generated/*
+se491project/war/WEB-INF/classes/*
+*~
+target

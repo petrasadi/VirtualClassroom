@@ -1,51 +1,144 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<%@ page import="com.google.appengine.api.users.UserServiceFactory"%>
-<%@ page import="com.google.appengine.api.users.UserService"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+         pageEncoding="ISO-8859-1" %>
+<%@ page import="com.google.appengine.api.users.UserService" %>
+<%@ page import="com.google.appengine.api.users.UserServiceFactory" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%
-	UserService userService = UserServiceFactory.getUserService();
+    UserService userService = UserServiceFactory.getUserService();
 %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/960.css"/>
+<link rel="stylesheet" type="text/css" href="/stylesheets/BasicStyle.css"/>
+<style>
+    .error {
+        color: #ff0000;
+    }
+</style>
+
+<div class="container">
+  <div class="datagrid">
+    <div class="navbar">
+      <div ><p class="brand">You must complete the Virtual Classroom registration</p></div>
+      <br/><br/>
+    </div>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>User Registration Page</title>
-</head>
-<body>
-	You must complete the Virtual Classroom registration. <br /><br />
-	<form:form action="/registerUser.do" method="post">
-        <form:hidden path="openID"  value="<%=userService.getCurrentUser().getUserId()%>" />
-    	<table>
-			<tr>
-				<td><form:label path="fname">First Name</form:label></td>
-				<td><form:input path="fname" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="lname">Last Name</form:label></td>
-				<td><form:input path="lname" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="email">Email</form:label></td>
-				<td><form:input path="email" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="student">Sign up as a student</form:label></td>
-				<td><form:checkbox path="student" value="student" /></td>
-			</tr>
-			<tr>
-				<td><form:label path="teacher">Sign up as a teacher</form:label></td>
-				<td><form:checkbox path="teacher" value="teacher" /></td>
-			</tr>
-			<tr>
-				<td colspan="2"><input type="submit" value="Register" /></td>			
-			</tr>
+    <form:form action="/registerUser.do" method="post" commandName="userRegistrationFormBean">
+        <br/>
+        <form:hidden path="openid" value="<%=userService.getCurrentUser().getUserId()%>"/>
 
-		</table>
+        <form:errors path="*">
+           <div  class="row">
+  			 <div class="span12"> <div class="error" >Please correct the errors and resubmit the form.</div></div>
+           </div>
+        </form:errors>
+        <br /><br /><br />
 
-	</form:form>
+        <div  class="row">
+           <div class="span4">
+              <form:label path="firstName">First Name</form:label>
+               <form:errors path="firstName" cssClass="error"/><br />
+              <form:input path="firstName"/><br/>             
+           </div>
+           <div class="span4">
+              <form:label path="lastName">Last Name</form:label>
+              <form:errors path="lastName" cssClass="error"/><br />
+              <form:input path="lastName"/><br/>              
+           </div>
+           <div class="span4">
+             <form:label path="middleName">Middle Name</form:label>
+             <form:errors path="middleName" cssClass="error"/><br />
+             <form:input path="middleName"/><br/>
+           </div>
+        </div>
+        
+        <div  class="row">
+          <div class="span4">
+            <form:label path="phone">Phone</form:label>
+            <form:errors path="phone" cssClass="error"/><br />
+            <form:input path="phone"/><br/>            
+          </div>
+          <div class="span4">
+            <form:label path="phone2">Phone 2</form:label>
+            <form:errors path="phone2" cssClass="error"/><br />
+            <form:input path="phone2"/><br/>            
+          </div>
+          <div class="span4">
+            <form:label path="email">Email</form:label>
+            <form:errors path="email" cssClass="error"/><br />
+            <form:input path="email"/><br/>
+          </div>
+        </div>
 
-</body>
-</html>
+
+        <div  class="row">
+          <div class="span4">
+            <form:label path="address">Address</form:label>
+            <form:errors path="address" cssClass="error"/><br />
+            <form:input path="address"/><br/>            
+          </div>
+          <div class="span4">
+            <form:label path="address2">Address 2</form:label>
+             <form:errors path="address2" cssClass="error"/><br />
+            <form:input path="address2"/><br/>           
+          </div>
+          <div class="span4">
+            <form:label path="city">City</form:label>
+            <form:errors path="city" cssClass="error"/><br />
+            <form:input path="city"/><br/>         
+          </div>
+        </div>
+        
+        <div  class="row">        
+          <div class="span4">
+            <form:label path="state">State</form:label>
+             <form:errors path="state" cssClass="error"/><br />
+            <form:select path="state">
+                <form:option value="NONE" label="--- Select ---"/>
+                <form:options items="${stateList}"/>
+            </form:select><br/>           
+          </div>
+          <div class="span4">
+            <form:label path="zip">Zip</form:label>
+            <form:errors path="zip" cssClass="error"/><br />
+            <form:input path="zip"/><br/>            
+          </div>
+          <div class="span4">
+            <form:label path="country">Country</form:label>
+            <form:errors path="country" cssClass="error"/><br />
+            <form:select path="country">
+                <form:option value="NONE" label="--- Select ---"/>
+                <form:options items="${countryList}"/>
+            </form:select><br/>            
+          </div>
+        </div>
+    
+        <div  class="row"> 
+          <div class="span4">
+            <form:label path="student">Sign up as a Student</form:label>
+            <form:errors path="student" cssClass="error"/><br />
+            <form:checkbox path="student" value="student"/><br/>            
+          </div>
+
+          <div class="span4">
+            <form:label path="teacher">Sign up as a Teacher</form:label>
+            <form:errors path="teacher" cssClass="error"/><br />
+            <form:checkbox path="teacher" value="teacher"/><br />
+          </div>
+          <div class="span4">
+          </div>
+        </div>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        
+        <div  class="row">
+           <div class="span12">
+              <input class="btn btn-primary" type="submit" value="Register"/>
+
+           </div>
+        </div>
+
+    </form:form>
+  </div>
+ </div>

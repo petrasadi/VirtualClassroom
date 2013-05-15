@@ -1,1 +1,3 @@
-<p>Copyright &copy; DePaulSE491</p>
+<div>
+    <p class="footnote">Copyright &copy; DePaul SE491</p>
+</div>

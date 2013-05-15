@@ -1,0 +1,28 @@
+.invisible > * {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
+#conferenceContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+}
+
+#conferenceContainer > * {
+    float: left;
+}
+
+#userDashboard {
+    width: 50px;
+}
+
+.dashboardButton {
+    width: 48px;
+}
+
+#speakRequests {
+    clear: both;
+    width: 400px;
+}
